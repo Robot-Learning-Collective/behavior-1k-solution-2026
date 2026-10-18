@@ -21,7 +21,7 @@ from openpi.shared import array_typing as at
 
 # Import from our custom modules
 from b1k.models import pi_behavior_config
-from b1k.models.observation import Observation, preprocess_observation
+from b1k.models.observation import IMAGE_KEYS, Observation, preprocess_observation
 from b1k.models.pi_behavior_config import (
     TASK_NUM_STAGES, 
     MAX_NUM_STAGES, 
@@ -90,6 +90,25 @@ class KVCacheTransform(nnx.Module):
         return (k_new, v_new)
 
 
+def _identity_kernel_init(key, shape, dtype=jnp.float32):
+    # Module-level so every model construction shares one static init function
+    return jnp.eye(shape[0], dtype=dtype)
+
+
+def sample_flow_t_and_noise(rng, num_samples, batch_size, noise_fn):
+    """(t [K, B], noise [K, B, H, D]) for K flow samples: t ~ Beta(1.5, 1) stratified over its CDF
+    (one sample per 1/K quantile bin), and samples (2j, 2j+1) share antithetic noise (+n, -n).
+    Unbiased like i.i.d. draws, with a lower-variance K-sample mean."""
+    if num_samples % 2:
+        raise ValueError(f"num_flow_samples must be even, got {num_samples}")
+    t_rng, n_rng = jax.random.split(rng)
+    u = (jnp.arange(num_samples, dtype=jnp.float32)[:, None] + jax.random.uniform(t_rng, (num_samples, batch_size))) / num_samples
+    t = u ** (1 / 1.5) * 0.999 + 0.001
+    half = jax.vmap(lambda r: noise_fn(r, batch_size))(jax.random.split(n_rng, num_samples // 2))
+    noise = jnp.stack([half, -half], axis=1).reshape((num_samples,) + half.shape[1:])
+    return t, noise
+
+
 class PiBehavior(_model.BaseModel):
     def __init__(self, config: pi_behavior_config.PiBehaviorConfig, rngs: nnx.Rngs):
         super().__init__(config.action_dim, config.action_horizon, config.max_token_len)
@@ -106,6 +125,8 @@ class PiBehavior(_model.BaseModel):
                 configs=[paligemma_config, action_expert_config],
                 embed_dtype=config.dtype,
                 adarms=True,
+                sink_slot=True,
+                vocab_size=config.llm_vocab_size,
             )
         )
         llm.lazy_init(rngs=rngs, method="init", use_adarms=[False, True])
@@ -118,6 +139,7 @@ class PiBehavior(_model.BaseModel):
                 pool_type="none",
                 scan=True,
                 dtype_mm=config.dtype,
+                num_registers=config.num_siglip_registers,
             )
         )
         img.lazy_init(next(iter(config.fake_obs().images.values())), train=False, rngs=rngs)
@@ -152,7 +174,7 @@ class PiBehavior(_model.BaseModel):
         self.subtask_encoding_dim = config.task_embedding_dim // 2  # Half of task embedding dim (1024)
         
         # Task-specific stage embeddings (one per stage per task)
-        # Total embeddings = sum of stages across all tasks (596 for 5-15 stages per task)
+        # Total embeddings = sum of stages across all tasks (413 semantic stages)
         self.task_stage_embeddings = nnx.Embed(
             num_embeddings=TOTAL_TASK_STAGE_EMBEDDINGS,
             features=self.subtask_encoding_dim,
@@ -181,6 +203,32 @@ class PiBehavior(_model.BaseModel):
         self.time_mlp_out = nnx.Linear(action_expert_config.width, action_expert_config.width, rngs=rngs)
         self.action_out_proj = nnx.Linear(action_expert_config.width, config.action_dim, rngs=rngs)
 
+        # Learnable scratch tokens of the VLM prefix and of the action expert suffix
+        self.vlm_scratch = nnx.Param(
+            0.02 * jax.random.normal(rngs.params(), (config.num_vlm_scratch_tokens, paligemma_config.width))
+        )
+        self.action_scratch = nnx.Param(
+            0.02 * jax.random.normal(rngs.params(), (config.num_action_scratch_tokens, action_expert_config.width))
+        )
+        # Task / task-stage embeddings projected into the first two tail scratch tokens (zero init)
+        zeros = nnx.initializers.zeros
+        self.expert_cond_proj_task = nnx.Linear(
+            config.task_embedding_dim, action_expert_config.width, kernel_init=zeros, bias_init=zeros, rngs=rngs
+        )
+        self.expert_cond_proj_stage = nnx.Linear(
+            self.subtask_encoding_dim, action_expert_config.width, kernel_init=zeros, bias_init=zeros, rngs=rngs
+        )
+        # State tokens: 256-bin token + per-joint embedding + W.sincos(raw value) (zero init),
+        # plus one continuous token of the whole unclipped state
+        self.state_dim_embedding = nnx.Param(jnp.zeros((config.action_dim, paligemma_config.width), dtype=jnp.float32))
+        self.state_value_proj = nnx.Linear(256, paligemma_config.width, kernel_init=zeros, bias_init=zeros, rngs=rngs)
+        self.state_continuous_proj = nnx.Linear(config.action_dim, paligemma_config.width, rngs=rngs)
+        # Per-camera projection of the shared SigLIP output (identity init)
+        self.camera_proj = nnx.Dict({
+            key: nnx.Linear(paligemma_config.width, paligemma_config.width, kernel_init=_identity_kernel_init, rngs=rngs)
+            for key in IMAGE_KEYS
+        })
+
         # Correlated noise generation
         # Initialize as NNX Intermediate (excluded from checkpoints, loaded from norm_stats)
         # Full correlation matrix with beta shrinkage for robustness
@@ -191,11 +239,6 @@ class PiBehavior(_model.BaseModel):
         self.correlation_loaded = False  # Track if correlation matrix has been loaded
         self.use_correlated_noise = config.use_correlated_noise
         self.correlation_beta = config.correlation_beta  # Shrinkage parameter for regularization
-        
-        # Inpainting cache: stores precomputed matrices for simple correlation-based inpainting
-        # Key: num_inpainted_steps (length of inpainted sequence)
-        # Value: dict with {O_indices, U_indices, Sigma_UO_SOOinv}
-        self.inpainting_cache = {}
         
         # FAST auxiliary training components
         if config.use_fast_auxiliary:
@@ -544,8 +587,15 @@ class PiBehavior(_model.BaseModel):
         # If not frozen, use the model's training state (self.deterministic)
         vision_train_mode = (not self.deterministic) and (not self.config.freeze_vision_backbone)
         
+        register_tokens = []
+        register_masks = []
         for name in obs.images:
-            image_tokens, _ = self.PaliGemma.img(obs.images[name], train=vision_train_mode)
+            image_tokens, image_out = self.PaliGemma.img(obs.images[name], train=vision_train_mode)
+            # SigLIP register outputs join the prefix (masked like their camera)
+            registers = image_out["registers_logits"].astype(image_tokens.dtype)
+            register_tokens.append(registers)
+            register_masks.append(einops.repeat(obs.image_masks[name], "b -> b s", s=registers.shape[1]))
+            image_tokens = self.camera_proj[name](image_tokens)
             image_token_list.append(image_tokens)  # Store for subtask prediction
 
             tokens.append(image_tokens)
@@ -558,6 +608,17 @@ class PiBehavior(_model.BaseModel):
             )
             # Image tokens attend to each other
             ar_mask += [False] * image_tokens.shape[1]
+
+        # Register and VLM scratch tokens: bidirectional with the rest of the prefix
+        register_tokens = jnp.concatenate(register_tokens, axis=1)
+        tokens.append(register_tokens)
+        input_mask.append(jnp.concatenate(register_masks, axis=1))
+        ar_mask += [False] * register_tokens.shape[1]
+        batch_size = obs.state.shape[0]
+        scratch = self.vlm_scratch.value.astype(image_token_list[0].dtype)
+        tokens.append(jnp.broadcast_to(scratch[None], (batch_size, *scratch.shape)))
+        input_mask.append(jnp.ones((batch_size, scratch.shape[0]), dtype=jnp.bool_))
+        ar_mask += [False] * scratch.shape[0]
 
         # Add task embeddings with subtask state fusion
         if obs.tokenized_prompt is not None:
@@ -589,6 +650,12 @@ class PiBehavior(_model.BaseModel):
             # Stage tokens attend to images+task but not vice versa
             ar_mask += [False] + [True, False, False, False]
             
+        # Continuous state token: the unclipped state, whose out-of-range values the bins lose
+        state = obs.state.astype(jnp.float32)
+        tokens.append(self.state_continuous_proj(state)[:, None, :].astype(tokens[0].dtype))
+        input_mask.append(jnp.ones((batch_size, 1), dtype=jnp.bool_))
+        ar_mask += [False]
+
         # Add state as discrete tokens (Pi05 style)
         # Discretize state into bins
         discretized_state = jnp.digitize(obs.state, bins=jnp.linspace(-1, 1, 256 + 1)[:-1]) - 1
@@ -602,6 +669,11 @@ class PiBehavior(_model.BaseModel):
         
         if state_tokens:
             state_tokens = jnp.concatenate(state_tokens, axis=1)  # shape: [batch_size, state_dim, embed_dim]
+            # + W.sincos(value) on the raw state and a learnable embedding per joint
+            b, d = state.shape
+            value_features = posemb_sincos(state.reshape(-1), 256, min_period=0.01, max_period=4.0).reshape(b, d, 256)
+            state_tokens = state_tokens + self.state_value_proj(value_features).astype(state_tokens.dtype)
+            state_tokens = state_tokens + self.state_dim_embedding.value.astype(state_tokens.dtype)[None]
             tokens.append(state_tokens)
             input_mask.append(jnp.ones((obs.state.shape[0], obs.state.shape[-1]), dtype=jnp.bool_))
             # State tokens have full bidirectional attention with all prefix tokens
@@ -660,17 +732,38 @@ class PiBehavior(_model.BaseModel):
         time_emb = nnx.swish(time_emb)
         action_expert_tokens = action_tokens
         adarms_cond = time_emb
+
+        # Suffix = [head scratch tokens][action tokens][tail scratch tokens]; the first two tail
+        # tokens also carry the task and task-stage embeddings
+        batch_size = action_tokens.shape[0]
+        n_scratch = self.config.num_action_scratch_tokens
+        n_head = n_scratch - self.config.num_action_scratch_tokens_tail
+        scratch = jnp.broadcast_to(
+            self.action_scratch.value.astype(action_tokens.dtype)[None], (batch_size, *self.action_scratch.value.shape)
+        )
+        task_ids = obs.tokenized_prompt[:, 0]
+        stage_idx = jnp.asarray(TASK_STAGE_OFFSETS, jnp.int32)[task_ids] + obs.tokenized_prompt[:, 1]
+        cond = jnp.stack([
+            self.expert_cond_proj_task(self.task_embeddings(task_ids).astype(jnp.float32)),
+            self.expert_cond_proj_stage(self.task_stage_embeddings(stage_idx).astype(jnp.float32)),
+        ], axis=1).astype(scratch.dtype)
+        tail = scratch[:, n_head:]
+        tail = jnp.concatenate([tail[:, :2] + cond, tail[:, 2:]], axis=1)
+
+        tokens += [scratch[:, :n_head], action_expert_tokens, tail]
+        input_mask.append(jnp.ones((batch_size, n_scratch + self.action_horizon), dtype=jnp.bool_))
         
-        tokens.append(action_expert_tokens)
-        input_mask.append(jnp.ones(action_expert_tokens.shape[:2], dtype=jnp.bool_))
-        
-        # image/task/state inputs do not attend to action tokens
-        ar_mask += [True] + ([False] * (self.action_horizon - 1))
+        # image/task/state inputs do not attend to the suffix
+        ar_mask += [True] + ([False] * (n_scratch + self.action_horizon - 1))
         
         tokens = jnp.concatenate(tokens, axis=1)
         input_mask = jnp.concatenate(input_mask, axis=1)
         ar_mask = jnp.array(ar_mask)
         return tokens, input_mask, ar_mask, adarms_cond
+
+    def _action_outputs(self, suffix_out):
+        n_head = self.config.num_action_scratch_tokens - self.config.num_action_scratch_tokens_tail
+        return self.action_out_proj(suffix_out[:, n_head:n_head + self.action_horizon])
 
     @override
     def compute_loss(
@@ -696,7 +789,7 @@ class PiBehavior(_model.BaseModel):
         losses = {}
 
         preprocess_rng, rng = jax.random.split(rng)
-        observation = preprocess_observation(preprocess_rng, observation, train=train)
+        observation = preprocess_observation(preprocess_rng, observation, train=train, aug=self.config.train_aug)
 
         batch_size = actions.shape[0]
         
@@ -705,6 +798,20 @@ class PiBehavior(_model.BaseModel):
         
         # 2. Compute prefix KV cache
         prefix_attn_mask = make_attn_mask(prefix_mask, prefix_ar_mask)
+
+        # State dropout: hide the state tokens (continuous + binned, right before the FAST tokens)
+        # from the whole attention, for a random subset of samples
+        fast_len = observation.fast_tokens.shape[1] if observation.fast_tokens is not None else 0
+        state_end = prefix_tokens.shape[1] - fast_len
+        is_state = jnp.arange(prefix_tokens.shape[1]) >= state_end - (observation.state.shape[-1] + 1)
+        is_state = is_state & (jnp.arange(prefix_tokens.shape[1]) < state_end)
+        state_keep = jnp.ones((batch_size,), dtype=jnp.bool_)
+        if train and self.config.train_aug.state_dropout_prob > 0:
+            sdrop_rng, rng = jax.random.split(rng)
+            state_keep = ~jax.random.bernoulli(sdrop_rng, self.config.train_aug.state_dropout_prob, (batch_size,))
+            visible = ~is_state[None, :] | state_keep[:, None]
+            prefix_attn_mask = prefix_attn_mask & visible[:, None, :] & visible[:, :, None]
+
         positions_prefix = jnp.cumsum(prefix_mask, axis=1) - 1
         (prefix_out, _), kv_cache_full = self.PaliGemma.llm(
             [prefix_tokens, None],
@@ -732,12 +839,10 @@ class PiBehavior(_model.BaseModel):
         
         # 4. Extract FAST loss from prefix output (before removing from cache)
         fast_loss_value = 0.0
-        fast_len = 0
         fast_targets = observation.fast_tokens
         fast_token_mask = observation.fast_token_mask
         
         if self.config.use_fast_auxiliary and fast_targets is not None:
-            fast_len = fast_targets.shape[1]
             fast_start_idx = prefix_tokens.shape[1] - fast_len
             fast_outputs = prefix_out[:, fast_start_idx:, :]  # [B, T, D]
             
@@ -784,13 +889,11 @@ class PiBehavior(_model.BaseModel):
             cache_k = cache_k[:, :, :-fast_len, :, :]
             cache_v = cache_v[:, :, :-fast_len, :, :]
             kv_cache_for_actions = (cache_k, cache_v)
-            prefix_len_for_actions = prefix_tokens.shape[1] - fast_len
             # Truncate prefix mask and ar_mask for action expert
             prefix_mask_for_actions = prefix_mask[:, :-fast_len]
             prefix_ar_mask_for_actions = prefix_ar_mask[:-fast_len]
         else:
             kv_cache_for_actions = kv_cache_full
-            prefix_len_for_actions = prefix_tokens.shape[1]
             prefix_mask_for_actions = prefix_mask
             prefix_ar_mask_for_actions = prefix_ar_mask
         
@@ -802,16 +905,13 @@ class PiBehavior(_model.BaseModel):
         # 7. Transform KV cache (after stop_gradient, so it receives action expert gradients)
         if self.kv_transform is not None:
             kv_cache_for_actions = self.kv_transform(kv_cache_for_actions)
+
+        # The action expert does not see dropped state tokens either
+        prefix_vis_for_actions = prefix_mask_for_actions & (~is_state[None, :state_end] | state_keep[:, None])
         
         # 8. Define single flow sample processing
-        def process_one_flow_sample(sample_rng):
+        def process_one_flow_sample(time, noise):
             """Process one flow sample using the original cached prefix."""
-            noise_rng, time_rng = jax.random.split(sample_rng)
-            
-            # Generate different noise and time for this sample
-            noise = self.generate_correlated_noise(noise_rng, batch_size)
-            time = jax.random.beta(time_rng, 1.5, 1, (batch_size,)) * 0.999 + 0.001
-            
             # Compute noisy actions and target velocity
             time_expanded = time[:, None, None]
             x_t = time_expanded * noise + (1 - time_expanded) * actions
@@ -826,12 +926,12 @@ class PiBehavior(_model.BaseModel):
             # When using KV cache, mask shape should be [batch, suffix_len, prefix_len + suffix_len]
             suffix_attn_mask = make_attn_mask(suffix_mask, suffix_ar_mask)
             prefix_attn_mask = einops.repeat(
-                prefix_mask_for_actions, "b p -> b s p", s=suffix_tokens.shape[1]
+                prefix_vis_for_actions, "b p -> b s p", s=suffix_tokens.shape[1]
             )
             full_attn_mask = jnp.concatenate([prefix_attn_mask, suffix_attn_mask], axis=-1)
             
             # Positions for suffix start after cached prefix
-            suffix_positions = prefix_len_for_actions + jnp.cumsum(suffix_mask, axis=-1) - 1
+            suffix_positions = jnp.sum(prefix_mask_for_actions, axis=-1)[:, None] + jnp.cumsum(suffix_mask, axis=-1) - 1
             
             # Forward pass with cached prefix (discard returned cache - don't modify original!)
             (_, suffix_out), _ = self.PaliGemma.llm(
@@ -843,46 +943,35 @@ class PiBehavior(_model.BaseModel):
             )
             
             # Compute velocity and loss
-            v_t = self.action_out_proj(suffix_out[:, -self.action_horizon:])
+            v_t = self._action_outputs(suffix_out)
             action_loss = jnp.square(v_t - u_t)  # [B, H, D]
             
             return action_loss
         
         # 9. Vectorize over N flow samples
         # Disable type checking inside vmap (jaxtyping doesn't handle traced values well)
-        flow_rngs = jax.random.split(rng, num_flow_samples)
+        flow_t, flow_noise = sample_flow_t_and_noise(rng, num_flow_samples, batch_size, self.generate_correlated_noise)
         with at.disable_typechecking():
-            all_action_losses = jax.vmap(process_one_flow_sample)(flow_rngs)  # [N, B, H, D]
+            all_action_losses = jax.vmap(process_one_flow_sample)(flow_t, flow_noise)  # [N, B, H, D]
         
         # 10. Average over flow samples
         action_loss = jnp.mean(all_action_losses, axis=0)  # [B, H, D]
+
+        # Chunk steps past the episode end are excluded from the loss
+        valid = jnp.ones(action_loss.shape[:2]) if observation.action_is_pad is None else ~observation.action_is_pad
+        valid = valid.astype(action_loss.dtype)
+        def mean_over_horizon(x):  # [B, H] -> [B]
+            return jnp.sum(x * valid, axis=-1) / jnp.maximum(jnp.sum(valid, axis=-1), 1.0)
         
         # 11. Build per-dimension action losses
-        # Base velocity (x,y,z)
-        losses["action_loss_base_vel_x"] = jnp.mean(action_loss[..., 0], axis=-1)
-        losses["action_loss_base_vel_y"] = jnp.mean(action_loss[..., 1], axis=-1)
-        losses["action_loss_base_vel_z"] = jnp.mean(action_loss[..., 2], axis=-1)
-        
-        # Trunk joints (4)
-        for i in range(4):
-            losses[f"action_loss_trunk_{i}"] = jnp.mean(action_loss[..., 3+i], axis=-1)
-            
-        # Left arm joints (7)
-        for i in range(7):
-            losses[f"action_loss_left_arm_{i}"] = jnp.mean(action_loss[..., 7+i], axis=-1)
-            
-        # Left gripper
-        losses["action_loss_left_gripper"] = jnp.mean(action_loss[..., 14], axis=-1)
-        
-        # Right arm joints (7)
-        for i in range(7):
-            losses[f"action_loss_right_arm_{i}"] = jnp.mean(action_loss[..., 15+i], axis=-1)
-            
-        # Right gripper
-        losses["action_loss_right_gripper"] = jnp.mean(action_loss[..., 22], axis=-1)
+        names = (["base_vel_x", "base_vel_y", "base_vel_z", "trunk_translate", "trunk_tilt"]
+                 + [f"left_arm_{i}" for i in range(7)] + ["left_gripper"]
+                 + [f"right_arm_{i}" for i in range(7)] + ["right_gripper"])
+        for i, name in enumerate(names):
+            losses[f"action_loss_{name}"] = mean_over_horizon(action_loss[..., i])
 
-        # Total action loss: mean over horizon (H) and action dims (D) -> [B]
-        losses["action_loss"] = jnp.mean(action_loss, axis=(-2, -1))
+        # Total action loss: mean over action dims (D) and valid horizon steps (H) -> [B]
+        losses["action_loss"] = mean_over_horizon(jnp.mean(action_loss, axis=-1))
 
         # 12. Add subtask loss during training
         subtask_loss_value = 0.0
@@ -954,29 +1043,25 @@ class PiBehavior(_model.BaseModel):
                 i for i in range(flat_dim) if i not in O_set
             ], dtype=jnp.int32)
             
-            # Generate noise
-            rng, noise_rng = jax.random.split(rng)
-            
-            if self.correlation_loaded:
-                # CORRELATED NOISE: Sample with correlation matrix
-                noise = self.generate_correlated_noise(noise_rng, batch_size)
-            else:
-                # FALLBACK: Independent noise
-                noise = jax.random.normal(noise_rng, (batch_size, self.action_horizon, self.action_dim))
+            # Generate noise (unless given)
+            if noise is None:
+                rng, noise_rng = jax.random.split(rng)
+                if self.correlation_loaded:
+                    # CORRELATED NOISE: Sample with correlation matrix
+                    noise = self.generate_correlated_noise(noise_rng, batch_size)
+                else:
+                    # FALLBACK: Independent noise
+                    noise = jax.random.normal(noise_rng, (batch_size, self.action_horizon, self.action_dim))
             
             # Extract fixed z_O and x0_O for constraint enforcement
             noise_flat = noise.reshape(batch_size, flat_dim)
             fixed_z_O = noise_flat[:, O_indices]  # [b, |O|] - fixed noise for inpainting
             x0_O = initial_actions_padded.reshape(batch_size, flat_dim)[:, O_indices]  # [b, |O|] - target actions
             
-            # Precompute correction matrix for correlation-aware inpainting
+            # Correction matrix for correlation-aware inpainting (computed in-graph, small |O|x|O| solve)
             inpainting_cache = None
             if self.correlation_loaded:
-                cache_key = (num_initial_actions, input_action_dim)
-                if cache_key not in self.inpainting_cache:
-                    logger.info(f"Computing correction matrix for {num_initial_actions} steps, {input_action_dim} dims...")
-                    self.inpainting_cache[cache_key] = self._precompute_correction_matrix(O_indices, U_indices)
-                inpainting_cache = self.inpainting_cache[cache_key]
+                inpainting_cache = self._precompute_correction_matrix(O_indices, U_indices)
             
         else:
             # NO INPAINTING: Standard noise generation
@@ -1053,7 +1138,7 @@ class PiBehavior(_model.BaseModel):
                 adarms_cond=[None, adarms_cond],
             )
             assert prefix_out is None
-            v_t = self.action_out_proj(suffix_out[:, -self.action_horizon :])
+            v_t = self._action_outputs(suffix_out)
             
             # Euler step: x_{t+dt} = x_t + dt * v_t
             x_t_new = x_t + dt * v_t
@@ -1072,8 +1157,9 @@ class PiBehavior(_model.BaseModel):
                     # Compute correction at O
                     delta_O = x_desired_O - x_flat[:, O_indices]  # [b, |O|]
                     
-                    # Apply hard constraint at O
-                    x_flat = x_flat.at[:, O_indices].set(x_desired_O)
+                    # Soft constraint at O: move a fraction of the way to the anchor path
+                    applied_delta_O = self.config.inpaint_pin_alpha * delta_O
+                    x_flat = x_flat.at[:, O_indices].add(applied_delta_O)
                     
                     # If correlation matrix available, propagate correction to U
                     if inpainting_cache is not None:
@@ -1081,17 +1167,12 @@ class PiBehavior(_model.BaseModel):
                         U_indices_cached = inpainting_cache['U_indices']
                         
                         # Compute correlated correction: δ_U = Σ_{UO}Σ_{OO}^{-1} @ δ_O
-                        delta_U = delta_O @ correction_matrix.T  # [b, |U|]
+                        delta_U = applied_delta_O @ correction_matrix.T  # [b, |U|]
                         
-                        # Skip if correction too large (indicates instability)
-                        max_correction = jnp.max(jnp.abs(delta_U))
-                        x_flat = jax.lax.cond(
-                            # Prevents exploding corrections in case of noisy out of distribution initial actions
-                            max_correction <= 1.0,
-                            lambda x: x.at[:, U_indices_cached].add(delta_U),
-                            lambda x: x,
-                            x_flat
-                        )
+                        # Scale down (per sample) corrections larger than the per-step cap
+                        max_correction = jnp.max(jnp.abs(delta_U), axis=-1, keepdims=True)
+                        scale = jnp.clip(self.config.inpaint_correction_step_cap / (max_correction + 1e-9), 0.0, 1.0)
+                        x_flat = x_flat.at[:, U_indices_cached].add(delta_U * scale)
                     
                     # Sanity check: if Σ = I, correction_matrix = 0, so delta_U = 0 that is correct
                     # If the correlation is 1 everywhere we will go to the flat prediction that is correct

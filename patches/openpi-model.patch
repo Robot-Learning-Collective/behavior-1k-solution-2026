@@ -1,0 +1,123 @@
+diff --git a/src/openpi/models/gemma.py b/src/openpi/models/gemma.py
+index 60144db..ce835c2 100644
+--- a/src/openpi/models/gemma.py
++++ b/src/openpi/models/gemma.py
+@@ -169,6 +169,8 @@ class Attention(nn.Module):
+     """Attention module."""
+ 
+     configs: Sequence[Config]
++    # Attention sink: a virtual key with a learnable logit per query head and a learnable value per KV head
++    sink_slot: bool = False
+ 
+     @nn.compact
+     def __call__(self, xs, positions, attn_mask, kv_cache):
+@@ -235,9 +237,23 @@ class Attention(nn.Module):
+         big_neg = -2.3819763e38  # See gemma/modules.py
+         masked_logits = jnp.where(attn_mask[:, :, None, :, :], logits, big_neg)
+ 
+-        probs = jax.nn.softmax(masked_logits, axis=-1).astype(dtype)
++        if self.sink_slot:
++            n_kv, n_q = self.configs[0].num_kv_heads, self.configs[0].num_heads
++            sink_logit = self.param("sink_logit", nn.initializers.zeros, (n_kv, n_q // n_kv))
++            sink_col = jnp.broadcast_to(
++                sink_logit.astype(masked_logits.dtype)[None, :, :, None, None], masked_logits.shape[:-1] + (1,)
++            )
++            probs_all = jax.nn.softmax(jnp.concatenate([masked_logits, sink_col], axis=-1), axis=-1)
++            probs = probs_all[..., :-1].astype(dtype)
++        else:
++            probs = jax.nn.softmax(masked_logits, axis=-1).astype(dtype)
+ 
+         encoded = jnp.einsum("BKGTS,BSKH->BTKGH", probs, v)
++        if self.sink_slot:
++            sink_value = self.param("sink_value", nn.initializers.normal(0.02), (n_kv, self.configs[0].head_dim))
++            encoded = encoded + jnp.einsum(
++                "BKGTs,KH->BTKGH", probs_all[..., -1:], sink_value.astype(jnp.float32)
++            ).astype(encoded.dtype)
+         encoded = einops.rearrange(encoded, "B T K G H -> B T (K G) H")
+ 
+         out = []
+@@ -298,13 +314,14 @@ class Block(nn.Module):
+ 
+     dropout: float = 0.0
+     dropout_bdims: tuple[int, ...] = ()
++    sink_slot: bool = False
+ 
+     @nn.compact
+     def __call__(self, xs, kv_cache, positions, attn_mask, adarms_cond, deterministic=True):  # noqa: FBT002
+         xs = sharding.activation_sharding_constraint(xs)
+         drop = nn.Dropout(self.dropout, self.dropout_bdims) if self.dropout else lambda x, _: x
+ 
+-        attn = Attention(configs=self.configs, name="attn")
++        attn = Attention(configs=self.configs, name="attn", sink_slot=self.sink_slot)
+ 
+         pre_attn = []
+         gates = []
+@@ -356,13 +373,16 @@ class Module(nn.Module):
+     dropout: float = 0.0
+     dropout_bdims: tuple[int, ...] = ()  # Every float is dropped independently.
+     adarms: bool = False
++    sink_slot: bool = False
++    # Rows of the token embedding table (a model that embeds only the first N ids can keep N rows)
++    vocab_size: int = PALIGEMMA_VOCAB_SIZE
+ 
+     def setup(self):
+         # all experts must have the same depth
+         assert all(config.depth == self.configs[0].depth for config in self.configs)
+ 
+         self.embedder = Embedder(
+-            vocab_size=PALIGEMMA_VOCAB_SIZE,
++            vocab_size=self.vocab_size,
+             embed_dim=self.configs[0].width,  # embedder for first expert only
+             name="embedder",
+         )
+@@ -388,6 +408,7 @@ class Module(nn.Module):
+             configs=self.configs,
+             dropout=self.dropout,
+             dropout_bdims=self.dropout_bdims,
++            sink_slot=self.sink_slot,
+         )
+         self.final_norms = [RMSNorm(name=_name("final_norm", i)) for i in range(len(self.configs))]
+ 
+diff --git a/src/openpi/models/siglip.py b/src/openpi/models/siglip.py
+index c74c99e..f371df9 100644
+--- a/src/openpi/models/siglip.py
++++ b/src/openpi/models/siglip.py
+@@ -203,6 +203,8 @@ class _Module(nn.Module):
+     # or "dots_with_no_batch_dims_saveable" for more speed (memory costly)
+     remat_policy: str = "nothing_saveable"
+     dtype_mm: str = "float32"
++    # Learnable register tokens appended after the patches (no position); outputs in out["registers_logits"]
++    num_registers: int = 0
+ 
+     @nn.compact
+     def __call__(self, image, *, train=False):
+@@ -232,6 +234,10 @@ class _Module(nn.Module):
+             cls = self.param("cls", nn.initializers.zeros, (1, 1, c), x.dtype)
+             x = jnp.concatenate([jnp.tile(cls, [n, 1, 1]), x], axis=1)
+ 
++        if self.num_registers:
++            registers = self.param("registers", nn.initializers.normal(0.02), (1, self.num_registers, c), x.dtype)
++            x = jnp.concatenate([x, jnp.tile(registers, [n, 1, 1])], axis=1)
++
+         n, _, c = x.shape  # n,l,d
+         x = nn.Dropout(rate=self.dropout)(x, not train)
+ 
+@@ -248,6 +254,9 @@ class _Module(nn.Module):
+             dtype_mm=self.dtype_mm,
+             name="Transformer",
+         )(x, deterministic=not train)
++        if self.num_registers:
++            registers_out = x[:, -self.num_registers :]
++            x = x[:, : -self.num_registers]
+         encoded = out["encoded"] = x
+ 
+         if self.pool_type == "map":
+@@ -286,6 +295,8 @@ class _Module(nn.Module):
+             head = nn.Dense(self.num_classes, dtype=self.dtype_mm, name="head", **kw)
+             x_2d = out["logits_2d"] = head(x_2d)
+             x = out["logits"] = head(x)
++            if self.num_registers:
++                out["registers_logits"] = head(registers_out)
+ 
+         return x, out
+ 

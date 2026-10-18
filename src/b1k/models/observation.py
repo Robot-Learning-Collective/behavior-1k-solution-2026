@@ -29,6 +29,21 @@ IMAGE_KEYS = (
 IMAGE_RESOLUTION = (224, 224)
 
 
+@dataclasses.dataclass(frozen=True)
+class TrainAugmentationConfig:
+    """Training-only augmentations: crop + rotate (head camera), color jitter and cutout (every camera),
+    whole wrist-camera dropout, and state-token dropout (applied in the attention mask by the model)."""
+    brightness: float = 0.3
+    contrast: float = 0.4
+    saturation: float = 0.5
+    head_crop_frac: float = 0.98
+    head_rotate_deg: float = 2.0
+    cutout_prob: float = 0.3
+    cutout_max_area: float = 0.1
+    cam_dropout_prob: float = 0.05
+    state_dropout_prob: float = 0.02
+
+
 @at.typecheck
 @struct.dataclass
 class Observation(Generic[ArrayT]):
@@ -44,6 +59,9 @@ class Observation(Generic[ArrayT]):
     
     fast_tokens: at.Int[ArrayT, "*b t"] | None = None
     fast_token_mask: at.Bool[ArrayT, "*b t"] | None = None
+
+    # True for action-chunk steps past the episode end (excluded from the action loss)
+    action_is_pad: at.Bool[ArrayT, "*b ah"] | None = None
 
     @classmethod
     def from_dict(cls, data: at.PyTree[ArrayT]) -> "Observation[ArrayT]":
@@ -68,6 +86,7 @@ class Observation(Generic[ArrayT]):
             token_loss_mask=data.get("token_loss_mask"),
             fast_tokens=data.get("fast_tokens"),
             fast_token_mask=data.get("fast_token_mask"),
+            action_is_pad=data.get("action_is_pad"),
         )
 
     def to_dict(self) -> at.PyTree[ArrayT]:
@@ -78,6 +97,21 @@ class Observation(Generic[ArrayT]):
         return result
 
 
+def _cutout(rng, image, prob: float, max_area: float):
+    """One grey rectangle (area <= max_area of the image, aspect 0.3-3) with probability `prob`."""
+    rng_apply, rng_area, rng_aspect, rng_cy, rng_cx = jax.random.split(rng, 5)
+    height, width, _ = image.shape
+    area = jax.random.uniform(rng_area, (), maxval=max_area) * height * width
+    aspect = jax.random.uniform(rng_aspect, (), minval=0.3, maxval=3.0)
+    h, w = jnp.sqrt(area * aspect), jnp.sqrt(area / aspect)
+    cy = jax.random.uniform(rng_cy, (), maxval=float(height))
+    cx = jax.random.uniform(rng_cx, (), maxval=float(width))
+    ys = jnp.arange(height)[:, None]
+    xs = jnp.arange(width)[None, :]
+    inside = (jnp.abs(ys - cy) < h / 2) & (jnp.abs(xs - cx) < w / 2) & jax.random.bernoulli(rng_apply, prob)
+    return jnp.where(inside[..., None], jnp.array(0.5, image.dtype), image)
+
+
 def preprocess_observation(
     rng: at.KeyArrayLike | None,
     observation: Observation,
@@ -85,12 +119,16 @@ def preprocess_observation(
     train: bool = False,
     image_keys: Sequence[str] = IMAGE_KEYS,
     image_resolution: tuple[int, int] = IMAGE_RESOLUTION,
+    aug: TrainAugmentationConfig | None = None,
 ) -> Observation:
     """Preprocess observations with image augmentation and FAST fields preservation."""
     if not set(image_keys).issubset(observation.images):
         raise ValueError(f"images dict missing keys: expected {image_keys}, got {list(observation.images)}")
 
     batch_shape = observation.state.shape[:-1]
+    if train:
+        aug = aug or TrainAugmentationConfig()
+        rng_color, rng_cutout, rng_drop = jax.random.split(rng, 3)
 
     out_images = {}
     for key in image_keys:
@@ -106,18 +144,20 @@ def preprocess_observation(
             if "wrist" not in key:
                 height, width = image.shape[1:3]
                 transforms += [
-                    augmax.RandomCrop(int(width * 0.95), int(height * 0.95)),
+                    augmax.RandomCrop(int(width * aug.head_crop_frac), int(height * aug.head_crop_frac)),
                     augmax.Resize(width, height),
-                    augmax.Rotate((-5, 5)),
+                    augmax.Rotate((-aug.head_rotate_deg, aug.head_rotate_deg)),
                 ]
             transforms += [
-                augmax.ColorJitter(brightness=0.3, contrast=0.4, saturation=0.5),
+                augmax.ColorJitter(brightness=aug.brightness, contrast=aug.contrast, saturation=aug.saturation),
             ]
-            sub_rngs = jax.random.split(rng, image.shape[0])
+            sub_rngs = jax.random.split(rng_color, image.shape[0])
             image = jax.vmap(augmax.Chain(*transforms))(sub_rngs, image)
+            cutout_rngs = jax.random.split(jax.random.fold_in(rng_cutout, len(out_images)), image.shape[0])
+            image = jax.vmap(_cutout, in_axes=(0, 0, None, None))(cutout_rngs, image, aug.cutout_prob, aug.cutout_max_area)
 
             # Back to [-1, 1]
-            image = image * 2.0 - 1.0
+            image = jnp.clip(image, 0.0, 1.0) * 2.0 - 1.0
 
         out_images[key] = image
 
@@ -129,6 +169,14 @@ def preprocess_observation(
         else:
             out_masks[key] = jnp.asarray(observation.image_masks[key])
 
+    # Wrist-camera dropout: zero image and mask=False, so the model learns to act without it
+    if train:
+        for i, key in enumerate(image_keys):
+            if "wrist" in key:
+                drop = jax.random.bernoulli(jax.random.fold_in(rng_drop, i), aug.cam_dropout_prob, batch_shape)
+                out_images[key] = jnp.where(drop[:, None, None, None], 0.0, out_images[key])
+                out_masks[key] = out_masks[key] & ~drop
+
     return Observation(
         images=out_images,
         image_masks=out_masks,
@@ -139,5 +187,5 @@ def preprocess_observation(
         token_loss_mask=observation.token_loss_mask,
         fast_tokens=getattr(observation, 'fast_tokens', None),
         fast_token_mask=getattr(observation, 'fast_token_mask', None),
+        action_is_pad=getattr(observation, 'action_is_pad', None),
     )
-

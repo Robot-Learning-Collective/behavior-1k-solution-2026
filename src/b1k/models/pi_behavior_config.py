@@ -18,24 +18,30 @@ from openpi.models import gemma as _gemma
 from openpi.shared import array_typing as at
 import openpi.shared.nnx_utils as nnx_utils
 
-from b1k.models.observation import Observation
+from b1k.models.observation import Observation, TrainAugmentationConfig
 
 if TYPE_CHECKING:
     from b1k.models.pi_behavior import PiBehavior
 
 
-# Per-task stage counts (based on avg_episode_length / 900, capped between 5-15)
+# Per-task stage counts of the semantic stages (assets/semantic_stages/stages.csv): ordered groups of the
+# skill annotations of the 2026 demos; per-frame labels in assets/semantic_stages/episode_stage_frames.csv.
 # Use tuple for immutability and to avoid JAX device allocation at import time
 TASK_NUM_STAGES = (
-    5, 6, 15, 15, 14, 12, 9, 15, 10, 15,  # Tasks 0-9
-    7, 13, 10, 15, 15, 15, 15, 11, 13, 12,  # Tasks 10-19
-    14, 15, 9, 15, 15, 15, 15, 15, 15, 15,  # Tasks 20-29
-    11, 10, 10, 13, 5, 5, 14, 6, 8, 10,  # Tasks 30-39
-    5, 15, 8, 15, 12, 11, 9, 14, 15, 15,  # Tasks 40-49
+    2, 2, 3, 4, 4, 2, 2, 5, 4, 5,  # Tasks 0-9
+    2, 5, 3, 6, 9, 4, 4, 3, 3, 4,  # Tasks 10-19
+    4, 5, 3, 6, 6, 5, 6, 6, 4, 5,  # Tasks 20-29
+    5, 4, 3, 4, 2, 2, 3, 2, 3, 3,  # Tasks 30-39
+    4, 7, 2, 6, 4, 7, 7, 3, 9, 5,  # Tasks 40-49
+    3, 6, 3, 3, 3, 3, 3, 2, 4, 3,  # Tasks 50-59
+    2, 6, 5, 2, 8, 4, 6, 5, 4, 3,  # Tasks 60-69
+    5, 5, 7, 6, 4, 4, 2, 2, 2, 3,  # Tasks 70-79
+    2, 3, 5, 5, 5, 8, 3, 3, 4, 3,  # Tasks 80-89
+    2, 5, 2, 3, 5, 8, 4, 5, 5, 4,  # Tasks 90-99
 )
 
-MAX_NUM_STAGES = 15  # Maximum stages per task
-TOTAL_TASK_STAGE_EMBEDDINGS = sum(TASK_NUM_STAGES)  # 596 total embeddings
+MAX_NUM_STAGES = max(TASK_NUM_STAGES)  # 9
+TOTAL_TASK_STAGE_EMBEDDINGS = sum(TASK_NUM_STAGES)  # 413 total embeddings
 
 # Cumulative offsets for indexing into task_stage_embeddings (as tuple)
 TASK_STAGE_OFFSETS = tuple([0] + [sum(TASK_NUM_STAGES[:i+1]) for i in range(len(TASK_NUM_STAGES) - 1)])
@@ -48,12 +54,13 @@ class PiBehaviorConfig(_model.BaseModelConfig):
     action_expert_variant: _gemma.Variant = "gemma_300m"
 
     # Set the model specific defaults.
-    action_dim: int = 32
+    # 21 = [base 3][trunk translate, tilt][left arm 7][left grip][right arm 7][right grip] (b1k.shared.trunk2dof)
+    action_dim: int = 21
     action_horizon: int = 30
     max_token_len: int = 200  # Only used for compatibility, not for actual tokenization
     
     # Number of tasks in the behavior dataset
-    num_tasks: int = 50
+    num_tasks: int = 100
     # Task embedding dimension - will match the paligemma width
     task_embedding_dim: int = None  # type: ignore
     # Maximum number of subtask states across all tasks
@@ -106,9 +113,28 @@ class PiBehaviorConfig(_model.BaseModelConfig):
     # Time threshold for inpainting during inference
     # Stop enforcing inpainting constraint when t < threshold (let model be free in final steps)
     time_threshold_inpaint: float = 0.3
+    # Soft inpainting: per flow step the inpainted coords move this fraction toward the anchor path,
+    # and the correlated correction of the free coords is scaled to at most this size (normalized units)
+    inpaint_pin_alpha: float = 0.7
+    inpaint_correction_step_cap: float = 0.1
     
     # Vision backbone finetuning control
     freeze_vision_backbone: bool = True
+
+    # Learnable tokens: SigLIP registers (their outputs join the prefix), VLM scratch tokens after the
+    # images, and action-expert scratch tokens; the last `num_action_scratch_tokens_tail` of them follow
+    # the actions and carry the task / task-stage embeddings into the expert.
+    num_siglip_registers: int = 8
+    num_vlm_scratch_tokens: int = 8
+    num_action_scratch_tokens: int = 6
+    num_action_scratch_tokens_tail: int = 2
+    # Rows kept in Gemma's token embedding table: only the 256 state bins are ever embedded
+    llm_vocab_size: int = 256
+
+    # Training only: pad attention keys to a multiple of this in the flash attention patch
+    attn_key_pad_multiple: int = 1
+    # Training only: image / state augmentations
+    train_aug: TrainAugmentationConfig = dataclasses.field(default_factory=TrainAugmentationConfig)
 
     def __post_init__(self):
         if self.task_embedding_dim is None:
