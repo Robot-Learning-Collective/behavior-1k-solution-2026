@@ -21,7 +21,7 @@ export DEBIAN_FRONTEND=noninteractive
 $SUDO apt-get update
 $SUDO apt-get install -y \
   git git-lfs curl build-essential cmake ninja-build pkg-config python3-dev \
-  libgl1-mesa-dev libglfw3 libglfw3-dev libglew-dev xorg-dev \
+  libgl1-mesa-dev libegl1 libglfw3 libglfw3-dev libglew-dev xorg-dev \
   libxi-dev libxinerama-dev libxcursor1 libxrandr2 ffmpeg htop \
   python3-venv python3-pip
 git lfs install || true
@@ -46,6 +46,12 @@ if [ ! -d "openpi" ]; then
     GIT_LFS_SKIP_SMUDGE=1 git clone -b "$OPENPI_BRANCH" "$OPENPI_REPO" openpi
 fi
 
+# Local openpi patches: new-OmniGibson import path; attention sink, SigLIP registers, small token table
+for p in patches/openpi-*.patch; do
+  git -C openpi apply --check "../$p" 2>/dev/null && git -C openpi apply "../$p" && echo "Applied $p" || \
+    echo "$p already applied or not applicable, skipping"
+done
+
 # Install everything with uv sync (creates lock file, installs all deps including OpenPI)
 echo "Installing B1K solution package and all dependencies (including OpenPI)..."
 echo "This creates a lock file and ensures consistent installations."
@@ -63,8 +69,17 @@ fi
 echo "Installing BEHAVIOR-1K evaluation dependencies..."
 cd "BEHAVIOR-1K"
 chmod +x setup.sh || true
-uv pip install -e bddl
-uv pip install -e OmniGibson[eval]
+uv pip install --python ../.venv/bin/python -e bddl3
+uv pip install --python ../.venv/bin/python -e "OmniGibson[eval]"
+uv pip install --python ../.venv/bin/python -e joylo  # provides `gello`, needed by omnigibson.eval
+uv pip install --python ../.venv/bin/python "av>=15,<16"  # lerobot fork pins av<16
+# OmniGibson >= 3.9.3 imports warp at module level
+uv pip install --python ../.venv/bin/python --no-deps "warp-lang==1.12.0"
+# Isaac Sim (implies accepting the NVIDIA Omniverse EULA)
+if ! ../.venv/bin/python -c "import isaacsim" 2>/dev/null; then
+  OMNI_KIT_ACCEPT_EULA=YES UV_HTTP_TIMEOUT=600 uv pip install --python ../.venv/bin/python \
+    "isaacsim[all,extscache]==5.1.0" --extra-index-url https://pypi.nvidia.com
+fi
 cd ..
 
 # Setup Jupyter kernel for development
@@ -97,8 +112,8 @@ echo "BEHAVIOR-1K: $(pwd)/BEHAVIOR-1K"
 echo ""
 echo "Use 'uv run' to execute scripts (no need to activate venv):"
 echo ""
-echo "  uv run scripts/compute_norm_stats.py --config-name pi_behavior_b1k_fast --correlation"
-echo "  uv run scripts/train_fast_tokenizer.py --config-name pi_behavior_b1k_fast --encoded-dims=\"0:6,7:23\" --vocab-size=1024"
-echo "  uv run scripts/train.py pi_behavior_b1k_fast --resume --batch_size=2048"
-echo "  uv run scripts/serve_b1k.py policy:checkpoint --policy.config pi_behavior_b1k_fast --policy.dir /path/to/checkpoint"
+echo "  uv run scripts/compute_norm_stats.py --config-name configs/train_b1k_2026.yaml"
+echo "  uv run scripts/train_fast_tokenizer.py --config-name configs/train_b1k_2026.yaml"
+echo "  uv run scripts/train.py --yaml configs/train_b1k_2026.yaml"
+echo "  uv run scripts/serve_b1k.py --policy.config configs/train_b1k_2026.yaml --policy.dir /path/to/checkpoint"
 echo ""

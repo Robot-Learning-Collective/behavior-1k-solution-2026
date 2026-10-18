@@ -26,10 +26,18 @@ dependencies = [
     "websockets>=14.1",
     "orbax-checkpoint>=0.10.3",
     "tqdm-loggable>=0.2",
-    "lerobot>=0.3.0",
+    "lerobot[dataset]>=0.3.0",
+    # openpi imports chex directly; newer optax no longer pulls it in
+    "chex>=0.1.89",
     "wandb>=0.18.0",
     "gpustat>=1.1.1",
     "huggingface-hub[cli]>=0.20.0",
+    # FAST tokenizer (physical-intelligence/fast): transformers 5.x needs
+    # sentencepiece to convert its slow tokenizer
+    "sentencepiece>=0.2.0",
+    # ptxas that knows Blackwell (CC 12.0); b1k.shared.cuda_env puts its bin/
+    # on $PATH so XLA never falls back to an old system ptxas / driver JIT
+    "nvidia-cuda-nvcc-cu12>=12.8",
 ]
 
 [project.optional-dependencies]
@@ -37,10 +45,25 @@ dev = [
     "ipykernel>=6.29.5",
     "jupyter>=1.1.1",
     "pre-commit>=4.0.1",
+    # scripts/semantic_stages (skill-sequence alignment for the stage labels)
+    "rapidfuzz>=3.0",
 ]
 
 [tool.uv.sources]
 openpi = { path = "openpi", editable = true }
+lerobot = { git = "https://github.com/wensi-ai/lerobot", branch = "release/b1k" }
+
+[tool.uv]
+# The new-sim OmniGibson needs the wensi-ai lerobot fork; openpi pins a
+# different upstream commit, so force the fork across the whole graph.
+override-dependencies = [
+    "lerobot[dataset] @ git+https://github.com/wensi-ai/lerobot@release/b1k",
+    # lerobot fork needs hub>=1.0, which forces transformers 5.x. openpi's JAX
+    # path only uses transformers for AutoProcessor tokenizer loading; the
+    # PyTorch path (transformers_replace, pinned to 4.53.2) is not used here.
+    "huggingface-hub>=1.0.0",
+    "transformers>=5.4.0,<5.6.0",
+]
 
 [build-system]
 requires = ["setuptools>=45", "wheel"]
