@@ -76,7 +76,7 @@ def create_trained_policy(
     model_transforms_inputs = []
     for transform in data_config.model_transforms.inputs:
         # Skip training-specific transforms during inference
-        if isinstance(transform, (b1k_transforms.ComputeSubtaskStateFromMeta, b1k_transforms.TaskIndexToTaskId, b1k_transforms.TokenizeFASTActions)):
+        if isinstance(transform, (b1k_transforms.TaskIndexToTaskId, b1k_transforms.TokenizeFASTActions)):
             continue
         model_transforms_inputs.append(transform)
     
@@ -85,14 +85,14 @@ def create_trained_policy(
         *repack_transforms.inputs,
         transforms.InjectDefaultPrompt(default_prompt),
         *data_config.data_transforms.inputs,
-        NormalizeWithPerTimestamp(norm_stats, use_quantiles=data_config.use_quantile_norm, use_per_timestamp=data_config.use_per_timestamp_norm),
+        NormalizeWithPerTimestamp(norm_stats, use_quantiles=data_config.use_quantile_norm, use_per_timestamp=data_config.use_per_timestamp_norm, state_quantile_norm=data_config.state_quantile_norm),
         *model_transforms_inputs,
     ]
     
     # Build output transform pipeline
     output_transforms = [
         *data_config.model_transforms.outputs,
-        UnnormalizeWithPerTimestamp(norm_stats, use_quantiles=data_config.use_quantile_norm, use_per_timestamp=data_config.use_per_timestamp_norm),
+        UnnormalizeWithPerTimestamp(norm_stats, use_quantiles=data_config.use_quantile_norm, use_per_timestamp=data_config.use_per_timestamp_norm, state_quantile_norm=data_config.state_quantile_norm),
         *data_config.data_transforms.outputs,
         *repack_transforms.outputs,
     ]

@@ -1,0 +1,625 @@
+{
+ "_doc": "semantic_v3 gripper rule (10 Hz scan of all 20k demos, built 2026-09-17): per task and gripper, the stages in which demos DO fully close that gripper (state width < -0.98 normalised, >= 0.5 s, in > 15% of demos, or a borderline case whose decision was inherited from the reviewed previous table). At rollout a gripper found fully closed in any OTHER stage is opened immediately (it closed on air). 'borderline' = 3-15% of demos with the decision taken; 'noise' = <= 3% of demos and < 3 s, treated as never. Built by scripts/semantic_stages/build_close_allowed.py.",
+ "allow": {
+  "0": {
+   "left": [
+    1
+   ],
+   "right": [
+    1
+   ]
+  },
+  "30": {
+   "right": [
+    2,
+    3,
+    4
+   ]
+  },
+  "31": {
+   "right": [
+    3
+   ]
+  },
+  "32": {
+   "right": [
+    2
+   ]
+  },
+  "33": {
+   "right": [
+    3
+   ]
+  },
+  "38": {
+   "right": [
+    1,
+    2
+   ]
+  },
+  "39": {
+   "right": [
+    1,
+    2
+   ]
+  },
+  "40": {
+   "right": [
+    3
+   ]
+  },
+  "41": {
+   "left": [
+    6
+   ],
+   "right": [
+    6
+   ]
+  },
+  "45": {
+   "right": [
+    6
+   ]
+  },
+  "46": {
+   "left": [
+    6
+   ]
+  },
+  "49": {
+   "left": [
+    4
+   ]
+  },
+  "51": {
+   "right": [
+    4
+   ]
+  },
+  "66": {
+   "left": [
+    1,
+    2,
+    4,
+    5
+   ],
+   "right": [
+    1,
+    2,
+    4,
+    5
+   ]
+  },
+  "69": {
+   "left": [
+    1
+   ],
+   "right": [
+    0,
+    1
+   ]
+  },
+  "70": {
+   "right": [
+    4
+   ]
+  },
+  "72": {
+   "right": [
+    6
+   ]
+  },
+  "77": {
+   "left": [
+    0,
+    1
+   ],
+   "right": [
+    1
+   ]
+  },
+  "89": {
+   "left": [
+    0,
+    1
+   ]
+  },
+  "92": {
+   "right": [
+    1
+   ]
+  },
+  "95": {
+   "left": [
+    5,
+    6
+   ],
+   "right": [
+    7
+   ]
+  },
+  "96": {
+   "right": [
+    3
+   ]
+  }
+ },
+ "borderline": [
+  {
+   "task": 0,
+   "name": "turning_on_radio",
+   "side": "right",
+   "stage": 1,
+   "demos": "9/200",
+   "frac": 0.045,
+   "closed_s_med": 3.7,
+   "closed_s_max": 17.8,
+   "stage_name": "press(radio)",
+   "class": "borderline",
+   "decision": "allow"
+  },
+  {
+   "task": 10,
+   "name": "set_up_a_coffee_station_in_your_kitchen",
+   "side": "left",
+   "stage": 0,
+   "demos": "1/200",
+   "frac": 0.005,
+   "closed_s_med": 11.7,
+   "closed_s_max": 11.7,
+   "stage_name": "move to(paper_coffee) | pick up from(paper_coffee,countertop) | move t",
+   "class": "borderline",
+   "decision": "open-back"
+  },
+  {
+   "task": 14,
+   "name": "carrying_in_groceries",
+   "side": "right",
+   "stage": 4,
+   "demos": "1/200",
+   "frac": 0.005,
+   "closed_s_med": 18.2,
+   "closed_s_max": 18.2,
+   "stage_name": "pick up from(beefsteak,paper_bag) | move to(fridge)",
+   "class": "borderline",
+   "decision": "open-back"
+  },
+  {
+   "task": 14,
+   "name": "carrying_in_groceries",
+   "side": "right",
+   "stage": 5,
+   "demos": "1/200",
+   "frac": 0.005,
+   "closed_s_med": 6.7,
+   "closed_s_max": 6.7,
+   "stage_name": "open door(fridge) | place in(beefsteak,fridge)",
+   "class": "borderline",
+   "decision": "open-back"
+  },
+  {
+   "task": 30,
+   "name": "setting_the_fire",
+   "side": "right",
+   "stage": 3,
+   "demos": "10/200",
+   "frac": 0.05,
+   "closed_s_med": 0.8,
+   "closed_s_max": 3.6,
+   "stage_name": "move to(firewood) | pick up from(firewood,floors) | move to(wood_firep",
+   "class": "borderline",
+   "decision": "allow"
+  },
+  {
+   "task": 32,
+   "name": "wash_a_baseball_cap",
+   "side": "left",
+   "stage": 2,
+   "demos": "1/200",
+   "frac": 0.005,
+   "closed_s_med": 10.3,
+   "closed_s_max": 10.3,
+   "stage_name": "move to(baseball_cap) | pick up from(baseball_cap,countertop) | move t",
+   "class": "borderline",
+   "decision": "open-back"
+  },
+  {
+   "task": 40,
+   "name": "make_microwave_popcorn",
+   "side": "right",
+   "stage": 0,
+   "demos": "2/200",
+   "frac": 0.01,
+   "closed_s_med": 3.4,
+   "closed_s_max": 5.8,
+   "stage_name": "move to(microwave) | open door(microwave)",
+   "class": "borderline",
+   "decision": "open-back"
+  },
+  {
+   "task": 41,
+   "name": "cook_cabbage",
+   "side": "right",
+   "stage": 6,
+   "demos": "1/200",
+   "frac": 0.005,
+   "closed_s_med": 7.5,
+   "closed_s_max": 7.5,
+   "stage_name": "move to(carving_knife) | pick up from(carving_knife,countertop) | move",
+   "class": "borderline",
+   "decision": "allow"
+  },
+  {
+   "task": 61,
+   "name": "bringing_paper_to_recycling",
+   "side": "right",
+   "stage": 2,
+   "demos": "1/200",
+   "frac": 0.005,
+   "closed_s_med": 3.9,
+   "closed_s_max": 3.9,
+   "stage_name": "move to(floors) | place on(paper_bag,floors) | place on next to(newspa",
+   "class": "borderline",
+   "decision": "open-back"
+  },
+  {
+   "task": 61,
+   "name": "bringing_paper_to_recycling",
+   "side": "left",
+   "stage": 3,
+   "demos": "1/200",
+   "frac": 0.005,
+   "closed_s_med": 5.0,
+   "closed_s_max": 5.0,
+   "stage_name": "move to(recycling_bin) | open lid(recycling_bin)",
+   "class": "borderline",
+   "decision": "open-back"
+  },
+  {
+   "task": 61,
+   "name": "bringing_paper_to_recycling",
+   "side": "right",
+   "stage": 4,
+   "demos": "2/200",
+   "frac": 0.01,
+   "closed_s_med": 6.3,
+   "closed_s_max": 7.2,
+   "stage_name": "move to(paper_bag) | pick up from(paper_bag,floors) | move to(newspape",
+   "class": "borderline",
+   "decision": "open-back"
+  },
+  {
+   "task": 66,
+   "name": "turning_out_all_lights_before_sleep",
+   "side": "left",
+   "stage": 2,
+   "demos": "11/200",
+   "frac": 0.055,
+   "closed_s_med": 1.0,
+   "closed_s_max": 8.6,
+   "stage_name": "move to(electric) | turn off switch(electric)",
+   "class": "borderline",
+   "decision": "allow"
+  },
+  {
+   "task": 69,
+   "name": "vacuuming_floors",
+   "side": "right",
+   "stage": 0,
+   "demos": "12/200",
+   "frac": 0.06,
+   "closed_s_med": 1.6,
+   "closed_s_max": 3.9,
+   "stage_name": "move to(vacuum) | pick up from(vacuum,floors)",
+   "class": "borderline",
+   "decision": "allow"
+  },
+  {
+   "task": 69,
+   "name": "vacuuming_floors",
+   "side": "left",
+   "stage": 1,
+   "demos": "19/200",
+   "frac": 0.095,
+   "closed_s_med": 2.9,
+   "closed_s_max": 8.1,
+   "stage_name": "turn on switch(vacuum)",
+   "class": "borderline",
+   "decision": "allow"
+  },
+  {
+   "task": 77,
+   "name": "installing_a_modem",
+   "side": "left",
+   "stage": 0,
+   "demos": "23/200",
+   "frac": 0.115,
+   "closed_s_med": 1.7,
+   "closed_s_max": 7.5,
+   "stage_name": "move to(modem) | pick up from(modem,coffee_table) | move to(cabinet) |",
+   "class": "borderline",
+   "decision": "allow"
+  },
+  {
+   "task": 89,
+   "name": "installing_a_fax_machine",
+   "side": "left",
+   "stage": 0,
+   "demos": "14/200",
+   "frac": 0.07,
+   "closed_s_med": 0.8,
+   "closed_s_max": 3.4,
+   "stage_name": "move to(facsimile) | pick up from(facsimile,floors)",
+   "class": "borderline",
+   "decision": "allow"
+  },
+  {
+   "task": 89,
+   "name": "installing_a_fax_machine",
+   "side": "left",
+   "stage": 2,
+   "demos": "5/200",
+   "frac": 0.025,
+   "closed_s_med": 6.2,
+   "closed_s_max": 34.9,
+   "stage_name": "move to(chair) | push to(chair,cubicle) | move to(cubicle) | place on(",
+   "class": "borderline",
+   "decision": "open-back"
+  },
+  {
+   "task": 95,
+   "name": "cook_brussels_sprouts",
+   "side": "left",
+   "stage": 5,
+   "demos": "30/200",
+   "frac": 0.15,
+   "closed_s_med": 1.1,
+   "closed_s_max": 3.6,
+   "stage_name": "pick up from(cutting_board,commercial_kitchen_table) | move to(tupperw",
+   "class": "borderline",
+   "decision": "allow"
+  }
+ ],
+ "noise": [
+  {
+   "task": 0,
+   "name": "turning_on_radio",
+   "side": "left",
+   "stage": 0,
+   "demos": "1/200",
+   "frac": 0.005,
+   "closed_s_med": 0.6,
+   "closed_s_max": 0.6,
+   "stage_name": "move to(radio) | pick up from(radio,coffee_table)",
+   "class": "noise"
+  },
+  {
+   "task": 1,
+   "name": "picking_up_trash",
+   "side": "left",
+   "stage": 1,
+   "demos": "1/200",
+   "frac": 0.005,
+   "closed_s_med": 0.7,
+   "closed_s_max": 0.7,
+   "stage_name": "move to(can_of_soda) | pick up from(can_of_soda,floors) | place in(can",
+   "class": "noise"
+  },
+  {
+   "task": 10,
+   "name": "set_up_a_coffee_station_in_your_kitchen",
+   "side": "right",
+   "stage": 0,
+   "demos": "3/200",
+   "frac": 0.015,
+   "closed_s_med": 0.5,
+   "closed_s_max": 0.9,
+   "stage_name": "move to(paper_coffee) | pick up from(paper_coffee,countertop) | move t",
+   "class": "noise"
+  },
+  {
+   "task": 16,
+   "name": "moving_boxes_to_storage",
+   "side": "left",
+   "stage": 0,
+   "demos": "1/200",
+   "frac": 0.005,
+   "closed_s_med": 1.2,
+   "closed_s_max": 1.2,
+   "stage_name": "move to(door) | open door(door)",
+   "class": "noise"
+  },
+  {
+   "task": 16,
+   "name": "moving_boxes_to_storage",
+   "side": "right",
+   "stage": 0,
+   "demos": "1/200",
+   "frac": 0.005,
+   "closed_s_med": 1.3,
+   "closed_s_max": 1.3,
+   "stage_name": "move to(door) | open door(door)",
+   "class": "noise"
+  },
+  {
+   "task": 17,
+   "name": "bringing_water",
+   "side": "left",
+   "stage": 0,
+   "demos": "1/200",
+   "frac": 0.005,
+   "closed_s_med": 2.0,
+   "closed_s_max": 2.0,
+   "stage_name": "move to(fridge) | open door(fridge)",
+   "class": "noise"
+  },
+  {
+   "task": 17,
+   "name": "bringing_water",
+   "side": "right",
+   "stage": 0,
+   "demos": "1/200",
+   "frac": 0.005,
+   "closed_s_med": 2.0,
+   "closed_s_max": 2.0,
+   "stage_name": "move to(fridge) | open door(fridge)",
+   "class": "noise"
+  },
+  {
+   "task": 30,
+   "name": "setting_the_fire",
+   "side": "right",
+   "stage": 1,
+   "demos": "3/200",
+   "frac": 0.015,
+   "closed_s_med": 1.3,
+   "closed_s_max": 1.5,
+   "stage_name": "move to(lighter) | pick up from(lighter,coffee_table)",
+   "class": "noise"
+  },
+  {
+   "task": 46,
+   "name": "cook_bacon",
+   "side": "right",
+   "stage": 6,
+   "demos": "2/200",
+   "frac": 0.01,
+   "closed_s_med": 2.4,
+   "closed_s_max": 3.0,
+   "stage_name": "turn on switch(burner)",
+   "class": "noise"
+  },
+  {
+   "task": 64,
+   "name": "setting_the_table",
+   "side": "right",
+   "stage": 0,
+   "demos": "1/200",
+   "frac": 0.005,
+   "closed_s_med": 0.5,
+   "closed_s_max": 0.5,
+   "stage_name": "move to(top_cabinet) | open door(top_cabinet) | open door(top_cabinet)",
+   "class": "noise"
+  },
+  {
+   "task": 64,
+   "name": "setting_the_table",
+   "side": "left",
+   "stage": 7,
+   "demos": "1/200",
+   "frac": 0.005,
+   "closed_s_med": 1.7,
+   "closed_s_max": 1.7,
+   "stage_name": "move to(sink) | pick up from(tablefork,sink) | pick up from(table_knif",
+   "class": "noise"
+  },
+  {
+   "task": 66,
+   "name": "turning_out_all_lights_before_sleep",
+   "side": "right",
+   "stage": 3,
+   "demos": "3/200",
+   "frac": 0.015,
+   "closed_s_med": 0.8,
+   "closed_s_max": 3.0,
+   "stage_name": "move to(sliding_door) | close door(sliding_door)",
+   "class": "noise"
+  },
+  {
+   "task": 69,
+   "name": "vacuuming_floors",
+   "side": "left",
+   "stage": 0,
+   "demos": "3/200",
+   "frac": 0.015,
+   "closed_s_med": 0.6,
+   "closed_s_max": 1.0,
+   "stage_name": "move to(vacuum) | pick up from(vacuum,floors)",
+   "class": "noise"
+  },
+  {
+   "task": 69,
+   "name": "vacuuming_floors",
+   "side": "right",
+   "stage": 2,
+   "demos": "5/200",
+   "frac": 0.025,
+   "closed_s_med": 0.8,
+   "closed_s_max": 1.3,
+   "stage_name": "move to(dirt) | sweep surface(dirt) | move to(dirt) | sweep surface(di",
+   "class": "noise"
+  },
+  {
+   "task": 73,
+   "name": "organizing_school_stuff",
+   "side": "left",
+   "stage": 2,
+   "demos": "1/200",
+   "frac": 0.005,
+   "closed_s_med": 0.6,
+   "closed_s_max": 0.6,
+   "stage_name": "move to(pencil) | pick up from(pencil,bed) | move to(tote) | place in(",
+   "class": "noise"
+  },
+  {
+   "task": 77,
+   "name": "installing_a_modem",
+   "side": "right",
+   "stage": 0,
+   "demos": "3/200",
+   "frac": 0.015,
+   "closed_s_med": 0.8,
+   "closed_s_max": 1.2,
+   "stage_name": "move to(modem) | pick up from(modem,coffee_table) | move to(cabinet) |",
+   "class": "noise"
+  },
+  {
+   "task": 86,
+   "name": "make_gift_bags_for_baby_showers",
+   "side": "left",
+   "stage": 2,
+   "demos": "1/200",
+   "frac": 0.005,
+   "closed_s_med": 1.9,
+   "closed_s_max": 1.9,
+   "stage_name": "move to(wafer) | pick up from(wafer,bottom_cabinet) | close drawer(bot",
+   "class": "noise"
+  },
+  {
+   "task": 86,
+   "name": "make_gift_bags_for_baby_showers",
+   "side": "right",
+   "stage": 2,
+   "demos": "1/200",
+   "frac": 0.005,
+   "closed_s_med": 0.8,
+   "closed_s_max": 0.8,
+   "stage_name": "move to(wafer) | pick up from(wafer,bottom_cabinet) | close drawer(bot",
+   "class": "noise"
+  },
+  {
+   "task": 92,
+   "name": "installing_a_scanner",
+   "side": "right",
+   "stage": 0,
+   "demos": "2/200",
+   "frac": 0.01,
+   "closed_s_med": 0.9,
+   "closed_s_max": 1.1,
+   "stage_name": "move to(scanner) | push to(scanner,desk) | pick up from(scanner,desk) ",
+   "class": "noise"
+  },
+  {
+   "task": 96,
+   "name": "cook_broccolini",
+   "side": "right",
+   "stage": 2,
+   "demos": "1/200",
+   "frac": 0.005,
+   "closed_s_med": 1.6,
+   "closed_s_max": 1.6,
+   "stage_name": "pick up from(frying_pan,commercial_kitchen_table) | move to(stove) | p",
+   "class": "noise"
+  }
+ ]
+}
