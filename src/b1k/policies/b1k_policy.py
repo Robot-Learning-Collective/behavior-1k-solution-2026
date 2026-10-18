@@ -12,7 +12,9 @@ import numpy as np
 
 from openpi import transforms
 from openpi.models import model as _model
-from omnigibson.learning.utils.eval_utils import PROPRIOCEPTION_INDICES
+from omnigibson.eval.utils.eval_utils import PROPRIOCEPTION_INDICES
+
+from b1k.shared.trunk2dof import env_to_model, model_to_env
 
 
 def make_b1k_example() -> dict:
@@ -74,10 +76,10 @@ class B1kInputs(transforms.DataTransformFn):
     def __call__(self, data: dict) -> dict:
 
         proprio_data = data["observation/state"]
-        # extract joint position
-        state = extract_state_from_proprio(proprio_data)
+        # extract joint position; the model sees the trunk as (translate, tilt)
+        state = env_to_model(extract_state_from_proprio(proprio_data))
         if "actions" in data:
-            action =  data["actions"]
+            action = env_to_model(data["actions"])
 
         # Possibly need to parse images to uint8 (H,W,C) since LeRobot automatically
         # stores as float32 (C,H,W), gets skipped for policy inference
@@ -121,16 +123,12 @@ class B1kInputs(transforms.DataTransformFn):
             inputs["timestamp"] = data["timestamp"]
         if "episode_index" in data:
             inputs["episode_index"] = data["episode_index"]
+        if "action_is_pad" in data:
+            inputs["action_is_pad"] = data["action_is_pad"]
             
         # Preserve initial_actions for inpainting
         if "initial_actions" in data:
-            initial_actions = data["initial_actions"]
-            # Pad initial_actions from 23 dimensions to 32 dimensions (model's action_dim)
-            if initial_actions.shape[-1] < 32:
-                padding_dim = 32 - initial_actions.shape[-1]
-                padding = np.zeros(initial_actions.shape[:-1] + (padding_dim,))
-                initial_actions = np.concatenate([initial_actions, padding], axis=-1)
-            inputs["initial_actions"] = initial_actions
+            inputs["initial_actions"] = env_to_model(data["initial_actions"])
 
         return inputs
 
@@ -138,8 +136,8 @@ class B1kInputs(transforms.DataTransformFn):
 @dataclasses.dataclass(frozen=True)
 class B1kOutputs(transforms.DataTransformFn):
     def __call__(self, data: dict) -> dict:
-        # Return actions (truncated to 23 dims) and preserve subtask predictions
-        result = {"actions": np.asarray(data["actions"][:, :23])}
+        # Return actions in the 23-dim env layout and preserve subtask predictions
+        result = {"actions": model_to_env(data["actions"])}
         
         # Preserve subtask prediction fields for PI_BEHAVIOR models
         if "subtask_logits" in data:

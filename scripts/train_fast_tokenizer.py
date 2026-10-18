@@ -8,112 +8,19 @@ This script:
 5. Reports compression statistics
 """
 
+import importlib.util
 import json
+import shutil
 import numpy as np
-import pandas as pd
 import tyro
 from pathlib import Path
 from concurrent.futures import ProcessPoolExecutor
-from transformers import AutoProcessor
 
-import openpi.transforms as transforms
+from huggingface_hub import hf_hub_download
 
-# Import B1K-specific modules
-from b1k.training import config as _config
-from b1k.policies.b1k_policy import extract_state_from_proprio
-
-
-def get_delta_transform_from_config(config_name: str):
-    """Get the delta action transform from config."""
-    config = _config.get_config(config_name)
-    data_config = config.data.create(config.assets_dirs, config.model)
-    
-    delta_transform = None
-    for transform in data_config.data_transforms.inputs:
-        if isinstance(transform, transforms.DeltaActions):
-            delta_transform = transform
-            break
-    
-    if delta_transform is None:
-        raise ValueError("No DeltaActions transform found in config")
-    
-    return delta_transform
-
-
-def apply_delta_transform(state: np.ndarray, actions: np.ndarray, mask) -> np.ndarray:
-    """Apply delta transform using the mask from config."""
-    if mask is None:
-        return actions
-    
-    delta_actions = actions.copy()
-    mask = np.asarray(mask)
-    dims = mask.shape[-1]
-    delta_actions[:dims] = np.where(mask, actions[:dims] - state[:dims], actions[:dims])
-    
-    return delta_actions
-
-
-def process_episode_file(args):
-    """Process episode file and return action chunks."""
-    episode_file, delta_mask, action_horizon, sample_fraction = args
-    
-    try:
-        df = pd.read_parquet(episode_file)
-        
-        states = []
-        raw_actions = []
-        
-        for _, row in df.iterrows():
-            raw_state = np.array(row["observation.state"])
-            raw_action = np.array(row["action"])
-            
-            processed_state = extract_state_from_proprio(raw_state)
-            
-            states.append(processed_state)
-            raw_actions.append(raw_action)
-        
-        if len(raw_actions) < action_horizon:
-            return None
-        
-        states = np.array(states)
-        raw_actions = np.array(raw_actions)
-        
-        # Create action chunks (sliding window)
-        # IMPORTANT: Apply delta transform the SAME way as compute_norm_stats
-        # All actions in a chunk are relative to the FIRST state in that chunk
-        action_chunks = []
-        for i in range(len(states) - action_horizon + 1):
-            current_state = states[i]  # First state in chunk
-            future_absolute_actions = raw_actions[i:i + action_horizon]
-            
-            # Apply delta transform to each action using the SAME current state
-            delta_chunk = np.zeros_like(future_absolute_actions)
-            for t in range(action_horizon):
-                delta_chunk[t] = apply_delta_transform(current_state, future_absolute_actions[t], delta_mask)
-            
-            action_chunks.append(delta_chunk)
-        
-        if len(action_chunks) == 0:
-            return None
-        
-        action_chunks = np.array(action_chunks)
-        
-        # Sample chunks
-        if sample_fraction < 1.0:
-            n_chunks = len(action_chunks)
-            n_samples = max(1, int(n_chunks * sample_fraction))
-            # Use hash of episode filename as seed for randomness across episodes
-            # Use same modulo as compute_norm_stats.py for consistency
-            episode_seed = hash(str(episode_file)) % (2**31)
-            rng = np.random.RandomState(episode_seed)
-            indices = rng.choice(n_chunks, size=n_samples, replace=False)
-            action_chunks = action_chunks[indices]
-        
-        return action_chunks
-        
-    except Exception as e:
-        print(f"Error processing {episode_file}: {e}")
-        return None
+# Same per-file chunk extraction as the norm stats (training pairing and anchors)
+from compute_norm_stats import get_delta_transform_from_config, process_parquet_file
+from b1k.training.yaml_train_config import resolve_train_config
 
 
 def train_fast_tokenizer(
@@ -122,23 +29,24 @@ def train_fast_tokenizer(
     scale: float = 10.0,
     num_epochs: int = 10,
     batch_size: int = 256,
-) -> AutoProcessor:
+) -> tuple:
     """
     Train FAST tokenizer (BPE on DCT coefficients) on action chunks.
     
-    Uses the .fit() method to train a new tokenizer on the provided data.
+    Uses the .fit() classmethod to train a new tokenizer on the provided data.
+    Returns (tokenizer, path of the processor source file).
     """
     print(f"Training FAST tokenizer on {len(action_chunks)} action chunks...")
     print(f"Action chunk shape: {action_chunks.shape}")
     print(f"Vocab size: {vocab_size}")
     print(f"DCT scale: {scale}")
     
-    # Download the tokenizer source code (not pretrained weights)
-    # We'll train a new tokenizer on our own data
-    base_tokenizer = AutoProcessor.from_pretrained(
-        "physical-intelligence/fast",
-        trust_remote_code=True
-    )
+    # Load the tokenizer source code (not pretrained weights); AutoProcessor fails on this repo with
+    # transformers 5.x, and only the class is needed
+    processor_file = hf_hub_download("physical-intelligence/fast", "processing_action_tokenizer.py")
+    spec = importlib.util.spec_from_file_location("processing_action_tokenizer", processor_file)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
     
     # Convert action_chunks array to list of arrays (expected by .fit())
     action_data_list = [action_chunks[i] for i in range(len(action_chunks))]
@@ -146,7 +54,7 @@ def train_fast_tokenizer(
     # Train the new tokenizer on our action data using .fit()
     # This trains the BPE tokenizer on DCT coefficients
     print("Training new tokenizer (this may take a few minutes)...")
-    tokenizer = base_tokenizer.fit(
+    tokenizer = module.UniversalActionProcessor.fit(
         action_data_list,
         scale=scale,
         vocab_size=vocab_size,
@@ -162,7 +70,7 @@ def train_fast_tokenizer(
         encoded = np.array(encoded)
     print(f"Sample encoding: {len(encoded)} tokens for chunk shape {sample_chunk.shape}")
     
-    return tokenizer
+    return tokenizer, processor_file
 
 
 def compute_compression_stats(tokenizer, action_chunks: np.ndarray):
@@ -209,10 +117,9 @@ def compute_compression_stats(tokenizer, action_chunks: np.ndarray):
 
 def main(
     config_name: str,
-    max_episodes: int | None = None,
     num_workers: int | None = None,
     sample_fraction: float = 0.1,
-    encoded_dims: str = "0:6,7:23",
+    encoded_dims: str = "0:21",
     vocab_size: int = 1024,
     scale: float = 10.0,
     num_epochs: int = 10,
@@ -221,21 +128,17 @@ def main(
     Train FAST tokenizer for action encoding.
     
     Args:
-        config_name: Training config name
-        max_episodes: Max episodes to use (None = all episodes in dataset)
+        config_name: Training config name or a YAML recipe path
         num_workers: Number of parallel workers
         sample_fraction: Fraction of chunks to sample per episode
-        encoded_dims: Comma-separated dimension ranges (e.g., "0:6,7:23")
+        encoded_dims: Comma-separated dimension ranges (e.g., "0:21")
         vocab_size: FAST vocabulary size (BPE vocab size)
         scale: DCT scaling factor (default: 10.0)
         num_epochs: Training epochs (not used by FAST)
     """
     # Load config
-    config = _config.get_config(config_name)
+    config = resolve_train_config(config_name)
     data_config = config.data.create(config.assets_dirs, config.model)
-    
-    if not data_config.behavior_dataset_root:
-        raise ValueError("This script only works with B1K behavior datasets")
     
     # Parse encoded dimensions
     encoded_dim_ranges = []
@@ -247,37 +150,25 @@ def main(
     print(f"Encoding {total_encoded_dims} dimensions: {encoded_dims}")
     
     # Get delta transform
-    delta_transform = get_delta_transform_from_config(config_name)
-    delta_mask = delta_transform.mask
+    delta_mask = get_delta_transform_from_config(config).mask
     action_horizon = config.model.action_horizon
     
     print(f"Action horizon: {action_horizon}")
     print(f"Delta mask: {delta_mask}")
     
-    # Find episode files
-    data_root = Path(data_config.behavior_dataset_root)
-    all_episode_files = sorted(data_root.glob("data/task-*/episode_*.parquet"))
-
-    episode_files = all_episode_files
-    print(f"Using all {len(episode_files)} episodes")
+    args_list = []
+    for src in data_config.data_sources:
+        files = sorted(Path(src.root).expanduser().glob("data/*/*.parquet"))
+        args_list += [(f, src, delta_mask, action_horizon, True, sample_fraction) for f in files]
     
-    if max_episodes is not None:
-        episode_files = episode_files[:max_episodes]
-        print(f"Limited to {len(episode_files)} episodes")
-    
-    # Process episodes in parallel
-    num_workers = num_workers or min(32, len(episode_files))
-    args_list = [
-        (f, delta_mask, action_horizon, sample_fraction)
-        for f in episode_files
-    ]
-    
-    print(f"\nProcessing episodes with {num_workers} workers...")
+    # Process files in parallel
+    num_workers = num_workers or min(32, len(args_list))
+    print(f"\nProcessing {len(args_list)} files with {num_workers} workers...")
     all_chunks = []
     with ProcessPoolExecutor(max_workers=num_workers) as executor:
-        for chunks in executor.map(process_episode_file, args_list):
-            if chunks is not None:
-                all_chunks.append(chunks)
+        for _, data in executor.map(process_parquet_file, args_list):
+            if data is not None and data[0] is not None:
+                all_chunks.append(data[0])
     
     # Concatenate all chunks
     all_chunks = np.concatenate(all_chunks, axis=0)
@@ -336,7 +227,7 @@ def main(
     print(f"Encoded chunks shape: {encoded_chunks.shape}")
     
     # Train FAST tokenizer
-    tokenizer = train_fast_tokenizer(
+    tokenizer, processor_file = train_fast_tokenizer(
         encoded_chunks,
         vocab_size=vocab_size,
         scale=scale,
@@ -350,8 +241,9 @@ def main(
     output_dir = config.assets_dirs / data_config.asset_id / "fast_tokenizer"
     output_dir.mkdir(parents=True, exist_ok=True)
     
-    # Save tokenizer
+    # Save tokenizer (with its processor source, loaded by TokenizeFASTActions)
     tokenizer.save_pretrained(output_dir)
+    shutil.copy(processor_file, output_dir / "processing_action_tokenizer.py")
     
     # Save metadata
     metadata = {

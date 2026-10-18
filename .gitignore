@@ -6,7 +6,10 @@ wandb/
 data/
 outputs/
 checkpoints/
-assets/
+/models/
+/eval_logs/
+/assets/*
+!/assets/semantic_stages/
 *.log
 .DS_Store
 *_old.py

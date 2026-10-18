@@ -1,7 +1,7 @@
 """Data transforms for BEHAVIOR-1K dataset.
 
 Standard transforms imported from OpenPI.
-B1K-specific: TaskIndexToTaskId, ComputeSubtaskStateFromMeta, TokenizeFASTActions
+B1K-specific: TaskIndexToTaskId, TokenizeFASTActions
 
 Reference: https://github.com/wensi-ai/openpi/tree/behavior
 """
@@ -34,7 +34,6 @@ from openpi.transforms import (
     make_bool_mask,
 )
 
-from b1k.models.pi_behavior_config import TASK_NUM_STAGES
 from b1k.shared.normalize import NormStats
 
 
@@ -48,7 +47,7 @@ class TaskIndexToTaskId(DataTransformFn):
     
     Assumes:
     - data["task_index"] exists (from dataset)
-    - data["subtask_state"] exists (computed by ComputeSubtaskStateFromMeta)
+    - data["subtask_state"] exists (stage label from the data loader)
     
     Creates:
     - data["tokenized_prompt"]: np.array([task_id, subtask_state], dtype=int32)
@@ -96,94 +95,6 @@ class TaskIndexToTaskId(DataTransformFn):
             "tokenized_prompt": prompt_tokens,
             "tokenized_prompt_mask": prompt_mask
         }
-
-
-@dataclasses.dataclass(frozen=True)
-class ComputeSubtaskStateFromMeta(DataTransformFn):
-    """Computes subtask state from timestamp using dataset.meta.episodes.
-    
-    Divides episode into task-specific number of stages based on episode length.
-    Requires dataset reference to access episode metadata.
-    
-    Args:
-        dataset: Dataset instance with meta.episodes containing episode_length
-    
-    Assumes:
-    - data["episode_index"] exists
-    - data["timestamp"] exists (frame index within episode)
-    - data["task_index"] exists (for task-specific stage count)
-    - dataset.meta.episodes contains episode_length for each episode
-    
-    Creates:
-    - data["subtask_state"]: Stage index (0 to num_stages-1)
-    """
-    
-    dataset: object | None = None  # Will be set by data loader
-    
-    def __call__(self, data: DataDict) -> DataDict:
-        if self.dataset is None:
-            # During inference or when dataset is not available, use default
-            data["subtask_state"] = np.array(0, dtype=np.int32)
-            return data
-        
-        if "episode_index" not in data or "timestamp" not in data or "task_index" not in data:
-            # Missing required fields, default to stage 0
-            data["subtask_state"] = np.array(0, dtype=np.int32)
-            return data
-        
-        episode_index = int(data["episode_index"])
-        timestamp = float(data["timestamp"])
-        task_index = int(data["task_index"])
-        
-        # Validate task_index
-        if not (0 <= task_index < 50):
-            logging.warning(f"Invalid task_index {task_index}, using stage 0")
-            data["subtask_state"] = np.array(0, dtype=np.int32)
-            return data
-        
-        # Get number of stages for this task
-        num_stages = TASK_NUM_STAGES[task_index]
-        
-        # Get episode length from dataset metadata
-        if not hasattr(self.dataset, 'meta') or not hasattr(self.dataset.meta, 'episodes'):
-            # No metadata available
-            data["subtask_state"] = np.array(0, dtype=np.int32)
-            return data
-            
-        meta_episodes = self.dataset.meta.episodes
-        
-        if episode_index not in meta_episodes:
-            logging.warning(f"Episode {episode_index} not found in metadata, using stage 0")
-            data["subtask_state"] = np.array(0, dtype=np.int32)
-            return data
-            
-        episode_info = meta_episodes[episode_index]
-        
-        # Try 'length' first (standard key), then 'episode_length' (alternative)
-        episode_length = episode_info.get('length', episode_info.get('episode_length', None))
-        
-        if episode_length is None or episode_length <= 0:
-            logging.warning(f"Invalid episode_length for episode {episode_index}, using stage 0")
-            data["subtask_state"] = np.array(0, dtype=np.int32)
-            return data
-        
-        episode_length = float(episode_length)
-        
-        # CRITICAL: Convert timestamp (in seconds) to frames (30 FPS)
-        # Dataset provides timestamp in seconds, episode_length is in frames
-        current_step = timestamp * 30.0
-        
-        # Divide episode into num_stages equal parts
-        frames_per_stage = episode_length / num_stages
-        
-        # Compute current stage (0-indexed)
-        subtask_state = int(current_step / frames_per_stage)
-        
-        # Clamp to valid range [0, num_stages-1]
-        subtask_state = max(0, min(subtask_state, num_stages - 1))
-        
-        data["subtask_state"] = np.array(subtask_state, dtype=np.int32)
-        return data
 
 
 @dataclasses.dataclass(frozen=True)

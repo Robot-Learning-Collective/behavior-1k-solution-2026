@@ -15,6 +15,9 @@ class NormalizeWithPerTimestamp(DataTransformFn):
     use_quantiles: bool = False
     strict: bool = False
     use_per_timestamp: bool = False
+    # State (1D) is scaled to [-1, 1] by its min/max (stored as q01/q99), so the model's 256 state bins
+    # cover the whole data range instead of saturating z-scores
+    state_quantile_norm: bool = False
 
     def __post_init__(self):
         if self.norm_stats is not None and self.use_quantiles:
@@ -34,6 +37,10 @@ class NormalizeWithPerTimestamp(DataTransformFn):
         )
 
     def _normalize(self, x, stats: NormStats):
+        if x.ndim < 2 and self.state_quantile_norm:
+            q01, q99 = stats.q01[..., : x.shape[-1]], stats.q99[..., : x.shape[-1]]
+            return (x - q01) / (q99 - q01 + 1e-6) * 2.0 - 1.0
+
         # Check if this is actions and we should use per-timestamp normalization
         if self.use_per_timestamp and stats.per_timestamp_mean is not None and x.ndim >= 2:
             # x has shape [..., action_horizon, action_dim] for actions
@@ -68,6 +75,9 @@ class UnnormalizeWithPerTimestamp(DataTransformFn):
     norm_stats: at.PyTree[NormStats] | None
     use_quantiles: bool = False
     use_per_timestamp: bool = False
+    # State (1D) is scaled to [-1, 1] by its min/max (stored as q01/q99), so the model's 256 state bins
+    # cover the whole data range instead of saturating z-scores
+    state_quantile_norm: bool = False
 
     def __post_init__(self):
         if self.norm_stats is not None and self.use_quantiles:
@@ -87,6 +97,10 @@ class UnnormalizeWithPerTimestamp(DataTransformFn):
         )
 
     def _unnormalize(self, x, stats: NormStats):
+        if x.ndim < 2 and self.state_quantile_norm:
+            q01, q99 = stats.q01[..., : x.shape[-1]], stats.q99[..., : x.shape[-1]]
+            return (x + 1.0) / 2.0 * (q99 - q01 + 1e-6) + q01
+
         # Check if this is actions and we should use per-timestamp normalization
         if self.use_per_timestamp and stats.per_timestamp_mean is not None and x.ndim >= 2:
             # x has shape [..., action_horizon, action_dim] for actions
