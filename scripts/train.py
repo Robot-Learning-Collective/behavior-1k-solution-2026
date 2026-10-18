@@ -9,6 +9,7 @@ import functools
 import logging
 import os
 import platform
+import sys
 import time
 from typing import Any
 
@@ -28,9 +29,15 @@ import wandb
 os.environ.setdefault('XLA_PYTHON_CLIENT_MEM_FRACTION', '0.9')
 os.environ.setdefault('XLA_PYTHON_CLIENT_ALLOCATOR', 'platform')
 
+# Use the venv's ptxas (a system ptxas may not know the GPU arch)
+from b1k.shared.cuda_env import ensure_packaged_ptxas
+ensure_packaged_ptxas()
+
 # Configure OpenBLAS to prevent thread creation errors
 os.environ.setdefault('OPENBLAS_NUM_THREADS', '16')
 os.environ.setdefault('MKL_NUM_THREADS', '16')
+# torchcodec triggers torch.compile; keep inductor from forking a compile pool in every dataloader worker
+os.environ.setdefault('TORCHINDUCTOR_COMPILE_THREADS', '1')
 
 import openpi.models.model as _model
 import openpi.shared.array_typing as at
@@ -42,6 +49,7 @@ import openpi.training.utils as training_utils
 # Import B1K-specific modules
 from b1k.training import checkpoints as _checkpoints  # Use our custom checkpoints (not openpi's!)
 from b1k.training import config as _config
+from b1k.training import param_groups
 from b1k.training import data_loader as _data_loader
 from b1k.training import weight_loaders as _weight_loaders
 from b1k.models.pi_behavior import PiBehavior
@@ -149,6 +157,7 @@ def init_train_state(
     norm_stats: dict | None = None
 ) -> tuple[training_utils.TrainState, Any]:
     tx = _optimizer.create_optimizer(config.optimizer, config.lr_schedule, weight_decay_mask=None)
+    tx = param_groups.with_lr_multipliers(tx, config.lr_multipliers)
 
     def init(rng: at.KeyArrayLike, partial_params: at.Params | None = None) -> training_utils.TrainState:
         rng, model_rng = jax.random.split(rng)
@@ -338,6 +347,10 @@ def main(config: _config.TrainConfig):
     init_logging()
     logging.info(f"Running on: {platform.node()}")
 
+    if config.use_flash_attention:
+        from b1k.training import flash_attention_patch
+        flash_attention_patch.install(key_pad_multiple=config.model.attn_key_pad_multiple)
+
     if config.batch_size % jax.device_count() != 0:
         raise ValueError(
             f"Batch size {config.batch_size} must be divisible by the number of devices {jax.device_count()}."
@@ -363,6 +376,7 @@ def main(config: _config.TrainConfig):
         keep_period=config.keep_period,
         overwrite=config.overwrite,
         resume=config.resume,
+        low_memory=config.low_memory_checkpointing,
     )
     init_wandb(config, resuming=resuming, enabled=config.wandb_enabled)
 
@@ -447,4 +461,11 @@ def main(config: _config.TrainConfig):
 
 
 if __name__ == "__main__":
-    main(_config.cli())
+    # `--yaml <recipe> [--resume] [--overwrite]`, or the registered-config CLI
+    if "--yaml" in sys.argv:
+        from b1k.training.yaml_train_config import train_config_from_yaml
+        args = sys.argv[1:]
+        flags = {k: True for k in ("resume", "overwrite") if f"--{k}" in args}
+        main(train_config_from_yaml(args[args.index("--yaml") + 1], flags))
+    else:
+        main(_config.cli())

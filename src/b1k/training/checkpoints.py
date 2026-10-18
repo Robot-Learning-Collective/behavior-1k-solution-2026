@@ -28,8 +28,38 @@ import openpi.training.utils as training_utils
 from b1k.shared import normalize as _normalize
 
 
+class _DrainingPyTreeCheckpointHandler(ocp.PyTreeCheckpointHandler):
+    """Writes each item to disk before the next one is staged, so host RAM holds one item at a time
+    (low-memory machines; the save then blocks training while it runs)."""
+
+    _lock = None
+
+    async def async_save(self, directory, args):
+        if type(self)._lock is None:
+            type(self)._lock = asyncio.Lock()
+        # stage through pinned host buffers: the default path caches a host copy on every live array
+        if hasattr(args, "enable_pinned_host_transfer"):
+            args = dataclasses.replace(args, enable_pinned_host_transfer=True)
+        async with type(self)._lock:
+            for f in await super().async_save(directory, args=args) or []:
+                f.result()
+        return []
+
+
+@ocp.args.register_with_handler(_DrainingPyTreeCheckpointHandler, for_save=True)
+class _DrainingSaveArgs(ocp.args.PyTreeSave): ...
+
+
+@ocp.args.register_with_handler(_DrainingPyTreeCheckpointHandler, for_restore=True)
+class _DrainingRestoreArgs(ocp.args.PyTreeRestore): ...
+
+
+# The train state is saved as params-sized items (orbax stages each item in host RAM as a whole)
+ITEMS = ("train_state", "params", "train_params", "opt_mu", "opt_nu")
+
+
 def initialize_checkpoint_dir(
-    checkpoint_dir: epath.Path | str, *, keep_period: int | None, overwrite: bool, resume: bool
+    checkpoint_dir: epath.Path | str, *, keep_period: int | None, overwrite: bool, resume: bool, low_memory: bool = False
 ) -> tuple[ocp.CheckpointManager, bool]:
     checkpoint_dir = epath.Path(checkpoint_dir).resolve()
     resuming = False
@@ -52,8 +82,11 @@ def initialize_checkpoint_dir(
         checkpoint_dir,
         item_handlers={
             "assets": CallbackHandler(),
-            "train_state": ocp.PyTreeCheckpointHandler(),
-            "params": ocp.PyTreeCheckpointHandler(),
+            **{
+                name: (_DrainingPyTreeCheckpointHandler(save_concurrent_gb=8, restore_concurrent_gb=8) if low_memory
+                       else ocp.PyTreeCheckpointHandler())
+                for name in ITEMS
+            },
         },
         options=ocp.CheckpointManagerOptions(
             max_to_keep=1,
@@ -120,13 +153,8 @@ def save_state(
 
     # Split params that can be used for inference into a separate item.
     with at.disable_typechecking():
-        train_state, params = _split_params(state)
-    items = {
-        "assets": save_assets,
-        "train_state": train_state,
-        "params": {"params": params},
-    }
-    checkpoint_manager.save(step, items)
+        items = _split_items(state)
+    checkpoint_manager.save(step, {"assets": save_assets, **items})
 
 
 def restore_state(
@@ -138,18 +166,8 @@ def restore_state(
     del data_loader
 
     with at.disable_typechecking():
-        # Split params that can be used for inference into a separate item.
-        train_state, params = _split_params(state)
-        
-        restored = checkpoint_manager.restore(
-            step,
-            items={
-                "train_state": train_state,
-                "params": {"params": params},
-            },
-        )
-                
-    return _merge_params(restored["train_state"], restored["params"])
+        restored = checkpoint_manager.restore(step, items=_split_items(state))
+        return _join_items(restored)
 
 
 def load_norm_stats(assets_dir: epath.Path | str, asset_id: str) -> dict[str, _normalize.NormStats] | None:
@@ -207,3 +225,53 @@ def _merge_params(train_state: training_utils.TrainState, params: dict[str, at.P
     else:
         # EMA case: The saved 'params' are the ema_params, and train_state already has the training params.
         return dataclasses.replace(train_state, ema_params=params["params"])
+
+
+def _moment_paths(tree, path=()):
+    """Paths of the optax states holding Adam moments (fields mu and nu)."""
+    if hasattr(tree, "_fields") and "mu" in tree._fields:
+        return [path]
+    if isinstance(tree, (tuple, list)):
+        return [p for i, child in enumerate(tree) for p in _moment_paths(child, path + (i,))]
+    return []
+
+
+def _replace_at(tree, path, fn):
+    if not path:
+        return fn(tree)
+    children = [_replace_at(c, path[1:], fn) if j == path[0] else c for j, c in enumerate(tree)]
+    return type(tree)(*children) if hasattr(tree, "_fields") else type(tree)(children)
+
+
+def _get_at(tree, path):
+    for i in path:
+        tree = tree[i]
+    return tree
+
+
+def _split_items(state: training_utils.TrainState) -> dict:
+    """{train_state (step + optimizer skeleton), params (servable / EMA), train_params, opt_mu, opt_nu}."""
+    train_state, params = _split_params(state)
+    paths = _moment_paths(train_state.opt_state)
+    mu = {str(i): _get_at(train_state.opt_state, p).mu for i, p in enumerate(paths)}
+    nu = {str(i): _get_at(train_state.opt_state, p).nu for i, p in enumerate(paths)}
+    opt = train_state.opt_state
+    for p in paths:
+        opt = _replace_at(opt, p, lambda node: node._replace(mu=None, nu=None))
+    items = {
+        "train_state": dataclasses.replace(train_state, params={}, opt_state=opt),
+        "params": {"params": params},
+        "opt_mu": {"mu": mu},
+        "opt_nu": {"nu": nu},
+    }
+    if state.ema_params is not None:
+        items["train_params"] = {"params": train_state.params}
+    return items
+
+
+def _join_items(items: dict) -> training_utils.TrainState:
+    opt = items["train_state"].opt_state
+    for i, p in enumerate(_moment_paths(opt)):
+        opt = _replace_at(opt, p, lambda node: node._replace(mu=items["opt_mu"]["mu"][str(i)], nu=items["opt_nu"]["nu"][str(i)]))
+    train_state = dataclasses.replace(items["train_state"], opt_state=opt, params=items.get("train_params", {"params": {}})["params"])
+    return _merge_params(train_state, items["params"])

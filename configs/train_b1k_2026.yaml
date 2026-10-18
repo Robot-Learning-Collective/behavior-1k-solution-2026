@@ -1,0 +1,49 @@
+# 2026 training recipe (8 GPUs, FSDP). Model architecture, augmentations and data pipeline defaults live in
+# the `pi_behavior_b1k_2026` config; this file sets the run.
+#   uv run scripts/train.py --yaml configs/train_b1k_2026.yaml [--resume]
+base_config: pi_behavior_b1k_2026
+exp_name: b1k_2026
+checkpoint_base_dir: ./outputs/checkpoints
+# 2025 checkpoint converted by scripts/convert_2025_checkpoint.py (not loaded on --resume)
+init_checkpoint: models/checkpoint_2_2026/params
+
+batch_size: 2048
+fsdp_devices: 8
+num_train_steps: 200_000
+num_workers: 32
+dataloader_workers_cpu_only: true
+save_interval: 1000
+keep_period: 5000
+use_flash_attention: true
+ema_decay: 0.995
+
+lr_schedule:
+  warmup_steps: 5000
+  peak_lr: 4.63e-5
+  decay_steps: 200_000
+  decay_lr: 5.78e-6
+
+optimizer:
+  clip_gradient_norm: 2.0
+  b1: 0.95
+  b2: 0.99
+
+lr_multipliers:
+  expert: 2.0
+  action_proj: 2.0
+  kv_transform: 2.0
+  embeddings: 2.0
+
+num_flow_samples: 10
+
+model:
+  max_fast_tokens: 68
+  attn_key_pad_multiple: 16
+
+data:
+  asset_id: b1k_2026
+  data_sources:
+    - repo_id: behavior-1k/2026-challenge-demos
+      root: data/2026-challenge-demos
+      realign_obs_timing: true
+      stage_labels: assets/semantic_stages/episode_stage_frames.csv

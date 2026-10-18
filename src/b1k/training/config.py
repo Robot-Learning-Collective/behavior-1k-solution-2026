@@ -10,7 +10,7 @@ import difflib
 import logging
 import os
 import pathlib
-from typing import Any, Literal, List, Protocol, TypeAlias
+from typing import Any, Protocol, TypeAlias
 
 import etils.epath as epath
 import flax.nnx as nnx
@@ -19,12 +19,7 @@ import tyro
 
 # Import from OpenPI
 import openpi.models.model as _model
-import openpi.models.pi0_config as pi0_config
-import openpi.policies.aloha_policy as aloha_policy
-import openpi.policies.droid_policy as droid_policy
-import openpi.policies.libero_policy as libero_policy
 import openpi.shared.download as _download
-import openpi.training.droid_rlds_dataset as droid_rlds_dataset
 import openpi.training.optimizer as _optimizer
 import openpi.transforms as _transforms
 
@@ -32,7 +27,9 @@ import openpi.transforms as _transforms
 from b1k.models import pi_behavior_config
 from b1k.policies import b1k_policy
 from b1k.shared import normalize as _normalize
+from b1k.training import param_groups
 from b1k.training import weight_loaders
+from b1k.training.data_loader import DataSourceConfig
 from b1k import transforms as b1k_transforms
 
 ModelType: TypeAlias = _model.ModelType
@@ -71,6 +68,8 @@ class DataConfig:
     use_quantile_norm: bool = False
     # If true, will use per-timestamp normalization for actions
     use_per_timestamp_norm: bool = False
+    # If true, state is scaled to [-1, 1] by its min/max instead of z-scored
+    state_quantile_norm: bool = False
 
     # Names of keys that will be used by the data loader to generate the action sequence.
     action_sequence_keys: Sequence[str] = ("actions",)
@@ -78,19 +77,8 @@ class DataConfig:
     # If true, will use the LeRobot dataset task to define the prompt (not used for PI_BEHAVIOR).
     prompt_from_task: bool = False
 
-    # Only used for RLDS data loader.
-    rlds_data_dir: str | None = None
-
-    # Only used for B1K data loader.
-    behavior_dataset_root: str | None = None
-
-    # Action space for DROID dataset.
-    action_space: droid_rlds_dataset.DroidActionSpace | None = None
-    # Path to the data filter file for DROID dataset
-    filter_dict_path: str | None = None
-
-    # Episodes index to use for training 
-    episodes_index: List[int] | None = None
+    # LeRobot V3 data sources (weighted mixture)
+    data_sources: tuple[DataSourceConfig, ...] = ()
 
 
 class GroupFactory(Protocol):
@@ -108,7 +96,6 @@ class ModelTransformFactory(GroupFactory):
         return _transforms.Group(
             inputs=[
                 _transforms.ResizeImages(224, 224),
-                b1k_transforms.ComputeSubtaskStateFromMeta(dataset=None),
                 b1k_transforms.TaskIndexToTaskId(),
                 _transforms.PadStatesAndActions(model_config.action_dim),
             ],
@@ -156,6 +143,7 @@ class DataConfigFactory(abc.ABC):
 class LeRobotB1KDataConfig(DataConfigFactory):
     """Data configuration for BEHAVIOR-1K dataset."""
 
+    data_sources: tuple[DataSourceConfig, ...] = ()
     action_sequence_keys: Sequence[str] = ("action",)
     use_delta_joint_actions: bool = False
     
@@ -166,14 +154,15 @@ class LeRobotB1KDataConfig(DataConfigFactory):
     def create(self, assets_dirs: pathlib.Path, model_config: _model.BaseModelConfig) -> DataConfig:
         # Repack transforms for B1K observations
         repack_mapping = {
-            "observation/egocentric_camera": "observation.images.rgb.head",
-            "observation/wrist_image_left": "observation.images.rgb.left_wrist",
-            "observation/wrist_image_right": "observation.images.rgb.right_wrist",
+            "observation/egocentric_camera": "observation.rgb.zed_link_camera_0",
+            "observation/wrist_image_left": "observation.rgb.left_realsense_link_camera_0",
+            "observation/wrist_image_right": "observation.rgb.right_realsense_link_camera_0",
             "observation/state": "observation.state",
             "actions": "action",
+            "action_is_pad": "action_is_pad",
             "task_index": "task_index",  # Always preserve task_index
-            "timestamp": "timestamp",    # Preserve timestamp for subtask state computation
-            "episode_index": "episode_index",  # Preserve episode_index for episode length lookup
+            "subtask_state": "subtask_state",  # Stage label
+            "episode_index": "episode_index",
             "index": "index",           # Preserve index
         }
             
@@ -187,11 +176,11 @@ class LeRobotB1KDataConfig(DataConfigFactory):
             outputs=[b1k_policy.B1kOutputs()],
         )
 
-        # Delta action transforms
+        # Delta action transforms: [base 3 abs][trunk 2 delta][arm 7 delta, grip abs] x2
         if self.use_delta_joint_actions:
-            delta_action_mask = _transforms.make_bool_mask(-3, 3, -1, 7, -1, 7, -1)
+            delta_action_mask = _transforms.make_bool_mask(-3, 2, 7, -1, 7, -1)
         else:
-            delta_action_mask = _transforms.make_bool_mask(-23)
+            delta_action_mask = _transforms.make_bool_mask(-21)
         
         data_transforms = data_transforms.push(
             inputs=[_transforms.DeltaActions(delta_action_mask)],
@@ -232,6 +221,8 @@ class LeRobotB1KDataConfig(DataConfigFactory):
             data_transforms=data_transforms,
             model_transforms=model_transforms,
             action_sequence_keys=self.action_sequence_keys,
+            state_quantile_norm=True,
+            data_sources=self.data_sources,
         )
 
 
@@ -254,6 +245,8 @@ class TrainConfig:
 
     lr_schedule: _optimizer.LRScheduleConfig = dataclasses.field(default_factory=_optimizer.CosineDecaySchedule)
     optimizer: _optimizer.OptimizerConfig = dataclasses.field(default_factory=_optimizer.AdamW)
+    # Per-parameter-group LR multipliers on top of the schedule
+    lr_multipliers: param_groups.LRMultipliers = dataclasses.field(default_factory=param_groups.LRMultipliers)
     ema_decay: float | None = 0.99
 
     # Specifies which weights should be frozen.
@@ -273,6 +266,8 @@ class TrainConfig:
     batch_size: int = 32
     # Number of workers to use for the data loader.
     num_workers: int = 2
+    # Keep JAX on the CPU in the data loader workers (no extra CUDA contexts)
+    dataloader_workers_cpu_only: bool = False
     # Number of train steps (batches) to run.
     num_train_steps: int = 30_000
 
@@ -297,15 +292,14 @@ class TrainConfig:
     # FSDP configuration for model sharding across devices.
     fsdp_devices: int = 1
     
-    # Validation configuration
-    val_log_interval: int = 100
-    val_batch_size: int | None = None
-    val_num_batches: int = 10
-    val_repo_id: str | None = None
-    val_episodes_index: List[int] | None = None
-    
     # Number of flow matching samples per training step
     num_flow_samples: int = 1
+
+    # Training attention through jax.nn.dot_product_attention (no materialized score matrix)
+    use_flash_attention: bool = False
+
+    # Write checkpoint items one at a time (host RAM ~ one item, blocks training while saving); for small-RAM hosts
+    low_memory_checkpointing: bool = False
 
     @property
     def assets_dirs(self) -> pathlib.Path:
@@ -329,52 +323,50 @@ class TrainConfig:
             raise ValueError("Cannot resume and overwrite at the same time.")
 
 
-# B1K Training Configurations
+# B1K Training Configurations (configs/train_b1k_2026.yaml holds the full recipe)
 _CONFIGS = [
     TrainConfig(
-        name="pi_behavior_b1k_fast",
+        name="pi_behavior_b1k_2026",
         exp_name="openpi",
         project_name="B1K",
         model=pi_behavior_config.PiBehaviorConfig(
             action_horizon=30,
-            action_dim=32,
+            action_dim=21,
             use_correlated_noise=True,
             correlation_beta=0.5,
             # FAST auxiliary training
             use_fast_auxiliary=True,
             fast_loss_weight=0.05,
-            fast_encoded_dims="0:6,7:23",  # Encode 22 dimensions
+            fast_encoded_dims="0:21",
             fast_vocab_size=1024,
-            max_fast_tokens=200,
+            max_fast_tokens=68,
             use_kv_transform=True,
             use_knowledge_insulation=False,
             subtask_loss_weight=0.1,
             freeze_vision_backbone=True,
         ),
         data=LeRobotB1KDataConfig(
-            repo_id="IliaLarchenko/behavior_224_rgb",
+            repo_id="behavior-1k/2026-challenge-demos",
+            data_sources=(
+                DataSourceConfig(
+                    repo_id="behavior-1k/2026-challenge-demos",
+                    root="data/2026-challenge-demos",
+                    realign_obs_timing=True,
+                    stage_labels="assets/semantic_stages/episode_stage_frames.csv",
+                ),
+            ),
             base_config=DataConfig(
                 prompt_from_task=False,  # No text prompts for PI_BEHAVIOR
-                behavior_dataset_root="~/data/behavior_224_rgb",
                 use_per_timestamp_norm=True,  # Enable per-timestamp normalization
             ),
             use_delta_joint_actions=True,
             use_fast_tokenization=True,  # Enable FAST tokenization in data pipeline
         ),
-        lr_schedule=_optimizer.CosineDecaySchedule(
-            warmup_steps=1000,
-            peak_lr=1e-4,
-            decay_steps=20_000,
-            decay_lr=1e-5,
-        ),
-        num_flow_samples=15,
-        weight_loader=weight_loaders.PiBehaviorWeightLoader("gs://openpi-assets/checkpoints/pi05_base/params"),
-        num_train_steps=200_000,
+        num_flow_samples=10,
+        use_flash_attention=True,
         assets_base_dir="./outputs/assets",
         checkpoint_base_dir="./outputs/checkpoints",
-        num_workers=80,
-        save_interval=500,
-        keep_period=2000,
+        num_workers=32,
     ),
 ]
 
