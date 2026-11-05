@@ -1,6 +1,6 @@
 # BEHAVIOR Challenge Solution
 
-**1st Place | Public Leaderboard: 26% | Private Leaderboard: 26%**
+**9th Place | Public Leaderboard: 44.6%**
 
 This repository contains our winning solution for the [2025 BEHAVIOR Challenge](https://behavior.stanford.edu/challenge/), achieving a 26% success rate on both the public and private evaluation sets. Our approach builds upon [Physical Intelligence's Pi0.5](https://www.physicalintelligence.company/blog/pi0) vision-language-action model with several architectural and training innovations.
 
