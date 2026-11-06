@@ -1,0 +1,40 @@
+{
+  "task": "cook_a_brisket",
+  "tier": "lite",
+  "references_episode_train": [
+    [
+      10212,
+      20
+    ],
+    [
+      10213,
+      22
+    ],
+    [
+      10214,
+      23
+    ]
+  ],
+  "verification": "PASS: public pinned instructions/BDDL/source hashes, three non-held-out annotation joins; malformed coarse spans explicitly labelled derived envelopes",
+  "verification_script_sha256": "95def63f662109e14da915145d9542838e4a09bcb3254948d216c8ff1a381cfd",
+  "files": {
+    "ANNOTATIONS.md": {
+      "sha256": "46743c7d175f08cd2c22e1a61df9fc83c02a4bd0f0018dfd68b0e4eea5a493a4",
+      "bytes": 6819
+    },
+    "README.md": {
+      "sha256": "e23999eaaae70aea368631c1f433e1f21773075a393a3408b21e14c13012baa0",
+      "bytes": 1805
+    },
+    "TASK.md": {
+      "sha256": "53e66fd8ba5622f57509b4061974b1a4d735c53b59963ebf09bd2d98c3fb370a",
+      "bytes": 1996
+    },
+    "provenance.json": {
+      "sha256": "10605a1ceb3bd33b9f007c0ef5e49ccf031fdea3bdb32ccac16f1a9b43187841",
+      "bytes": 4250
+    }
+  },
+  "total_content_bytes": 14870,
+  "limits": "Public human study only; no held-out rollout data or live scorer/object/contact state; not task-success evidence."
+}

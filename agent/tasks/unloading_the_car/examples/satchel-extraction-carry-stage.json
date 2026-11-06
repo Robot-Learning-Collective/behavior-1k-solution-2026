@@ -1,0 +1,56 @@
+{
+  "task": "unloading_the_car", "instance": "TRAIN10", "source": "8432188",
+  "attempt": "practice-restore-brown-carry-1fe5d2c4f5784e3cbf46df8b0b602c92",
+  "scope": "One contact-conditioned satchel extraction while retaining brown case, both-bag carry, and garage floor staging. Not clean-reset mastered, no sofa placement or full-task success.",
+  "start": "brown-carry",
+  "evidence": "../control-action-results.jsonl (same attempt, observations2–54); corresponding RGBD receipts in local behavior-sim cache",
+  "approach": [
+    {"base":{"fwd":0.3,"left":-0.25}},
+    {"base":{"yaw_deg":25}},
+    {"right":{"q":[-0.7699,0.0031,0.1151,-0.8131,0.8041,0.6704,-0.227],"grip":1}},
+    {"right":{"q":[-0.9158,-0.0659,0.1058,-0.4879,0.7962,0.5708,-0.227]}},
+    {"left":{"fwd":-0.15,"up":0.08},"note":"Fold brown case for bumper clearance. Earlier right Cartesian reach stalled; cancel before base approach."},
+    {"base":{"fwd":0.1}}
+  ],
+  "failed_lower_rim_trials": "Obs10–16: lowering hand5.5cm, measured-q cancellation, close, reopen, base+.045, close again were empty. Further Cartesian [0.8,-0.25,0.88] timed out. These contacts may alter bag, so later success is not asserted reset-valid.",
+  "acquisition": [
+    {"obs":17,"right":{"q":[-0.9158,-0.0659,0.1058,-0.4879,0.7962,0.5708,-0.227]},"torso":{"q":[1.0787,-1.548,-0.5798,0]}},
+    {"obs":18,"base":{"left":0.13}},
+    {"obs":19,"right":{"fwd":0.025,"left":-0.02,"up":-0.012},"result":"stalled; do not keep pushing"},
+    {"obs":20,"right":{"q":[-1.118311,-0.075844,0.078355,-0.049260,0.757749,0.372583,-0.382386]},"base":{"fwd":0.065}},
+    {"obs":21,"right":{"grip":0},"accept_partial":true,"result":"stalled pose; approximately5cm finger obstruction is not acquisition proof"},
+    {"obs":22,"right":{"q":[-1.118472,-0.075873,0.080759,-0.049925,0.760886,0.373833,-0.382090]},"torso":{"q":[1.0787,-1.548,-0.43,0]},"result":"visible retained lift"},
+    {"obs":23,"torso":{"q":[1.0787,-1.548,-0.2,0]},"result":"retained above trunk lip"},
+    {"obs":24,"base":{"fwd":-0.45},"note":"Both arms commanded to current measured q first; right q then had positive elbow0.1893. Overall result stalled, inspect actual displacement and retention rather than assume full retreat."}
+  ],
+  "carry": [
+    {"obs":25,"right":{"q":[-0.81,-0.0844,0.102,-0.8443,0.7262,0.571,-0.2322]}},
+    {"obs":26,"right":{"q":[-0.1486,-0.0735,0.101,-1.4701,0.4427,0.7207,-0.2382]}},
+    {"obs":27,"right":{"q":[0.0998,-0.0766,-0.0349,-1.0504,0.1693,0.1748,-0.2329]},"torso":{"q":[1.0787,-1.548,-0.43,0]},"result":"stalled, elbow lag"},
+    {"obs":28,"right":{"q":[0.099602,-0.076777,-0.035638,-1.486461,0.182172,0.175042,-0.341126]},"result":"measured-q cancellation released carry preload"},
+    {"obs":29,"base":{"fwd":-0.2}},
+    {"obs":30,"base":{"yaw_deg":-23}},
+    {"obs":31,"base":{"left":-1}},
+    {"obs":32,"base":{"yaw_deg":-28}},
+    {"obs":33,"base":{"fwd":2}},
+    {"obs":34,"base":{"fwd":2,"left":0.6}}
+  ],
+  "satchel_floor_staging": [
+    {"obs":35,"right":{"q":[-0.0468,-0.0478,-0.0299,-1.054,0.0145,0.3134,-0.232]}},
+    {"obs":36,"right":{"q":[-0.8234,-0.1166,-0.0381,-0.4486,-0.588,1.0108,-0.067]},"torso":{"q":[1.0787,-1.548,-0.5121,0]}},
+    {"obs":37,"torso":{"q":[1.25,-1.86,-0.8,0]}},
+    {"obs":38,"torso":{"q":[1.4,-2.135,-1,0]},"note":"Right TCP around[.619,-.245,.422]; bag hangs below hand toward observed garage floor."},
+    {"obs":39,"right":{"grip":1}},
+    {"obs":40,"right":{"q":[-0.8503,-0.1074,-0.02,-0.924,-0.5646,1.03,-0.2236]}},
+    {"obs":41,"right":{"q":[0.3283,0.0537,0.0154,-0.4663,0.0107,-0.2822,-0.1841]},"torso":{"q":[0.849,-1.128,-0.45,0]}}
+  ],
+  "shorter_repeat": {
+    "attempt": "practice-restore-satchel-approach-brown-held-85f854946ee24c46801b42931dc911a0",
+    "source_snapshot": "satchel-approach-brown-held",
+    "result": "Second visible extraction and carry, snapshot both-bags-extracted-repeat, obs14. Not clean-reset whole-task mastery.",
+    "changes": "Fold brown backward15cm/up8cm; right pregrasp; retract right12cm; base forward14cm/left13cm. Then human164 whole-body posture, diagonal insertion, measured-q release, forward6.5cm, close. No empty lower-rim pinches. Fingers4.2cm retained through independent lifts,45cm measured retreat and folding.",
+    "carry_change": "Skip last too-contracted q0998. Keep q[-.1486,-.0735,.101,-1.4701,.4427,.7207,-.2382], release measured q, restore torso[.849,-1.128,-.45,0] and left human150 carry."
+  },
+  "snapshots": ["satchel-approach-brown-held","both-bags-extracted","both-bags-carry","both-bags-carry-clean","both-bags-near-door","satchel-staged-near-door"],
+  "door_repeat_limit": "Obs42–54 approached left of staged satchel, opened door partially, then carried brown case collided with left jamb. Measured-q cancellation and20cm retreat unloaded arms. Right hand empty/open, brown retained, satchel on garage floor; no threshold crossing. Initial door recipe is better aligned; stage satchel farther from intended base lane and narrow carry before jamb contact. Do not replay door base motion blindly."
+}

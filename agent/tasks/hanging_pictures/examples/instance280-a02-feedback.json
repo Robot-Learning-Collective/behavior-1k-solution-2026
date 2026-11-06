@@ -1,0 +1,28 @@
+{
+  "practice_only": true,
+  "privileged_training_feedback": true,
+  "attempt_id": "pictures-run-009-instance280-a02",
+  "step": 1294,
+  "success": true,
+  "predicates": [
+    {
+      "index": 0,
+      "predicate": "(exists (?wall_nail.n.01 - wall_nail.n.01) (attached ?poster.n.01_1 ?wall_nail.n.01))",
+      "satisfied": true
+    }
+  ],
+  "goal_options": [
+    [
+      {
+        "index": 0,
+        "predicate": "(attached poster.n.01_1 wall_nail.n.01_1)",
+        "satisfied": true
+      }
+    ]
+  ],
+  "q_score": 1.0,
+  "satisfied_fraction": 1.0,
+  "q_definition": "Native compute_q_score: success=1; otherwise newly satisfied since this practice start / predicates per option, maximized over alternatives",
+  "satisfied_fraction_definition": "Current satisfied predicates / predicates per option, maximized over alternatives; not baseline-adjusted Q",
+  "source": "BehaviorTask.compiled_task.check_goal + get_goal_option_satisfaction; native TaskMetric.compute_q_score"
+}

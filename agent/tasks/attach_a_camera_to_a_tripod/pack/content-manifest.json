@@ -1,0 +1,1016 @@
+{
+  "task": "attach_a_camera_to_a_tripod",
+  "tier": "dense",
+  "references_episode_train": [
+    [
+      7016,
+      20
+    ],
+    [
+      7017,
+      21
+    ],
+    [
+      7018,
+      22
+    ]
+  ],
+  "verification": "PACK_VERIFIED <workspace>/astra-harness/task_packs/attach_a_camera_to_a_tripod episodes 3 timestamps 958 pages 240 bytes 16830968",
+  "verification_script_sha256": "a5dede973f3496716f05fcd0e420a74bbbf36c3579613a923c6dd8a8a62c67c6",
+  "files": {
+    "ANNOTATIONS.md": {
+      "sha256": "9a68caef50a18fe764a5d942e0868a68acd3fc435c81e6603092af1b0bddfca1",
+      "bytes": 3904
+    },
+    "HUMAN-PROPRIO.md": {
+      "sha256": "17c1210ebe16b30106e5dce917e9387ffe33f646958e347f36ffcebbc20d26fe",
+      "bytes": 4436
+    },
+    "README.md": {
+      "sha256": "f53255af11fd3e34ff47f2581b2529976368ee4e9506c8952f2ffc2fe6b8b1ac",
+      "bytes": 2896
+    },
+    "TASK.md": {
+      "sha256": "437514f26720ed3e856a3c880f4d8966e2acccc24981b928c1368a600b74c359",
+      "bytes": 1336
+    },
+    "human-proprio.json": {
+      "sha256": "1c2d4c2a40878a4fde6093337c1a0fcbaf63c48882bc976b89b8d7ee28e50e1f",
+      "bytes": 2339630
+    },
+    "keyframes/7016-page-001.jpg": {
+      "sha256": "198ac523a0b5b6dda7e61d68e9ed12d9fb145cd919c791fc731e4dff846169e7",
+      "bytes": 52599
+    },
+    "keyframes/7016-page-002.jpg": {
+      "sha256": "50d4be30fdcc2ef183f3121c8bacadc6fafd7b2497e3e4d5bff807c636fcb0ca",
+      "bytes": 58795
+    },
+    "keyframes/7016-page-003.jpg": {
+      "sha256": "372f0159148982639b294810bbea54e5b8026520c61bd5d34e625060a536dd4f",
+      "bytes": 59634
+    },
+    "keyframes/7016-page-004.jpg": {
+      "sha256": "f0cb031d5b8c90ded2dbfb53cf486f18e6a8445633fed65a68a2e0b4b5e8029e",
+      "bytes": 59043
+    },
+    "keyframes/7016-page-005.jpg": {
+      "sha256": "5ab6a977267ae81b7d357e38077a20cc869de72df2b6c7af294fccd90d8b76e0",
+      "bytes": 58663
+    },
+    "keyframes/7016-page-006.jpg": {
+      "sha256": "24a869520c160df30ca6ad509714b29b26ef0f7d791f35da4dfda0ce221df363",
+      "bytes": 61035
+    },
+    "keyframes/7016-page-007.jpg": {
+      "sha256": "1f290f1b362ddff6fe8b137f457209f28b3e1c6aa601308a09809e3196c83d82",
+      "bytes": 61197
+    },
+    "keyframes/7016-page-008.jpg": {
+      "sha256": "ef876745198af37bd417041ee42b18c4b4c8a0d5e0a2e7e0dcfe9579b7bf652b",
+      "bytes": 60440
+    },
+    "keyframes/7016-page-009.jpg": {
+      "sha256": "a186fc0995169a864f1c6f8ce2bf1d35acac2ed072b01f3dc4866fe61a6a2a54",
+      "bytes": 60794
+    },
+    "keyframes/7016-page-010.jpg": {
+      "sha256": "66297148d32a40de0b3d8a6e93e6df3a564130da596c14c2969a4971f44c9d5c",
+      "bytes": 57436
+    },
+    "keyframes/7016-page-011.jpg": {
+      "sha256": "460251a6adbd764a55793042a8b55e6a7c473596421877990b112320461c4ce8",
+      "bytes": 56355
+    },
+    "keyframes/7016-page-012.jpg": {
+      "sha256": "4b592a08c16b68cab96a3500d674ff68df50246e9e7651aab72544dfd560a776",
+      "bytes": 56054
+    },
+    "keyframes/7016-page-013.jpg": {
+      "sha256": "416a5ebf8473daf6a701ff954107b51c233a2bd3e6658e631de8ff2cfa7b3c8e",
+      "bytes": 56065
+    },
+    "keyframes/7016-page-014.jpg": {
+      "sha256": "c9e48fe75ffb84f08305f66a455017f57b581a33462869f532a77e7a2d87cd4c",
+      "bytes": 55869
+    },
+    "keyframes/7016-page-015.jpg": {
+      "sha256": "2f491cc660945c9df748dcc2c365afd95f834ee86a81ec2eb789b6451949472f",
+      "bytes": 54596
+    },
+    "keyframes/7016-page-016.jpg": {
+      "sha256": "767d090ce9fef06ba430e6aa1c46c76779e95f84c99a9d2b08995687705e734b",
+      "bytes": 53591
+    },
+    "keyframes/7016-page-017.jpg": {
+      "sha256": "fab72ab22808a217963282430a41e07b59c322a8cdffb991697d50cea9b335c3",
+      "bytes": 53625
+    },
+    "keyframes/7016-page-018.jpg": {
+      "sha256": "45a996edb4578e3042699eaa6315638aa297296dff76147f03bbad287fd55679",
+      "bytes": 53786
+    },
+    "keyframes/7016-page-019.jpg": {
+      "sha256": "49f50436e2a68c51f6bfb5825775e55fad4e3d65661a047f1f4418ccc18b1951",
+      "bytes": 55568
+    },
+    "keyframes/7016-page-020.jpg": {
+      "sha256": "2793e66ee5fea30ae6867cf117a0f25438d58e20abe83cd8c83812c3ec07e29e",
+      "bytes": 56366
+    },
+    "keyframes/7016-page-021.jpg": {
+      "sha256": "07a1c1503ee24a2a8a6d81170830308569282653e14ec105381aec9c03b611e0",
+      "bytes": 55955
+    },
+    "keyframes/7016-page-022.jpg": {
+      "sha256": "a32784a1b2dadf0f64fca65f136b72bb12f703dd2b68bbfddb3b5e5adf3f77d8",
+      "bytes": 54606
+    },
+    "keyframes/7016-page-023.jpg": {
+      "sha256": "f6a65b937fcb1daac873d93111a0e86dcea92b7b4080c5b4b56d2e3ca82e22ce",
+      "bytes": 56209
+    },
+    "keyframes/7016-page-024.jpg": {
+      "sha256": "e4cd28dac7fdd961db7036002b63f5161755a1755493cdff274a2a265a3ee8ef",
+      "bytes": 57961
+    },
+    "keyframes/7016-page-025.jpg": {
+      "sha256": "44659b7f51b002fde647e84b4c7d3fcf0509bed72d128cf55d2a7d5c3c797f35",
+      "bytes": 57916
+    },
+    "keyframes/7016-page-026.jpg": {
+      "sha256": "ef7470f4a2d5d206f0b21b135b136055619fbf4d9481d44b9c8e54d165bf2087",
+      "bytes": 58236
+    },
+    "keyframes/7016-page-027.jpg": {
+      "sha256": "d817650b10967a99882186eb93d6ab555137304953167ab52dcde3452e5c5f5a",
+      "bytes": 59180
+    },
+    "keyframes/7016-page-028.jpg": {
+      "sha256": "92a84fd5ce1b53906bf15dbfd7ad1269536a753d7a18f353650d8d174d4da07d",
+      "bytes": 60018
+    },
+    "keyframes/7016-page-029.jpg": {
+      "sha256": "760c25396286cc18a2a90b3ebb6975cee273962d8fa22fcbff1b0c06d134e509",
+      "bytes": 60212
+    },
+    "keyframes/7016-page-030.jpg": {
+      "sha256": "3b0d2b5f11ae8e6f984b8e737632d8a719145e980bcb51ba7d0ea547c51dd642",
+      "bytes": 59508
+    },
+    "keyframes/7016-page-031.jpg": {
+      "sha256": "035f4f23446188c7139645b2760262bb2dc9c8158737ff20973eb4d2911ce526",
+      "bytes": 56844
+    },
+    "keyframes/7016-page-032.jpg": {
+      "sha256": "9d0100658faace18f7d53ddb531b5d7c52a29930719948d231e94dd98e6fa8b5",
+      "bytes": 57722
+    },
+    "keyframes/7016-page-033.jpg": {
+      "sha256": "9e7c089a4dbc10b145cfc0fbd192b23f96a7e0289df8f052aac58e6651ae406d",
+      "bytes": 60281
+    },
+    "keyframes/7016-page-034.jpg": {
+      "sha256": "a402cd1cf9521a94f884cc269fc5f1bc5f46201ee66e69f691ea58407befb00b",
+      "bytes": 61242
+    },
+    "keyframes/7016-page-035.jpg": {
+      "sha256": "0423ad0ad3868ce0cfa0f67c096150dc8b842737e33acca5f31e794356d4cf3e",
+      "bytes": 57818
+    },
+    "keyframes/7016-page-036.jpg": {
+      "sha256": "81bea3b091cda023199a6ecf35bc310476d40655947e05938e5843e429a2b17d",
+      "bytes": 55880
+    },
+    "keyframes/7016-page-037.jpg": {
+      "sha256": "8391e5f06e73656e4173b701916c9dc1ddd26b0178a7d7c67c83ec61837b8adb",
+      "bytes": 53836
+    },
+    "keyframes/7016-page-038.jpg": {
+      "sha256": "819c4b561a0bbc5379bc3d6618b351c981ffdb8e7248c8bcb9afa85f9469a769",
+      "bytes": 55022
+    },
+    "keyframes/7016-page-039.jpg": {
+      "sha256": "58d38785b02a7901a8f3a1505d0aaf2558601c71872ad741532b8c39ef8a21eb",
+      "bytes": 57336
+    },
+    "keyframes/7016-page-040.jpg": {
+      "sha256": "9a214ebd2fda23ac74753292deaa0ece62430566320fc87c4b45d7456bee19f6",
+      "bytes": 57304
+    },
+    "keyframes/7016-page-041.jpg": {
+      "sha256": "376fc173d0bdb87d39239c50024773ac85f6bf3677e5262c239af1785b4fcae2",
+      "bytes": 56786
+    },
+    "keyframes/7016-page-042.jpg": {
+      "sha256": "4f3fb2c2768972ec8953f473ca717724f616f672d5be2778bc527c5c5dfb5fbb",
+      "bytes": 56783
+    },
+    "keyframes/7016-page-043.jpg": {
+      "sha256": "6ef64a682c6865756a4ec3280c6e56bac4963cae46a06dd18f34fe0fa73b98a1",
+      "bytes": 57243
+    },
+    "keyframes/7016-page-044.jpg": {
+      "sha256": "7bcc47d84af78a292ee2d6ce5d7285252c537b3d43e5145969d737a87202eb91",
+      "bytes": 56384
+    },
+    "keyframes/7016-page-045.jpg": {
+      "sha256": "f00557b3509d3b66a4e96972dd0ccbb5b8e1d7bd441dffcf92820c24596998ed",
+      "bytes": 56312
+    },
+    "keyframes/7016-page-046.jpg": {
+      "sha256": "a519006bf6716ecd1fdc1b4ced473cb103d76a56d6d5b36401736fee16a4aa22",
+      "bytes": 56003
+    },
+    "keyframes/7016-page-047.jpg": {
+      "sha256": "ba399bcebfa3fc01ed0989f1ba354e1ffd62d45e2805d887a7fd7acc667d5f29",
+      "bytes": 55670
+    },
+    "keyframes/7016-page-048.jpg": {
+      "sha256": "c72a01cafbac770b44253a9befd74568c932e4726eb170fedf7059e2d504e0c8",
+      "bytes": 54944
+    },
+    "keyframes/7016-page-049.jpg": {
+      "sha256": "85873455ab94298d6267e44a2fdb141ae1e0384a76f05f4a888f25dd67321287",
+      "bytes": 55500
+    },
+    "keyframes/7016-page-050.jpg": {
+      "sha256": "21973cceedd3d66a4b7cf3220c045f4d1102b3ba5b60f012f3ad683449bb4e27",
+      "bytes": 57385
+    },
+    "keyframes/7016-page-051.jpg": {
+      "sha256": "9093b28c3af0f49e73bc111e34c1928757eca930fa64a75b59b5305be9aa2996",
+      "bytes": 58435
+    },
+    "keyframes/7016-page-052.jpg": {
+      "sha256": "38f84f7fcad8da9222f07a2b8ec6f7ef246d067696ab19ada4724e38ed18e7ce",
+      "bytes": 58612
+    },
+    "keyframes/7016-page-053.jpg": {
+      "sha256": "d9ce389e956b7e9dd8aa451158bc58ab38691d967d9d57bdb5490ab76ab6deaa",
+      "bytes": 58915
+    },
+    "keyframes/7016-page-054.jpg": {
+      "sha256": "fedfe108943cee243701353ace905af7cc0a36560de99425df5f1b498d378e68",
+      "bytes": 60555
+    },
+    "keyframes/7016-page-055.jpg": {
+      "sha256": "3b66bf941ca98a2b5c6ec236d508285633f953bc87f1f54a0eadd587b97a385d",
+      "bytes": 62783
+    },
+    "keyframes/7016-page-056.jpg": {
+      "sha256": "c721c4c021aae436747e78417d8454a712af96f5cd2dc8fe9281e5fea49c2173",
+      "bytes": 62569
+    },
+    "keyframes/7016-page-057.jpg": {
+      "sha256": "9ea5d1a3784c92fa1932a2f3bea50c798fb513dc9b0b7b419acf8482838da3ca",
+      "bytes": 62394
+    },
+    "keyframes/7016-page-058.jpg": {
+      "sha256": "8e2ff9bf24d9e5ba5fbdaf7ce609b29e4ffec3f8e8117766d305eaffa8a0b28d",
+      "bytes": 61647
+    },
+    "keyframes/7016-page-059.jpg": {
+      "sha256": "fc025a253742d38e8046a49da129d2348b3a8ff484a394d5c075acebf8ed41b0",
+      "bytes": 64129
+    },
+    "keyframes/7016-page-060.jpg": {
+      "sha256": "b3d8e51a01d0a725ad4f089efe3864e344ab66c8063b013e06f19aaa74941bae",
+      "bytes": 64090
+    },
+    "keyframes/7016-page-061.jpg": {
+      "sha256": "0b83e5e8cd26245586ec52eaeb122c3ad473977ac8e77ddee6ce8633cf0c141f",
+      "bytes": 64063
+    },
+    "keyframes/7016-page-062.jpg": {
+      "sha256": "f0eaceddaba68495a9ea773cfacf83a7c59061d3de00381d1fb3979276e5ca2f",
+      "bytes": 63678
+    },
+    "keyframes/7016-page-063.jpg": {
+      "sha256": "abc34d0559816f480c7ffa3ae9a2580f32d8479f20a6a2936fbc5c5b0296f500",
+      "bytes": 63952
+    },
+    "keyframes/7016-page-064.jpg": {
+      "sha256": "5a761e094c568036a1921447b04cd494ebb9e6ea0b0b8b10fe206a41d044a077",
+      "bytes": 63557
+    },
+    "keyframes/7016-page-065.jpg": {
+      "sha256": "21a80391a7a2f4f7c14e4bc860a7a0a5cceecf547b915626c26e2887c8f12aae",
+      "bytes": 63276
+    },
+    "keyframes/7016-page-066.jpg": {
+      "sha256": "873fd7b14b3138924dacf166489c0dc388ebbab3eaf5aaf85fd6f9bec3b0b76f",
+      "bytes": 63329
+    },
+    "keyframes/7016-page-067.jpg": {
+      "sha256": "e2f5327f1199a69b0b5a56fbdc9bc80731f9c26edfc483d8a04a8d24d689a685",
+      "bytes": 63208
+    },
+    "keyframes/7016-page-068.jpg": {
+      "sha256": "55d08479b604ce7df2d1377cc00a4d38d5ff230286e2edfd1b26abb1219f9ba3",
+      "bytes": 62160
+    },
+    "keyframes/7016-page-069.jpg": {
+      "sha256": "a187ea1ae7c9b9d5d76e4fd75a7475429df811bff56999c5dcf6b88c6af99972",
+      "bytes": 63550
+    },
+    "keyframes/7016-page-070.jpg": {
+      "sha256": "7325ed4af66626441a257d3e0b376e83320e74229a9b1e3a43ac4c480cdb6988",
+      "bytes": 63085
+    },
+    "keyframes/7016-page-071.jpg": {
+      "sha256": "1734fb9701061df6e41ac4991b9ae39ec96349ae39d88a05c41494f08b3a59a2",
+      "bytes": 64899
+    },
+    "keyframes/7016-page-072.jpg": {
+      "sha256": "0bb548cc16c0255d5e33a25dbc9a5d8cab209d83c99f3f4b5e645a01cca8c1f8",
+      "bytes": 64313
+    },
+    "keyframes/7016-page-073.jpg": {
+      "sha256": "0474a52317de9e572154e0685c3e63cb416fb9a1220fc8113f58c6b406daccb4",
+      "bytes": 64654
+    },
+    "keyframes/7016-page-074.jpg": {
+      "sha256": "10299fa4335d5471a02786d2446ca5ee050e1299dbe1d400c4be3be7ffc4ae43",
+      "bytes": 65604
+    },
+    "keyframes/7016-page-075.jpg": {
+      "sha256": "300b2c3f330a9bc18f02c5fa9d7a808ac355f8777d445d64861dcb8fdc5d46cb",
+      "bytes": 68518
+    },
+    "keyframes/7016-page-076.jpg": {
+      "sha256": "b17daed0c3b55f1730e258b9b24b6a8ebfab7e9ecc89d43e8e94755cd81518fd",
+      "bytes": 66728
+    },
+    "keyframes/7016-page-077.jpg": {
+      "sha256": "e1e35d1c428325daab3fdf03437917193249b6850699a0530ecd1272d24b7efd",
+      "bytes": 67771
+    },
+    "keyframes/7016-page-078.jpg": {
+      "sha256": "de81dee16eb3d1fcd6303cd1a3422b61c506c2658c7ca559054fe3b4a1c5b88d",
+      "bytes": 69385
+    },
+    "keyframes/7016-page-079.jpg": {
+      "sha256": "7e401958eeaf723ed6883acfad6dfe1d7dfaf82aca11c172686024e684dedc65",
+      "bytes": 64567
+    },
+    "keyframes/7016-page-080.jpg": {
+      "sha256": "7bb636927d37484585b94504af8222d95e4cd3794c0a8ed0358f51f4243baa6e",
+      "bytes": 64963
+    },
+    "keyframes/7016-page-081.jpg": {
+      "sha256": "e5c50f68a427d29bd72f59ce3f0466dcb8ea097bd64277e2b9a144ccb2da314d",
+      "bytes": 64583
+    },
+    "keyframes/7016-page-082.jpg": {
+      "sha256": "c8cf4a705479ca86e07e13dceaa769e4a7f5bdaddcb6fc08b1d16551ff67f94e",
+      "bytes": 60377
+    },
+    "keyframes/7016-page-083.jpg": {
+      "sha256": "54f54c92f85b3fa64566187682df04c7b6912b76f447440a4ab32333fc2d2355",
+      "bytes": 51708
+    },
+    "keyframes/7016-page-084.jpg": {
+      "sha256": "176f024b198474aa70e14d904fb6ae3772ed0cbe7225455b6e298c2407556ee2",
+      "bytes": 53523
+    },
+    "keyframes/7016-page-085.jpg": {
+      "sha256": "3031ca48c5532274bbf4c8e62e3c45d2d1a39ca895a085eaa375303e0df7ee26",
+      "bytes": 55978
+    },
+    "keyframes/7017-page-001.jpg": {
+      "sha256": "cb7b75fd197a0efb1f93ddd43d9c3c155566f7dbf97c6a87c3b2b520e512e35c",
+      "bytes": 52691
+    },
+    "keyframes/7017-page-002.jpg": {
+      "sha256": "9e98d9156051f1156e9905fe7a84468b0a572c7f6c384ffbfb182414b4884ba2",
+      "bytes": 57076
+    },
+    "keyframes/7017-page-003.jpg": {
+      "sha256": "3d6e75b8af2c9db9b102627cfa3725e2d5c886ef94366bd01ee4f707845453b5",
+      "bytes": 58344
+    },
+    "keyframes/7017-page-004.jpg": {
+      "sha256": "aac69260c0730f3d33b994389df3d8f76c8b8575d458da891172aa2f579d94cc",
+      "bytes": 59769
+    },
+    "keyframes/7017-page-005.jpg": {
+      "sha256": "17af5c52688fed1c655bdf23ceef733d26b7a5441d85865db6a3ccc99ed5d432",
+      "bytes": 59183
+    },
+    "keyframes/7017-page-006.jpg": {
+      "sha256": "f82cf9190eb3e701e57a56008b82d28028d67b90318bea3dcd0679b832e25e84",
+      "bytes": 58225
+    },
+    "keyframes/7017-page-007.jpg": {
+      "sha256": "1e0738368dc818e757f8c8686ff3ad30ebccd0fe2a05ea3a6189752970a40606",
+      "bytes": 56080
+    },
+    "keyframes/7017-page-008.jpg": {
+      "sha256": "1509c10cbb5d3df6f6862d1410200f8667be17defc60ee06b0a60db33ed88383",
+      "bytes": 55095
+    },
+    "keyframes/7017-page-009.jpg": {
+      "sha256": "14d5c860d6f89b4c1dfb0a9ddd2666d2d768a7098b0ee8accd7bf86f59f07612",
+      "bytes": 56526
+    },
+    "keyframes/7017-page-010.jpg": {
+      "sha256": "ab38979e3e8acaaea9469523a157a8e0cfe85a2380d3f7b4625778f87dce70b8",
+      "bytes": 58646
+    },
+    "keyframes/7017-page-011.jpg": {
+      "sha256": "9e34ec32c6c3a542d12bfbcbec9c702c227e239680837c07a6e7e6c5a8a371d0",
+      "bytes": 58933
+    },
+    "keyframes/7017-page-012.jpg": {
+      "sha256": "aadf3eda0327f1adb0bf31c8c5114a4a10b673d5ad1bc7f4310fd082a0a1b0a4",
+      "bytes": 58774
+    },
+    "keyframes/7017-page-013.jpg": {
+      "sha256": "45e9714d34734cd66e9ca23a18f9d98278959bf27739be4f9a54660fbdff3b13",
+      "bytes": 59361
+    },
+    "keyframes/7017-page-014.jpg": {
+      "sha256": "cfa8cd8fc78a899598ba7075e1662fe95a388a72a25d001eaf324e365bf26642",
+      "bytes": 58471
+    },
+    "keyframes/7017-page-015.jpg": {
+      "sha256": "bda170b391d32d6350a4c4992f1bf7bfc17fb52ffe50dc5ded19ba2d55359c11",
+      "bytes": 57860
+    },
+    "keyframes/7017-page-016.jpg": {
+      "sha256": "ba6d58d9f27b8c84c8ba0f69e664fcf18531b33fdba7cee018af5a68959530f8",
+      "bytes": 56472
+    },
+    "keyframes/7017-page-017.jpg": {
+      "sha256": "1753ff56cbd4af0514291e8ef0eb513f25af904737d00ec8f61e864ac6cbf2a9",
+      "bytes": 56957
+    },
+    "keyframes/7017-page-018.jpg": {
+      "sha256": "95ccae8ecddc267537c6a794b25956ecfaea291218e2dcaa7aa4ad9b69cf7056",
+      "bytes": 56447
+    },
+    "keyframes/7017-page-019.jpg": {
+      "sha256": "d9a9c37b14dc4dce3973592951151f29f079e57cd7b47019a8ee9c211d5cf57e",
+      "bytes": 54812
+    },
+    "keyframes/7017-page-020.jpg": {
+      "sha256": "eeb93e255d6d83c48bbbdacfb1ceb7189ca4eba9654a079acde27706696f0b2c",
+      "bytes": 53195
+    },
+    "keyframes/7017-page-021.jpg": {
+      "sha256": "15b6ee99bdad539a9a0602669b766015a3d0e4faa63c09ed3c08f6f70f7cbcd9",
+      "bytes": 52317
+    },
+    "keyframes/7017-page-022.jpg": {
+      "sha256": "6c829bb8d9dc638123f787b9b0b3c29fe901b460be1f9845164ec83722e08050",
+      "bytes": 51800
+    },
+    "keyframes/7017-page-023.jpg": {
+      "sha256": "8ad3a73b324ee3692d9573bfc6916d3f12a9faa381d1a563de2f5c153bdf6a99",
+      "bytes": 53110
+    },
+    "keyframes/7017-page-024.jpg": {
+      "sha256": "f33d5668e70a65329244a2d41b5e7b943e06f51d12df2c4d0dce61379cb01495",
+      "bytes": 53037
+    },
+    "keyframes/7017-page-025.jpg": {
+      "sha256": "1e5a7f37c864e4f909bf5be988ccdd99e040542beb9309ee5e56e81979a3e668",
+      "bytes": 56561
+    },
+    "keyframes/7017-page-026.jpg": {
+      "sha256": "4472c64a07da84b4c75b908971e3a305705cba3b5e3dac06b5806937517b7ebc",
+      "bytes": 59297
+    },
+    "keyframes/7017-page-027.jpg": {
+      "sha256": "4f3f7652f514d62f88013c6fe95a3ed835ec4a14e298117c5980906eb789da0c",
+      "bytes": 60091
+    },
+    "keyframes/7017-page-028.jpg": {
+      "sha256": "7598a5cff8f5298ee381c39d3bb66623c1dbf6610fbee0eaa9c8f1db1872ffd8",
+      "bytes": 60475
+    },
+    "keyframes/7017-page-029.jpg": {
+      "sha256": "f2222f55fc8267ded6daacb219136767d2187a73fa18f526490bee778df9a93c",
+      "bytes": 59072
+    },
+    "keyframes/7017-page-030.jpg": {
+      "sha256": "4f9fb7d4bb3ef4889622202234a296c7214426679f4367ce85aa4bb8539e46aa",
+      "bytes": 58474
+    },
+    "keyframes/7017-page-031.jpg": {
+      "sha256": "333f4ef6e2e4b1c4c04330acc64eb5ae23a82f56a3d3b5ce9b99b2561f59cd09",
+      "bytes": 58190
+    },
+    "keyframes/7017-page-032.jpg": {
+      "sha256": "819a3edf39afca9206032c025cf88ab0313b00483c0d7170adf51d48810ab3b8",
+      "bytes": 54466
+    },
+    "keyframes/7017-page-033.jpg": {
+      "sha256": "bb0c78de48d7c3bb5d7e81fa4139f8636cf7bf78d17174b4e2f941eea04d4fef",
+      "bytes": 54590
+    },
+    "keyframes/7017-page-034.jpg": {
+      "sha256": "108f5a0268ed3b861b1a1ee1101d4ac0f699659e0091754d3307bfa2d8478cdc",
+      "bytes": 54050
+    },
+    "keyframes/7017-page-035.jpg": {
+      "sha256": "7abb94d4e60d0031696bf7a26b09b570ee40e945977a91d76c22ceea78eaf4b9",
+      "bytes": 52587
+    },
+    "keyframes/7017-page-036.jpg": {
+      "sha256": "89df5e74a059a002e31576f97731d029f3265fba9409c97f93eda17cb7771176",
+      "bytes": 49074
+    },
+    "keyframes/7017-page-037.jpg": {
+      "sha256": "a039ddd052fc7fdbc67ef75bf36ff33efea0a2bba752439bfb8a3f168c9b1b2d",
+      "bytes": 46652
+    },
+    "keyframes/7017-page-038.jpg": {
+      "sha256": "f0c0a4f32d4387df9f8f368ae73969fdf2d3c69f92edcd5e528e1e5292a99b66",
+      "bytes": 48000
+    },
+    "keyframes/7017-page-039.jpg": {
+      "sha256": "2faf6bce43e398bbd1747c7915ded9c07b4311bd2e0532f75120742f5a797046",
+      "bytes": 47936
+    },
+    "keyframes/7017-page-040.jpg": {
+      "sha256": "c8f3c929ed8c9b67c3e0370496d5bdfb5c33564eed05b5e2978ec7737888c3a3",
+      "bytes": 47405
+    },
+    "keyframes/7017-page-041.jpg": {
+      "sha256": "1e2d986c0ef242e7e6a96f081377e27b85ad920647eec92d2949e0ea6a89bddf",
+      "bytes": 46830
+    },
+    "keyframes/7017-page-042.jpg": {
+      "sha256": "820e4e264f1694d4524873ae76db5e398fa9c4f8048093497b171930b18533f3",
+      "bytes": 47332
+    },
+    "keyframes/7017-page-043.jpg": {
+      "sha256": "511e19f2a7a5b43f959a49dd5ce23fb05245d0e3f635a028b06038f098fa866b",
+      "bytes": 49092
+    },
+    "keyframes/7017-page-044.jpg": {
+      "sha256": "67e115f2c0cb787b18396d31a41e370175af07794acdeb7a4b83b6544cc9bad5",
+      "bytes": 55391
+    },
+    "keyframes/7017-page-045.jpg": {
+      "sha256": "01204c272fb3141f52f707f0468fe317da2fd0ab411de6682f573d0b781a2074",
+      "bytes": 54298
+    },
+    "keyframes/7017-page-046.jpg": {
+      "sha256": "e020b7e5f7fc7cd3338ac2279b000ee2484106d40cf9a4f0d720a517d4fabfe1",
+      "bytes": 55647
+    },
+    "keyframes/7017-page-047.jpg": {
+      "sha256": "bec102cf2f2cfaf78844b018296808491626e5c70b104173e84a0ff2c2d6390b",
+      "bytes": 56783
+    },
+    "keyframes/7017-page-048.jpg": {
+      "sha256": "3a7f6ea5c6e9972eb957cdb107e34899b5ebf694cb633de6a575acb36bad590e",
+      "bytes": 57704
+    },
+    "keyframes/7017-page-049.jpg": {
+      "sha256": "af1ae7567aea714549991fc76aac28d88fd60b5be100bb76c0fb457435cfd922",
+      "bytes": 58011
+    },
+    "keyframes/7017-page-050.jpg": {
+      "sha256": "2f229bde8e1b4cfc27799d5e99f67dbe46e5569b4bd91725d5451f812d49f48f",
+      "bytes": 58419
+    },
+    "keyframes/7017-page-051.jpg": {
+      "sha256": "5f68cf87d0564b0b2d6be2d23ad5b34407b863bb0bda9619bda2f26211512326",
+      "bytes": 59772
+    },
+    "keyframes/7017-page-052.jpg": {
+      "sha256": "f00550bfb472e9056f67497d9b10f9f3c6d400cab0c41c9596e11cad25356c04",
+      "bytes": 64702
+    },
+    "keyframes/7017-page-053.jpg": {
+      "sha256": "cbfae63c0104ed2c69ae4cfd77d135379fcf3828c5002dbb81f2163a704fe593",
+      "bytes": 63970
+    },
+    "keyframes/7017-page-054.jpg": {
+      "sha256": "a6e0cb274cf9171e6c148e8937ef7c4a6b87faf0228ae887125031745c14b38f",
+      "bytes": 62586
+    },
+    "keyframes/7017-page-055.jpg": {
+      "sha256": "e255d0696d467762b4cb570aa47652bdd36f48b0ff0425d84e3e76d71c851308",
+      "bytes": 62482
+    },
+    "keyframes/7017-page-056.jpg": {
+      "sha256": "56ea2bc7a10b99c2626039a7578f5f7ba8d167f7999a46abd435481eb6692a64",
+      "bytes": 63030
+    },
+    "keyframes/7017-page-057.jpg": {
+      "sha256": "dfb53db1948ff84e2b9b91113cc3d8ec4b1963a82da85dfe692725de04b56014",
+      "bytes": 64570
+    },
+    "keyframes/7017-page-058.jpg": {
+      "sha256": "b0af4c2b38c3362da2337a635c385b35cfb42623b09ccd7060c9edbbece83b57",
+      "bytes": 64190
+    },
+    "keyframes/7017-page-059.jpg": {
+      "sha256": "b9e3f7d9c4759832336db6c8ea71fc3ec3902de1d93e8d80b803ca8ea091be9f",
+      "bytes": 64108
+    },
+    "keyframes/7017-page-060.jpg": {
+      "sha256": "8ca2b65b75307d48801c58b9067c732c6f6243abc528f67fddda239ed7572235",
+      "bytes": 64355
+    },
+    "keyframes/7017-page-061.jpg": {
+      "sha256": "3cff0cb83e04174559894338ebc1e07d817e8347a9573c0d010d99afa78aa443",
+      "bytes": 64255
+    },
+    "keyframes/7017-page-062.jpg": {
+      "sha256": "b6cb130edbb7d9cac0af29db64cc37e2f5cc661aa9a6445200e984ac975c4a1b",
+      "bytes": 63779
+    },
+    "keyframes/7017-page-063.jpg": {
+      "sha256": "8dcd4dfcc4e01a66aa056c007f9bf30639f1aa0a4d2d129650264eafd54ad57b",
+      "bytes": 64029
+    },
+    "keyframes/7017-page-064.jpg": {
+      "sha256": "cac984f6b9a6469ec3b814f1cf49240bfa09ad56fd765dd87dc8e9343fc3354b",
+      "bytes": 64637
+    },
+    "keyframes/7017-page-065.jpg": {
+      "sha256": "fb0935a862b3281bd5892d55b84b8f6d6a7b2c0384eeaaf906a0213224303e6c",
+      "bytes": 65164
+    },
+    "keyframes/7017-page-066.jpg": {
+      "sha256": "5199129cacde9fefd0fddd4ba852d0660eae01772fbef46d6c6abce8b80f904d",
+      "bytes": 64828
+    },
+    "keyframes/7017-page-067.jpg": {
+      "sha256": "faa57832502895b258d9526b020592f23b7b4f2a401ff00a3d8bb9bd99c610d0",
+      "bytes": 64521
+    },
+    "keyframes/7017-page-068.jpg": {
+      "sha256": "112a393a8295c6c9870a2177f5347e77c293bcd578842b9eef54c72ac0ad7906",
+      "bytes": 64497
+    },
+    "keyframes/7017-page-069.jpg": {
+      "sha256": "c2d2b8b0962ba544b56177456602a4b064e9538c38c1237ad0eb581c35d31065",
+      "bytes": 64728
+    },
+    "keyframes/7017-page-070.jpg": {
+      "sha256": "dc296c9476e24d5fd4624bdc2a986a5a50435090a421a4ff6c2d0f0bf6f56880",
+      "bytes": 64363
+    },
+    "keyframes/7017-page-071.jpg": {
+      "sha256": "2b13bea297f768b80e989c2d50e17fb165152eb043de50833f8c832d63117f75",
+      "bytes": 63440
+    },
+    "keyframes/7017-page-072.jpg": {
+      "sha256": "cc628574cbf9879e08ec21bf5c7cd7fec04ee395ed1b0fb4b2d5e476bc270c8c",
+      "bytes": 62692
+    },
+    "keyframes/7017-page-073.jpg": {
+      "sha256": "9579a56ff9f22b4334f4167cd0fa2212e8e615c20dd98964ff6d409ec6bd8302",
+      "bytes": 62437
+    },
+    "keyframes/7017-page-074.jpg": {
+      "sha256": "cd508721e1d0bc9e7a5ac85e66951d8003aeb2c10c106ff6994ded58b1afe0ae",
+      "bytes": 62582
+    },
+    "keyframes/7017-page-075.jpg": {
+      "sha256": "049ec3c1c788020f334c9ea75e3df45212dff74d1c15e43db9b5c7000825b0ef",
+      "bytes": 63127
+    },
+    "keyframes/7017-page-076.jpg": {
+      "sha256": "6430a42205a1edbddf23d53b65db3b7813e7fd59374f2e4b71164ce0deb75b2c",
+      "bytes": 63571
+    },
+    "keyframes/7017-page-077.jpg": {
+      "sha256": "4e2592fa3b9098d1320b2420cd0eaa842f181a58cd39657e9cafbf2323d619b6",
+      "bytes": 62223
+    },
+    "keyframes/7017-page-078.jpg": {
+      "sha256": "686c6de215a090d687424a4ec1ae71e2e621bb40fcc6b000f0337d268b07b697",
+      "bytes": 64267
+    },
+    "keyframes/7017-page-079.jpg": {
+      "sha256": "68e6e162bb2cc674056ec79847fddab45d0c64bf7a4778c66da7ff0c04185376",
+      "bytes": 71375
+    },
+    "keyframes/7017-page-080.jpg": {
+      "sha256": "e188abd1f14732b8ba36cacaf260d58d4d1f8dd78d3e104eaf51b106e8948965",
+      "bytes": 67296
+    },
+    "keyframes/7017-page-081.jpg": {
+      "sha256": "56175a6cb5dc7550f0a2c43bba463794d54604cfcde4339a9b1bf30278c68b22",
+      "bytes": 67118
+    },
+    "keyframes/7017-page-082.jpg": {
+      "sha256": "bc205e21727a788189df14905b87b1f13faf57995d1bf84102618587fd9d0ec3",
+      "bytes": 66278
+    },
+    "keyframes/7017-page-083.jpg": {
+      "sha256": "16ca63e6b617c332663e636091b02d042363d516833220dab36c2263c3f1a576",
+      "bytes": 66962
+    },
+    "keyframes/7017-page-084.jpg": {
+      "sha256": "cdae4df44e489a34f107f729253ef2b8c4ba0c862e350ccf217e147cd2eb0c03",
+      "bytes": 67986
+    },
+    "keyframes/7017-page-085.jpg": {
+      "sha256": "a603a6bf3e3404012fe524ee02b0626535f2817a0940e494897b91e83076f74d",
+      "bytes": 62313
+    },
+    "keyframes/7017-page-086.jpg": {
+      "sha256": "ef5fcfb167054aa8d87a0d7fb9b763081ef85091cb4bc5c43c10fc3a291cc09f",
+      "bytes": 59817
+    },
+    "keyframes/7017-page-087.jpg": {
+      "sha256": "f7e38f20a4ce59505e8b3cdedab110c246fe6d250b2b509b4e04e1b6b1146676",
+      "bytes": 43971
+    },
+    "keyframes/7018-page-001.jpg": {
+      "sha256": "96974c9a3b9f2da4ff090b6b6be029b94e11ca164f55bf26fd32428ecbdd54cb",
+      "bytes": 61249
+    },
+    "keyframes/7018-page-002.jpg": {
+      "sha256": "1bbc9513798c22074bee2f28e8451ad36e366917f72b7d5db19ce0b0659040fe",
+      "bytes": 59874
+    },
+    "keyframes/7018-page-003.jpg": {
+      "sha256": "36d898d9a1cbe02416070fc964a32e0275aa9f77934abedd6f1ff1b1c09aab11",
+      "bytes": 57065
+    },
+    "keyframes/7018-page-004.jpg": {
+      "sha256": "6ea73d68589b87a8f1d1ed14ec0e83453894bfb65fe25149e38bb2a0642cb07a",
+      "bytes": 53882
+    },
+    "keyframes/7018-page-005.jpg": {
+      "sha256": "2583d1e89fa0952e950b901f001870c7dd6fccd952bb433bf4c922870f4edb7c",
+      "bytes": 51329
+    },
+    "keyframes/7018-page-006.jpg": {
+      "sha256": "d5ddbbd72f3439c20360f4e76be0841821868d419666a8edd7ba393d809b4cdf",
+      "bytes": 52053
+    },
+    "keyframes/7018-page-007.jpg": {
+      "sha256": "afb5cfe30c2d93017378dd440403e1bfaa3b650857953cefbe149f53cbc86e32",
+      "bytes": 51853
+    },
+    "keyframes/7018-page-008.jpg": {
+      "sha256": "d0aea99d3d210b9c8a41ab6896143319fbd12332ea1195c890d866de400894df",
+      "bytes": 52307
+    },
+    "keyframes/7018-page-009.jpg": {
+      "sha256": "44ce04f1d289e851304149d72fd8b4876bb97c9b97724d73aa4879485da38500",
+      "bytes": 52792
+    },
+    "keyframes/7018-page-010.jpg": {
+      "sha256": "2c804e31413618a795bccce470dd6e2d19a1549a07791a59ed343c7ae3c6a265",
+      "bytes": 54619
+    },
+    "keyframes/7018-page-011.jpg": {
+      "sha256": "65efc39529ed8cdb601612441cdaceef91b36c6a7c2c81d3526db555eba1cba2",
+      "bytes": 54839
+    },
+    "keyframes/7018-page-012.jpg": {
+      "sha256": "156d84f2896e9abd371e9d4050cdecd77f24c21a12755a7f345125ce3f2317ce",
+      "bytes": 58639
+    },
+    "keyframes/7018-page-013.jpg": {
+      "sha256": "d4f3222031ce31c838e230109905ee12d269d20d1720f97028e5bace8506157b",
+      "bytes": 59670
+    },
+    "keyframes/7018-page-014.jpg": {
+      "sha256": "e449679dda038201bf4e69eab6ae92a978094e89134cfd28daba8d3908f64100",
+      "bytes": 61764
+    },
+    "keyframes/7018-page-015.jpg": {
+      "sha256": "c4709067eff379783501f9eb78222669bcbaa4bfa65f304c898816d203240657",
+      "bytes": 62449
+    },
+    "keyframes/7018-page-016.jpg": {
+      "sha256": "5bc21373b2382b9763b28949aa648b644f8f999e3b4dd35ad9774009c6647428",
+      "bytes": 62109
+    },
+    "keyframes/7018-page-017.jpg": {
+      "sha256": "b02aac7349a24a96c60687dd879e01c0d37adb12aed8ca87864e798a84a4bac5",
+      "bytes": 57789
+    },
+    "keyframes/7018-page-018.jpg": {
+      "sha256": "68d7fb51098b9834c3048da76c3ea45428d15b02087b88f75fee429bdcbfb752",
+      "bytes": 55341
+    },
+    "keyframes/7018-page-019.jpg": {
+      "sha256": "2339a5fbadcd101203cfbb891e0c8a263ba06b263a7f6fffa9521c04f414c242",
+      "bytes": 55849
+    },
+    "keyframes/7018-page-020.jpg": {
+      "sha256": "a25fff8ced93415f5c4e51799b6fe5f6c9086d03e6a4d00b74236157e07bf7fb",
+      "bytes": 55466
+    },
+    "keyframes/7018-page-021.jpg": {
+      "sha256": "8207dda0f120e1343d2777411231500f4262d885401817110fe431a8a808ce9e",
+      "bytes": 54342
+    },
+    "keyframes/7018-page-022.jpg": {
+      "sha256": "38911d4084173ce5f9eb2818a5cb0b005b2afda638f5d139255da8615dbf35ba",
+      "bytes": 54236
+    },
+    "keyframes/7018-page-023.jpg": {
+      "sha256": "989b0bfc59956066c071a3dfa6c18d5b92a6e8a7af764dccc908b0b835ef863c",
+      "bytes": 57730
+    },
+    "keyframes/7018-page-024.jpg": {
+      "sha256": "ba47311c96979ea2e2fbe5a3cea4b65ce57f8c4d07f118e65e05c6674bfdcab1",
+      "bytes": 55472
+    },
+    "keyframes/7018-page-025.jpg": {
+      "sha256": "3d3d15212c8d60e549790bedcb700f7c3bd51de0a9cf44724ddb870d43e8e215",
+      "bytes": 55363
+    },
+    "keyframes/7018-page-026.jpg": {
+      "sha256": "54be5b0ba91e3d12e604571a4392474b6202349e587758cda60ff3af98ad29ee",
+      "bytes": 57329
+    },
+    "keyframes/7018-page-027.jpg": {
+      "sha256": "701ab2a54423c78a4c32be999a4b4a8495e19c24171433c05ac3a101e55bd82e",
+      "bytes": 59947
+    },
+    "keyframes/7018-page-028.jpg": {
+      "sha256": "0dba11195dcb3e2e8328703e551c76f69c4c0defea44d1ba5d900ba7f83c0de2",
+      "bytes": 59142
+    },
+    "keyframes/7018-page-029.jpg": {
+      "sha256": "d3e7a7b3595d7ab512b691a2b411a9163a1f9683a1c4dbd25ac7b7993487f17b",
+      "bytes": 59299
+    },
+    "keyframes/7018-page-030.jpg": {
+      "sha256": "e864ba6c4dbdeba5e55b706fd90a6ad442c17d113d1924a4322eb0e374c8a41f",
+      "bytes": 59989
+    },
+    "keyframes/7018-page-031.jpg": {
+      "sha256": "8ddf6d13524cb937358882158e51978c5934c63574152acf96ff420b54b11819",
+      "bytes": 59263
+    },
+    "keyframes/7018-page-032.jpg": {
+      "sha256": "a23a71f8fbf416c90e80cad76bf8371dea03bddabca2b26893af808140a70c92",
+      "bytes": 58921
+    },
+    "keyframes/7018-page-033.jpg": {
+      "sha256": "50db417b6d3a560849325887d37a0241a69fc1622798c558e6539be4012c4c0c",
+      "bytes": 59194
+    },
+    "keyframes/7018-page-034.jpg": {
+      "sha256": "e903172e2d0d7ad0c5dedbac9604e117a3345da99ee6ad429364b4e68856ece6",
+      "bytes": 59625
+    },
+    "keyframes/7018-page-035.jpg": {
+      "sha256": "6d720a26638e4612448e5713edacdfc9ae734b27377f2f26eb0d232fd545b5c8",
+      "bytes": 59411
+    },
+    "keyframes/7018-page-036.jpg": {
+      "sha256": "30fe6a8b8d2cc079f3f052f4bffdd79273a1d6fa55320826ecc16f8a71af360a",
+      "bytes": 59175
+    },
+    "keyframes/7018-page-037.jpg": {
+      "sha256": "75e2f3b005ed3e3c2d5690eb6ae9f28440587ec6dc7cd08520a19f4574b45886",
+      "bytes": 61193
+    },
+    "keyframes/7018-page-038.jpg": {
+      "sha256": "74e0672d68adfeba2b761a56deda3e321f8ae6e50946b4bc7a0d23fe7c1fe7dc",
+      "bytes": 63869
+    },
+    "keyframes/7018-page-039.jpg": {
+      "sha256": "9853ddc6952f29aaea2777c112b0291b7d306ce1be90fe987b4dab09ee6b8662",
+      "bytes": 67085
+    },
+    "keyframes/7018-page-040.jpg": {
+      "sha256": "265ba2f1484216c42fd80332701635096baff079b332779e67fa507b49469d23",
+      "bytes": 67020
+    },
+    "keyframes/7018-page-041.jpg": {
+      "sha256": "be8396f4930ab4e1b14f8434f67c4b8ddcd6d51e15f076312ff280b0c452b940",
+      "bytes": 66459
+    },
+    "keyframes/7018-page-042.jpg": {
+      "sha256": "aecd1624580a1f3755b8cc8df57152a3c06cb159a8d4259d9980ce5b99213412",
+      "bytes": 65932
+    },
+    "keyframes/7018-page-043.jpg": {
+      "sha256": "da221acb29475cc8bafed7c762f26a26646341414ef20f76eda9aa917496ae52",
+      "bytes": 64924
+    },
+    "keyframes/7018-page-044.jpg": {
+      "sha256": "cf32d190fa360b191daeb7a3dc86651eb66a4d6b0f939153c4056080b06d10ae",
+      "bytes": 64187
+    },
+    "keyframes/7018-page-045.jpg": {
+      "sha256": "0904cc88cb4af9eab92af16e3b5af6915bc4bc55b864af9258ef3087c0c98226",
+      "bytes": 63064
+    },
+    "keyframes/7018-page-046.jpg": {
+      "sha256": "28ecb8943c5b17d3a295eca247a628f08ce69f0dba189c5e48507280360866d7",
+      "bytes": 64584
+    },
+    "keyframes/7018-page-047.jpg": {
+      "sha256": "3507321cc8d8627a4b7a544553d15b3ed493438ac4783b50cfa653a8c964d60d",
+      "bytes": 63929
+    },
+    "keyframes/7018-page-048.jpg": {
+      "sha256": "b432e3b2169ca90b2f9a3eef7a02e797b8c43b51c8ced7412d3a9304be78ffe7",
+      "bytes": 64615
+    },
+    "keyframes/7018-page-049.jpg": {
+      "sha256": "c4b7c9367dbaec578fc152f9d8af0e5045a3116b34abaf9e2cb7386ee078039e",
+      "bytes": 64435
+    },
+    "keyframes/7018-page-050.jpg": {
+      "sha256": "34acd3eee620704838783c33b6f6b320603735934679aa91066cca03f8014bf4",
+      "bytes": 64568
+    },
+    "keyframes/7018-page-051.jpg": {
+      "sha256": "003f4b39f570837946b2fd39650803819dcb5176df1e14f78616ad0cd424f3ef",
+      "bytes": 64494
+    },
+    "keyframes/7018-page-052.jpg": {
+      "sha256": "061ec028e8c025b79e482210ca43af0fa32922c7169ddefc6492276e86129cc1",
+      "bytes": 64602
+    },
+    "keyframes/7018-page-053.jpg": {
+      "sha256": "d8fc4d178b5e6b5926b183f19b1e3b01237da4f6ef1ef62355f6ec0feae19a3f",
+      "bytes": 66480
+    },
+    "keyframes/7018-page-054.jpg": {
+      "sha256": "b4a59d254dadd996ba593796b6e52acdb93efd5e9aa52799928cd2dd77be03e5",
+      "bytes": 68746
+    },
+    "keyframes/7018-page-055.jpg": {
+      "sha256": "8536874224b389878146bb39f9d6f3db6a065dcf7a2bf72fa327526f71f438ab",
+      "bytes": 68513
+    },
+    "keyframes/7018-page-056.jpg": {
+      "sha256": "e81709054a654d4543f258450a0ac2009a73e9ee30ce087aa7bac584d3bc8415",
+      "bytes": 66468
+    },
+    "keyframes/7018-page-057.jpg": {
+      "sha256": "06bd8251889d290ac21594c360f69273a84d5f185e7b3b93f120e713ac593bae",
+      "bytes": 67084
+    },
+    "keyframes/7018-page-058.jpg": {
+      "sha256": "aa69879d47f70b066ea966def4f27ad17c043267d9602f5a04d8612de12524df",
+      "bytes": 70416
+    },
+    "keyframes/7018-page-059.jpg": {
+      "sha256": "931aca14b8524a3efbee772c82dff7650aca8c7174c619b98c8540350c6e8f74",
+      "bytes": 71602
+    },
+    "keyframes/7018-page-060.jpg": {
+      "sha256": "fd4cb453568b2e101b18b984754ea885cf73a28303c79968bec7bc019574b119",
+      "bytes": 67696
+    },
+    "keyframes/7018-page-061.jpg": {
+      "sha256": "7a778dc420f3c8318779a098a46b69c76becfdc05efaf42794dcc9feb677c52b",
+      "bytes": 62236
+    },
+    "keyframes/7018-page-062.jpg": {
+      "sha256": "122d9098dda2260ca3f7a177ae495ab2fb97226eeab7f35014ea06e4e0714f5c",
+      "bytes": 59742
+    },
+    "keyframes/7018-page-063.jpg": {
+      "sha256": "8aea39f4d62d4c73c7ab8a2d8f690aaca378760c12ea83511ae1c559d5715a0e",
+      "bytes": 59452
+    },
+    "keyframes/7018-page-064.jpg": {
+      "sha256": "92bcdadc55897873662ecef6693654b31abbd02e5accc36b7ad622999f4c5d28",
+      "bytes": 57618
+    },
+    "keyframes/7018-page-065.jpg": {
+      "sha256": "9213903485c97b83e60668fa350a86fed453e367bdd49140d977bcfd3d168765",
+      "bytes": 57974
+    },
+    "keyframes/7018-page-066.jpg": {
+      "sha256": "7340edd83fb759f1b5420be7895f94171894db6e603298dbe8faa476e629fd13",
+      "bytes": 57223
+    },
+    "keyframes/7018-page-067.jpg": {
+      "sha256": "cdf58fcc36ca75e771245d67578843a141d8cc2348b4ee042f08a4c860a93859",
+      "bytes": 57887
+    },
+    "keyframes/7018-page-068.jpg": {
+      "sha256": "aad62f6605e3ec9d236f2b6b3eaccf8a9bb6a2828dc752e03bdab874a4c96271",
+      "bytes": 41858
+    },
+    "keyframes/index.md": {
+      "sha256": "a75df7669924cc5915a5c3f529e14654f1fe0147ee56c985ce6b20ab43b3bb84",
+      "bytes": 26368
+    },
+    "provenance.json": {
+      "sha256": "7cc2424429a0b5b2e97a5e0cfe1b907805c2e574030c0fd7387e4ce1bb3d55d0",
+      "bytes": 187707
+    },
+    "query_proprio.py": {
+      "sha256": "dbc97a5e441f2f1c5ab3654ef7da2f17e546ce01f48cc15933c6394b738516d5",
+      "bytes": 566
+    }
+  },
+  "total_content_bytes": 16830968,
+  "limits": "Public human study only; no held-out rollout data or live scorer/object/contact state; not task-success evidence."
+}

@@ -1,0 +1,23 @@
+{
+ "scope":"TRAIN73 learned recipe, not zero-shot. Derived from practice003 full reset success with geometry inspection and native feedback. Direct version omits inspection detours; must verify independently.",
+ "camera_bottom_eef":{"center":[-0.003673496,0.010049132,0.088745259],"normal":[0.001539985,-0.003925692,0.999991109],"long":[-0.952063684,-0.305899773,0.000265298]},
+ "plate_estimate":{"center_before_transport":[1.01398636,0.57605989,1.273],"short_yaw_deg":51.8,"dimensions":[0.07827968,0.10578286]},
+ "actions":[
+ {"left":{"grip":1},"right":{"grip":1},"base":{"yaw_deg":-25},"timeout_seconds":4},
+ {"left":{"preset":"ready"},"right":{"preset":"ready"},"timeout_seconds":4},
+ {"torso":{"q":[1.7,-2.54,-1.68,0]},"timeout_seconds":5},
+ {"left":{"to":[0.525,0.175,0.18],"finger_dir":[0,0,-1],"close_dir":[1,0,0]},"right":{"to":[0.45,-0.3,0.20]},"timeout_seconds":5},
+ {"left":{"to":[0.525,0.175,0.083]},"timeout_seconds":4},
+ {"left":{"grip":0},"timeout_seconds":3},
+ {"left":{"to":[0.525,0.175,0.145]},"timeout_seconds":3},
+ {"left":{"to":[0.48,0.07,0.145]},"timeout_seconds":3},
+ {"torso":{"q":[1.25,-1.9,-0.7,0]},"timeout_seconds":4},
+ {"torso":{"q":[0.65,-0.65,0,0]},"timeout_seconds":4},
+ {"left":{"q":[0.47580275,2.80634314,-0.02438187,-1.07814138,-1.86517345,0.53259092,1.55779996]},"timeout_seconds":8},
+ {"base":{"fwd":0.46,"left":0.15},"timeout_seconds":6},
+ {"left":{"to":[0.562,0.419,1.372]},"timeout_seconds":3},
+ {"left":{"to":[0.562,0.419,1.358]},"timeout_seconds":3}
+ ],
+ "release":"left measured q plus grip1; withdraw left.to [.562,.419,1.46]; bounded measured-q cancel wrist limit then base fwd-.30. Actual clearance/native finish must be checked.",
+ "practice003_result":{"Q":1,"step":1118,"sim_seconds":37.2666666667,"wall_seconds":529.86217958,"restores":0,"interim_feedback":true,"final_receipt":"receipt_01792155166652981000_2032dc280c9e447aba5f3fef0333d4ce.json"}
+}

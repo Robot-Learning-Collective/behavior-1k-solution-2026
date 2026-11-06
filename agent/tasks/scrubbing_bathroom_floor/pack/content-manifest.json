@@ -1,0 +1,40 @@
+{
+  "task": "scrubbing_bathroom_floor",
+  "tier": "lite",
+  "references_episode_train": [
+    [
+      12010,
+      20
+    ],
+    [
+      12011,
+      21
+    ],
+    [
+      12012,
+      22
+    ]
+  ],
+  "verification": "PASS: public pinned instructions/BDDL/source hashes, three non-held-out annotation joins; source coarse (primitive) annotations are empty and reported as not supplied; human mean cross-checked against evaluator load_human_stats; generator regenerates the 13 existing well-formed lite packs byte-identically; catalog_sha256 here is the pinned meta/episodes shard",
+  "verification_script_sha256": "a6bdcd2664461c4ddc7ba46720596922131f64ea73446dff301a1f3724e560f0",
+  "files": {
+    "ANNOTATIONS.md": {
+      "sha256": "d3494d79683c5265d7d59f00a7c02568543563cfb038270413185912725613fc",
+      "bytes": 4660
+    },
+    "README.md": {
+      "sha256": "28b0211302d59b8d38ef5ff71fd3b0fa3fee217a6da9feda2645f50a2650ac2b",
+      "bytes": 357
+    },
+    "TASK.md": {
+      "sha256": "1846180d1c4d9d66d77cfdb1ce0eb021fec70a1801023d1d09b5c92a3322dabe",
+      "bytes": 1417
+    },
+    "provenance.json": {
+      "sha256": "c8eb4abae5d2f02dbf78125abaeda4515d76a86d88a9c288c0a35bc11b8dde7f",
+      "bytes": 3752
+    }
+  },
+  "total_content_bytes": 10186,
+  "limits": "Public human study only; no held-out rollout data or live scorer/object/contact state; not task-success evidence."
+}

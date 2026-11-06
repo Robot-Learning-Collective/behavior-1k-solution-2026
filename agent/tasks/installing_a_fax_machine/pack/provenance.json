@@ -1,0 +1,91 @@
+{
+  "scope": "public-data lite; no frames/video or simulator runtime accessed",
+  "dataset": "behavior-1k/2026-challenge-demos",
+  "revision": "4f50b44796641a4d526a19d9aeadc8aa51e2f2c2",
+  "instruction_source": "meta/tasks.jsonl",
+  "instruction_source_sha256": "8d8222310c3611316c6e5fe822a8dd3c6e552b32bcfddd10870c0672bfb8427c",
+  "native_commit": "bd049de3119acdcdf2334fe9e1ebe060fa20c108",
+  "official": {
+    "bddl": "(define (problem installing_a_fax_machine-0)\n    (:domain behavior-1k)\n\n    (:objects\n     \tfacsimile.n.02_1 - facsimile.n.02\n    \tfloor.n.01_1 floor.n.01_2 - floor.n.01\n    \tcarrel.n.02_1 carrel.n.02_* - carrel.n.02\n    \tagent.n.01_1 - agent.n.01\n    )\n    \n    (:init \n        (ontop facsimile.n.02_1 floor.n.01_1) \n        (not \n            (toggled_on facsimile.n.02_1)\n        ) \n        (inroom floor.n.01_1 shared_office)\n        (inroom carrel.n.02_1 shared_office) \n        (inroom carrel.n.02_* shared_office) \n        (inroom floor.n.01_2 corridor) \n        (ontop agent.n.01_1 floor.n.01_1)\n    )\n    \n    (:goal \n        (and \n            (toggled_on ?facsimile.n.02_1)\n            (exists \n                (?carrel.n.02 - carrel.n.02)\n                (ontop ?facsimile.n.02_1 ?carrel.n.02)\n            )\n        )\n    )\n)\n",
+    "bddl_sha256": "5eb9ba3bade965e05bdc117fe2dca798943dd7a4a48e46686d92f5d7c18df1b3",
+    "human_mean_steps": 4076.89,
+    "stats_sha256": "7dbb5f7f00a2e06c693dfbb3045e5c28e627b6179e775f1ad93ca4b61f08e6dc"
+  },
+  "catalog_sha256": "28e91a6443951f5675f5700866e7a1b8c3ba62fad510f9c078bd102e05cccaaf",
+  "episodes": [
+    {
+      "episode": {
+        "episodeId": "17814",
+        "episodeIndex": 17814,
+        "demoIndex": 14,
+        "rawEpisodeId": 890200,
+        "taskInstanceId": 20,
+        "frameCount": 2404,
+        "skillCount": 6,
+        "primitiveCount": 0,
+        "taskDurationFrames": 2404,
+        "validStartFrame": 0,
+        "validEndFrame": 2404,
+        "annotationPath": "annotations/task-0089/episode_00890200.json",
+        "remoteZed": {
+          "chunkIndex": 89,
+          "fileIndex": 0,
+          "fromTimestamp": 1780.0,
+          "toTimestamp": 1860.1333333333334
+        }
+      },
+      "annotation_sha256": "2a4fe0145a3e6e57beeb7a81ad5cc532ec15bec2ab1e97e482d100ab24b07007"
+    },
+    {
+      "episode": {
+        "episodeId": "17815",
+        "episodeIndex": 17815,
+        "demoIndex": 15,
+        "rawEpisodeId": 890210,
+        "taskInstanceId": 21,
+        "frameCount": 4593,
+        "skillCount": 6,
+        "primitiveCount": 0,
+        "taskDurationFrames": 4593,
+        "validStartFrame": 0,
+        "validEndFrame": 4593,
+        "annotationPath": "annotations/task-0089/episode_00890210.json",
+        "remoteZed": {
+          "chunkIndex": 89,
+          "fileIndex": 0,
+          "fromTimestamp": 1860.1333333333334,
+          "toTimestamp": 2013.2333333333333
+        }
+      },
+      "annotation_sha256": "a00f0c45b72a71e723d973b830b744c66711d597988555ac59a8f8fd69457e47"
+    },
+    {
+      "episode": {
+        "episodeId": "17816",
+        "episodeIndex": 17816,
+        "demoIndex": 16,
+        "rawEpisodeId": 890220,
+        "taskInstanceId": 22,
+        "frameCount": 2730,
+        "skillCount": 6,
+        "primitiveCount": 0,
+        "taskDurationFrames": 2730,
+        "validStartFrame": 0,
+        "validEndFrame": 2730,
+        "annotationPath": "annotations/task-0089/episode_00890220.json",
+        "remoteZed": {
+          "chunkIndex": 89,
+          "fileIndex": 0,
+          "fromTimestamp": 2013.2333333333333,
+          "toTimestamp": 2104.2333333333336
+        }
+      },
+      "annotation_sha256": "24d7320c3fab6d0ee4218c45fa776eb3046c9378cb321716ee63be163b75c1e5"
+    }
+  ],
+  "files": {
+    "TASK.md": "f9056b5c193611bbc69be259f0f06d28237823b4d9b2b7a97c3a641f41b21468",
+    "ANNOTATIONS.md": "f77281c9fefbe8c24e9f2c8de5d75e1bf2c7e9d004e73ea2ba27f3dfc0d44f3d",
+    "README.md": "28b0211302d59b8d38ef5ff71fd3b0fa3fee217a6da9feda2645f50a2650ac2b"
+  }
+}

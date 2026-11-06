@@ -1,0 +1,91 @@
+{
+  "scope": "public-data lite; no frames/video or simulator runtime accessed",
+  "dataset": "behavior-1k/2026-challenge-demos",
+  "revision": "4f50b44796641a4d526a19d9aeadc8aa51e2f2c2",
+  "instruction_source": "meta/tasks.jsonl",
+  "instruction_source_sha256": "8d8222310c3611316c6e5fe822a8dd3c6e552b32bcfddd10870c0672bfb8427c",
+  "native_commit": "bd049de3119acdcdf2334fe9e1ebe060fa20c108",
+  "official": {
+    "bddl": "(define (problem make_cabinet_doors-0)\n    (:domain behavior-1k)\n\n    (:objects\n        cabinet_base.n.01_1 - cabinet_base.n.01\n        cabinet_door.n.01_1 - cabinet_door.n.01\n        floor.n.01_1 - floor.n.01\n        agent.n.01_1 - agent.n.01\n    )\n    \n    (:init \n        (inroom floor.n.01_1 living_room) \n        (ontop cabinet_base.n.01_1 floor.n.01_1) \n        (ontop cabinet_door.n.01_1 floor.n.01_1) \n        (ontop agent.n.01_1 floor.n.01_1)\n    )\n    \n    (:goal \n        (and \n            (attached ?cabinet_door.n.01_1 ?cabinet_base.n.01_1)\n        )\n    )\n)",
+    "bddl_sha256": "c95ab26ec89f82936ad402aa2a9f406aad741aa10379b865ff917430e950ab08",
+    "human_mean_steps": 3442.525,
+    "stats_sha256": "7dbb5f7f00a2e06c693dfbb3045e5c28e627b6179e775f1ad93ca4b61f08e6dc"
+  },
+  "catalog_sha256": "f0c50b47058f4c0a9fe6216b83e31b75915f8da0e75e6799f6456af5cdcccaae",
+  "episodes": [
+    {
+      "episode": {
+        "episodeId": "15609",
+        "episodeIndex": 15609,
+        "demoIndex": 9,
+        "rawEpisodeId": 780210,
+        "taskInstanceId": 21,
+        "frameCount": 2230,
+        "skillCount": 6,
+        "primitiveCount": 0,
+        "taskDurationFrames": 2230,
+        "validStartFrame": 0,
+        "validEndFrame": 2230,
+        "annotationPath": "annotations/task-0078/episode_00780210.json",
+        "remoteZed": {
+          "chunkIndex": 78,
+          "fileIndex": 0,
+          "fromTimestamp": 1073.3,
+          "toTimestamp": 1147.6333333333332
+        }
+      },
+      "annotation_sha256": "8fdadf934cef918f7baddfce370a215f54c369b30baf6796bd5741e49179aaec"
+    },
+    {
+      "episode": {
+        "episodeId": "15610",
+        "episodeIndex": 15610,
+        "demoIndex": 10,
+        "rawEpisodeId": 780230,
+        "taskInstanceId": 23,
+        "frameCount": 4170,
+        "skillCount": 7,
+        "primitiveCount": 0,
+        "taskDurationFrames": 4170,
+        "validStartFrame": 0,
+        "validEndFrame": 4170,
+        "annotationPath": "annotations/task-0078/episode_00780230.json",
+        "remoteZed": {
+          "chunkIndex": 78,
+          "fileIndex": 0,
+          "fromTimestamp": 1147.6333333333332,
+          "toTimestamp": 1286.6333333333332
+        }
+      },
+      "annotation_sha256": "06ba57b2ccb0be5a05c7bc345c4fa9e522622abf19240a8d3ee920625b47fa8f"
+    },
+    {
+      "episode": {
+        "episodeId": "15611",
+        "episodeIndex": 15611,
+        "demoIndex": 11,
+        "rawEpisodeId": 780240,
+        "taskInstanceId": 24,
+        "frameCount": 3206,
+        "skillCount": 7,
+        "primitiveCount": 0,
+        "taskDurationFrames": 3206,
+        "validStartFrame": 0,
+        "validEndFrame": 3206,
+        "annotationPath": "annotations/task-0078/episode_00780240.json",
+        "remoteZed": {
+          "chunkIndex": 78,
+          "fileIndex": 0,
+          "fromTimestamp": 1286.6333333333332,
+          "toTimestamp": 1393.4999999999998
+        }
+      },
+      "annotation_sha256": "fec66430d2d288f07ae3e9923f159c8c53704d9f5400693efe95f1cc14e502f7"
+    }
+  ],
+  "files": {
+    "TASK.md": "edcda89a789705489ef1ba6a9b474b33e1a4e1eae48bf6e504e9fef60dcb4cdf",
+    "ANNOTATIONS.md": "cb9b3aacb5cb50d28e36faadf7d9eca45b64d38274cd027a3711dd3cfae567cb",
+    "README.md": "28b0211302d59b8d38ef5ff71fd3b0fa3fee217a6da9feda2645f50a2650ac2b"
+  }
+}

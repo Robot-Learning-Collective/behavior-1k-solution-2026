@@ -1,0 +1,67 @@
+{
+  "scope": "One over-budget same-world practice completion; no reset or restore after initial authorized reset; not official-compatible success or repeatability proof.",
+  "attempt_id": "brisket-train020-practice-001",
+  "observation_id": 304,
+  "simulated_seconds": 493.76666666666665,
+  "wall_seconds": 9181.570809236997,
+  "official_step_budget": 11002,
+  "budget_excess_steps": 3811,
+  "practice_feedback": {
+    "practice_only": true,
+    "privileged_training_feedback": true,
+    "attempt_id": "brisket-train020-practice-001",
+    "step": 14813,
+    "success": true,
+    "predicates": [
+      {
+        "index": 0,
+        "predicate": "(cooked ?brisket.n.01_1)",
+        "satisfied": true
+      },
+      {
+        "index": 1,
+        "predicate": "(ontop ?brisket.n.01_1 ?chopping_board.n.01_1)",
+        "satisfied": true
+      },
+      {
+        "index": 2,
+        "predicate": "(ontop ?frying_pan.n.01_1 ?countertop.n.01_1)",
+        "satisfied": true
+      }
+    ],
+    "goal_options": [
+      [
+        {
+          "index": 0,
+          "predicate": "(cooked brisket.n.01_1)",
+          "satisfied": true
+        },
+        {
+          "index": 1,
+          "predicate": "(ontop brisket.n.01_1 chopping_board.n.01_1)",
+          "satisfied": true
+        },
+        {
+          "index": 2,
+          "predicate": "(ontop frying_pan.n.01_1 countertop.n.01_1)",
+          "satisfied": true
+        }
+      ]
+    ],
+    "q_score": 1.0,
+    "satisfied_fraction": 1.0,
+    "q_definition": "Native compute_q_score: success=1; otherwise newly satisfied since this practice start / predicates per option, maximized over alternatives",
+    "satisfied_fraction_definition": "Current satisfied predicates / predicates per option, maximized over alternatives; not baseline-adjusted Q",
+    "source": "BehaviorTask.compiled_task.check_goal + get_goal_option_satisfaction; native TaskMetric.compute_q_score"
+  },
+  "endpoint_receipt": "receipt_01792177244457877000_94c7f73dfac34f5b9a9e3f3616d0d82d.json",
+  "world_preserved": true,
+  "admin_finish_called": false,
+  "burner": "visually red/off after262, retained on later stove views",
+  "caveats": [
+    "Incidental stove activation248, not a clean on-switch policy",
+    "Pan+meat fell160\u2013161 and were physically recovered",
+    "First countertop placement294 did not satisfy native target; left-counter correction304 did",
+    "No native model qualification, repeat or fresh-world efficiency result"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "outcome": "first-poster acquisition failed",
+  "cause_observed": "poster tipped at final 35mm base approach; closure empty",
+  "inference": "protocol4 odometry waypoints do not transfer exactly to integrated-proprio odometry and continuous per-tick control",
+  "last_observation": 6,
+  "sim_seconds": 13.233333333,
+  "receipts": "/tmp/pictures-run-009-p6-8ecdee/pictures-run-009-v6-a09/",
+  "next": "snapshot before final approach; use current XYZ rather than old waypoint"
+}

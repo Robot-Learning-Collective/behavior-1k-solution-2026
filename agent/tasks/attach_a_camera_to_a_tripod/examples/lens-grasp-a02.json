@@ -1,0 +1,19 @@
+{
+  "task": "attach_a_camera_to_a_tripod",
+  "instance": "TRAIN10",
+  "status": "single observed lens grasp and retained lift; NOT attachment or repeatability proof",
+  "attempt": "practice-restore-far-side-pregrasp-a02-e655c7dcce154a85ade4fda95a6babe5",
+  "start_snapshot": "camera-low-preclose-a02",
+  "caution": "Historical sequence includes an IK stall and camera displacement. Reobserve RGBD after each action; do not replay blindly.",
+  "actions": [
+    {"left":{"to":[0.69,0.25,0.065]},"outcome":"IK_stalled"},
+    {"left":{"q":[-1.0202,0.1643,-0.6985,-0.6568,-0.371,0.2133,-0.6601]},"outcome":"reached; camera displaced"},
+    {"left":{"to":[0.66,0.24,0.075]},"outcome":"reached"},
+    {"torso":{"q":[1.7,-2.5435,-1.6839,0.0001]},"left":{"to":[0.65,0.24,0.06]},"outcome":"reached"},
+    {"left":{"grip":0},"outcome":"finger aperture .070m; not yet grasp proof"},
+    {"left":{"up":0.06},"outcome":"visible lens Z increases .065 to .123m with retained wrist appearance"},
+    {"torso":{"q":[1.6367,-2.5184,-1.2692,-0.0004]},"outcome":"camera retained; TCP Z .416m"},
+    {"torso":{"q":[1.25,-1.9,-0.7,0]},"outcome":"camera retained; TCP Z .839m"}
+  ],
+  "held_snapshots": ["camera-lens-lift6cm-a02", "camera-held-raised-a02", "camera-held-upright-a02"]
+}

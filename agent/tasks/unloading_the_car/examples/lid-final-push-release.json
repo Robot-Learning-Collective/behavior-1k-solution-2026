@@ -1,0 +1,9 @@
+[
+{"intent":"Advance while supporting high lid","base":{"fwd":0.12},"seconds":2},
+{"intent":"Human104 raise and approach","left":{"q":[-1.8454,-0.0614,-0.0646,-0.5476,0.2938,0.3605,0.2131]},"base":{"fwd":0.12},"seconds":3},
+{"intent":"Human106 elbow extension and final approach","left":{"q":[-1.9527,-0.066,-0.0628,-0.0061,0.2532,0.0551,0.201]},"torso":{"q":[0.45,-0.4,-0.014,0]},"base":{"fwd":0.12},"seconds":3},
+{"intent":"Human110 forward torso push","left":{"q":[-1.945,-0.1427,-0.029,0.0046,0.2762,0.0629,0.1994]},"torso":{"q":[0.45,-0.4,-0.214,0]},"seconds":3},
+{"intent":"Human112 final push","left":{"q":[-1.9269,-0.1288,-0.0306,0.0823,0.2743,0.0445,0.1993]},"torso":{"q":[0.45,-0.4,-0.314,0]},"seconds":2},
+{"intent":"Clean withdrawal with negative elbow and base retreat","left":{"q":[-1.4424,-0.0335,-0.0291,-1.1778,0.3468,0.7563,0.2025]},"torso":{"q":[0.45,-0.4,-0.189,0]},"base":{"fwd":-0.12},"seconds":3},
+{"intent":"Retract left in joint space, hands clear of open lid","left":{"q":[0.445,-0.027,0.163,-1.323,0.238,-0.56,-0.063]},"torso":{"q":[0.45,-0.4,0,0]},"seconds":3}
+]

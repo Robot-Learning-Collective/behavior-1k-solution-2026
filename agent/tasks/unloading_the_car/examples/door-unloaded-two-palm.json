@@ -1,0 +1,38 @@
+{
+  "task": "unloading_the_car",
+  "scope": "Old partial-scene worker only; example is reusable reasoning, not a snapshot for replacement worker",
+  "attempt": "practice-restore-frontal-trunk-1a40c299c6ed49b1809951c1b0d29878",
+  "evidence": "control-action-results.jsonl, obs34-47; RGBD/self-state cache car-run-024-p6-8dae5a",
+  "result": "Door partially opened with empty robot and widened using left palm. Neither bag moved from open trunk; no threshold crossing or task completion. Operator handoff ended drill at sim139.8s, step4194, native success false/Q0.",
+  "start": {
+    "snapshot": "door-approach-empty",
+    "odom": [3.264, 0.377, -1.157],
+    "torso_q": [0.849, -1.128, -0.45, 0],
+    "left_q": [0,0,0,0,0,0,0],
+    "right_q": [0.3283,0.0537,0.0154,-0.4663,0.0107,-0.2822,-0.1841],
+    "grips": [1,1]
+  },
+  "steps": [
+    {"obs":35,"right":{"q":[-0.3942,0.16,0.3819,-1.3743,0.1473,0.3896,-0.0246],"grip":1}},
+    {"obs":36,"right":{"q":[-0.4234,0.16,0.4862,-1.4864,0.0843,0.3835,-0.2776]}},
+    {"obs":37,"base":{"fwd":0.3,"left":-0.3}},
+    {"obs":38,"base":{"yaw_deg":-12},"note":"Door plane measured from head depth; rotate to near-normal before contact. Closed panel x~0.87m."},
+    {"obs":39,"base":{"fwd":0.16},"result":"Door began opening"},
+    {"obs":40,"base":{"fwd":0.20},"result":"Door partly open; base remains garage side"},
+    {"obs":41,"right":{"fwd":0.08,"left":-0.08},"result":"Stalled q3 lag0.252rad; achieved TCP[.756,-.017,1.002], not target"},
+    {"obs":42,"right":"current measured q","seconds":1.5,"result":"Canceled stalled lateral target"},
+    {"obs":43,"base":{"fwd":0.05,"left":-0.08},"result":"Base reached but right q3 deflected0.117rad; no clear useful extra opening"},
+    {"obs":44,"right":"current measured q","left":{"q":[0.445,-0.027,0.163,-1.323,0.238,-0.56,-0.063],"grip":1}},
+    {"obs":45,"left":{"to":[0.82,0.15,1.21],"finger_dir":[0.7,-0.7,0],"close_dir":[0.7,0.7,0]},"result":"Free-space upper-palm approach reached"},
+    {"obs":46,"left":{"fwd":0.08,"left":-0.08},"result":"Reached TCP[.897,.070,1.210], visible panel movement; right arm unloaded"},
+    {"obs":47,"left":{"fwd":0.015,"left":-0.08},"result":"Reached TCP[.908,-.009,1.211], door visibly widened; left q2 near lower limit at-.151rad"}
+  ],
+  "lessons": [
+    "Opening before loading eliminates carried-case jamb interference and frees the second hand.",
+    "Right lateral arc motion stalled despite base pose success; inspect q lag rather than trusting overall reached status.",
+    "Upper left palm with finger direction aligned toward panel normal moved door when the right lateral push stalled. This is not yet full-opening/mastery proof.",
+    "No further cross-body left move from final pose without replanning: q2 is within0.014rad of lower limit.",
+    "Hall floor remained sky/NaN in old world. Do not cross it. Operator replacement now READY; old snapshots never restore into new worker.",
+    "One2m travel RPC earlier timed out locally after120s; fresh observe recovered displaced endpoint; action was NOT replayed. Both grip intents were explicitly selected on next action."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "scope": "Observed successful contact-conditioned extraction, not a clean-reset mastered macro",
+  "snapshot_start": "brown-outer-edge",
+  "attempt": "practice-restore-brown-outer-edge-5c6ae9272b7b410aba214b25d4e32af1",
+  "steps": [
+    {"left":{"grip":1},"right":{"grip":1},"base":{"fwd":0.03,"left":-0.04}},
+    {"base":{"fwd":0.025,"left":-0.04},"torso":[0.849,-1.128,-0.895,0]},
+    {"left":{"q":[-1.47905,0.5289,-0.47766,-0.07064,0.73244,0.68083,-1.05923]}},
+    {"left":{"q":[-1.42755,0.47596,-0.41274,-0.18768,0.78447,0.71973,-0.93423]}},
+    {"left":{"q":[-1.49235,0.36908,-0.42423,-0.03374,0.77281,0.62789,-0.91549]}},
+    {"instruction":"Cancel measured-q preload, close with accept_partial; inspect both fingers. Reopen, cancel preload and reclose. Earlier rim retained at TCP[.916,.336,.790], fingers[.05,.0338]."},
+    {"instruction":"Measured-q hold before each torso pitch change: -.775 then -.45. Verify visible lift and8.3cm finger retention; cancel preload then base fwd-.55."},
+    {"left":{"q":[-1.0829,0.1826,-0.0355,-1.2499,0.6777,1.0025,-0.2285]}},
+    {"left":{"q":[-0.3776,0.3162,-0.0344,-1.5394,0.6661,0.4435,-0.2303]}},
+    {"left":{"q":[0.1719,0.2763,0.0375,-1.4632,0.6092,-0.1003,-0.0398]}}
+  ],
+  "failure": "Direct replay of final first-success q closed one finger4.7cm but lost obstruction on independent lift. No acquisition. Earlier contacts move bag; final target alone is not transferable."
+}

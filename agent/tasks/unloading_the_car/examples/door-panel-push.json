@@ -1,0 +1,16 @@
+{
+  "scope": "Door opened about50deg while brown case retained; crossing not attempted due missing rendered/depth floor beyond threshold",
+  "start": "door-approach-brown-held",
+  "attempt": "practice-restore-brown-outer-edge-5c6ae9272b7b410aba214b25d4e32af1",
+  "steps": [
+    {"right":{"q":[-0.3942,0.16,0.3819,-1.3743,0.1473,0.3896,-0.0246],"grip":1},"seconds":3},
+    {"right":{"q":[-0.4234,0.16,0.4862,-1.4864,0.0843,0.3835,-0.2776]},"seconds":1.5},
+    {"base":{"fwd":0.25,"left":-0.20},"seconds":3},
+    {"base":{"fwd":0.15},"seconds":2},
+    {"left":{"left":-0.13},"seconds":2},
+    {"base":{"fwd":0.22},"seconds":3}
+  ],
+  "unsuccessful_followup": {"right":{"q":[-0.6487,0.1367,-0.1869,-1.158,-0.0242,0.2525,-0.4302]},"seconds":2,"outcome":"Lateral push blocked at q3 .436 instead of-.1869. Cancel measured q with adequate slew budget; .3s was insufficient, subsequent1.5s reached."},
+  "saved_end": "door-open-floor-void",
+  "human_reference": "Matched episode13003/TRAIN10,14-36s. Open fingers push panel without handle grasp. Human q2 .1745 clipped to .16 in client. Current torso[.849,-1.128,-.45,0] retained rather than blindly copying human torso."
+}

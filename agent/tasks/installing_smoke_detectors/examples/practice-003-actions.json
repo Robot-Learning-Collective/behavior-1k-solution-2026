@@ -1,0 +1,688 @@
+{
+  "attempt": "smoke-train020-practice-003",
+  "warning": "Observed actions; not blind replay or an unseen-world policy. Perceive and inspect every motor result.",
+  "actions": [
+    {
+      "requested": {
+        "intent": "Act",
+        "left": {
+          "grip": 1
+        },
+        "right": {
+          "grip": 1
+        },
+        "base": {
+          "yaw_deg": -130
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": null,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 7
+      },
+      "achieved": true,
+      "reason": "reached",
+      "steps": 181,
+      "start_observation_id": 1,
+      "last_observation_id": 2
+    },
+    {
+      "requested": {
+        "intent": "Act",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": 0.7,
+          "left": 0.5
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": null,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 6
+      },
+      "achieved": true,
+      "reason": "reached",
+      "steps": 158,
+      "start_observation_id": 2,
+      "last_observation_id": 3
+    },
+    {
+      "requested": {
+        "intent": "Act",
+        "left": {
+          "preset": "ready"
+        },
+        "right": {
+          "preset": "ready"
+        },
+        "base": {
+          "yaw_deg": -45
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": null,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 5
+      },
+      "achieved": true,
+      "reason": "reached",
+      "steps": 70,
+      "start_observation_id": 3,
+      "last_observation_id": 4
+    },
+    {
+      "requested": {
+        "intent": "Act",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": 0.48
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": null,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 4
+      },
+      "achieved": true,
+      "reason": "reached",
+      "steps": 101,
+      "start_observation_id": 4,
+      "last_observation_id": 5
+    },
+    {
+      "requested": {
+        "intent": "Act",
+        "left": {
+          "to": [
+            0.68,
+            0.37,
+            0.53
+          ],
+          "finger_dir": [
+            0.55,
+            0,
+            -0.835
+          ],
+          "close_dir": [
+            0,
+            1,
+            0
+          ]
+        },
+        "right": {
+          "to": [
+            0.45,
+            -0.3,
+            0.65
+          ],
+          "finger_dir": [
+            1,
+            0,
+            0
+          ],
+          "close_dir": [
+            0,
+            1,
+            0
+          ]
+        },
+        "base": null,
+        "torso": {
+          "q": [
+            1.25,
+            -1.86087,
+            -1.12,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": null,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 5
+      },
+      "achieved": true,
+      "reason": "reached",
+      "steps": 38,
+      "start_observation_id": 5,
+      "last_observation_id": 6
+    },
+    {
+      "requested": {
+        "intent": "Act",
+        "left": {
+          "to": [
+            0.7014721632003784,
+            0.36654481291770935,
+            0.444
+          ],
+          "finger_dir": [
+            0.35,
+            0,
+            -0.936
+          ],
+          "close_dir": [
+            0,
+            1,
+            0
+          ]
+        },
+        "right": {
+          "q": [
+            0.2845573127269745,
+            0.1,
+            -0.45122602581977844,
+            -1.4356820583343506,
+            -0.32401973009109497,
+            -0.8749789595603943,
+            0.6999860405921936
+          ]
+        },
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": null,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 4
+      },
+      "achieved": true,
+      "reason": "reached",
+      "steps": 24,
+      "start_observation_id": 6,
+      "last_observation_id": 7
+    },
+    {
+      "requested": {
+        "intent": "Act",
+        "left": {
+          "grip": 0
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": 0.5,
+        "max_steps": null,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "achieved": false,
+      "reason": "timeout",
+      "steps": 15,
+      "start_observation_id": 7,
+      "last_observation_id": 8
+    },
+    {
+      "requested": {
+        "intent": "Act",
+        "left": {
+          "to": [
+            0.7015,
+            0.3665,
+            0.53
+          ],
+          "finger_dir": [
+            0.5,
+            0,
+            -0.866
+          ],
+          "close_dir": [
+            0,
+            1,
+            0
+          ]
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": null,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 3
+      },
+      "achieved": true,
+      "reason": "reached",
+      "steps": 21,
+      "start_observation_id": 8,
+      "last_observation_id": 9
+    },
+    {
+      "requested": {
+        "intent": "Act",
+        "left": {
+          "q": [
+            -0.5643696188926697,
+            0.246265709400177,
+            0.094317726790905,
+            -1.3028210401535034,
+            0.03928877413272858,
+            0.8526438474655151,
+            -0.23277050256729126
+          ]
+        },
+        "right": null,
+        "base": {
+          "fwd": -0.25
+        },
+        "torso": {
+          "q": [
+            1.025,
+            -1.45,
+            -0.47,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": null,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 4
+      },
+      "achieved": true,
+      "reason": "reached",
+      "steps": 67,
+      "start_observation_id": 9,
+      "last_observation_id": 10
+    },
+    {
+      "requested": {
+        "intent": "Act",
+        "left": {
+          "to": [
+            0.52,
+            0.36,
+            0.8
+          ],
+          "finger_dir": [
+            0.66,
+            0,
+            -0.75
+          ],
+          "close_dir": [
+            0,
+            1,
+            0
+          ]
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": null,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 4
+      },
+      "achieved": true,
+      "reason": "reached",
+      "steps": 26,
+      "start_observation_id": 10,
+      "last_observation_id": 11
+    },
+    {
+      "requested": {
+        "intent": "Act",
+        "left": {
+          "q": [
+            0.05864348262548447,
+            0.18704873323440552,
+            0.25010251998901367,
+            -1.7964904308319092,
+            -0.06405429542064667,
+            0.9,
+            -0.3628429174423218
+          ]
+        },
+        "right": null,
+        "base": {
+          "yaw_deg": 90
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": null,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 6
+      },
+      "achieved": true,
+      "reason": "reached",
+      "steps": 129,
+      "start_observation_id": 11,
+      "last_observation_id": 12
+    },
+    {
+      "requested": {
+        "intent": "Act",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": 1.4
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": null,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 9
+      },
+      "achieved": true,
+      "reason": "reached",
+      "steps": 239,
+      "start_observation_id": 12,
+      "last_observation_id": 13
+    },
+    {
+      "requested": {
+        "intent": "Act",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": 1.4
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": null,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 9
+      },
+      "achieved": true,
+      "reason": "reached",
+      "steps": 239,
+      "start_observation_id": 13,
+      "last_observation_id": 14
+    },
+    {
+      "requested": {
+        "intent": "Act",
+        "left": null,
+        "right": null,
+        "base": {
+          "yaw_deg": 75
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": null,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 5
+      },
+      "achieved": true,
+      "reason": "reached",
+      "steps": 109,
+      "start_observation_id": 14,
+      "last_observation_id": 15
+    },
+    {
+      "requested": {
+        "intent": "Act",
+        "left": null,
+        "right": null,
+        "base": {
+          "left": -0.65
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": null,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 5
+      },
+      "achieved": true,
+      "reason": "reached",
+      "steps": 126,
+      "start_observation_id": 15,
+      "last_observation_id": 16
+    },
+    {
+      "requested": {
+        "intent": "Act",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": 1.35,
+          "left": -0.07683929800987244
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": null,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 9
+      },
+      "achieved": true,
+      "reason": "reached",
+      "steps": 232,
+      "start_observation_id": 16,
+      "last_observation_id": 17
+    },
+    {
+      "requested": {
+        "intent": "Act",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": 0.8176709413528442,
+          "left": -0.0011365562677383423
+        },
+        "torso": {
+          "q": [
+            0.45,
+            -0.4,
+            0,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": null,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 7
+      },
+      "achieved": true,
+      "reason": "reached",
+      "steps": 152,
+      "start_observation_id": 17,
+      "last_observation_id": 18
+    },
+    {
+      "requested": {
+        "intent": "Act",
+        "left": {
+          "to": [
+            0.74,
+            0.2,
+            1.7
+          ],
+          "finger_dir": [
+            0.9281818278932785,
+            -0.3052626508768889,
+            -0.21282209563604756
+          ],
+          "close_dir": [
+            0.0370312612563451,
+            -0.4932991395145152,
+            0.8690711661766661
+          ]
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": null,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 5
+      },
+      "achieved": true,
+      "reason": "reached",
+      "steps": 89,
+      "start_observation_id": 18,
+      "last_observation_id": 19
+    },
+    {
+      "requested": {
+        "intent": "Act",
+        "left": {
+          "q": [
+            -2.0419249534606934,
+            0.21920345723628998,
+            -0.5802209377288818,
+            -0.7433773875236511,
+            -0.8852865099906921,
+            -0.4068354368209839,
+            -1.1865729093551636
+          ]
+        },
+        "right": null,
+        "base": {
+          "fwd": 0.10176987946033478
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": null,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 3
+      },
+      "achieved": false,
+      "reason": "timeout",
+      "steps": 91,
+      "start_observation_id": 19,
+      "last_observation_id": 20
+    },
+    {
+      "requested": {
+        "intent": "Act",
+        "left": {
+          "q": [
+            -2.042013168334961,
+            0.2192792147397995,
+            -0.5763487815856934,
+            -0.742497444152832,
+            -0.8274164795875549,
+            -0.40901127457618713,
+            -1.1876407861709595
+          ],
+          "grip": 1
+        },
+        "right": null,
+        "base": null,
+        "torso": {
+          "q": [
+            0.4391513764858246,
+            -0.40074828267097473,
+            4.0463633922627196e-05,
+            0.00010689625923987478
+          ]
+        },
+        "seconds": 0.4,
+        "max_steps": null,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "achieved": true,
+      "reason": "reached",
+      "steps": 4,
+      "start_observation_id": 20,
+      "last_observation_id": 21
+    },
+    {
+      "requested": {
+        "intent": "Act",
+        "left": {
+          "to": [
+            0.65,
+            0.2,
+            1.7
+          ],
+          "finger_dir": [
+            0.9281818278932785,
+            -0.3052626508768889,
+            -0.21282209563604756
+          ],
+          "close_dir": [
+            0.0370312612563451,
+            -0.4932991395145152,
+            0.8690711661766661
+          ]
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": null,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 3
+      },
+      "achieved": true,
+      "reason": "reached",
+      "steps": 18,
+      "start_observation_id": 21,
+      "last_observation_id": 22
+    },
+    {
+      "requested": {
+        "intent": "Act",
+        "left": {
+          "q": [
+            -1.9799959659576416,
+            0.34548547863960266,
+            -0.5830675363540649,
+            -1.1674822568893433,
+            -0.7286929488182068,
+            -0.2073870748281479,
+            -1.451891303062439
+          ]
+        },
+        "right": null,
+        "base": {
+          "fwd": -0.2
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": null,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 3
+      },
+      "achieved": true,
+      "reason": "reached",
+      "steps": 59,
+      "start_observation_id": 22,
+      "last_observation_id": 23
+    }
+  ]
+}

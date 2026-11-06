@@ -1,0 +1,40 @@
+{
+  "task": "clean_a_patio",
+  "tier": "lite",
+  "references_episode_train": [
+    [
+      7217,
+      20
+    ],
+    [
+      7218,
+      22
+    ],
+    [
+      7219,
+      24
+    ]
+  ],
+  "verification": "PASS: public pinned instructions/BDDL/source hashes, three non-held-out annotation joins; malformed coarse spans explicitly labelled derived envelopes",
+  "verification_script_sha256": "a1a3d7da62afb1741971cc97e3fbe685035ec723bc34b16ac4cc574324ecef81",
+  "files": {
+    "ANNOTATIONS.md": {
+      "sha256": "7632a20c3b6df2bd57e4aa860ef2ad35386e363b813eecedef191f391d295d70",
+      "bytes": 19688
+    },
+    "README.md": {
+      "sha256": "28b0211302d59b8d38ef5ff71fd3b0fa3fee217a6da9feda2645f50a2650ac2b",
+      "bytes": 357
+    },
+    "TASK.md": {
+      "sha256": "5610712481f707af65a504d7e8f38eba2e9819f5c0b29ccd70c9c443e040150e",
+      "bytes": 1414
+    },
+    "provenance.json": {
+      "sha256": "0b722ec469ebf34a2ec47747cf8e705c2589087d535a977926efe316a28dad46",
+      "bytes": 3683
+    }
+  },
+  "total_content_bytes": 25142,
+  "limits": "Public human study only; no held-out rollout data or live scorer/object/contact state; not task-success evidence."
+}

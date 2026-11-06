@@ -1,0 +1,9 @@
+# TRAIN237 a07 — Q1 after restoring BASE draws
+
+Fresh native reset, no restores/snapshots, first closure retained through lift/withdrawal/carry; first switch press green. Finish-only privileged training feedback: Q1, success=true, power and nextto=true,2179steps/72.633333sim. Last motor endpoint447.2wall includes initial168s documentation delay; reset setup403.213469429s separate. No observed tilt. One success, clean consecutive pair still pending.
+
+Restored original a02 mechanism, not new acquisition invention: rear hand[1.32,-.24,.79] target then BASE fwd−.25, clearZ.98, reengage, BASE−.16, clear/inspect, reengage, BASE−.07. No Cartesian arm draws. Scanner front[1.081,-.238,.826] versus edge[1.066,-.270,.720] before last draw. Withdraw BASE−.30 before open/vertical wrist orientation. Stage[.98,-.24,.81], base+.30; fresh rim[1.0748,-.2777,.8060],top[1.0911,-.2750,.8272]. Align[1.04,-.25,.81],insert[1.105,-.25,.81],close achievedq[-.75804,-.49271,.83129,-1.42067,-2.30647,-.60532,.47018]. Gap5.6cm; liftZ.94,base−.25,yaw−30 retained.
+
+Fresh laptop[1.7807,-.9174,.7988],support[1.6804,-.5976,.7650]. Base+.45, carry[1.16,-.54,.94],lowerZ.835. Open measuredq[-.94288,-.6703,.22058,-.66975,-2.11145,.37948,.54616]. Initial opening9.2cm, full10 after straight back-out[.98,-.54,.835]; then lift1.02. Scanner visibly rotated during release but independently settled next to laptop. High transition/yaw−20/base+.18. Fresh switch right[1.2673,-.3342,.8237],head[1.2678,-.3374,.8242]. Stage[1.26,-.335,.89],pressZ.815,green;clear[1.15,-.20,1.02]. No correction after native feedback.
+
+Cache scanner-run-007-p6-93a5c8/scanner-run-007-instance237-a07; last obs43 receipt_01792135535615764000_d4ef3cdcc61647b580e99bfa30f463d9.json. Preparation and shallow-release mechanisms now jointly demonstrated once; prior a03/a05/a06 failures remain.

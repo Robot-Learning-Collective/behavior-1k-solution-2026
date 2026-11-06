@@ -1,0 +1,34 @@
+{
+  "restored": true,
+  "name": "train262-long-rim-before-contact",
+  "attempt_id": "practice-restore-train262-long-rim-before-contact-7168fa0d5ef44abda8573b9063797f12",
+  "simulation_offset_seconds": 25.666666666666668,
+  "previous_attempt_feedback": {
+    "practice_only": true,
+    "privileged_training_feedback": true,
+    "attempt_id": "practice-restore-train262-long-rim-before-contact-8c17413b5bf449fc9ec77605b269c212",
+    "step": 1128,
+    "success": false,
+    "predicates": [
+      {
+        "index": 0,
+        "predicate": "(exists (?wall_nail.n.01 - wall_nail.n.01) (attached ?poster.n.01_1 ?wall_nail.n.01))",
+        "satisfied": false
+      }
+    ],
+    "goal_options": [
+      [
+        {
+          "index": 0,
+          "predicate": "(attached poster.n.01_1 wall_nail.n.01_1)",
+          "satisfied": false
+        }
+      ]
+    ],
+    "q_score": 0.0,
+    "satisfied_fraction": 0.0,
+    "q_definition": "Native compute_q_score: success=1; otherwise newly satisfied since this practice start / predicates per option, maximized over alternatives",
+    "satisfied_fraction_definition": "Current satisfied predicates / predicates per option, maximized over alternatives; not baseline-adjusted Q",
+    "source": "BehaviorTask.compiled_task.check_goal + get_goal_option_satisfaction; native TaskMetric.compute_q_score"
+  }
+}

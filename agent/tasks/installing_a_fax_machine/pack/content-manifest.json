@@ -1,0 +1,40 @@
+{
+  "task": "installing_a_fax_machine",
+  "tier": "lite",
+  "references_episode_train": [
+    [
+      17814,
+      20
+    ],
+    [
+      17815,
+      21
+    ],
+    [
+      17816,
+      22
+    ]
+  ],
+  "verification": "PASS: public pinned instructions/BDDL/source hashes, three non-held-out annotation joins; malformed coarse spans explicitly labelled derived envelopes",
+  "verification_script_sha256": "95def63f662109e14da915145d9542838e4a09bcb3254948d216c8ff1a381cfd",
+  "files": {
+    "ANNOTATIONS.md": {
+      "sha256": "f77281c9fefbe8c24e9f2c8de5d75e1bf2c7e9d004e73ea2ba27f3dfc0d44f3d",
+      "bytes": 4059
+    },
+    "README.md": {
+      "sha256": "28b0211302d59b8d38ef5ff71fd3b0fa3fee217a6da9feda2645f50a2650ac2b",
+      "bytes": 357
+    },
+    "TASK.md": {
+      "sha256": "f9056b5c193611bbc69be259f0f06d28237823b4d9b2b7a97c3a641f41b21468",
+      "bytes": 1686
+    },
+    "provenance.json": {
+      "sha256": "08013eb2f3889652ec272aa3e4bf445efe4dc5d8f646506f492c0086d8b2cb8d",
+      "bytes": 4020
+    }
+  },
+  "total_content_bytes": 10122,
+  "limits": "Public human study only; no held-out rollout data or live scorer/object/contact state; not task-success evidence."
+}

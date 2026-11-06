@@ -1,0 +1,91 @@
+{
+  "scope": "public-data lite; no frames/video or simulator runtime accessed",
+  "dataset": "behavior-1k/2026-challenge-demos",
+  "revision": "4f50b44796641a4d526a19d9aeadc8aa51e2f2c2",
+  "instruction_source": "meta/tasks.jsonl",
+  "instruction_source_sha256": "8d8222310c3611316c6e5fe822a8dd3c6e552b32bcfddd10870c0672bfb8427c",
+  "native_commit": "bd049de3119acdcdf2334fe9e1ebe060fa20c108",
+  "official": {
+    "bddl": "(define (problem clean_a_patio-0)\n    (:domain behavior-1k)\n\n    (:objects\n        mud.n.03_1 - mud.n.03\n        broom.n.01_1 - broom.n.01\n        floor.n.01_1 - floor.n.01\n        agent.n.01_1 - agent.n.01\n    )\n    \n    (:init \n        (covered floor.n.01_1 mud.n.03_1) \n        (ontop broom.n.01_1 floor.n.01_1) \n        (inroom floor.n.01_1 garden) \n        (ontop agent.n.01_1 floor.n.01_1)\n    )\n    \n    (:goal \n        (and \n            (not \n                (covered ?floor.n.01_1 ?mud.n.03_1)\n            ) \n        )\n    )\n)",
+    "bddl_sha256": "70445355444eea08edd874531c35e43d94c9e0f0c65a310d3655931883688f15",
+    "human_mean_steps": 12070.81,
+    "stats_sha256": "7dbb5f7f00a2e06c693dfbb3045e5c28e627b6179e775f1ad93ca4b61f08e6dc"
+  },
+  "catalog_sha256": "870ea66f1be7b6848a012a805c5363c7db66b8a4ff2858cbb7d3ea0984096aad",
+  "episodes": [
+    {
+      "episode": {
+        "episodeId": "7217",
+        "episodeIndex": 7217,
+        "demoIndex": 17,
+        "rawEpisodeId": 360200,
+        "taskInstanceId": 20,
+        "frameCount": 11826,
+        "skillCount": 49,
+        "primitiveCount": 5,
+        "taskDurationFrames": 11820,
+        "validStartFrame": 0,
+        "validEndFrame": 11820,
+        "annotationPath": "annotations/task-0036/episode_00360200.json",
+        "remoteZed": {
+          "chunkIndex": 36,
+          "fileIndex": 7,
+          "fromTimestamp": 520.1666666666666,
+          "toTimestamp": 914.3666666666666
+        }
+      },
+      "annotation_sha256": "911da878df103277936d30cc61ed13dc6e6248712c25cb459b1f15d9fc73dd22"
+    },
+    {
+      "episode": {
+        "episodeId": "7218",
+        "episodeIndex": 7218,
+        "demoIndex": 18,
+        "rawEpisodeId": 360220,
+        "taskInstanceId": 22,
+        "frameCount": 10887,
+        "skillCount": 55,
+        "primitiveCount": 9,
+        "taskDurationFrames": 10884,
+        "validStartFrame": 3,
+        "validEndFrame": 10887,
+        "annotationPath": "annotations/task-0036/episode_00360220.json",
+        "remoteZed": {
+          "chunkIndex": 36,
+          "fileIndex": 8,
+          "fromTimestamp": 0.0,
+          "toTimestamp": 362.9
+        }
+      },
+      "annotation_sha256": "f30de5b0a61200c0b2c0bedd6b548bca76e3e27ae42d20e8f65ea5ef3efc4f99"
+    },
+    {
+      "episode": {
+        "episodeId": "7219",
+        "episodeIndex": 7219,
+        "demoIndex": 19,
+        "rawEpisodeId": 360240,
+        "taskInstanceId": 24,
+        "frameCount": 14059,
+        "skillCount": 49,
+        "primitiveCount": 5,
+        "taskDurationFrames": 14047,
+        "validStartFrame": 11,
+        "validEndFrame": 14058,
+        "annotationPath": "annotations/task-0036/episode_00360240.json",
+        "remoteZed": {
+          "chunkIndex": 36,
+          "fileIndex": 8,
+          "fromTimestamp": 362.9,
+          "toTimestamp": 831.5333333333333
+        }
+      },
+      "annotation_sha256": "b9c94a5137ef1af847e32a18abcc5bebce7fce9acaaa392bd3f120653e9e5341"
+    }
+  ],
+  "files": {
+    "TASK.md": "5610712481f707af65a504d7e8f38eba2e9819f5c0b29ccd70c9c443e040150e",
+    "ANNOTATIONS.md": "7632a20c3b6df2bd57e4aa860ef2ad35386e363b813eecedef191f391d295d70",
+    "README.md": "28b0211302d59b8d38ef5ff71fd3b0fa3fee217a6da9feda2645f50a2650ac2b"
+  }
+}

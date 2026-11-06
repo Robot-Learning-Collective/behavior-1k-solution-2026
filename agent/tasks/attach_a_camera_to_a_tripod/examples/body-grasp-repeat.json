@@ -1,0 +1,27 @@
+{
+  "scope": "TRAIN10 snapshot-conditioned body acquisition and retained 6cm lift only; not original-reset acquisition or attachment",
+  "snapshot": "camera-displaced-body-visible-a02",
+  "torso_q": [1.7,-2.5435,-1.6839,0.0001],
+  "actions": [
+    {"left":{"to":[0.625,0.48,0.16],"finger_dir":[0,0,-1],"close_dir":[0,1,0]},"timeout_seconds":3},
+    {"left":{"to":[0.625,0.48,0.09]},"timeout_seconds":3},
+    {"left":{"grip":0},"timeout_seconds":3},
+    {"left":{"to":[0.625,0.48,0.153]},"timeout_seconds":3}
+  ],
+  "verification": {
+    "retained_lift_trials": 3,
+    "total_trials_of_this_exact_sequence": 3,
+    "body_depth_sample": "median xyz(left)[177:184,247:254]",
+    "before_z_m": 0.08267,
+    "after_z_m": 0.14198,
+    "finger_separation_m": 0.042,
+    "native_attached": false,
+    "native_q": 0
+  },
+  "attempts": [
+    "practice-restore-camera-displaced-body-visible-a02-575e2fcf3f7d4e82a7d37e83ca9253dd",
+    "practice-restore-camera-displaced-body-visible-a02-36b86682e5934a68b3ee8767e0d49600",
+    "practice-restore-camera-displaced-body-visible-a02-d4803907fe964853a958ffed907b4f3a"
+  ],
+  "cautions": ["Inspect fresh RGBD after restore; do not assume geometry in another state", "Earlier deeper approaches failed; these remain preserved", "This body grasp has not yielded attachment; mounting-side accessibility remains unproven"]
+}
