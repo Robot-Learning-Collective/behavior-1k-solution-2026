@@ -6,7 +6,7 @@ This repository contains our winning solution for the [2025 BEHAVIOR Challenge](
 
 **📄 [Technical Report](https://arxiv.org/abs/2512.06951)** | **👀 [Blog Post](https://robot-learning-collective.github.io/winning-behavior-1k-challenge)** | **🎥 [Video](https://www.youtube.com/watch?v=J4wpO0EdCZs)**
 
-> **2026 update (draft):** this branch is our learned policy for the [2026 BEHAVIOR Challenge](https://behavior.stanford.edu/challenge/) (100 tasks, new simulator). The 2025 summary below is kept; the [2026 changes](#-2026-changes) section lists what was added on top of it.
+> **2026 update (draft):** this branch is our solution for the [2026 BEHAVIOR Challenge](https://behavior.stanford.edu/challenge/) (100 tasks, new simulator): the learned policy for all tasks, plus a GPT-6 Astra agent that plays 14 tasks from frozen practice sessions ([agent/](agent/README.md)). The 2025 summary below is kept; the [2026 changes](#-2026-changes) and [agent](#-2026-agent-gpt-6-astra-on-14-tasks) sections list what was added on top of it.
 
 ---
 
@@ -68,6 +68,25 @@ We use policy based on Pi0.5 and built on top of [openpi](https://github.com/Phy
 - Gripper rule: a fully closed gripper is opened in stages where the demos never close it (`assets/semantic_stages/gripper_close_allowed.json`)
 - One checkpoint for all 100 tasks; the server batches several environments / connections per model call
 - Evaluation with persistent simulator workers that refill env slots and restore the boot scene between episodes, with per-worker CPU pinning (`scripts/run_parallel_eval.py`)
+
+
+## 🤖 2026 Agent: GPT-6 Astra on 14 tasks
+
+On 14 tasks, mostly ones where the learned policy scores close to zero, the policy server hands the episode to an LLM agent. GPT-6
+Astra controls the robot through `observe` / `act` / `xyz` calls and a per-tick controller. Every episode starts
+from a fork of the agent's own practice session on that task: it practised in the simulator, compared itself with the
+human demonstrations, and wrote down what worked. Public score 39.2% → 44.6%.
+
+```
+evaluator ── scripts/serve_b1k.py --agent ┬─ task enabled in agent/tasks/tasks.json → fork of the frozen practice session → controller
+                                          └─ every other task (and any agent failure) → learned policy
+```
+
+- [agent/README.md](agent/README.md): architecture, the practice loop, the evaluation loop, results, what we changed
+  along the way
+- [agent/practice/](agent/practice/README.md): practise a new task; [agent/research/](agent/research/README.md):
+  what we tried before practice
+- [submission/](submission/README.md): the Docker image we submitted
 
 
 ## 🚀 Quick Start (2026)
