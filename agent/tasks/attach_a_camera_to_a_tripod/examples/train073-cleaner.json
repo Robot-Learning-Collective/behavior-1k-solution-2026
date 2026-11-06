@@ -1,0 +1,13 @@
+{
+  "scope": "TRAIN73 example only; unseen layout requires fresh geometry. Cleaner006,007,008 independently passed Q1 after fresh resets; same-instance 3/3, not unseen-layout validation.",
+  "parent": "train073-corrected.json",
+  "prefix": "Execute parent actions 0..12 in observed phases, after native reset and initial observe.",
+  "seat": {"left":{"to":[0.562,0.419,1.366]},"timeout_seconds":3},
+  "release": "Command current measured endpoint-valid left q and grip1; inspect.",
+  "withdraw": {"left":{"q":[0.54311,2.84319,-0.081,-0.71615,-1.61224,0.6291,1.50]},"timeout_seconds":3},
+  "retreat": {"base":{"fwd":-0.30},"timeout_seconds":4},
+  "006_detail": "Before seat1.366 an extra target1.368 returned reached with effectively zero motion because already within Cartesian tolerance; omitted from next replication candidate. No seat stall. Withdrawal reached, minimum endpoint margin0.061rad, actual TCP[0.634,0.387,1.482]. Only grip closure stalled normally; no claim that all calls were reached.",
+  "007_result": {"Q":1,"ticks":657,"sim_seconds":21.9,"wall_seconds":177.49237326299772,"restores":0,"interim_feedback":false,"final_receipt":"receipt_01792156201100010000_7177b9faf6554adf854e1e5d93646f0d.json"},
+  "008_result": {"Q":1,"ticks":658,"sim_seconds":21.933333333333334,"wall_seconds":259.0569532810041,"restores":0,"interim_feedback":false,"final_receipt":"receipt_01792156511210782000_a4fcefd498974b7182524b5bfb27d8cf.json"},
+  "006_result": {"Q":1,"ticks":658,"sim_seconds":21.933333333333334,"wall_seconds":187.14434809499653,"restores":0,"interim_feedback":false,"final_receipt":"receipt_01792155961752086000_1e12f3d5e2304864b7969ab7542d2a68.json"}
+}

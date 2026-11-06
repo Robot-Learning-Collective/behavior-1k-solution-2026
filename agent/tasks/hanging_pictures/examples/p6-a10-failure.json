@@ -1,0 +1,6 @@
+{
+  "outcome": "lateral approach then inward sweep tipped poster; no grasp",
+  "snapshot": "p6-pregrasp-a10",
+  "receipt_dir": "/tmp/pictures-run-009-p6-8ecdee/pictures-run-009-v6-a10",
+  "observations": "5 lateral IK stalled;6 inserted;7 sweep pose reached but gripper command remained open/status stalled;8 close empty"
+}

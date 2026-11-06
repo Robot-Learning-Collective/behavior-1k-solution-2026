@@ -1,0 +1,1391 @@
+{
+  "observation_id": 30,
+  "action_id": "517c413b-3666-428d-8f22-9cf9c20e9079",
+  "simulated_seconds": 90.53333333333333,
+  "wall_seconds": 277.34930724800006,
+  "capture_monotonic_ns": 4144141159860,
+  "robot": {
+    "frame": "current mobile base; xforward,yleft,zup",
+    "quaternion_order": "xyzw",
+    "base_velocity": [
+      -0.00018564044148661196,
+      -0.0005509587354026735,
+      0.0012973923003301024
+    ],
+    "base_odometry": {
+      "source": "integrated_proprio_base_qvel_planar_estimate",
+      "position_rel_start_body": [
+        -4.0158850593185615,
+        -0.9211027437696867,
+        0.0
+      ],
+      "yaw_rel_start_rad": -2.6989748712154746,
+      "body_velocity": [
+        -0.00018564044148661196,
+        -0.0005509587354026735,
+        0.0012973923003301024
+      ],
+      "integrated_simulation_seconds": 90.53333333333076,
+      "integrated_distance_m": 7.723810120138529,
+      "uncertainty": "uncalibrated drift; no absolute world pose, vertical motion or tilt observation",
+      "vertical_position_observed": false,
+      "tilt_observed": false
+    },
+    "left": {
+      "eef_position": [
+        0.07178371794817692,
+        0.25199743416357856,
+        0.5319479096677603
+      ],
+      "eef_quaternion": [
+        -4.052809780844455e-06,
+        0.9919522803897025,
+        1.221114051706065e-06,
+        -0.12661229565785692
+      ],
+      "own_links_body": {
+        "elbow_link_name": "left_arm_link4",
+        "elbow_position_body": [
+          0.1920273498563439,
+          0.2870631407940577,
+          0.9953002361481259
+        ],
+        "finger_link_positions_body": {
+          "robot_r1:left_gripper_finger_link1": [
+            0.07750306279208835,
+            0.2654510177533924,
+            0.5543392820301549
+          ],
+          "robot_r1:left_gripper_finger_link2": [
+            0.07767490518489284,
+            0.23854472327836673,
+            0.5542945817943312
+          ]
+        },
+        "ag_start_point_body": [
+          0.07178411294482355,
+          0.2491516089540759,
+          0.5319478835192514
+        ],
+        "ag_end_point_body": [
+          0.0717840334206915,
+          0.2542923622254266,
+          0.5319479062249036
+        ],
+        "ag_ray_midpoint_body": [
+          0.07178407318275754,
+          0.25172198558975123,
+          0.5319478948720775
+        ]
+      },
+      "joints": [
+        -3.0058956781431334e-06,
+        -1.5781807860548724e-07,
+        4.835221261600964e-06,
+        4.829452791454969e-06,
+        4.175425146968337e-06,
+        -1.1083359368058154e-06,
+        1.780518005034537e-06
+      ],
+      "joint_velocities": [
+        -0.002418628428131342,
+        -0.00045385921839624643,
+        0.0004783305339515209,
+        -0.001264218590222299,
+        0.002484111348167062,
+        -0.000539223721716553,
+        0.002500765258446336
+      ],
+      "joint_efforts_nm": [
+        1.0535006523132324,
+        -0.0786958560347557,
+        -0.0042861998081207275,
+        0.25688934326171875,
+        -0.003498576581478119,
+        0.0217531006783247,
+        -0.001643447089008987
+      ],
+      "joint_effort_semantics": "PhysX measured joint effort; not contact force",
+      "last_commanded_q_target": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "q_tracking_error_rad": [
+        3.0058956781431334e-06,
+        1.5781807860548724e-07,
+        -4.835221261600964e-06,
+        -4.829452791454969e-06,
+        -4.175425146968337e-06,
+        1.1083359368058154e-06,
+        -1.780518005034537e-06
+      ],
+      "q_tracking_error_semantics": "last_commanded_position_target_minus_measured_q_rad_not_measured_torque_or_contact_force",
+      "joint_limit_margins_rad": {
+        "min_margin_rad": 0.16449984027457276,
+        "to_lower": [
+          4.4405969124698,
+          0.16449984027457276,
+          2.3462005330056854,
+          2.0844045296175864,
+          2.346199873209571,
+          1.037196958375489,
+          1.5608017368397213
+        ],
+        "to_upper": [
+          1.2990030306912104,
+          3.131600060924768,
+          2.3461908625631622,
+          0.33909514398737883,
+          2.346191522359277,
+          1.0371991750473626,
+          1.5607981758037113
+        ]
+      },
+      "finger_positions": [
+        1.0432192709686205e-07,
+        1.363484614103072e-07
+      ],
+      "finger_velocities": [
+        -6.835954991402104e-05,
+        4.918256672681309e-05
+      ],
+      "joint_endpoint_metadata": {
+        "joint_names": [
+          "left_arm_joint1",
+          "left_arm_joint2",
+          "left_arm_joint3",
+          "left_arm_joint4",
+          "left_arm_joint5",
+          "left_arm_joint6",
+          "left_arm_joint7"
+        ],
+        "dof_indices": [
+          10,
+          12,
+          14,
+          16,
+          18,
+          20,
+          22
+        ],
+        "native_action_indices": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "hard_lower_rad": [
+          -4.4506001472473145,
+          -0.1745000034570694,
+          -2.3561956882476807,
+          -2.0943996906280518,
+          -2.3561956882476807,
+          -1.0471980571746826,
+          -1.5707999467849731
+        ],
+        "hard_upper_rad": [
+          1.309000015258789,
+          3.1415998935699463,
+          2.3561956882476807,
+          0.3490999639034271,
+          2.3561956882476807,
+          1.0471980571746826,
+          1.5707999467849731
+        ],
+        "endpoint_lower_rad": [
+          -4.4405999183654785,
+          -0.16449999809265137,
+          -2.346195697784424,
+          -2.084399700164795,
+          -2.346195697784424,
+          -1.0371980667114258,
+          -1.5607999563217163
+        ],
+        "endpoint_upper_rad": [
+          1.2990000247955322,
+          3.1315999031066895,
+          2.346195697784424,
+          0.3390999734401703,
+          2.346195697784424,
+          1.0371980667114258,
+          1.5607999563217163
+        ],
+        "units": "Persistent joint POSITION radians; relative Cartesian6 starts at commanded FK; NULL holds previous command; tracking lag is not capped",
+        "command_slew_rad_per_30Hz_tick": 0.025,
+        "native_effort_limits_nm": [
+          55.0,
+          55.0,
+          25.0,
+          25.0,
+          18.0,
+          18.0,
+          18.0
+        ],
+        "safety_margin_rad": 0.01
+      },
+      "closing_axis_body": [
+        -7.731171701495555e-06,
+        0.9999999999641672,
+        3.4488448368461465e-06
+      ],
+      "finger_axis_body": [
+        -0.25118671081627075,
+        1.396302635976816e-06,
+        -0.967938653173513
+      ],
+      "cam_right_body": [
+        0.0009113289700573539,
+        -0.9999934576137258,
+        0.0035006012703092675
+      ],
+      "cam_down_body": [
+        -0.7711070285709057,
+        0.0015261236459137666,
+        0.6367037155814042
+      ],
+      "cam_depth_body": [
+        -0.6367048923701281,
+        -0.0032795847851121414,
+        -0.7711005928901757
+      ],
+      "pad_pixels": {
+        "left": {
+          "start": [
+            266.1080201838468,
+            327.7020376389365
+          ],
+          "end": [
+            241.25549967138403,
+            327.7588054275332
+          ],
+          "in_view": [
+            true,
+            true
+          ]
+        },
+        "head": {
+          "start": [
+            62.76125765826211,
+            1462.65038746556
+          ],
+          "end": [
+            56.63843157800096,
+            1462.6508521032354
+          ],
+          "in_view": [
+            false,
+            false
+          ]
+        },
+        "right": {
+          "start": [
+            -347.04355973884975,
+            1828.7539688277752
+          ],
+          "end": [
+            -354.1877297806182,
+            1830.5087877621847
+          ],
+          "in_view": [
+            false,
+            false
+          ]
+        }
+      }
+    },
+    "right": {
+      "eef_position": [
+        0.9867380941399531,
+        -0.24151310399438242,
+        1.3528420595681954
+      ],
+      "eef_quaternion": [
+        0.01852919951273323,
+        0.8857882297233454,
+        -0.02564396605657138,
+        0.4630100083733489
+      ],
+      "own_links_body": {
+        "elbow_link_name": "right_arm_link4",
+        "elbow_position_body": [
+          0.5649437068687417,
+          -0.2017879533730891,
+          1.3834161014286954
+        ],
+        "finger_link_positions_body": {
+          "robot_r1:right_gripper_finger_link1": [
+            0.9713428763443488,
+            -0.1767398463651453,
+            1.3641462741544652
+          ],
+          "robot_r1:right_gripper_finger_link2": [
+            0.9642647138768731,
+            -0.3033934665863417,
+            1.3678801710637596
+          ]
+        },
+        "ag_start_point_body": [
+          0.9894049619322434,
+          -0.1944539925063865,
+          1.3515081247635976
+        ],
+        "ag_end_point_body": [
+          0.9840391319815012,
+          -0.2891230896255698,
+          1.354191114009408
+        ],
+        "ag_ray_midpoint_body": [
+          0.9867220469568723,
+          -0.24178854106597816,
+          1.352849619386503
+        ]
+      },
+      "joints": [
+        -2.0999653339385986,
+        0.050000157207250595,
+        -0.12999635934829712,
+        -0.12001203745603561,
+        0.0649699866771698,
+        0.9999931454658508,
+        -0.13999970257282257
+      ],
+      "joint_velocities": [
+        0.001976355677470565,
+        -0.0008148192428052425,
+        -0.02401774562895298,
+        0.0008141992148011923,
+        -0.04411223530769348,
+        -0.0025925831869244576,
+        0.0023276738356798887
+      ],
+      "joint_efforts_nm": [
+        -2.1799442768096924,
+        -0.26219475269317627,
+        0.047791123390197754,
+        -0.7865500450134277,
+        0.05101817846298218,
+        -0.050718724727630615,
+        -0.06104852259159088
+      ],
+      "joint_effort_semantics": "PhysX measured joint effort; not contact force",
+      "last_commanded_q_target": [
+        -2.0999999046325684,
+        0.05000000074505806,
+        -0.12999999523162842,
+        -0.11999999731779099,
+        0.06499999761581421,
+        1.0,
+        -0.14000000059604645
+      ],
+      "q_tracking_error_rad": [
+        -3.457069396972656e-05,
+        -1.564621925354004e-07,
+        -3.635883331298828e-06,
+        1.2040138244628906e-05,
+        3.001093864440918e-05,
+        6.854534149169922e-06,
+        -2.980232238769531e-07
+      ],
+      "q_tracking_error_semantics": "last_commanded_position_target_minus_measured_q_rad_not_measured_torque_or_contact_force",
+      "joint_limit_margins_rad": {
+        "min_margin_rad": 0.03720492124557495,
+        "to_lower": [
+          2.34063458442688,
+          3.18160006031394,
+          2.2161993384361267,
+          1.9643876627087593,
+          2.4111656844615936,
+          2.0371912121772766,
+          1.4208002537488937
+        ],
+        "to_upper": [
+          3.398965358734131,
+          0.11449984088540077,
+          2.476192057132721,
+          0.4591120108962059,
+          2.281225711107254,
+          0.03720492124557495,
+          1.7007996588945389
+        ]
+      },
+      "finger_positions": [
+        0.04999998211860657,
+        0.049999598413705826
+      ],
+      "finger_velocities": [
+        1.965261617442593e-06,
+        0.00011594199168030173
+      ],
+      "joint_endpoint_metadata": {
+        "joint_names": [
+          "right_arm_joint1",
+          "right_arm_joint2",
+          "right_arm_joint3",
+          "right_arm_joint4",
+          "right_arm_joint5",
+          "right_arm_joint6",
+          "right_arm_joint7"
+        ],
+        "dof_indices": [
+          11,
+          13,
+          15,
+          17,
+          19,
+          21,
+          23
+        ],
+        "native_action_indices": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ],
+        "hard_lower_rad": [
+          -4.4506001472473145,
+          -3.1415998935699463,
+          -2.3561956882476807,
+          -2.0943996906280518,
+          -2.3561956882476807,
+          -1.0471980571746826,
+          -1.5707999467849731
+        ],
+        "hard_upper_rad": [
+          1.309000015258789,
+          0.1745000034570694,
+          2.3561956882476807,
+          0.3490999639034271,
+          2.3561956882476807,
+          1.0471980571746826,
+          1.5707999467849731
+        ],
+        "endpoint_lower_rad": [
+          -4.4405999183654785,
+          -3.1315999031066895,
+          -2.346195697784424,
+          -2.084399700164795,
+          -2.346195697784424,
+          -1.0371980667114258,
+          -1.5607999563217163
+        ],
+        "endpoint_upper_rad": [
+          1.2990000247955322,
+          0.16449999809265137,
+          2.346195697784424,
+          0.3390999734401703,
+          2.346195697784424,
+          1.0371980667114258,
+          1.5607999563217163
+        ],
+        "units": "Persistent joint POSITION radians; relative Cartesian6 starts at commanded FK; NULL holds previous command; tracking lag is not capped",
+        "command_slew_rad_per_30Hz_tick": 0.025,
+        "native_effort_limits_nm": [
+          55.0,
+          55.0,
+          25.0,
+          25.0,
+          18.0,
+          18.0,
+          18.0
+        ],
+        "safety_margin_rad": 0.01
+      },
+      "closing_axis_body": [
+        0.05657271954630728,
+        0.9979981115406135,
+        -0.028271836949587723
+      ],
+      "finger_axis_body": [
+        0.8193073069957203,
+        -0.06258865623575599,
+        -0.5699282383020017
+      ],
+      "cam_right_body": [
+        -0.05954028228515534,
+        -0.9977650393067136,
+        0.030329542078250896
+      ],
+      "cam_down_body": [
+        -0.8632557727992376,
+        0.036209516114898734,
+        -0.503466326253818
+      ],
+      "cam_depth_body": [
+        0.5012428807616074,
+        -0.05615867947162992,
+        -0.8634823548896687
+      ],
+      "pad_pixels": {
+        "left": {
+          "start": null,
+          "end": null,
+          "in_view": [
+            false,
+            false
+          ]
+        },
+        "head": {
+          "start": [
+            468.09901503161893,
+            209.161148115993
+          ],
+          "end": [
+            522.7395999387184,
+            207.9836765104993
+          ],
+          "in_view": [
+            true,
+            true
+          ]
+        },
+        "right": {
+          "start": [
+            23.951705409740775,
+            328.2605508145686
+          ],
+          "end": [
+            482.53982369833676,
+            327.21109038153605
+          ],
+          "in_view": [
+            true,
+            false
+          ]
+        }
+      }
+    },
+    "torso_joints": [
+      0.8399961590766907,
+      -1.0060797929763794,
+      -0.4199887812137604,
+      -1.7136905228198884e-07
+    ],
+    "torso_velocities": [
+      0.005784303415566683,
+      0.011471394449472427,
+      0.0011464627459645271,
+      -0.0015778385568410158
+    ],
+    "torso_joint_efforts_nm": [
+      -26.552967071533203,
+      -17.174983978271484,
+      10.457154273986816,
+      -1.017546534538269
+    ],
+    "joint_effort_semantics": "PhysX measured joint effort; not contact force",
+    "last_torso_q_target": [
+      0.8399999737739563,
+      -1.0060900449752808,
+      -0.41999998688697815,
+      0.0
+    ],
+    "torso_q_tracking_error_rad": [
+      3.814697265625e-06,
+      -1.0251998901367188e-05,
+      -1.1205673217773438e-05,
+      1.7136905228198884e-07
+    ],
+    "torso_joint_limits_rad": {
+      "lower": [
+        -1.1344999074935913,
+        -2.7924997806549072,
+        -1.8325998783111572,
+        -3.054299831390381
+      ],
+      "upper": [
+        1.8325998783111572,
+        2.5306997299194336,
+        1.5707999467849731,
+        3.054299831390381
+      ]
+    },
+    "torso_slew_rad_per_tick": [
+      0.025,
+      0.025,
+      0.025,
+      0.025
+    ],
+    "last_torso_q_goal": [
+      0.8399999737739563,
+      -1.0060900449752808,
+      -0.41999998688697815,
+      0.0
+    ],
+    "torso_goal_error_rad": [
+      3.814697265625e-06,
+      -1.0251998901367188e-05,
+      -1.1205673217773438e-05,
+      1.7136905228198884e-07
+    ],
+    "torso_goal_tolerance_rad": 0.02,
+    "torso_goal_reached": true,
+    "torso_control_mode": "persistent_hold"
+  },
+  "image_layout": {
+    "layout": "Native RGB above depth; LEFT WRIST | HEAD | RIGHT WRIST; black padding is not camera pixels",
+    "dimensions": [
+      1680,
+      1464
+    ],
+    "camera_panels": {
+      "left": {
+        "rgb_xywh": [
+          0,
+          0,
+          480,
+          480
+        ],
+        "depth_xywh": [
+          0,
+          744,
+          480,
+          480
+        ]
+      },
+      "head": {
+        "rgb_xywh": [
+          480,
+          0,
+          720,
+          720
+        ],
+        "depth_xywh": [
+          480,
+          744,
+          720,
+          720
+        ]
+      },
+      "right": {
+        "rgb_xywh": [
+          1200,
+          0,
+          480,
+          480
+        ],
+        "depth_xywh": [
+          1200,
+          744,
+          480,
+          480
+        ]
+      }
+    },
+    "depth_modality": "depth_linear",
+    "depth_units": "axial optical-camera metres",
+    "fixed_grayscale_range_metres": [
+      0,
+      2.4
+    ],
+    "invalid_color": "magenta for nonfinite/nonpositive; finite farther is white",
+    "precision_note": "JPEG depth is visualization only; use saved native float32 NPZ and calibration for geometry",
+    "timestamp_note": "RGB and float depth from each same get_obs call, no intervening physics/render step; stamp is post-save, not shutter time."
+  },
+  "controller_protocol": 6,
+  "attempt_id": "fax-run-008-v6-a13",
+  "execution": {
+    "requested_ticks": null,
+    "timeout_ticks": 900,
+    "executed_ticks": 19,
+    "stop_reason": "reached",
+    "fault": null,
+    "execution_uncertain": false
+  },
+  "act_result": {
+    "interface": "act-v4-per-tick-persistent-goal",
+    "high_level_action_id": "517c413b-3666-428d-8f22-9cf9c20e9079",
+    "achieved": true,
+    "reason": "reached",
+    "steps": 19,
+    "errors": {
+      "right_joint_rad": 3.4666061401456005e-05,
+      "right_command_joint_rad": 9.536743172944284e-08
+    },
+    "trace": [
+      {
+        "tick": 0,
+        "errors": {
+          "right_joint_rad": 0.4499993085861207,
+          "right_command_joint_rad": 0.450000023841858
+        },
+        "normalized_error": 45000.0023841858
+      },
+      {
+        "tick": 1,
+        "errors": {
+          "right_joint_rad": 0.4262888193130494,
+          "right_command_joint_rad": 0.4250000476837159
+        },
+        "normalized_error": 42500.00476837159
+      },
+      {
+        "tick": 2,
+        "errors": {
+          "right_joint_rad": 0.401090955734253,
+          "right_command_joint_rad": 0.4000000715255738
+        },
+        "normalized_error": 40000.00715255738
+      },
+      {
+        "tick": 3,
+        "errors": {
+          "right_joint_rad": 0.37610862255096444,
+          "right_command_joint_rad": 0.37500009536743173
+        },
+        "normalized_error": 37500.00953674317
+      },
+      {
+        "tick": 4,
+        "errors": {
+          "right_joint_rad": 0.35110065937042245,
+          "right_command_joint_rad": 0.35000011920928964
+        },
+        "normalized_error": 35000.01192092896
+      },
+      {
+        "tick": 5,
+        "errors": {
+          "right_joint_rad": 0.3260998487472535,
+          "right_command_joint_rad": 0.32500014305114755
+        },
+        "normalized_error": 32500.014305114753
+      },
+      {
+        "tick": 6,
+        "errors": {
+          "right_joint_rad": 0.30109784603118905,
+          "right_command_joint_rad": 0.30000016689300546
+        },
+        "normalized_error": 30000.016689300544
+      },
+      {
+        "tick": 7,
+        "errors": {
+          "right_joint_rad": 0.27609381675720224,
+          "right_command_joint_rad": 0.27500019073486337
+        },
+        "normalized_error": 27500.019073486335
+      },
+      {
+        "tick": 8,
+        "errors": {
+          "right_joint_rad": 0.2510930061340333,
+          "right_command_joint_rad": 0.2500002145767213
+        },
+        "normalized_error": 25000.021457672126
+      },
+      {
+        "tick": 9,
+        "errors": {
+          "right_joint_rad": 0.22608945369720468,
+          "right_command_joint_rad": 0.2250002384185792
+        },
+        "normalized_error": 22500.023841857917
+      },
+      {
+        "tick": 10,
+        "errors": {
+          "right_joint_rad": 0.20108697414398202,
+          "right_command_joint_rad": 0.2000002622604371
+        },
+        "normalized_error": 20000.02622604371
+      },
+      {
+        "tick": 11,
+        "errors": {
+          "right_joint_rad": 0.1760836601257325,
+          "right_command_joint_rad": 0.175000286102295
+        },
+        "normalized_error": 17500.0286102295
+      },
+      {
+        "tick": 12,
+        "errors": {
+          "right_joint_rad": 0.1510805845260621,
+          "right_command_joint_rad": 0.15000030994415292
+        },
+        "normalized_error": 15000.03099441529
+      },
+      {
+        "tick": 13,
+        "errors": {
+          "right_joint_rad": 0.12607655525207528,
+          "right_command_joint_rad": 0.12500033378601083
+        },
+        "normalized_error": 12500.033378601081
+      },
+      {
+        "tick": 14,
+        "errors": {
+          "right_joint_rad": 0.10107336044311532,
+          "right_command_joint_rad": 0.10000035762786874
+        },
+        "normalized_error": 10000.035762786873
+      },
+      {
+        "tick": 15,
+        "errors": {
+          "right_joint_rad": 0.07606968879699716,
+          "right_command_joint_rad": 0.07500038146972665
+        },
+        "normalized_error": 7500.038146972664
+      },
+      {
+        "tick": 16,
+        "errors": {
+          "right_joint_rad": 0.051066017150878995,
+          "right_command_joint_rad": 0.05000028610229501
+        },
+        "normalized_error": 5000.0286102295
+      },
+      {
+        "tick": 17,
+        "errors": {
+          "right_joint_rad": 0.02606091499328622,
+          "right_command_joint_rad": 0.02500019073486337
+        },
+        "normalized_error": 2500.0190734863368
+      },
+      {
+        "tick": 18,
+        "errors": {
+          "right_joint_rad": 0.0016143074631690957,
+          "right_command_joint_rad": 9.536743172944284e-08
+        },
+        "normalized_error": 0.06457229852676383
+      },
+      {
+        "tick": 19,
+        "errors": {
+          "right_joint_rad": 3.4666061401456005e-05,
+          "right_command_joint_rad": 9.536743172944284e-08
+        },
+        "normalized_error": 0.009536743172944284
+      }
+    ],
+    "position_tolerance_m": 0.005,
+    "rotation_tolerance_rad": 0.035,
+    "max_command_slew_rad": 0.02500009536743164,
+    "timeout_ticks": 900,
+    "arms": {
+      "left": {
+        "control_point": "rigid_eef_tcp",
+        "frame": "current_body",
+        "measured": {
+          "position_m": [
+            0.07178371794817692,
+            0.25199743416357856,
+            0.5319479096677603
+          ],
+          "rotation_matrix": [
+            [
+              -0.9679386531436447,
+              -7.731171701495555e-06,
+              -0.25118671081627075
+            ],
+            [
+              -8.349603914881842e-06,
+              0.9999999999641672,
+              1.396302635976816e-06
+            ],
+            [
+              0.25118671079647503,
+              3.4488448368461465e-06,
+              -0.967938653173513
+            ]
+          ]
+        },
+        "model_error_m": 2.4543785664557932e-06,
+        "model_error_rad": 5.813117330138808e-07,
+        "jacobian_singular_values": [
+          1.9419533102205404,
+          1.5949572473839153,
+          1.414213562371279,
+          0.35875499079377104,
+          0.3561537470244796,
+          5.545321711887144e-07
+        ],
+        "jacobian_spectrum_units": "mixed m/rad and rad/rad; heuristic, not reachability proof",
+        "joints_rad": [
+          -3.0058956781431334e-06,
+          -1.5781807860548724e-07,
+          4.835221261600964e-06,
+          4.829452791454969e-06,
+          4.175425146968337e-06,
+          -1.1083359368058154e-06,
+          1.780518005034537e-06
+        ],
+        "joint_velocities_rad_s": [
+          -0.002418628428131342,
+          -0.00045385921839624643,
+          0.0004783305339515209,
+          -0.001264218590222299,
+          0.002484111348167062,
+          -0.000539223721716553,
+          0.002500765258446336
+        ],
+        "torso_q_tracking_error_rad": [
+          3.814697265625e-06,
+          -1.0251998901367188e-05,
+          -1.1205673217773438e-05,
+          1.7136905228198884e-07
+        ],
+        "finger_positions_m": [
+          1.0432192709686205e-07,
+          1.363484614103072e-07
+        ],
+        "finger_velocities_m_s": [
+          -6.835954991402104e-05,
+          4.918256672681309e-05
+        ],
+        "requested": null,
+        "ik_predicted": {
+          "position_m": [
+            0.07178182396945151,
+            0.25199934999999996,
+            0.5319468542889029
+          ],
+          "rotation_matrix": [
+            [
+              -0.9679376894681788,
+              0.0,
+              -0.25119042439353334
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.25119042439353334,
+              0.0,
+              -0.9679376894681788
+            ]
+          ],
+          "meaning": "FK of last emitted joint setpoint; not a separately solved goal",
+          "joints_rad": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "model_valid": true,
+        "finger_asymmetry_m": -3.2026534313445154e-08,
+        "aperture_joint_sum_m": 2.4067038850716926e-07,
+        "q_tracking_error_rad": [
+          3.0058956781431334e-06,
+          1.5781807860548724e-07,
+          -4.835221261600964e-06,
+          -4.829452791454969e-06,
+          -4.175425146968337e-06,
+          1.1083359368058154e-06,
+          -1.780518005034537e-06
+        ],
+        "measured_displacement_m": [
+          -1.4694261972411637e-05,
+          -3.5092353133925336e-06,
+          1.0051468215643844e-05
+        ],
+        "diagnosis": {
+          "status": "not_targeted",
+          "causes": [],
+          "confidence": "none"
+        }
+      },
+      "right": {
+        "control_point": "rigid_eef_tcp",
+        "frame": "current_body",
+        "measured": {
+          "position_m": [
+            0.9867380941399531,
+            -0.24151310399438242,
+            1.3528420595681954
+          ],
+          "rotation_matrix": [
+            [
+              -0.5705568018230576,
+              0.05657271954630728,
+              0.8193073069957203
+            ],
+            [
+              0.009079067791991309,
+              0.9979981115406135,
+              -0.06258865623575599
+            ],
+            [
+              -0.8212079556491602,
+              -0.028271836949587723,
+              -0.5699282383020017
+            ]
+          ]
+        },
+        "model_error_m": 5.383375928450898e-07,
+        "model_error_rad": 9.6971396806413e-07,
+        "jacobian_singular_values": [
+          1.9023708986787424,
+          1.7570775865157047,
+          1.204010834332936,
+          0.37118833996077266,
+          0.21605168362147872,
+          0.013542381416722234
+        ],
+        "jacobian_spectrum_units": "mixed m/rad and rad/rad; heuristic, not reachability proof",
+        "joints_rad": [
+          -2.0999653339385986,
+          0.050000157207250595,
+          -0.12999635934829712,
+          -0.12001203745603561,
+          0.0649699866771698,
+          0.9999931454658508,
+          -0.13999970257282257
+        ],
+        "joint_velocities_rad_s": [
+          0.001976355677470565,
+          -0.0008148192428052425,
+          -0.02401774562895298,
+          0.0008141992148011923,
+          -0.04411223530769348,
+          -0.0025925831869244576,
+          0.0023276738356798887
+        ],
+        "torso_q_tracking_error_rad": [
+          3.814697265625e-06,
+          -1.0251998901367188e-05,
+          -1.1205673217773438e-05,
+          1.7136905228198884e-07
+        ],
+        "finger_positions_m": [
+          0.04999998211860657,
+          0.049999598413705826
+        ],
+        "finger_velocities_m_s": [
+          1.965261617442593e-06,
+          0.00011594199168030173
+        ],
+        "requested": {
+          "position_m": [
+            0.9867348113217855,
+            -0.24151734111892884,
+            1.35286088628221
+          ],
+          "rotation_matrix": [
+            [
+              -0.5705428110542483,
+              0.05658201859134127,
+              0.8193164077000079
+            ],
+            [
+              0.009063697336552,
+              0.997996908484779,
+              -0.06261006345161356
+            ],
+            [
+              -0.8212178457296868,
+              -0.028295685659704542,
+              -0.5699128038815581
+            ]
+          ],
+          "mode": "joint"
+        },
+        "ik_predicted": {
+          "position_m": [
+            0.986736103772918,
+            -0.2415172244805353,
+            1.3528554528022625
+          ],
+          "rotation_matrix": [
+            [
+              -0.5705468087984235,
+              0.05658171520804594,
+              0.8193136447503183
+            ],
+            [
+              0.009063635378425732,
+              0.9979969190075261,
+              -0.06260990468937004
+            ],
+            [
+              -0.8212150689579814,
+              -0.02829592118310762,
+              -0.5699167933661343
+            ]
+          ],
+          "meaning": "FK of last emitted joint setpoint; not a separately solved goal",
+          "joints_rad": [
+            -2.0999999046325684,
+            0.05000000074505806,
+            -0.12999999523162842,
+            -0.11999999731779099,
+            0.06499999761581421,
+            1.0,
+            -0.14000000059604645
+          ]
+        },
+        "model_valid": true,
+        "finger_asymmetry_m": 3.8370490074157715e-07,
+        "aperture_joint_sum_m": 0.0999995805323124,
+        "q_tracking_error_rad": [
+          -3.457069396972656e-05,
+          -1.564621925354004e-07,
+          -3.635883331298828e-06,
+          1.2040138244628906e-05,
+          3.001093864440918e-05,
+          6.854534149169922e-06,
+          -2.980232238769531e-07
+        ],
+        "joint_error_rad": 3.4666061401456005e-05,
+        "position_error_m": 1.957486347672509e-05,
+        "rotation_error_rad": 3.135123446633397e-05,
+        "predicted_position_error_m": 5.586299202940836e-06,
+        "predicted_rotation_error_rad": 4.869238413297886e-06,
+        "joint_limit_margins_rad": {
+          "to_lower": [
+            2.34063458442688,
+            3.18160006031394,
+            2.2161993384361267,
+            1.9643876627087593,
+            2.4111656844615936,
+            2.0371912121772766,
+            1.4208002537488937
+          ],
+          "to_upper": [
+            3.398965358734131,
+            0.11449984088540077,
+            2.476192057132721,
+            0.4591120108962059,
+            2.281225711107254,
+            0.03720492124557495,
+            1.7007996588945389
+          ]
+        },
+        "outward_near_limit_joints": [],
+        "measured_displacement_m": [
+          0.00033588355095059974,
+          0.0005766871648834326,
+          0.00013331164487384584
+        ],
+        "diagnosis": {
+          "status": "reached",
+          "causes": [],
+          "confidence": "measured"
+        }
+      }
+    },
+    "torso_target_rad": [
+      0.8399999737739563,
+      -1.0060900449752808,
+      -0.41999998688697815,
+      0.0
+    ],
+    "prerequisite_gate": {
+      "accepted_previous_miss": false,
+      "blocked_previous_misses": {},
+      "closing_deferred": {}
+    },
+    "semantics": "measured proprioception and estimated planar odometry; not object/contact/grasp success",
+    "unresolved_pose_misses": {},
+    "execution": {
+      "requested_ticks": null,
+      "timeout_ticks": 900,
+      "executed_ticks": 19,
+      "stop_reason": "reached",
+      "fault": null,
+      "execution_uncertain": false
+    },
+    "start_observation_id": 29,
+    "ended": false,
+    "deprecated_parameters_ignored": {
+      "seconds": null,
+      "max_steps": 16
+    }
+  },
+  "last_commanded_grip": {
+    "left": 0.0,
+    "right": 1.0
+  },
+  "cameras": {
+    "left": {
+      "intrinsics": [
+        [
+          388.6639453223744,
+          0.0,
+          240.0
+        ],
+        [
+          0.0,
+          388.6639453223744,
+          240.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_to_body": [
+        [
+          0.0009113289700573539,
+          -0.7711070285709057,
+          -0.6367048923701281,
+          0.13703433463372114
+        ],
+        [
+          -0.9999934576137258,
+          0.0015261236459137666,
+          -0.0032795847851121414,
+          0.2548911491714985
+        ],
+        [
+          0.0035006012703092675,
+          0.6367037155814042,
+          -0.7711005928901757,
+          0.5823039734643015
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "image_size_hw": [
+        480,
+        480
+      ],
+      "camera_axes": "optical: +X right, +Y down, +Z forward; axial depth metres",
+      "pose_source": "onboard camera pose relative to current base footprint",
+      "pixel_center_offset": 0.5
+    },
+    "head": {
+      "intrinsics": [
+        [
+          306.0000085830689,
+          0.0,
+          360.0
+        ],
+        [
+          0.0,
+          306.0000085830689,
+          360.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_to_body": [
+        [
+          -3.998259547243706e-06,
+          -0.5671231290036264,
+          0.8236330229739152,
+          0.38545733810572624
+        ],
+        [
+          -0.9999999999910932,
+          1.1541163185221778e-06,
+          -4.0597370382849226e-06,
+          3.5934673057862277e-06
+        ],
+        [
+          1.3518024597085092e-06,
+          -0.8236330229828115,
+          -0.5671231290031896,
+          1.440527611906184
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "image_size_hw": [
+        720,
+        720
+      ],
+      "camera_axes": "optical: +X right, +Y down, +Z forward; axial depth metres",
+      "pose_source": "onboard camera pose relative to current base footprint",
+      "pixel_center_offset": 0.5
+    },
+    "right": {
+      "intrinsics": [
+        [
+          388.6639453223744,
+          0.0,
+          240.0
+        ],
+        [
+          0.0,
+          388.6639453223744,
+          240.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_to_body": [
+        [
+          -0.05954028228515534,
+          -0.8632557727992376,
+          0.5012428807616074,
+          0.9623578646541031
+        ],
+        [
+          -0.9977650393067136,
+          0.036209516114898734,
+          -0.05615867947162992,
+          -0.2350070920814728
+        ],
+        [
+          0.030329542078250896,
+          -0.503466326253818,
+          -0.8634823548896687,
+          1.431359779126669
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "image_size_hw": [
+        480,
+        480
+      ],
+      "camera_axes": "optical: +X right, +Y down, +Z forward; axial depth metres",
+      "pose_source": "onboard camera pose relative to current base footprint",
+      "pixel_center_offset": 0.5
+    }
+  },
+  "depth_sha256": "5d37c3c2a48c06cdf802d945763fd60670e1e4881b8007e4245457751990aac1",
+  "ended": false,
+  "motion_execution_uncertain": false,
+  "motion_memory": {
+    "unresolved_pose_misses": {}
+  },
+  "depth_path": "<observation-cache>/fax-run-008-p6-1946b1/fax-run-008-v6-a13/obs_0030_depth.npz",
+  "raw_image_path": "<observation-cache>/fax-run-008-p6-1946b1/fax-run-008-v6-a13/obs_0030_raw.jpg",
+  "local_image_path": "<observation-cache>/fax-run-008-p6-1946b1/fax-run-008-v6-a13/obs_0030.jpg",
+  "observation_contract": 1,
+  "compact_state": "[obs #030 | act=517c413b | sim= 90.53s | wall= 277.3s | Withdraw empty hand to verify independent support]\n  base_odom(integrated_proprio_base_qvel_planar_estimate): rel_xyz=[-4.016, -0.921, 0.0]m rel_yaw=-2.699rad vel=[-0.0, -0.001, 0.001] | torso=[0.84, -1.006, -0.42, -0.0] err=[0.0, -0.0, -0.0, 0.0]\n  odom_uncertainty: uncalibrated drift; no absolute world pose, vertical motion or tilt observation\n  COMMANDS persist: relative moves start at COMMAND, not measured pose. Into-surface targets keep pushing until changed. Release via act(left={\"q\": measured_left_q}) (ordinary slew); q_lag/effort are not contact-force proof.\n  torso_cmd=[0.84, -1.00609, -0.42, 0.0] effort_Nm=[-26.552967071533203, -17.174983978271484, 10.457154273986816, -1.017546534538269]\n  L: rigid_TCP(fwd,left,up)=[0.072, 0.252, 0.532]m fingers=[0.0, 0.0]m grip=command=0.0 finger_sum(0.0cm)\n     pad_start=[0.072, 0.249, 0.532] pad_end=[0.072, 0.254, 0.532] measured_pinch=[0.072, 0.252, 0.532]m\n     close_dir=[-0.0, 1.0, 0.0] fing_dir=[-0.25, 0.0, -0.97] q=[-0.0, -0.0, 0.0, 0.0, 0.0, -0.0, 0.0] q_lag=[0.0, 0.0, -0.0, -0.0, -0.0, 0.0, -0.0]rad limit_margins=[1.299, 0.164, 2.346, 0.339, 2.346, 1.037, 1.561]rad min=0.164rad\n     q_cmd=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0] effort_Nm=[1.0535006523132324, -0.0786958560347557, -0.0042861998081207275, 0.25688934326171875, -0.003498576581478119, 0.0217531006783247, -0.001643447089008987] (PhysX measured joint effort; not contact force)\n  R: rigid_TCP(fwd,left,up)=[0.987, -0.242, 1.353]m fingers=[0.05, 0.05]m grip=command=1.0 finger_sum(10.0cm)\n     pad_start=[0.989, -0.194, 1.352] pad_end=[0.984, -0.289, 1.354] measured_pinch=[0.987, -0.242, 1.353]m\n     close_dir=[0.06, 1.0, -0.03] fing_dir=[0.82, -0.06, -0.57] q=[-2.09997, 0.05, -0.13, -0.12001, 0.06497, 0.99999, -0.14] q_lag=[-0.0, -0.0, -0.0, 0.0, 0.0, 0.0, -0.0]rad limit_margins=[2.341, 0.114, 2.216, 0.459, 2.281, 0.037, 1.421]rad min=0.037rad\n     q_cmd=[-2.1, 0.05, -0.13, -0.12, 0.065, 1.0, -0.14] effort_Nm=[-2.1799442768096924, -0.26219475269317627, 0.047791123390197754, -0.7865500450134277, 0.05101817846298218, -0.050718724727630615, -0.06104852259159088] (PhysX measured joint effort; not contact force)\n  diagnosis={\"left\":{\"status\":\"not_targeted\",\"causes\":[],\"confidence\":\"none\"},\"right\":{\"status\":\"reached\",\"causes\":[],\"confidence\":\"measured\"}}\n  status=reached fault=None uncertain=False pending=[]\n  depth saved: <observation-cache>/fax-run-008-p6-1946b1/fax-run-008-v6-a13/obs_0030_depth.npz -> s.xyz('left'|'head'|'right')[v,u] BODY metres; invalid NaN",
+  "call_failure": null
+}

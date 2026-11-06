@@ -1,0 +1,40 @@
+{
+  "task": "make_cabinet_doors",
+  "tier": "lite",
+  "references_episode_train": [
+    [
+      15609,
+      21
+    ],
+    [
+      15610,
+      23
+    ],
+    [
+      15611,
+      24
+    ]
+  ],
+  "verification": "PASS: public pinned instructions/BDDL/source hashes, three non-held-out annotation joins; malformed coarse spans explicitly labelled derived envelopes",
+  "verification_script_sha256": "a1a3d7da62afb1741971cc97e3fbe685035ec723bc34b16ac4cc574324ecef81",
+  "files": {
+    "ANNOTATIONS.md": {
+      "sha256": "cb9b3aacb5cb50d28e36faadf7d9eca45b64d38274cd027a3711dd3cfae567cb",
+      "bytes": 4348
+    },
+    "README.md": {
+      "sha256": "28b0211302d59b8d38ef5ff71fd3b0fa3fee217a6da9feda2645f50a2650ac2b",
+      "bytes": 357
+    },
+    "TASK.md": {
+      "sha256": "edcda89a789705489ef1ba6a9b474b33e1a4e1eae48bf6e504e9fef60dcb4cdf",
+      "bytes": 1384
+    },
+    "provenance.json": {
+      "sha256": "4fcf8a087b9f0386db529403dcf619f9080587c7f6171420f1146fb3d42fd435",
+      "bytes": 3741
+    }
+  },
+  "total_content_bytes": 9830,
+  "limits": "Public human study only; no held-out rollout data or live scorer/object/contact state; not task-success evidence."
+}

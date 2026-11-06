@@ -1,0 +1,40 @@
+{
+  "task": "installing_a_scanner",
+  "tier": "lite",
+  "references_episode_train": [
+    [
+      18411,
+      20
+    ],
+    [
+      18412,
+      21
+    ],
+    [
+      18413,
+      22
+    ]
+  ],
+  "verification": "PASS: public pinned instructions/BDDL/source hashes, three non-held-out annotation joins; malformed coarse spans explicitly labelled derived envelopes",
+  "verification_script_sha256": "95def63f662109e14da915145d9542838e4a09bcb3254948d216c8ff1a381cfd",
+  "files": {
+    "ANNOTATIONS.md": {
+      "sha256": "6b4732e30dc904fb3f70e616f82deab7aa29d2582de0ecbf78ddafa4c84ace8a",
+      "bytes": 3996
+    },
+    "README.md": {
+      "sha256": "28b0211302d59b8d38ef5ff71fd3b0fa3fee217a6da9feda2645f50a2650ac2b",
+      "bytes": 357
+    },
+    "TASK.md": {
+      "sha256": "63df3760922425de6f15fac4c957ace14bcde748e3ad362d267d3463f6d9b834",
+      "bytes": 1554
+    },
+    "provenance.json": {
+      "sha256": "83d86d678d977494b842ef0671c8ed3e89404643f10b49964843caa08ed9fbb1",
+      "bytes": 3860
+    }
+  },
+  "total_content_bytes": 9767,
+  "limits": "Public human study only; no held-out rollout data or live scorer/object/contact state; not task-success evidence."
+}

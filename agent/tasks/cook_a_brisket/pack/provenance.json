@@ -1,0 +1,91 @@
+{
+  "scope": "public-data lite; no frames/video or simulator runtime accessed",
+  "dataset": "behavior-1k/2026-challenge-demos",
+  "revision": "4f50b44796641a4d526a19d9aeadc8aa51e2f2c2",
+  "instruction_source": "meta/tasks.jsonl",
+  "instruction_source_sha256": "8d8222310c3611316c6e5fe822a8dd3c6e552b32bcfddd10870c0672bfb8427c",
+  "native_commit": "bd049de3119acdcdf2334fe9e1ebe060fa20c108",
+  "official": {
+    "bddl": "(define (problem cook_a_brisket-0)\n    (:domain behavior-1k)\n\n    (:objects\n        chopping_board.n.01_1 - chopping_board.n.01\n        brisket.n.01_1 - brisket.n.01\n        frying_pan.n.01_1 - frying_pan.n.01\n        countertop.n.01_1 - countertop.n.01\n        electric_refrigerator.n.01_1 - electric_refrigerator.n.01\n        oven.n.01_1 - oven.n.01\n        floor.n.01_1 - floor.n.01\n        agent.n.01_1 - agent.n.01\n    )\n    \n    (:init \n        (ontop chopping_board.n.01_1 countertop.n.01_1) \n        (inside brisket.n.01_1 electric_refrigerator.n.01_1) \n        (not \n            (cooked brisket.n.01_1)\n        )\n        (ontop frying_pan.n.01_1 countertop.n.01_1)\n        (inroom electric_refrigerator.n.01_1 kitchen) \n        (inroom oven.n.01_1 kitchen) \n        (inroom floor.n.01_1 kitchen) \n        (inroom countertop.n.01_1 kitchen)\n        (ontop agent.n.01_1 floor.n.01_1)\n    )\n    \n    (:goal \n        (and \n            (cooked ?brisket.n.01_1) \n            (ontop ?brisket.n.01_1 ?chopping_board.n.01_1)\n            (ontop ?frying_pan.n.01_1 ?countertop.n.01_1)\n        )\n    )\n)",
+    "bddl_sha256": "7253ab392e533c90b1f768e17428578487243d8f123caf6e9337f8c3a23cd11f",
+    "human_mean_steps": 7334.995,
+    "stats_sha256": "7dbb5f7f00a2e06c693dfbb3045e5c28e627b6179e775f1ad93ca4b61f08e6dc"
+  },
+  "catalog_sha256": "1d5d3c9598022ca37b7698300c984e639f10991c1ed9bc34408831b1998e1dab",
+  "episodes": [
+    {
+      "episode": {
+        "episodeId": "10212",
+        "episodeIndex": 10212,
+        "demoIndex": 12,
+        "rawEpisodeId": 510200,
+        "taskInstanceId": 20,
+        "frameCount": 6607,
+        "skillCount": 18,
+        "primitiveCount": 0,
+        "taskDurationFrames": 6604,
+        "validStartFrame": 0,
+        "validEndFrame": 6604,
+        "annotationPath": "annotations/task-0051/episode_00510200.json",
+        "remoteZed": {
+          "chunkIndex": 51,
+          "fileIndex": 0,
+          "fromTimestamp": 2838.066666666667,
+          "toTimestamp": 3058.3
+        }
+      },
+      "annotation_sha256": "90697900c22814958eef118514a64652bb5e69ed597281091bab0c90e5b5bd47"
+    },
+    {
+      "episode": {
+        "episodeId": "10213",
+        "episodeIndex": 10213,
+        "demoIndex": 13,
+        "rawEpisodeId": 510220,
+        "taskInstanceId": 22,
+        "frameCount": 6765,
+        "skillCount": 16,
+        "primitiveCount": 0,
+        "taskDurationFrames": 6762,
+        "validStartFrame": 0,
+        "validEndFrame": 6762,
+        "annotationPath": "annotations/task-0051/episode_00510220.json",
+        "remoteZed": {
+          "chunkIndex": 51,
+          "fileIndex": 0,
+          "fromTimestamp": 3058.3,
+          "toTimestamp": 3283.8
+        }
+      },
+      "annotation_sha256": "17702904d1a66fd03456bbb8599be4db2ccf3f10271086f6bead067698420007"
+    },
+    {
+      "episode": {
+        "episodeId": "10214",
+        "episodeIndex": 10214,
+        "demoIndex": 14,
+        "rawEpisodeId": 510230,
+        "taskInstanceId": 23,
+        "frameCount": 6440,
+        "skillCount": 16,
+        "primitiveCount": 0,
+        "taskDurationFrames": 6435,
+        "validStartFrame": 0,
+        "validEndFrame": 6435,
+        "annotationPath": "annotations/task-0051/episode_00510230.json",
+        "remoteZed": {
+          "chunkIndex": 51,
+          "fileIndex": 0,
+          "fromTimestamp": 3283.8,
+          "toTimestamp": 3498.4666666666667
+        }
+      },
+      "annotation_sha256": "2a140ba55c65f81b124a87bbcf56d7cb890383289697811e3a74e1de689531a8"
+    }
+  ],
+  "files": {
+    "TASK.md": "53e66fd8ba5622f57509b4061974b1a4d735c53b59963ebf09bd2d98c3fb370a",
+    "ANNOTATIONS.md": "46743c7d175f08cd2c22e1a61df9fc83c02a4bd0f0018dfd68b0e4eea5a493a4",
+    "README.md": "e23999eaaae70aea368631c1f433e1f21773075a393a3408b21e14c13012baa0"
+  }
+}

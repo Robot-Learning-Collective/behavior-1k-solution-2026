@@ -1,0 +1,11 @@
+# Recovered native placement drill
+
+Not a full run; clean pair count remains 0.
+
+Public predicate source inspected at BEHAVIOR-1K tag v3.9.3-post1, `OmniGibson/omnigibson/object_states/{next_to,adjacency}.py`: NextTo needs AABB gap norm <= sum of both AABB dimensions /18 AND a horizontal ray from either AABB center intersecting the other's collision mesh (16 signed horizontal directions). Visual proximity alone is insufficient.
+
+From a11-retained-first-grasp: yaw -25, forward .65 (a11 failed placement used .50). Head depth before descent: laptop (690,410)=[1.0388354,-.5515264,.79913247], edge (670,430)=[1.0203696,-.53188044,.7648708]. Scanner lower/front sample (560,370)=[1.0164764,-.2597594,.9315555]. Descend TCP [1.013,-.28,.79]; achieved [1.019,-.291,.806] blocked at support. Release measured q [-.437,-.58496,.655,-1.61589,-2.22466,-.60148,.53635], grip1 accept_partial; withdraw base -.20. Independent support visible; native nextto=true at2177steps. Snapshot a11-nextto-true.
+
+Initial activation approach with folded torso and +.55 base caused stalled travel and apparent camera/table-height change consistent with tilt; NOT clean. Restored a11-nextto-true rather than treating it as a full run.
+
+Successful activation suffix from nextto snapshot: keep torso [1.15,-.67,-.02,0]. Elevate hand (target [1.019,-.291,1.03] joint-limited to [1.052,-.386,.959]); switch seed [-1.95597,-.4024,2.11198,-1.48611,.81688,.03802,.85601] puts hand low .774 and contacts table, so improve this transition for full runs. Raise to [1.13,-.18,1.03] achieved1.025. Base fwd .20, left -.22. Head button (406,315)=[1.257081,-.09720967,.8196758], wrist button (345,110)=[1.2582299,-.10298683,.8214555]. Close measured q [-2.38097,-.512,1.73448,-1.59406,.4181,-.38701,1.24799]. Stage [1.257,-.100,.88], depress target z .817 (achieved .832 blocked), withdraw [1.22,-.100,.96]. Green independently visible, native BOTH predicates true/Q1 at2544steps (84.8 cumulative sim). Current restored attempt practice-restore-a11-nextto-true-0e5048b6d8b541ed9dad50d413b13b52; final receipt receipt_01792128381930029000_4f719af68d074072aa4b6122948cf24d.json under scanner-run-007-p6-1054ef cache. Two restores across drills: no full-run credit.

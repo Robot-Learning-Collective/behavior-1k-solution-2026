@@ -1,0 +1,18 @@
+{
+  "attempt_id": "pictures-run-009-instance292-a05",
+  "source": "admin_finish printed terminal practice feedback; local serialization of endpoint compact_state afterwards failed KeyError",
+  "finished": true,
+  "success": true,
+  "q_score": 1.0,
+  "step": 2027,
+  "simulated_seconds": 67.56666666666666,
+  "endpoint_wall_seconds": 554.1,
+  "finish_wall_seconds": 567.814790602999,
+  "retention_receipt": "<observation-cache>/pictures-run-009-p6-875620/pictures-run-009-instance292-a05/receipt_01792137568423090000_328522f336fd48e0a3c04bba5aaa8537.json",
+  "practice_only": true,
+  "native_reset": true,
+  "snap_observation": 31,
+  "full_release_observation": 32,
+  "withdraw_observation": 33,
+  "empty_hand_lower_observation": 34
+}

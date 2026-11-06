@@ -1,0 +1,40 @@
+{
+  "task": "installing_smoke_detectors",
+  "tier": "lite",
+  "references_episode_train": [
+    [
+      12612,
+      20
+    ],
+    [
+      12613,
+      21
+    ],
+    [
+      12614,
+      24
+    ]
+  ],
+  "verification": "PASS: public pinned instructions/BDDL/source hashes, three non-held-out annotation joins; malformed coarse spans explicitly labelled derived envelopes",
+  "verification_script_sha256": "95def63f662109e14da915145d9542838e4a09bcb3254948d216c8ff1a381cfd",
+  "files": {
+    "ANNOTATIONS.md": {
+      "sha256": "f434ff97bf7f3a28d75e4a2d4df6b87ba6fc3fa4c3003b7efe7e93fff0fc3bd4",
+      "bytes": 3990
+    },
+    "README.md": {
+      "sha256": "28b0211302d59b8d38ef5ff71fd3b0fa3fee217a6da9feda2645f50a2650ac2b",
+      "bytes": 357
+    },
+    "TASK.md": {
+      "sha256": "ce9f636e582610e3d6c432606fdf24729093acf027f4f17d76a93ea9c18a47f0",
+      "bytes": 1456
+    },
+    "provenance.json": {
+      "sha256": "1e42188b5c56f3d655d20b27ecb5e7e12989545b29699e846a7286aea704e8ee",
+      "bytes": 3791
+    }
+  },
+  "total_content_bytes": 9594,
+  "limits": "Public human study only; no held-out rollout data or live scorer/object/contact state; not task-success evidence."
+}

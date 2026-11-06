@@ -1,0 +1,30 @@
+{
+  "attempt": "smoke-train020-practice-001",
+  "task": "installing_smoke_detectors",
+  "train_instance": 20,
+  "practice": true,
+  "unbounded_practice": true,
+  "success": true,
+  "q_score": 1.0,
+  "predicate": "(attached fire_alarm.n.02_1 wall_nail.n.01_1)",
+  "first_success_step": 3674,
+  "finish_step": 3733,
+  "official_budget_steps": 3853,
+  "finish_simulated_seconds": 124.43333333333334,
+  "finish_wall_seconds": 1565.2364836899942,
+  "reset_setup_seconds": 569.5107339379974,
+  "snapshots_restored": 0,
+  "final_observation": 59,
+  "final_receipt": "receipt_01792171327093959000_357f46a328b04b43a37bbe4b3c5a8e11.json",
+  "first_success_receipt": "receipt_01792171312340883000_1c6555f5860f461097168ff537bac73b.json",
+  "evidence_limits": "Single exploratory training success with intermediate native practice feedback and cross-demo study. Not repeatability, held-out generalization, causal proof of roll correction, or teleop wall-time parity.",
+  "successful_mount_sequence": [
+    {"description":"At safe distance rotate held detector about mounting normal, matching demo grating orientation in head frame", "left":{"to":[0.80,0.20,1.70],"finger_dir":[0.936,-0.352,0],"close_dir":[0,0,1]}},
+    {"description":"Cancel to measured q and approach base .10m, then shallow arm advance", "left":{"to":[0.822,0.20,1.70],"finger_dir":[0.936,-0.352,0],"close_dir":[0,0,1]}},
+    {"description":"Cancel to measured q, base advance .015m; attachment still false"},
+    {"description":"Explicit grip1 with measured-q hold; returned after2ticks, attachment still false"},
+    {"description":"Withdraw, attachment true", "left":{"to":[0.73,0.20,1.70],"finger_dir":[0.936,-0.352,0],"close_dir":[0,0,1]}},
+    {"description":"Measured-q hold and base retreat .20m; finish success true"}
+  ],
+  "warning":"Coordinates are observed TRAIN20 practice configuration, not unseen-world commands. Re-ground objects, wall normal and nail using public RGBD. Existing grasp offsets differ from human; hand orientation alone is insufficient."
+}

@@ -1,0 +1,40 @@
+{
+  "task": "cook_brussels_sprouts",
+  "tier": "lite",
+  "references_episode_train": [
+    [
+      19009,
+      20
+    ],
+    [
+      19010,
+      22
+    ],
+    [
+      19011,
+      23
+    ]
+  ],
+  "verification": "PASS: public pinned instructions/BDDL/source hashes, three non-held-out annotation joins; malformed coarse spans explicitly labelled derived envelopes",
+  "verification_script_sha256": "a1a3d7da62afb1741971cc97e3fbe685035ec723bc34b16ac4cc574324ecef81",
+  "files": {
+    "ANNOTATIONS.md": {
+      "sha256": "aa6fc30817c6c8bf16386ae659eb8ec8aa6f7d57da3ce5f2161fa234f5c54f25",
+      "bytes": 18028
+    },
+    "README.md": {
+      "sha256": "28b0211302d59b8d38ef5ff71fd3b0fa3fee217a6da9feda2645f50a2650ac2b",
+      "bytes": 357
+    },
+    "TASK.md": {
+      "sha256": "0ce8b62ed3915b5845abdcac11d221c4da8c5f4835c59d50264a829c75bfb7a1",
+      "bytes": 3609
+    },
+    "provenance.json": {
+      "sha256": "e3e46c4ba51805d5a82fa5e835f77d65a089103cd4ee6d0734953557d08ff183",
+      "bytes": 5889
+    }
+  },
+  "total_content_bytes": 27883,
+  "limits": "Public human study only; no held-out rollout data or live scorer/object/contact state; not task-success evidence."
+}

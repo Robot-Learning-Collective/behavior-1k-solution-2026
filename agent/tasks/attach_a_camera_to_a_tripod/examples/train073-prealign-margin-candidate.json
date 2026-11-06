@@ -1,0 +1,8 @@
+{
+  "scope": "TRAIN73 local candidate; no live result yet. Parent cleaner006-008 is3/3. Changes only prealignment TCP from approximately[.5502,.3999,1.4000] to[.52,.4,1.4], retaining parent orientation and subsequent seat/release/withdraw/retreat.",
+  "parent": "train073-cleaner.json",
+  "replace_parent_action_index": 10,
+  "action": {"left":{"q":[0.3642475276907014,2.800439475583147,-0.06577173222696651,-1.2321802593280542,-1.901991803806326,0.5253143303307868,1.5006536455825823]},"timeout_seconds":8},
+  "offline_fk": {"torso":[0.65,-0.65,0,0],"target":[0.52,0.4,1.4],"position_error_m":2.708366632390498e-7,"rotation_error_rad":1.998836306138175e-7,"minimum_endpoint_margin_rad":0.06014631073913401},
+  "rationale": "Three-centimetre shorter forward reach retains camera height/orientation while improving prealignment endpoint margin from about0.004rad to0.060rad. Public FK only, not collision certification. Inspect actual carry clearance and final approach. Inset0.08 exact old pose did not solve; failed output was not executed."
+}

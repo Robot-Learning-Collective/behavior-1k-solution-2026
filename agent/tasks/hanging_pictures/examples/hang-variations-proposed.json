@@ -1,0 +1,426 @@
+{
+  "status": "PROPOSED_NOT_EXECUTED_WAIT_FOR_LEAD",
+  "starting_state": "Fresh own reset; verified grasp/lift/carry to [.35,.45,20]. Reobserve after EACH call. These base positions are hypotheses derived from prior public nail/wall estimates, not demonstration ground truth.",
+  "guards": [
+    "Never run list blindly. Gate each call on images, achieved endpoint and measured geometry.",
+    "Before normal increment: wall normal must match plan, level base, poster retained, nail aligned with mounting area, front surface gap consistent with human 5.3\u20138cm. If not, stop and revise before motion.",
+    "Stop and cancel with measured q for newly rising base >3mm, non-achievement, unexpected displacement, or rising tracking lag. Do not push to zero front-surface gap.",
+    "MEASURED_RIGHT_Q is s.last_obs()[robot][right][joints] read immediately before its act; reject out-of-range values rather than clipping.",
+    "After open, observe retention first; if fallen do not label completion. Withdrawal is conditional on retained poster; otherwise only safe empty-hand retreat.",
+    "No extra normal increments authorized by this file."
+  ],
+  "variants": [
+    {
+      "id": 1,
+      "name": "matched-heading-late-approach",
+      "calls": [
+        {
+          "intent": "Prepare matched human prehang pose in clear space",
+          "right": {
+            "q": [
+              -1.163955807685852,
+              -0.04280595853924751,
+              -0.005650848150253296,
+              -1.165106177330017,
+              0.01339000929147005,
+              0.7977131009101868,
+              0.936327338218689
+            ],
+            "grip": 0
+          },
+          "torso": {
+            "q": [
+              0.548905074596405,
+              -0.5808293223381042,
+              -0.10133747011423111,
+              -0.00012556894216686487
+            ]
+          },
+          "max_steps": 12
+        },
+        {
+          "intent": "Keep matched human wall-relative heading; approach conservative waypoint",
+          "base": {
+            "to_rel": [
+              1.0,
+              0.75,
+              20
+            ]
+          },
+          "max_steps": 20
+        },
+        {
+          "intent": "Matched instance last pre-release approach, frame1520",
+          "right": {
+            "q": [
+              -1.165885090827942,
+              -0.06128222122788429,
+              -0.014067303389310837,
+              -1.1516642570495605,
+              0.012700808234512806,
+              0.8000612258911133,
+              0.9331633448600769
+            ],
+            "grip": 0
+          },
+          "max_steps": 8
+        },
+        {
+          "intent": "One small wall-normal seating increment",
+          "base": {
+            "fwd": 0.01326,
+            "left": -0.00702
+          },
+          "max_steps": 3
+        },
+        {
+          "intent": "Hold measured endpoint before release",
+          "right": {
+            "q": "MEASURED_RIGHT_Q",
+            "grip": 0
+          },
+          "max_steps": 2,
+          "seconds": 0.2
+        },
+        {
+          "intent": "Open without translating",
+          "right": {
+            "q": "MEASURED_RIGHT_Q",
+            "grip": 1
+          },
+          "max_steps": 4,
+          "seconds": 0.2
+        },
+        {
+          "intent": "Withdraw only after image confirms poster remains at nail",
+          "base": {
+            "fwd": -0.0884,
+            "left": 0.0468
+          },
+          "max_steps": 8
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "small-lower-not-centre-height",
+      "calls": [
+        {
+          "intent": "Prepare matched human prehang pose in clear space",
+          "right": {
+            "q": [
+              -1.163955807685852,
+              -0.04280595853924751,
+              -0.005650848150253296,
+              -1.165106177330017,
+              0.01339000929147005,
+              0.7977131009101868,
+              0.936327338218689
+            ],
+            "grip": 0
+          },
+          "torso": {
+            "q": [
+              0.548905074596405,
+              -0.5808293223381042,
+              -0.10133747011423111,
+              -0.00012556894216686487
+            ]
+          },
+          "max_steps": 12
+        },
+        {
+          "intent": "Keep matched human wall-relative heading; approach conservative waypoint",
+          "base": {
+            "to_rel": [
+              1.0,
+              0.75,
+              20
+            ]
+          },
+          "max_steps": 20
+        },
+        {
+          "intent": "Human-scale 20mm settling rather than 150mm centre-height raise",
+          "right": {
+            "up": -0.02
+          },
+          "max_steps": 4
+        },
+        {
+          "intent": "One small wall-normal seating increment",
+          "base": {
+            "fwd": 0.01326,
+            "left": -0.00702
+          },
+          "max_steps": 3
+        },
+        {
+          "intent": "Hold measured endpoint before release",
+          "right": {
+            "q": "MEASURED_RIGHT_Q",
+            "grip": 0
+          },
+          "max_steps": 2,
+          "seconds": 0.2
+        },
+        {
+          "intent": "Open without translating",
+          "right": {
+            "q": "MEASURED_RIGHT_Q",
+            "grip": 1
+          },
+          "max_steps": 4,
+          "seconds": 0.2
+        },
+        {
+          "intent": "Withdraw only after image confirms poster remains at nail",
+          "base": {
+            "fwd": -0.0884,
+            "left": 0.0468
+          },
+          "max_steps": 8
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "wall-tangent-left-20mm",
+      "calls": [
+        {
+          "intent": "Prepare matched human prehang pose in clear space",
+          "right": {
+            "q": [
+              -1.163955807685852,
+              -0.04280595853924751,
+              -0.005650848150253296,
+              -1.165106177330017,
+              0.01339000929147005,
+              0.7977131009101868,
+              0.936327338218689
+            ],
+            "grip": 0
+          },
+          "torso": {
+            "q": [
+              0.548905074596405,
+              -0.5808293223381042,
+              -0.10133747011423111,
+              -0.00012556894216686487
+            ]
+          },
+          "max_steps": 12
+        },
+        {
+          "intent": "Keep matched human wall-relative heading; approach conservative waypoint",
+          "base": {
+            "to_rel": [
+              1.0,
+              0.75,
+              20
+            ]
+          },
+          "max_steps": 20
+        },
+        {
+          "intent": "Small lateral wall-tangent correction",
+          "base": {
+            "fwd": 0.00936,
+            "left": 0.01768
+          },
+          "max_steps": 3
+        },
+        {
+          "intent": "One small wall-normal seating increment",
+          "base": {
+            "fwd": 0.01326,
+            "left": -0.00702
+          },
+          "max_steps": 3
+        },
+        {
+          "intent": "Hold measured endpoint before release",
+          "right": {
+            "q": "MEASURED_RIGHT_Q",
+            "grip": 0
+          },
+          "max_steps": 2,
+          "seconds": 0.2
+        },
+        {
+          "intent": "Open without translating",
+          "right": {
+            "q": "MEASURED_RIGHT_Q",
+            "grip": 1
+          },
+          "max_steps": 4,
+          "seconds": 0.2
+        },
+        {
+          "intent": "Withdraw only after image confirms poster remains at nail",
+          "base": {
+            "fwd": -0.0884,
+            "left": 0.0468
+          },
+          "max_steps": 8
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "wall-tangent-right-20mm",
+      "calls": [
+        {
+          "intent": "Prepare matched human prehang pose in clear space",
+          "right": {
+            "q": [
+              -1.163955807685852,
+              -0.04280595853924751,
+              -0.005650848150253296,
+              -1.165106177330017,
+              0.01339000929147005,
+              0.7977131009101868,
+              0.936327338218689
+            ],
+            "grip": 0
+          },
+          "torso": {
+            "q": [
+              0.548905074596405,
+              -0.5808293223381042,
+              -0.10133747011423111,
+              -0.00012556894216686487
+            ]
+          },
+          "max_steps": 12
+        },
+        {
+          "intent": "Keep matched human wall-relative heading; approach conservative waypoint",
+          "base": {
+            "to_rel": [
+              1.0,
+              0.75,
+              20
+            ]
+          },
+          "max_steps": 20
+        },
+        {
+          "intent": "Opposite lateral correction, independent reset",
+          "base": {
+            "fwd": -0.00936,
+            "left": -0.01768
+          },
+          "max_steps": 3
+        },
+        {
+          "intent": "One small wall-normal seating increment",
+          "base": {
+            "fwd": 0.01326,
+            "left": -0.00702
+          },
+          "max_steps": 3
+        },
+        {
+          "intent": "Hold measured endpoint before release",
+          "right": {
+            "q": "MEASURED_RIGHT_Q",
+            "grip": 0
+          },
+          "max_steps": 2,
+          "seconds": 0.2
+        },
+        {
+          "intent": "Open without translating",
+          "right": {
+            "q": "MEASURED_RIGHT_Q",
+            "grip": 1
+          },
+          "max_steps": 4,
+          "seconds": 0.2
+        },
+        {
+          "intent": "Withdraw only after image confirms poster remains at nail",
+          "base": {
+            "fwd": -0.0884,
+            "left": 0.0468
+          },
+          "max_steps": 8
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "frontal-compact-human-6863",
+      "calls": [
+        {
+          "intent": "Alternative human posture in clear space",
+          "right": {
+            "q": [
+              -1.2955608367919922,
+              0.10438027232885361,
+              -0.009032156318426132,
+              -0.8422542214393616,
+              0.08521215617656708,
+              0.6625140309333801,
+              1.0203497409820557
+            ],
+            "grip": 0
+          },
+          "torso": {
+            "q": [
+              0.4494951665401459,
+              -0.3991799056529999,
+              0.019511450082063675,
+              6.904643669258803e-05
+            ]
+          },
+          "max_steps": 16
+        },
+        {
+          "intent": "Frontal wall heading, conservative approach",
+          "base": {
+            "to_rel": [
+              1.08,
+              1.0,
+              -8
+            ]
+          },
+          "max_steps": 24
+        },
+        {
+          "intent": "Small frontal seating increment after remeasuring geometry",
+          "base": {
+            "fwd": 0.015
+          },
+          "max_steps": 3
+        },
+        {
+          "intent": "Hold measured endpoint before release",
+          "right": {
+            "q": "MEASURED_RIGHT_Q",
+            "grip": 0
+          },
+          "max_steps": 2,
+          "seconds": 0.2
+        },
+        {
+          "intent": "Open without translating",
+          "right": {
+            "q": "MEASURED_RIGHT_Q",
+            "grip": 1
+          },
+          "max_steps": 4,
+          "seconds": 0.2
+        },
+        {
+          "intent": "Frontal withdrawal after retained poster confirmation",
+          "base": {
+            "fwd": -0.1
+          },
+          "max_steps": 8
+        }
+      ]
+    }
+  ]
+}

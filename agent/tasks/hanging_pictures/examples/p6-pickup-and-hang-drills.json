@@ -1,0 +1,277 @@
+{
+  "outcome": "pickup/lift/carry succeeded from snapshot; hanging failed",
+  "scope": "TRAIN10 snapshot practice, not native reset full success",
+  "finish": {
+    "finished": true,
+    "simulated_seconds": 45.3,
+    "wall_seconds": 301.1570217779954,
+    "practice_feedback": {
+      "practice_only": true,
+      "privileged_training_feedback": true,
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5",
+      "step": 1359,
+      "success": false,
+      "predicates": [
+        {
+          "index": 0,
+          "predicate": "(exists (?wall_nail.n.01 - wall_nail.n.01) (attached ?poster.n.01_1 ?wall_nail.n.01))",
+          "satisfied": false
+        }
+      ],
+      "goal_options": [
+        [
+          {
+            "index": 0,
+            "predicate": "(attached poster.n.01_1 wall_nail.n.01_1)",
+            "satisfied": false
+          }
+        ]
+      ],
+      "q_score": 0.0,
+      "satisfied_fraction": 0.0,
+      "q_definition": "Native compute_q_score: success=1; otherwise newly satisfied since this practice start / predicates per option, maximized over alternatives",
+      "satisfied_fraction_definition": "Current satisfied predicates / predicates per option, maximized over alternatives; not baseline-adjusted Q",
+      "source": "BehaviorTask.compiled_task.check_goal + get_goal_option_satisfaction; native TaskMetric.compute_q_score"
+    }
+  },
+  "pickup_change": "From base [.48,-1.60,-34], first base left=-.05 then fwd=.055; edge right[320,300]=[.750412,-.500406,1.001527] matches old success; human737 q+grip0 accept_partial=True. Lift retained.",
+  "snapshots": [
+    "p6-pregrasp-a10",
+    "p6-before-hang"
+  ],
+  "failure": "Initial hung plane had -0.13 z normal; backed off and aligned to wall, approached to stand-off, base stalled then opening dropped poster. Nail alignment not established.",
+  "receipts": [
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-886ffb33082f4629bf425576a8d2351f/receipt_01792120292822296000_bb392b1d82364f999dfa564d66b7f63d.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-886ffb33082f4629bf425576a8d2351f",
+      "observation_id": 1,
+      "submitted_action": null,
+      "simulated_seconds": 11.9,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-886ffb33082f4629bf425576a8d2351f/obs_0001.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-886ffb33082f4629bf425576a8d2351f/receipt_01792120303653879000_108d652d7f5e486f91f32f00f84a2cf8.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-886ffb33082f4629bf425576a8d2351f",
+      "observation_id": 2,
+      "submitted_action": null,
+      "simulated_seconds": 12.733333333333333,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-886ffb33082f4629bf425576a8d2351f/obs_0002.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-886ffb33082f4629bf425576a8d2351f/receipt_01792120316800428000_17c16ed2a20146c183d718b650257980.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-886ffb33082f4629bf425576a8d2351f",
+      "observation_id": 3,
+      "submitted_action": null,
+      "simulated_seconds": 12.966666666666667,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-886ffb33082f4629bf425576a8d2351f/obs_0003.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/receipt_01792120393671787000_4fef4e240d7b45139471cc705426c667.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5",
+      "observation_id": 1,
+      "submitted_action": null,
+      "simulated_seconds": 11.9,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/obs_0001.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/receipt_01792120422047921000_bf3ba6d75f2841258dbd35cf34769b09.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5",
+      "observation_id": 2,
+      "submitted_action": null,
+      "simulated_seconds": 13.033333333333333,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/obs_0002.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/receipt_01792120431652513000_a8ea1fc1afbf4372a27d5c05fd4540ce.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5",
+      "observation_id": 3,
+      "submitted_action": null,
+      "simulated_seconds": 14.233333333333333,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/obs_0003.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/receipt_01792120443449521000_b2bcf0aa82a24bac954590a472daa18e.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5",
+      "observation_id": 4,
+      "submitted_action": null,
+      "simulated_seconds": 15.133333333333333,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/obs_0004.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/receipt_01792120452689981000_eec479e05f534d5e85a64ff0cb530198.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5",
+      "observation_id": 5,
+      "submitted_action": null,
+      "simulated_seconds": 16.266666666666666,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/obs_0005.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/receipt_01792120465469088000_0a7680f2cd6d43968e1253c916723b6a.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5",
+      "observation_id": 6,
+      "submitted_action": null,
+      "simulated_seconds": 18.466666666666665,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/obs_0006.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/receipt_01792120474894491000_734dea8c86744395b9d793e16a837dd6.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5",
+      "observation_id": 7,
+      "submitted_action": null,
+      "simulated_seconds": 19.233333333333334,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/obs_0007.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/receipt_01792120490709123000_2ebe9dc1df294b85b713bf83e6ae759d.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5",
+      "observation_id": 8,
+      "submitted_action": null,
+      "simulated_seconds": 25.133333333333333,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/obs_0008.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/receipt_01792120505128932000_04676c8989c943be8ba3d852cc6ae885.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5",
+      "observation_id": 9,
+      "submitted_action": null,
+      "simulated_seconds": 31.233333333333334,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/obs_0009.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/receipt_01792120516101174000_b1fb502888ca42cdb53939b372bfd875.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5",
+      "observation_id": 10,
+      "submitted_action": null,
+      "simulated_seconds": 32.4,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/obs_0010.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/receipt_01792120530552268000_8859d0007a1c402fbce6e28fa8ebb7a2.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5",
+      "observation_id": 11,
+      "submitted_action": null,
+      "simulated_seconds": 36.96666666666667,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/obs_0011.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/receipt_01792120542696156000_9422974f7c9b4b39b425c3b1d15589dd.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5",
+      "observation_id": 12,
+      "submitted_action": null,
+      "simulated_seconds": 37.03333333333333,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/obs_0012.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/receipt_01792120551972521000_c13c2452721948ddaa8c276b5c9b0270.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5",
+      "observation_id": 13,
+      "submitted_action": null,
+      "simulated_seconds": 38.03333333333333,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/obs_0013.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/receipt_01792120574111378000_b6f1570c20b149c5961a8ab9dd4f1691.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5",
+      "observation_id": 14,
+      "submitted_action": null,
+      "simulated_seconds": 39.0,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/obs_0014.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/receipt_01792120590553046000_2f29a240a95b46a3b19f47c5a0582e84.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5",
+      "observation_id": 15,
+      "submitted_action": null,
+      "simulated_seconds": 39.4,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/obs_0015.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/receipt_01792120619078046000_20f52ca3aa2547f889b79e378d8d465e.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5",
+      "observation_id": 16,
+      "submitted_action": null,
+      "simulated_seconds": 40.96666666666667,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/obs_0016.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/receipt_01792120631706425000_212cc0738e324cd88f8f465c7611a126.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5",
+      "observation_id": 17,
+      "submitted_action": null,
+      "simulated_seconds": 41.96666666666667,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/obs_0017.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/receipt_01792120646105097000_eac4717a44034a42bb606dfc51329140.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5",
+      "observation_id": 18,
+      "submitted_action": null,
+      "simulated_seconds": 43.53333333333333,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/obs_0018.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/receipt_01792120658101668000_b1bab21611c746d5b2484a4063626eaf.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5",
+      "observation_id": 19,
+      "submitted_action": null,
+      "simulated_seconds": 43.766666666666666,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/obs_0019.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/receipt_01792120671551872000_ddbbf748d83f4c718210192e0f262468.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5",
+      "observation_id": 20,
+      "submitted_action": null,
+      "simulated_seconds": 45.3,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9490ad53074542cd965109e8509ed4d5/obs_0020.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9cc4c263407d4717b4fc5349a3ae049e/receipt_01792120333480362000_a50a614dfbd341f79843b92c9febffa2.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9cc4c263407d4717b4fc5349a3ae049e",
+      "observation_id": 1,
+      "submitted_action": null,
+      "simulated_seconds": 11.9,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9cc4c263407d4717b4fc5349a3ae049e/obs_0001.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9cc4c263407d4717b4fc5349a3ae049e/receipt_01792120347867679000_f6a7c1ddab384c27a09ad210d8e5c271.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9cc4c263407d4717b4fc5349a3ae049e",
+      "observation_id": 2,
+      "submitted_action": null,
+      "simulated_seconds": 12.866666666666667,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9cc4c263407d4717b4fc5349a3ae049e/obs_0002.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9cc4c263407d4717b4fc5349a3ae049e/receipt_01792120360870316000_7f165f5878344ff5aafa681491b172f7.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-9cc4c263407d4717b4fc5349a3ae049e",
+      "observation_id": 3,
+      "submitted_action": null,
+      "simulated_seconds": 13.1,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-9cc4c263407d4717b4fc5349a3ae049e/obs_0003.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-eea06baa87944d19a25a96dcc6cee83e/receipt_01792120262600881000_6357df4954034741a88ad3d62ecdaa04.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-eea06baa87944d19a25a96dcc6cee83e",
+      "observation_id": 1,
+      "submitted_action": null,
+      "simulated_seconds": 11.9,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-eea06baa87944d19a25a96dcc6cee83e/obs_0001.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-eea06baa87944d19a25a96dcc6cee83e/receipt_01792120264393354000_e30a687eeee34ea184c4ece55cc666d4.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-eea06baa87944d19a25a96dcc6cee83e",
+      "observation_id": 2,
+      "submitted_action": null,
+      "simulated_seconds": 11.9,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-eea06baa87944d19a25a96dcc6cee83e/obs_0002.jpg"
+    },
+    {
+      "path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-eea06baa87944d19a25a96dcc6cee83e/receipt_01792120281130567000_b3d1b8671dce4c46b700bb0b6fc05a48.json",
+      "attempt_id": "practice-restore-p6-pregrasp-a10-eea06baa87944d19a25a96dcc6cee83e",
+      "observation_id": 3,
+      "submitted_action": null,
+      "simulated_seconds": 12.133333333333333,
+      "local_image_path": "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-pregrasp-a10-eea06baa87944d19a25a96dcc6cee83e/obs_0003.jpg"
+    }
+  ]
+}

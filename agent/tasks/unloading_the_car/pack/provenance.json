@@ -1,0 +1,91 @@
+{
+  "scope": "public-data lite; no frames/video or simulator runtime accessed",
+  "dataset": "behavior-1k/2026-challenge-demos",
+  "revision": "4f50b44796641a4d526a19d9aeadc8aa51e2f2c2",
+  "instruction_source": "meta/tasks.jsonl",
+  "instruction_source_sha256": "8d8222310c3611316c6e5fe822a8dd3c6e552b32bcfddd10870c0672bfb8427c",
+  "native_commit": "bd049de3119acdcdf2334fe9e1ebe060fa20c108",
+  "official": {
+    "bddl": "(define (problem unloading_the_car-0)\n    (:domain behavior-1k)\n\n    (:objects\n        car.n.01_1 - car.n.01\n        floor.n.01_1 - floor.n.01\n        briefcase.n.01_1 - briefcase.n.01\n        satchel.n.01_1 - satchel.n.01\n        sofa.n.01_1 - sofa.n.01\n        agent.n.01_1 - agent.n.01\n    )\n    \n    (:init \n        (inroom car.n.01_1 garage)\n        (inside briefcase.n.01_1 car.n.01_1) \n        (inside satchel.n.01_1 car.n.01_1) \n        (inroom sofa.n.01_1 living_room)\n        (inroom floor.n.01_1 garage) \n        (ontop agent.n.01_1 floor.n.01_1)\n    )\n    \n    (:goal \n        (and \n            (forall \n                (?briefcase.n.01 - briefcase.n.01)\n                (nextto ?briefcase.n.01 ?sofa.n.01_1)\n            )\n            (forall\n                (?satchel.n.01 - satchel.n.01)\n                (nextto ?satchel.n.01 ?sofa.n.01_1)\n            )\n        )\n    )\n)",
+    "bddl_sha256": "1e58f03f84c57ee2835c76fcbb1b42f893643306eb5fd09192e0b1e13cd48081",
+    "human_mean_steps": 11323.43,
+    "stats_sha256": "7dbb5f7f00a2e06c693dfbb3045e5c28e627b6179e775f1ad93ca4b61f08e6dc"
+  },
+  "catalog_sha256": "ccd5ff0d31587dca83a9aa1520a1ea277808a55d670c8e753c0e5c5c77e6870e",
+  "episodes": [
+    {
+      "episode": {
+        "episodeId": "13010",
+        "episodeIndex": 13010,
+        "demoIndex": 10,
+        "rawEpisodeId": 650200,
+        "taskInstanceId": 20,
+        "frameCount": 10654,
+        "skillCount": 13,
+        "primitiveCount": 0,
+        "taskDurationFrames": 10654,
+        "validStartFrame": 0,
+        "validEndFrame": 10654,
+        "annotationPath": "annotations/task-0065/episode_00650200.json",
+        "remoteZed": {
+          "chunkIndex": 65,
+          "fileIndex": 0,
+          "fromTimestamp": 3589.0333333333333,
+          "toTimestamp": 3944.1666666666665
+        }
+      },
+      "annotation_sha256": "8c8c02ed21631440fb6661591dfe0afbfb16331c118cd81044e9f318aa46419f"
+    },
+    {
+      "episode": {
+        "episodeId": "13011",
+        "episodeIndex": 13011,
+        "demoIndex": 11,
+        "rawEpisodeId": 650210,
+        "taskInstanceId": 21,
+        "frameCount": 10290,
+        "skillCount": 14,
+        "primitiveCount": 0,
+        "taskDurationFrames": 10289,
+        "validStartFrame": 0,
+        "validEndFrame": 10289,
+        "annotationPath": "annotations/task-0065/episode_00650210.json",
+        "remoteZed": {
+          "chunkIndex": 65,
+          "fileIndex": 0,
+          "fromTimestamp": 3944.1666666666665,
+          "toTimestamp": 4287.166666666666
+        }
+      },
+      "annotation_sha256": "032b5ef0ac62452df6c007c7dc578561bcac79ff70cf8b1188e697cfc4cefdc0"
+    },
+    {
+      "episode": {
+        "episodeId": "13012",
+        "episodeIndex": 13012,
+        "demoIndex": 12,
+        "rawEpisodeId": 650220,
+        "taskInstanceId": 22,
+        "frameCount": 18351,
+        "skillCount": 13,
+        "primitiveCount": 0,
+        "taskDurationFrames": 18351,
+        "validStartFrame": 0,
+        "validEndFrame": 18351,
+        "annotationPath": "annotations/task-0065/episode_00650220.json",
+        "remoteZed": {
+          "chunkIndex": 65,
+          "fileIndex": 0,
+          "fromTimestamp": 4287.166666666666,
+          "toTimestamp": 4898.866666666666
+        }
+      },
+      "annotation_sha256": "5512db5e871b306a1392a088092438979658a1b842f65f46dd418c402c89a255"
+    }
+  ],
+  "files": {
+    "TASK.md": "e4be4e13a23e49abc4fa970a8cf31a1391e3a4b617d91daec277164f1cce246e",
+    "ANNOTATIONS.md": "8cce7f3e4a21fff955db21d13f3e5cc946bb3254e743c0b1dccd33d497831ecf",
+    "README.md": "28b0211302d59b8d38ef5ff71fd3b0fa3fee217a6da9feda2645f50a2650ac2b"
+  }
+}

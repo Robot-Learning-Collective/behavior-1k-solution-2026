@@ -1,0 +1,8 @@
+{
+  "source": "Public RGBD right obs006, practice-restore-camera-full001-original-grasp-lift-71c4fe9cd5d64124b3a712c94ae32567",
+  "normal_eef": [0.0256406,0.00493849,0.999659],
+  "long_axis_eef": [0.48619588,-0.87381058,-0.00828555],
+  "bottom_center_eef": [-0.00475429,-0.00840349,0.10325265],
+  "rectangle_dimensions_m": [0.06674139,0.13556573],
+  "scope": "Geometric visible bottom plane/rectangle estimate only, not hidden attachment-frame truth. This ORIGINAL grasp differs from earlier displaced-camera snapshot grasp. Successful target body long-axis direction in earlier mounting BODY frame was [-.656,-.755,0], bottom outward normal [0,0,-1]. Reobserve plate after transport."
+}

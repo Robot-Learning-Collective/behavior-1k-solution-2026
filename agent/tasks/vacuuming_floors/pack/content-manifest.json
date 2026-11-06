@@ -1,0 +1,40 @@
+{
+  "task": "vacuuming_floors",
+  "tier": "lite",
+  "references_episode_train": [
+    [
+      13814,
+      20
+    ],
+    [
+      13815,
+      21
+    ],
+    [
+      13816,
+      23
+    ]
+  ],
+  "verification": "PASS: public pinned instructions/BDDL/source hashes, three non-held-out annotation joins; malformed coarse spans explicitly labelled derived envelopes",
+  "verification_script_sha256": "95def63f662109e14da915145d9542838e4a09bcb3254948d216c8ff1a381cfd",
+  "files": {
+    "ANNOTATIONS.md": {
+      "sha256": "b07a7f5d96bf4ac46214e5373a128aed94bf00d237a1f9974bd00c488ca09838",
+      "bytes": 5485
+    },
+    "README.md": {
+      "sha256": "28b0211302d59b8d38ef5ff71fd3b0fa3fee217a6da9feda2645f50a2650ac2b",
+      "bytes": 357
+    },
+    "TASK.md": {
+      "sha256": "17fb4af05f5dbb6e120cf76f033da8fa65ec38057e96db05fad3f02a8d5b291d",
+      "bytes": 1375
+    },
+    "provenance.json": {
+      "sha256": "16229f74235fceb1d8b2f1d503b2315985ab72574c20ccec5ddad5dde7a2ef6c",
+      "bytes": 3703
+    }
+  },
+  "total_content_bytes": 10920,
+  "limits": "Public human study only; no held-out rollout data or live scorer/object/contact state; not task-success evidence."
+}

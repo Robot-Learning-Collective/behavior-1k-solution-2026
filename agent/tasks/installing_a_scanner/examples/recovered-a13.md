@@ -1,0 +1,5 @@
+# Recovered a13 — preparation failure
+
+Native full reset, no restores. First attempted one-hand grip initialization rejected locally before motion (must set BOTH intents in same act). Corrected. Navigation/rear sweep recipe replayed, but scanner rotated into clear overhang after .35+.25+.08+.10 rear draws. I incorrectly continued historical recenter+.20/left-.12, stage1.34 and draw-.15 without adapting to achieved overhang. Scanner slid off tabletop onto chair after hand lift at1298steps/43.267sim, endpoint158.1wall. No acquisition attempted. This breaks consecutive clean pair; a12 remains sole full native Q1.
+
+Evidence root `<observation-cache>/scanner-run-007-p6-1054ef/scanner-run-007-recovered-a13/`; final receipt `receipt_01792129151869992000_30ccebbf190d49b49821f12b493e0192.json`. Do NOT blindly replay cumulative preparation distances: inspect scanner/table front edge after every draw and change to grasp as soon as adequate overhang exists. Rigid fixed sweeps are not repeatable under friction/rotation.

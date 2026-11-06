@@ -1,0 +1,40 @@
+{
+  "task": "cook_cabbage",
+  "tier": "lite",
+  "references_episode_train": [
+    [
+      8214,
+      20
+    ],
+    [
+      8215,
+      21
+    ],
+    [
+      8216,
+      23
+    ]
+  ],
+  "verification": "PASS: public pinned instructions/BDDL/source hashes, three non-held-out annotation joins; malformed coarse spans explicitly labelled derived envelopes",
+  "verification_script_sha256": "a1a3d7da62afb1741971cc97e3fbe685035ec723bc34b16ac4cc574324ecef81",
+  "files": {
+    "ANNOTATIONS.md": {
+      "sha256": "6b2e1942a7bf1d2bf1ef51e19d7543ee6cfc45494990632aee7a2eafc69c3416",
+      "bytes": 19844
+    },
+    "README.md": {
+      "sha256": "28b0211302d59b8d38ef5ff71fd3b0fa3fee217a6da9feda2645f50a2650ac2b",
+      "bytes": 357
+    },
+    "TASK.md": {
+      "sha256": "663918f19e38aa812a9c73c5ebfc9b6f46549b66ec977e539ba53c71e4174df4",
+      "bytes": 2763
+    },
+    "provenance.json": {
+      "sha256": "3c42075f6adb91981987026417e607dc224cb3605e20f3bfc3048cab3af49522",
+      "bytes": 4941
+    }
+  },
+  "total_content_bytes": 27905,
+  "limits": "Public human study only; no held-out rollout data or live scorer/object/contact state; not task-success evidence."
+}

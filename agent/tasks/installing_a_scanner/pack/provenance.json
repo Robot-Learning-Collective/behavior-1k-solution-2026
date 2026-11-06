@@ -1,0 +1,91 @@
+{
+  "scope": "public-data lite; no frames/video or simulator runtime accessed",
+  "dataset": "behavior-1k/2026-challenge-demos",
+  "revision": "4f50b44796641a4d526a19d9aeadc8aa51e2f2c2",
+  "instruction_source": "meta/tasks.jsonl",
+  "instruction_source_sha256": "8d8222310c3611316c6e5fe822a8dd3c6e552b32bcfddd10870c0672bfb8427c",
+  "native_commit": "bd049de3119acdcdf2334fe9e1ebe060fa20c108",
+  "official": {
+    "bddl": "(define (problem installing_a_scanner-0)\n    (:domain behavior-1k)\n\n    (:objects\n     \tscanner.n.02_1 - scanner.n.02\n        laptop.n.01_1 - laptop.n.01\n    \ttable.n.02_1 - table.n.02\n    \tfloor.n.01_1 - floor.n.01\n    \tagent.n.01_1 - agent.n.01\n    )\n    \n    (:init \n        (ontop scanner.n.02_1 table.n.02_1)\n        (not \n            (toggled_on scanner.n.02_1)\n        )\n        (ontop laptop.n.01_1 table.n.02_1)\n        (inroom table.n.02_1 private_office) \n        (inroom floor.n.01_1 private_office) \n        (ontop agent.n.01_1 floor.n.01_1)\n    )\n    \n    (:goal \n        (and \n            (toggled_on ?scanner.n.02_1) \n            (nextto ?scanner.n.02_1 ?laptop.n.01_1)\n        )\n    )\n)",
+    "bddl_sha256": "a986dacf967d4185a622f693f0485fbfd0c2c63130727a551f9b011520656d65",
+    "human_mean_steps": 4258.535,
+    "stats_sha256": "7dbb5f7f00a2e06c693dfbb3045e5c28e627b6179e775f1ad93ca4b61f08e6dc"
+  },
+  "catalog_sha256": "3e7cab730a158d68711864b7081cf11dfda1ae7af21cfe89859735dd360f6baf",
+  "episodes": [
+    {
+      "episode": {
+        "episodeId": "18411",
+        "episodeIndex": 18411,
+        "demoIndex": 11,
+        "rawEpisodeId": 920200,
+        "taskInstanceId": 20,
+        "frameCount": 4120,
+        "skillCount": 6,
+        "primitiveCount": 0,
+        "taskDurationFrames": 4120,
+        "validStartFrame": 0,
+        "validEndFrame": 4120,
+        "annotationPath": "annotations/task-0092/episode_00920200.json",
+        "remoteZed": {
+          "chunkIndex": 92,
+          "fileIndex": 0,
+          "fromTimestamp": 1413.5333333333333,
+          "toTimestamp": 1550.8666666666666
+        }
+      },
+      "annotation_sha256": "df88446fe76b1405bd67b646b32c1a971ff145e02806771c01bddae5ef66da90"
+    },
+    {
+      "episode": {
+        "episodeId": "18412",
+        "episodeIndex": 18412,
+        "demoIndex": 12,
+        "rawEpisodeId": 920210,
+        "taskInstanceId": 21,
+        "frameCount": 3814,
+        "skillCount": 6,
+        "primitiveCount": 0,
+        "taskDurationFrames": 3814,
+        "validStartFrame": 0,
+        "validEndFrame": 3814,
+        "annotationPath": "annotations/task-0092/episode_00920210.json",
+        "remoteZed": {
+          "chunkIndex": 92,
+          "fileIndex": 0,
+          "fromTimestamp": 1550.8666666666666,
+          "toTimestamp": 1678.0
+        }
+      },
+      "annotation_sha256": "50e83e127076d100aee30e5e244aac8637b6f8e6498f60547d8a129c16a47ba9"
+    },
+    {
+      "episode": {
+        "episodeId": "18413",
+        "episodeIndex": 18413,
+        "demoIndex": 13,
+        "rawEpisodeId": 920220,
+        "taskInstanceId": 22,
+        "frameCount": 3207,
+        "skillCount": 6,
+        "primitiveCount": 0,
+        "taskDurationFrames": 3207,
+        "validStartFrame": 0,
+        "validEndFrame": 3207,
+        "annotationPath": "annotations/task-0092/episode_00920220.json",
+        "remoteZed": {
+          "chunkIndex": 92,
+          "fileIndex": 0,
+          "fromTimestamp": 1678.0,
+          "toTimestamp": 1784.9
+        }
+      },
+      "annotation_sha256": "9f0594f2d581ff30f3f18e924632795869302b6d2139f49e37767f23ccdbc0cc"
+    }
+  ],
+  "files": {
+    "TASK.md": "63df3760922425de6f15fac4c957ace14bcde748e3ad362d267d3463f6d9b834",
+    "ANNOTATIONS.md": "6b4732e30dc904fb3f70e616f82deab7aa29d2582de0ecbf78ddafa4c84ace8a",
+    "README.md": "28b0211302d59b8d38ef5ff71fd3b0fa3fee217a6da9feda2645f50a2650ac2b"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "scope": "public-data lite; no frames/video or simulator runtime accessed",
+  "dataset": "behavior-1k/2026-challenge-demos",
+  "revision": "4f50b44796641a4d526a19d9aeadc8aa51e2f2c2",
+  "instruction_source": "meta/tasks.jsonl",
+  "instruction_source_sha256": "8d8222310c3611316c6e5fe822a8dd3c6e552b32bcfddd10870c0672bfb8427c",
+  "native_commit": "bd049de3119acdcdf2334fe9e1ebe060fa20c108",
+  "official": {
+    "bddl": "(define (problem cook_brussels_sprouts-0)\n    (:domain behavior-1k)\n\n    (:objects\n        brussels_sprouts.n.01_1 brussels_sprouts.n.01_2 brussels_sprouts.n.01_3 brussels_sprouts.n.01_4 - brussels_sprouts.n.01\n        half__brussels_sprouts.n.01_1 half__brussels_sprouts.n.01_2 half__brussels_sprouts.n.01_3 half__brussels_sprouts.n.01_4 half__brussels_sprouts.n.01_5 half__brussels_sprouts.n.01_6 half__brussels_sprouts.n.01_7 half__brussels_sprouts.n.01_8 - half__brussels_sprouts.n.01\n        tupperware.n.01_1 - tupperware.n.01\n        carving_knife.n.01_1 - carving_knife.n.01\n        chopping_board.n.01_1 - chopping_board.n.01\n        cookie_sheet.n.01_1 - cookie_sheet.n.01\n        oven.n.01_1 - oven.n.01\n        electric_refrigerator.n.01_1 - electric_refrigerator.n.01\n        countertop.n.01_1 - countertop.n.01\n        floor.n.01_1 - floor.n.01\n        agent.n.01_1 - agent.n.01\n    )\n\n    (:init\n        (inside brussels_sprouts.n.01_1 tupperware.n.01_1)\n        (inside brussels_sprouts.n.01_2 tupperware.n.01_1)\n        (inside brussels_sprouts.n.01_3 tupperware.n.01_1)\n        (inside brussels_sprouts.n.01_4 tupperware.n.01_1)\n        (inside tupperware.n.01_1 electric_refrigerator.n.01_1)\n        (not (cooked brussels_sprouts.n.01_1))\n        (not (cooked brussels_sprouts.n.01_2))\n        (not (cooked brussels_sprouts.n.01_3))\n        (not (cooked brussels_sprouts.n.01_4))\n        (ontop chopping_board.n.01_1 countertop.n.01_1)\n        (ontop carving_knife.n.01_1 chopping_board.n.01_1)\n        (ontop cookie_sheet.n.01_1 countertop.n.01_1)\n        (future half__brussels_sprouts.n.01_1)\n        (future half__brussels_sprouts.n.01_2)\n        (future half__brussels_sprouts.n.01_3)\n        (future half__brussels_sprouts.n.01_4)\n        (future half__brussels_sprouts.n.01_5)\n        (future half__brussels_sprouts.n.01_6)\n        (future half__brussels_sprouts.n.01_7)\n        (future half__brussels_sprouts.n.01_8)\n        (inroom electric_refrigerator.n.01_1 kitchen)\n        (inroom oven.n.01_1 kitchen)\n        (inroom countertop.n.01_1 kitchen)\n        (inroom floor.n.01_1 kitchen)\n        (ontop agent.n.01_1 floor.n.01_1)\n    )\n\n    (:goal\n        (and\n            (forall\n                (?half__brussels_sprouts.n.01 - half__brussels_sprouts.n.01)\n                (and\n                    (real ?half__brussels_sprouts.n.01)\n                    (cooked ?half__brussels_sprouts.n.01)\n                    (inside ?half__brussels_sprouts.n.01 oven.n.01_1)\n                )\n            )\n            (not\n                (open ?electric_refrigerator.n.01_1)\n            )\n            (not\n                (open ?oven.n.01_1)\n            )\n        )\n    )\n)\n",
+    "bddl_sha256": "873e5d28271c5b09bb554bde5b378dedfc53d195afbe460d3c6df52294f04367",
+    "human_mean_steps": 15661.77,
+    "stats_sha256": "7dbb5f7f00a2e06c693dfbb3045e5c28e627b6179e775f1ad93ca4b61f08e6dc"
+  },
+  "catalog_sha256": "393abc36902df427bb4ca565429962ba81461706dfe8833c6978b5f708340680",
+  "episodes": [
+    {
+      "episode": {
+        "episodeId": "19009",
+        "episodeIndex": 19009,
+        "demoIndex": 9,
+        "rawEpisodeId": 950200,
+        "taskInstanceId": 20,
+        "frameCount": 15749,
+        "skillCount": 47,
+        "primitiveCount": 0,
+        "taskDurationFrames": 15749,
+        "validStartFrame": 0,
+        "validEndFrame": 15749,
+        "annotationPath": "annotations/task-0095/episode_00950200.json",
+        "remoteZed": {
+          "chunkIndex": 95,
+          "fileIndex": 2,
+          "fromTimestamp": 432.7,
+          "toTimestamp": 957.6666666666667
+        }
+      },
+      "annotation_sha256": "40829868a47ad6d69c4d0a530c8de16e6825f713c1a277c0791d60b1f35e1740"
+    },
+    {
+      "episode": {
+        "episodeId": "19010",
+        "episodeIndex": 19010,
+        "demoIndex": 10,
+        "rawEpisodeId": 950220,
+        "taskInstanceId": 22,
+        "frameCount": 11917,
+        "skillCount": 48,
+        "primitiveCount": 0,
+        "taskDurationFrames": 11917,
+        "validStartFrame": 0,
+        "validEndFrame": 11917,
+        "annotationPath": "annotations/task-0095/episode_00950220.json",
+        "remoteZed": {
+          "chunkIndex": 95,
+          "fileIndex": 2,
+          "fromTimestamp": 957.6666666666667,
+          "toTimestamp": 1354.9
+        }
+      },
+      "annotation_sha256": "a0f9e9f93a8f7a6a03827013a8a4810747538b16936f79b2134497b0f0000ee2"
+    },
+    {
+      "episode": {
+        "episodeId": "19011",
+        "episodeIndex": 19011,
+        "demoIndex": 11,
+        "rawEpisodeId": 950230,
+        "taskInstanceId": 23,
+        "frameCount": 10283,
+        "skillCount": 46,
+        "primitiveCount": 0,
+        "taskDurationFrames": 10283,
+        "validStartFrame": 0,
+        "validEndFrame": 10283,
+        "annotationPath": "annotations/task-0095/episode_00950230.json",
+        "remoteZed": {
+          "chunkIndex": 95,
+          "fileIndex": 2,
+          "fromTimestamp": 1354.9,
+          "toTimestamp": 1697.6666666666667
+        }
+      },
+      "annotation_sha256": "f56488fad13dd6b7315170d2061c0d8f4ac4d131928ef50aca5d4b7117e1a0c9"
+    }
+  ],
+  "files": {
+    "TASK.md": "0ce8b62ed3915b5845abdcac11d221c4da8c5f4835c59d50264a829c75bfb7a1",
+    "ANNOTATIONS.md": "aa6fc30817c6c8bf16386ae659eb8ec8aa6f7d57da3ce5f2161fa234f5c54f25",
+    "README.md": "28b0211302d59b8d38ef5ff71fd3b0fa3fee217a6da9feda2645f50a2650ac2b"
+  }
+}

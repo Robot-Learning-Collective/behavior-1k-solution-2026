@@ -1,0 +1,40 @@
+{
+  "task": "unloading_the_car",
+  "tier": "lite",
+  "references_episode_train": [
+    [
+      13010,
+      20
+    ],
+    [
+      13011,
+      21
+    ],
+    [
+      13012,
+      22
+    ]
+  ],
+  "verification": "PASS: public pinned instructions/BDDL/source hashes, three non-held-out annotation joins; malformed coarse spans explicitly labelled derived envelopes",
+  "verification_script_sha256": "95def63f662109e14da915145d9542838e4a09bcb3254948d216c8ff1a381cfd",
+  "files": {
+    "ANNOTATIONS.md": {
+      "sha256": "8cce7f3e4a21fff955db21d13f3e5cc946bb3254e743c0b1dccd33d497831ecf",
+      "bytes": 5730
+    },
+    "README.md": {
+      "sha256": "28b0211302d59b8d38ef5ff71fd3b0fa3fee217a6da9feda2645f50a2650ac2b",
+      "bytes": 357
+    },
+    "TASK.md": {
+      "sha256": "e4be4e13a23e49abc4fa970a8cf31a1391e3a4b617d91daec277164f1cce246e",
+      "bytes": 1748
+    },
+    "provenance.json": {
+      "sha256": "bd2b070051d3c20ce63411dfbf594ec692053a733beb70108aeaef2d8c858926",
+      "bytes": 4088
+    }
+  },
+  "total_content_bytes": 11923,
+  "limits": "Public human study only; no held-out rollout data or live scorer/object/contact state; not task-success evidence."
+}
