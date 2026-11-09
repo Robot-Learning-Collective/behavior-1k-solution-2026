@@ -1,104 +1,106 @@
-# BEHAVIOR Challenge Solution
+# BEHAVIOR Challenge 2026 Solution
 
 **9th Place | Public Leaderboard: 44.6%**
 
-This repository contains our winning solution for the [2025 BEHAVIOR Challenge](https://behavior.stanford.edu/challenge/), achieving a 26% success rate on both the public and private evaluation sets. Our approach builds upon [Physical Intelligence's Pi0.5](https://www.physicalintelligence.company/blog/pi0) vision-language-action model with several architectural and training innovations.
+Our solution for the [2026 BEHAVIOR Challenge](https://behavior.stanford.edu/challenge/): a single vision-language-action (VLA) model that runs a Galaxea R1Pro robot on all 100 long-horizon household tasks in the OmniGibson simulator. It builds on [Pi0.5](https://www.physicalintelligence.company/blog/pi05), the [openpi](https://github.com/Physical-Intelligence/openpi) code and our [1st-place 2025 solution](#2025-solution).
 
-**📄 [Technical Report](https://arxiv.org/abs/2512.06951)** | **👀 [Blog Post](https://robot-learning-collective.github.io/winning-behavior-1k-challenge)** | **🎥 [Video](https://www.youtube.com/watch?v=J4wpO0EdCZs)**
+**[Checkpoint](https://huggingface.co/IliaLarchenko/BEHAVIOR2026VLA)** | **Technical report: TODO**
 
-> **2026 update (draft):** this branch is our solution for the [2026 BEHAVIOR Challenge](https://behavior.stanford.edu/challenge/) (100 tasks, new simulator): the learned policy for all tasks, plus a GPT-6 Astra agent that plays 14 tasks from frozen practice sessions ([agent/](agent/README.md)). The 2025 summary below is kept; the [2026 changes](#-2026-changes) and [agent](#-2026-agent-gpt-6-astra-on-14-tasks) sections list what was added on top of it.
+## Results
 
----
+Local evaluation with the official success criterion and q-score: 100 tasks, 10 episodes per task (instances 301-310), learned policy only.
 
-## 🏆 Solution Summary
-We use policy based on Pi0.5 and built on top of [openpi](https://github.com/Physical-Intelligence/openpi) repository.
+| Tasks | Count | q-score |
+|---|---|---|
+| All | 100 | 0.389 |
+| Shared with the 2025 challenge | 50 | 0.370 |
+| New in 2026 | 50 | 0.407 |
 
-**Key Architecture Changes:**
-- Replaced language model with 50 trainable task embeddings (no text processing)
-- Correlated noise for Flow Matching: noise is sampled from N(0, 0.5*I + 0.5*Σ) instead of independent noise, where Σ is the action correlation matrix
-- Each layer of the Action Expert attends to linear combination of all VLM layers KV (learnable weights)
-- Attention: Images and task embeddings bidirectionally attend to each other, stage (system 2 - see below) and robot state bidirectionally attend to each other and to images and task embeddings, FAST tokens attend to all mentioned above + causally to each other, Flow Matching attends to everything except FAST tokens and attends to each other bidirectionally
+The success rate over all tasks is 21.8%. On the 50 shared tasks our 2025 submission scored 0.260. That score comes from the official 2025 evaluation in the 2025 simulator, so the comparison is not exact.
 
-**Key Training Changes:**
-- Multi-step Flow Matching: 15 action expert predictions (with different time and noise sampled) per each VLM step to reduce training variance
-- Delta action space with per-timestamp normalization
-- Extra FAST auxiliary loss with 0.05 weight (no knowledge insulation)
-- 0.1 weight for subtask prediction loss (system 2 logic, see below)
-- Trained on 224x224 RGB images + proprioception states only
+The leaderboard score comes from our challenge submission, which also used an agent-based controller on 14 tasks. The results in this section are for the learned policy alone.
 
-**System 2 Implementation:**
-- Predicts current task stage (5-15 stages per task solely based on the timestamps) as auxiliary output from VLM (using only images and task embeddings)
-- Stage tracking with voting logic for smooth transitions and non-Markovian resolution, passed as input to the model (using mix of sin encoded subtask state and learnable embeddings)
+## Agent on 14 tasks
 
-**Inference Optimizations:**
-- Soft inpainting: predict 30 actions, execute 26, keep 4 for next prediction for inpainting. Inpainting is soft (only first 70% of the denoising steps are inpainted) and correlation aware (the rest of the actions are guided towards the linear regression prediction for them from the original 4 actions).
-- 1.3x speedup via cubic interpolation (26 predicted actions are executed in 20 steps). Speed up is disabled when gripper state is changing
-- General correction rule: open gripper after failed grasp attempts.
-- Extra hardcoded correction rule for radio tasks (probably not important but is kept as a legacy).
-- We use 4 checkpoints of the same model for different tasks. They were initially trained on 50 tasks simultaneously but later split and finetuned on the separate subsets of tasks.
+On 14 tasks where the learned policy is weak, the policy server hands the episode to an LLM agent: GPT-6 Astra controls the robot through `observe`, `act` and `xyz` calls and a per-tick controller. Every episode starts from a fork of the agent's own practice session on that task, in which it practised in the simulator, compared itself with the human demonstrations and wrote down what worked. With the agent the public leaderboard score rises from 38.9% to 44.6%.
 
+```
+evaluator ── scripts/serve_b1k.py --agent ┬─ agent task (agent/tasks/tasks.json) → fork of the frozen practice session → controller
+                                          └─ every other task, and any agent failure → learned policy
+```
 
-## 🆕 2026 Changes
+The practice sessions are not public, so the agent route cannot run from this repository alone; the learned policy on all 100 tasks can. [agent/README.md](agent/README.md) describes the agent, its practice and evaluation loops and the per-task results, [agent/practice/](agent/practice/README.md) is the practice harness, and [agent/research/](agent/research/README.md) covers what we tried before practice.
 
-**Representation and data**
-- 2026 dataset (LeRobot V3, 100 tasks, 20k demos), RGB only, loaded as a weighted mixture of data sources; frames after task completion are never sampled as chunk anchors
-- Trunk as the teleoperation's 2 degrees of freedom (translate, tilt) instead of 4 torso joints: 21-dim actions/state, exact in both directions for every demo (`b1k.shared.trunk2dof`)
-- Semantic stages instead of time-based ones: 413 stages (2-9 per task) built from ordered groups of the demo skill annotations, per-frame labels in `assets/semantic_stages/`, regenerated by `scripts/prepare_semantic_stages.sh` (part of the stage design was post-processed with LLMs: the grouping rules and the reviewed borderline cases)
-- Observation timing realigned to the evaluator: the demos pair action t with positions of state t-1 and images of state t-2, the evaluator gives positions of t and images of t-1, so each sample takes the action chunk and velocities of the previous row
-- State scaled to [-1, 1] by its min/max instead of z-scoring (the z-scored state saturated about a third of the 256 state bins)
+## Solution
 
-**Architecture**
+**Model**
+- PaliGemma vision-language model plus a smaller Gemma action expert trained with flow matching, 2.9B parameters
+- One checkpoint for all 100 tasks: learned task and stage embeddings instead of text prompts
+- Correlated flow noise, N(0, 0.5·I + 0.5·C), where C is the empirical correlation of the action chunks
+- Each action-expert layer attends to a learnable mix of the keys and values of all VLM layers
 - State tokens: each joint's 256-bin token plus a learned per-joint embedding and a projection of sin/cos features of the unclipped value, plus one continuous token of the whole state
-- 8 SigLIP register tokens (their outputs join the prefix), 8 VLM scratch tokens, 6 action-expert scratch tokens; 2 of them follow the actions and carry the task and task-stage embeddings into the expert
-- Attention sink slot (learnable logit and value) in every Gemma attention layer
+- 8 SigLIP register tokens, 8 VLM scratch tokens and 6 action-expert scratch tokens; 2 of the expert tokens follow the actions and carry the task and stage embeddings into the expert
+- Attention sink (learnable logit and value) in every Gemma attention layer
 - Identity-initialized per-camera projection of the SigLIP tokens
 - Gemma token table cut to the 256 state-bin rows
 
+**Data**
+- 2026 challenge dataset (LeRobot v3, 100 tasks, 20,000 demonstrations), 224x224 RGB and proprioception; frames after task completion are never sampled as chunk anchors
+- 21-dim actions and state: the trunk is represented by the teleoperation's 2 degrees of freedom (translate, tilt) instead of 4 torso joints, exact in both directions for every demonstration (`b1k.shared.trunk2dof`)
+- Semantic stages: 413 stages (2-9 per task) built from ordered groups of the demonstrations' skill annotations (`assets/semantic_stages/`). Part of the stage design was post-processed with LLMs: the grouping rules and the reviewed borderline cases
+- Observation timing realigned to the evaluator: the demos pair action t with positions of state t-1 and images of state t-2, the evaluator gives positions of t and images of t-1, so each sample takes the action chunk and velocities of the previous row
+- State scaled to [-1, 1] by its min/max instead of z-scoring (the z-scored state saturated about a third of the 256 state bins)
+
 **Training**
-- YAML recipes (`configs/train_b1k_2026.yaml`), warm start from the 2025 checkpoint (`scripts/convert_2025_checkpoint.py`)
-- 10 flow samples per observation with stratified time and antithetic noise pairs
-- Per-group learning-rate multipliers (action expert, action projections, KV mixing and task/stage embeddings at 2x)
-- Augmentations: head-camera crop/rotate, color jitter, cutout, wrist-camera dropout, state-token dropout; padded chunk steps past the episode end are excluded from the loss
+- YAML recipe (`configs/train_b1k_2026.yaml`), warm start from the 2025 checkpoint (`scripts/convert_2025_checkpoint.py`)
+- 10 flow samples per observation with stratified times and antithetic noise pairs
+- Auxiliary losses: FAST tokens (weight 0.05) and stage prediction (weight 0.1)
+- Per-group learning-rate multipliers: 2x for the action expert, action projections, KV mixing and task/stage embeddings
+- Augmentations: head-camera crop and rotation, color jitter, cutout, wrist-camera dropout, state-token dropout; padded chunk steps past the episode end are excluded from the loss
 - Flash attention (`jax.nn.dot_product_attention`) for training, EMA 0.995
 
 **Inference**
-- Soft inpainting: the anchor (4 kept actions) pulls the new chunk with strength 0.7 per denoising step, and the correlated correction of the other actions is capped per step
-- 26 predicted actions executed in 13 steps (2x), each new chunk snapped to the last executed action with a decaying offset
-- Stage voting over a 120-step window, and a stage is left only after 0.67x its shortest demo duration
+- 30 predicted actions with 20 denoising steps; the first 26 are executed in 13 environment steps (2x) and each new chunk is snapped to the last executed action with a decaying offset
+- Soft inpainting: the 4 kept actions pull the new chunk with strength 0.7 per denoising step, and the correlated correction of the other actions is capped per step
+- Stage voting over a 120-step window; a stage is left only after 0.67x its shortest demo duration
 - Gripper rule: a fully closed gripper is opened in stages where the demos never close it (`assets/semantic_stages/gripper_close_allowed.json`)
-- One checkpoint for all 100 tasks; the server batches several environments / connections per model call
-- Evaluation with persistent simulator workers that refill env slots and restore the boot scene between episodes, with per-worker CPU pinning (`scripts/run_parallel_eval.py`)
+- The server batches several environments and connections per model call
 
+**Evaluation**
+- Persistent simulator workers that refill env slots and restore the boot scene between episodes, with per-worker CPU pinning (`scripts/run_parallel_eval.py`)
 
-## 🤖 2026 Agent: GPT-6 Astra on 14 tasks
-
-On 14 tasks, mostly ones where the learned policy scores close to zero, the policy server hands the episode to an LLM agent. GPT-6
-Astra controls the robot through `observe` / `act` / `xyz` calls and a per-tick controller. Every episode starts
-from a fork of the agent's own practice session on that task: it practised in the simulator, compared itself with the
-human demonstrations, and wrote down what worked. Public score 39.2% → 44.6%.
-
-```
-evaluator ── scripts/serve_b1k.py --agent ┬─ task enabled in agent/tasks/tasks.json → fork of the frozen practice session → controller
-                                          └─ every other task (and any agent failure) → learned policy
-```
-
-- [agent/README.md](agent/README.md): architecture, the practice loop, the evaluation loop, results, what we changed
-  along the way
-- [agent/practice/](agent/practice/README.md): practise a new task; [agent/research/](agent/research/README.md):
-  what we tried before practice
-- [submission/](submission/README.md): the Docker image we submitted
-
-
-## 🚀 Quick Start (2026)
+## Installation
 
 ```bash
-git clone --recurse-submodules <this repo> && cd <repo>
+git clone --recurse-submodules https://github.com/Robot-Learning-Collective/behavior-1k-solution-2026.git
+cd behavior-1k-solution-2026
 bash setup_remote.sh   # uv env, openpi + local patches, BEHAVIOR-1K, Isaac Sim
+```
 
+## Run the checkpoint
+
+The [checkpoint](https://huggingface.co/IliaLarchenko/BEHAVIOR2026VLA) holds the weights, the normalization statistics and the FAST tokenizer.
+
+```bash
+uv run hf download IliaLarchenko/BEHAVIOR2026VLA --local-dir models/behavior2026_vla
+
+# Start the policy server
+uv run scripts/serve_b1k.py --policy.config configs/train_b1k_2026.yaml --policy.dir models/behavior2026_vla
+
+# In a second terminal, evaluate 4 episodes of one task
+uv run scripts/run_parallel_eval.py --task-name turning_on_radio --instance-indices 0 1 2 3 --num-envs 4
+```
+
+Instance indices 0-9 are the public instances 301-310 used for the results above. Add `--write-video` to save the episode videos.
+
+## Train
+
+```bash
 # 2026 demos (or a subset of chunks)
 uv run hf download behavior-1k/2026-challenge-demos --repo-type dataset --local-dir data/2026-challenge-demos
 
-# Warm start: the 2025 checkpoint_2 (https://huggingface.co/IliaLarchenko/behavior_submission) converted to the 2026 layout
+# Warm start: the 2025 checkpoint_2 converted to the 2026 layout
+uv run hf download IliaLarchenko/behavior_submission --include "checkpoint_2/*" --local-dir models
 JAX_PLATFORMS=cpu uv run scripts/convert_2025_checkpoint.py \
     --src models/checkpoint_2/params --out models/checkpoint_2_2026/params
 
@@ -106,235 +108,55 @@ JAX_PLATFORMS=cpu uv run scripts/convert_2025_checkpoint.py \
 uv run scripts/compute_norm_stats.py --config-name configs/train_b1k_2026.yaml
 uv run scripts/train_fast_tokenizer.py --config-name configs/train_b1k_2026.yaml --sample-fraction 0.01
 uv run scripts/train.py --yaml configs/train_b1k_2026.yaml   # --resume to continue
-
-# Serve a checkpoint and evaluate with persistent simulator workers
-uv run scripts/serve_b1k.py --policy.config configs/train_b1k_2026.yaml --policy.dir outputs/checkpoints/pi_behavior_b1k_2026/b1k_2026/<step>
-uv run scripts/run_parallel_eval.py --task-name turning_on_radio --instance-indices 0 1 2 3 --num-envs 4
 ```
 
-On machines with less than ~100 GB of host RAM set `low_memory_checkpointing: true` in the recipe.
+Checkpoints go to `outputs/checkpoints/pi_behavior_b1k_2026/b1k_2026/<step>/` and are served the same way with `--policy.dir`. On machines with less than ~100 GB of host RAM set `low_memory_checkpointing: true` in the recipe.
 
-The sections below document the 2025 solution (its training and serving commands refer to the 2025 code).
+The recipe is a single 200k-step run. The released checkpoint came from one 200k-step run that moved between hardware setups and was adjusted while training, so the recipe is not an exact replay of it.
 
-
-## 🚀 Quick Start (2025)
-
-### Installation
+The stage labels in `assets/semantic_stages/` are versioned. To regenerate them from the demos:
 
 ```bash
-# Clone with submodules (includes openpi and BEHAVIOR-1K)
-git clone --recurse-submodules https://github.com/ilialarchenko/behavior-1k-solution.git
-cd behavior-1k-solution
-
-# Run setup script (installs uv, dependencies, and sets up environment)
-bash setup_remote.sh
+B1K_DEMOS_ROOT=data/2026-challenge-demos bash scripts/prepare_semantic_stages.sh [--grippers]
 ```
 
-### Dataset Preparation
+## Repository layout
 
-Download the official BEHAVIOR-1K dataset from HuggingFace:
+| Path | Contents |
+|---|---|
+| `configs/` | Training recipe |
+| `src/b1k/` | Model, data pipeline, policy and serving wrapper |
+| `scripts/` | Training, conversion, serving and evaluation entry points |
+| `assets/semantic_stages/` | Stage definitions, per-frame labels and inference tables |
+| `patches/` | Local patches applied to openpi by `setup_remote.sh` |
+| `agent/` | LLM agent route: controller, evaluation runtime, practice harness, per-task notes |
+| `openpi/`, `BEHAVIOR-1K/` | Submodules |
 
-```bash
-# Login to HuggingFace (need to avoid request rate limit errors)
-uv run huggingface-cli login
+## 2025 solution
 
-# Download the full dataset (~2TB)
-uv run python - <<'PY'
-from huggingface_hub import snapshot_download
-snapshot_download(
-  repo_id="behavior-1k/2025-challenge-demos",
-  repo_type="dataset",
-  local_dir="./data/behavior_dataset",
-  local_dir_use_symlinks=False
-)
-PY
-```
+This work continues our 1st-place solution for the 2025 BEHAVIOR Challenge, which scored 0.26 on 50 tasks.
 
-**Alternative**: Use the resized RGB-only dataset (224×224, ~260GB) for faster training:
-```bash
-uv run python - <<'PY'
-from huggingface_hub import snapshot_download
-snapshot_download(
-  repo_id="IliaLarchenko/behavior_224_rgb",
-  repo_type="dataset",
-  local_dir="./data/behavior_224_rgb",
-  local_dir_use_symlinks=False
-)
-PY
-```
+- [Technical report](https://arxiv.org/abs/2512.06951)
+- [Blog post](https://robot-learning-collective.github.io/winning-behavior-1k-challenge)
+- [Checkpoints](https://huggingface.co/IliaLarchenko/behavior_submission)
 
-### Configuration
+## Acknowledgments
 
-Update paths in `src/b1k/training/config.py` (lines 334-378) as needed:
+Thanks to [Physical Intelligence](https://www.physicalintelligence.company/) for the open-source work on Pi0.5 and openpi, and to the BEHAVIOR team for the challenge, simulator and dataset.
 
-```python
-repo_id="behavior-1k/2025-challenge-demos",
-behavior_dataset_root="/path/to/data/behavior_dataset",
-assets_base_dir="/path/to/outputs/assets",
-checkpoint_base_dir="/path/to/outputs/checkpoints",
-```
+## References
 
-### Pre-training Setup
+**BEHAVIOR**
+- Challenge: [behavior.stanford.edu/challenge](https://behavior.stanford.edu/challenge/)
+- Paper: Li et al., "BEHAVIOR-1K: A Human-Centered, Embodied AI Benchmark with 1,000 Everyday Activities and Realistic Simulation" (2024), [arXiv:2403.09227](https://arxiv.org/abs/2403.09227)
+- Dataset: [behavior-1k/2026-challenge-demos](https://huggingface.co/datasets/behavior-1k/2026-challenge-demos)
+- Code: [BEHAVIOR-1K](https://github.com/StanfordVL/BEHAVIOR-1K)
 
-Compute dataset statistics and train FAST tokenizer:
-
-```bash
-# Compute normalization statistics with correlation matrix
-uv run scripts/compute_norm_stats.py --config-name pi_behavior_b1k_fast --correlation
-
-# Train FAST tokenizer for action discretization
-uv run scripts/train_fast_tokenizer.py \
-  --config-name pi_behavior_b1k_fast \
-  --encoded-dims="0:6,7:23" \
-  --vocab-size=1024
-```
-
-**Note**: If using pre-trained checkpoints, you can skip this step and copy assets from the checkpoint directory.
-
-### Training
-
-Login to Weights & Biases for experiment tracking (optional):
-
-```bash
-uv run wandb login
-```
-
-**Single GPU Training**:
-```bash
-uv run scripts/train.py pi_behavior_b1k_fast \
-  --batch_size=16 \
-  --num_train_steps=200000 \
-  --save_interval=2000 \
-  --keep_period=10000 \
-  --log_interval=100
-```
-
-**Multi-GPU Training**:
-```bash
-uv run scripts/train.py pi_behavior_b1k_fast \
-  --batch_size=2048 \
-  --num_train_steps=200000 \
-  --fsdp_devices=8 \
-  --save_interval=250 \
-  --keep_period=4000 \
-  --log_interval=25
-```
-
-Adjust batch size and other parameters to your needs.
-
-We used Fully Sharded Data Parallel (FSDP) - for training that allows to use a bigger batch size on multiple GPUs. openpi supports other multi-GPU modes but they were not tested and not used in this project. Please set `fsdp_devices=<number of GPUs>` to avoid any issues.
-
-Use `--overwrite` to start a new training and overwrite existing checkpoints or `--resume` to continue training from the last checkpoint. `--resume` works only with the same number of GPUs as the original training.
-
-
-### Fine-tuning
-
-You can initialize model weights either from already pretrained checkpoint or from Pi0.5 model (in this case all new parameters will get initial/random weights). Specify it in the training config. Our solution was initialized from Pi0.5 base model. 
-
-```python
-weight_loader=weight_loaders.PiBehaviorWeightLoader("/path/to/model/params")
-```
-
-### Evaluation
-
-Start the policy server:
-
-```bash
-uv run scripts/serve_b1k.py policy:checkpoint \
-  --policy.config pi_behavior_b1k_fast \
-  --policy.dir /path/to/checkpoint
-```
-
-In a separate terminal, [run evaluation](https://behavior.stanford.edu/challenge/baselines.html) (requires BEHAVIOR-1K environment):
-
-```bash
-python BEHAVIOR-1K/omnigibson/learning/eval.py \
-  log_path=./eval_logs \
-  policy=websocket \
-  task.name=make_microwave_popcorn \
-  model.host=localhost \
-  eval_instance_ids="[0,1,2,3]"
-```
-
-**Note**: this repo supports only our modification of the model developed for the competition, if you want to use Pi0.5 or Pi0 policies, use original [openpi](https://github.com/Physical-Intelligence/openpi) repository.
-
----
-
-## 📦 Pre-trained Checkpoints
-
-We provide 4 specialized checkpoints that we used for our competition submission. We initially trained them on all 50 tasks but later split and finetuned on the separate subsets of tasks. It was mostly done because of the time and resources constraints, we believe that longer training on 50 tasks can achieve comparable results.
-
-All checkpoints are available on HuggingFace in the same repository: [🤗 Checkpoints](https://huggingface.co/IliaLarchenko/behavior_submission)
-
-You can download them together or one by one.
-
-
-| Checkpoint | Task Count | Task IDs |
-|------------|------------|----------|
-| **Checkpoint 1** | 20 tasks | 2, 3, 5, 6, 10, 11, 13, 14, 15, 19, 23, 24, 25, 28, 29, 34, 42, 44, 47, 48 |
-| **Checkpoint 2** | 16 tasks | 0, 1, 7, 8, 9, 12, 16, 17, 18, 20, 21, 22, 26, 30, 43, 45 |
-| **Checkpoint 3** | 13 tasks | 4, 27, 31, 32, 33, 35, 36, 37, 38, 39, 41, 46, 49 |
-| **Checkpoint 4** | 1 task | 40 |
-
-You can run evaluation using all 4 checkpoints at once by configuring it in the `task_checkpoint_mapping.json` file. The policy will use the checkpoint corresponding to the task_id received from the server.
-
-```bash
-uv run scripts/serve_b1k.py --task-checkpoint-mapping task_checkpoint_mapping.json \
-    policy:checkpoint \
-  --policy.config pi_behavior_b1k_fast \
-  --policy.dir ~/models/checkpoint_1 #path to any checkpoint
-```
-
-We also provide the intermediate checkpoint achieved after the first stage of the model training (simultaneously on 50 tasks). It is not the part of the final submission. 
-We didn't properly evaluate it on the full dataset but our guess is that it can achieve around 15-20% q-score. You can find it [here](https://huggingface.co/IliaLarchenko/behavior_50t_checkpoint).
-
-## 👥 Core Team
-
-- **[Ilia Larchenko](https://github.com/IliaLarchenko)**
-- **[Zarin Gleb](https://github.com/zaringleb)**
-- **[Akash Karnatak](https://github.com/akashkarnatak)**
-
-## 🙏 Acknowledgments
-
-We would like to thank:
-
-- **[Vladimir Ershov](https://github.com/Vladimir-Ershov)**
-- **[Justyna Ilczuk](https://github.com/ilonajulczuk)**
-- **[Andrey Mulenkov](https://github.com/MulixBF)**
-
-
-Special thanks to **[Nebius](https://nebius.com/)** for providing cloud GPU compute resources and sponsoring the development of our solution.
-
-
-Special thanks to **[Physical Intelligence](https://www.physicalintelligence.company/)** for providing open source work on Pi0.5 and openpi which was a great inspiration and fundament of our solution.
-
-
-## 📚 References
-
-**BEHAVIOR-1K Challenge**
-- Website: [BEHAVIOR Challenge 2025](https://behavior.stanford.edu/challenge/)
-- Paper: Li et al., "BEHAVIOR-1K: A Human-Centered, Embodied AI Benchmark with 1,000 Everyday Activities and Realistic Simulation" (2024) [[arXiv:2403.09227]](https://arxiv.org/abs/2403.09227)
-- Dataset: [HuggingFace Dataset](https://huggingface.co/datasets/behavior-1k/2025-challenge-demos)
-- Code: [BEHAVIOR-1K Repository](https://github.com/StanfordVL/BEHAVIOR-1K)
-
-**Pi0.5 (Physical Intelligence)**
+**Pi0.5**
 - Blog post: [π0.5: a VLA with Open-World Generalization](https://www.physicalintelligence.company/blog/pi05)
-- Code: [OpenPI Repository](https://github.com/Physical-Intelligence/openpi)
 - Paper: [π0.5](https://www.physicalintelligence.company/download/pi05.pdf)
+- Code: [openpi](https://github.com/Physical-Intelligence/openpi)
 
+## License
 
-## Citation
-
-If you find this work useful, please cite:
-
-```bibtex
-@misc{larchenko2025behavior,
-      title={Task adaptation of Vision-Language-Action model: 1st Place Solution for the 2025 BEHAVIOR Challenge}, 
-      author={Ilia Larchenko and Gleb Zarin and Akash Karnatak},
-      year={2025},
-      eprint={2512.06951},
-      archivePrefix={arXiv},
-      primaryClass={cs.RO},
-      url={https://arxiv.org/abs/2512.06951}, 
-}
-```
+[Apache 2.0](LICENSE)
