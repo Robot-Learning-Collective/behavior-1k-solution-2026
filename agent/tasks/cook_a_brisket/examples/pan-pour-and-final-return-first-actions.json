@@ -1,0 +1,1502 @@
+{
+  "scope": "One over-budget same-world practice completion; no reset or restore after initial authorized reset; not official-compatible success or repeatability proof.",
+  "actions": [
+    {
+      "intent": "Return view to stove from wider aisle for pan-and-brisket transfer",
+      "high_level_action_id": "ab0f9ecb-2fdd-42ae-b7b5-c6170b9cb14d",
+      "requested": {
+        "intent": "Return view to stove from wider aisle for pan-and-brisket transfer",
+        "left": null,
+        "right": null,
+        "base": {
+          "yaw_deg": -120
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 210,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 269,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 168,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.000375745148483792,
+        "velocity_tracking_error_m": 0.00011057291981914633,
+        "absolute_velocity_error_integral_m": 0.00013150643689182408,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.06406738311052322,
+        "angular_tracking_error_rad": 0.00030044714609781903,
+        "heading_error_rad": 0.03430123994914158,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 209,
+        "executed_ticks": 168,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 270
+    },
+    {
+      "intent": "Unfold left hand in wider aisle before high downward pan-handle approach",
+      "high_level_action_id": "c6f88506-1390-4406-ba71-94d5063bfb53",
+      "requested": {
+        "intent": "Unfold left hand in wider aisle before high downward pan-handle approach",
+        "left": {
+          "preset": "ready"
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 100,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 270,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 55,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 99,
+        "executed_ticks": 55,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 271
+    },
+    {
+      "intent": "Orient left fingers downward across diagonal pan handle while still clear of stove",
+      "high_level_action_id": "a91cf8c2-1924-4a9c-979f-a18d6ccf7a5b",
+      "requested": {
+        "intent": "Orient left fingers downward across diagonal pan handle while still clear of stove",
+        "left": {
+          "q": [
+            -1.4843,
+            0.83846,
+            -1.57783,
+            -1.75649,
+            1.86357,
+            1.02719,
+            0.77662
+          ]
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 150,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 271,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 78,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 149,
+        "executed_ticks": 78,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 272
+    },
+    {
+      "intent": "Align raised left pinch over fresh pan-handle midpoint, avoiding low sweeping reaches",
+      "high_level_action_id": "bbc0ed68-3e0e-4a00-afcf-80f4e0bbf35b",
+      "requested": {
+        "intent": "Align raised left pinch over fresh pan-handle midpoint, avoiding low sweeping reaches",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": 0.26,
+          "left": 0.22
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 120,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 272,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 80,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.008932317528363435,
+        "velocity_tracking_error_m": 5.88796083089487e-05,
+        "absolute_velocity_error_integral_m": 6.29883698158237e-05,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.00018486280265885094,
+        "angular_tracking_error_rad": 0.00015729512198655964,
+        "heading_error_rad": 0.00015544535148936944,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 119,
+        "executed_ticks": 80,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 273
+    },
+    {
+      "intent": "Seat downward open jaws at fresh handle surface height; separate closure follows only after image check",
+      "high_level_action_id": "d05a0242-2620-40e8-a29e-f3334660f680",
+      "requested": {
+        "intent": "Seat downward open jaws at fresh handle surface height; separate closure follows only after image check",
+        "left": null,
+        "right": null,
+        "base": null,
+        "torso": {
+          "q": [
+            0.556,
+            -0.544,
+            -0.38,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 80,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 273,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 7,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 79,
+        "executed_ticks": 7,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 274
+    },
+    {
+      "intent": "Close separately on visually seated pan handle without lifting or translating",
+      "high_level_action_id": "397398e7-e011-4e00-a0b8-b144c6171622",
+      "requested": {
+        "intent": "Close separately on visually seated pan handle without lifting or translating",
+        "left": {
+          "grip": 0
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 70,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 274,
+      "achieved": false,
+      "reason": "stalled",
+      "steps": 29,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 69,
+        "executed_ticks": 29,
+        "stop_reason": "stalled",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 275
+    },
+    {
+      "intent": "Retention test: raise pan clear of burner while watching both handle and cooked brisket",
+      "high_level_action_id": "975378c5-092e-4eb1-967b-f7c91f8a15d6",
+      "requested": {
+        "intent": "Retention test: raise pan clear of burner while watching both handle and cooked brisket",
+        "left": null,
+        "right": null,
+        "base": null,
+        "torso": {
+          "q": [
+            0.556,
+            -0.544,
+            -0.23,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 70,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 275,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 7,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 69,
+        "executed_ticks": 7,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 276
+    },
+    {
+      "intent": "Carry retained pan and brisket diagonally into wider aisle before turning, away from L-counter return",
+      "high_level_action_id": "af2a5009-41b4-4cfb-b526-a88b35fefd30",
+      "requested": {
+        "intent": "Carry retained pan and brisket diagonally into wider aisle before turning, away from L-counter return",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": -0.28,
+          "left": -0.18
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 130,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 276,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 79,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.008940123575251237,
+        "velocity_tracking_error_m": 0.0002406195199813256,
+        "absolute_velocity_error_integral_m": 0.00025107626920242606,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.0005558762039678792,
+        "angular_tracking_error_rad": 0.000393753755876484,
+        "heading_error_rad": 0.00044709385838359594,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 129,
+        "executed_ticks": 79,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 277
+    },
+    {
+      "intent": "Turn loaded pan toward sink/board from aisle with bowl clear above countertop",
+      "high_level_action_id": "58ab7429-8ff6-484a-a3be-30f74da19a23",
+      "requested": {
+        "intent": "Turn loaded pan toward sink/board from aisle with bowl clear above countertop",
+        "left": null,
+        "right": null,
+        "base": {
+          "yaw_deg": 85
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 180,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 277,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 122,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.0006188442242496568,
+        "velocity_tracking_error_m": 0.00015247139221404878,
+        "absolute_velocity_error_integral_m": 0.0001562986364159074,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.06503664056460062,
+        "angular_tracking_error_rad": 0.00020243128140767414,
+        "heading_error_rad": 0.034862850592691785,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 179,
+        "executed_ticks": 122,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 278
+    },
+    {
+      "intent": "Carry pan along counter toward chopping board while backing bowl away from sink and faucet",
+      "high_level_action_id": "762fcea7-94c7-4856-bfc0-59ed9b4e1e63",
+      "requested": {
+        "intent": "Carry pan along counter toward chopping board while backing bowl away from sink and faucet",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": -0.25,
+          "left": 0.65
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 200,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 278,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 133,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.009125769985022002,
+        "velocity_tracking_error_m": 0.00016744896679511123,
+        "absolute_velocity_error_integral_m": 0.0001681241247693906,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.00017570834800911445,
+        "angular_tracking_error_rad": 0.0001946783255940924,
+        "heading_error_rad": 0.0001861547910504413,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 199,
+        "executed_ticks": 133,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 279
+    },
+    {
+      "intent": "Align board below intended near-right pouring edge rather than below the pan far side",
+      "high_level_action_id": "92882a2b-716c-4ed8-a1f6-50f1d543f65a",
+      "requested": {
+        "intent": "Align board below intended near-right pouring edge rather than below the pan far side",
+        "left": null,
+        "right": null,
+        "base": {
+          "left": 0.12
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 80,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 279,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 47,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.008841767779694663,
+        "velocity_tracking_error_m": 0.00013872938821402303,
+        "absolute_velocity_error_integral_m": 0.00013950721749311838,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 3.537079016192972e-05,
+        "angular_tracking_error_rad": 5.739553586560457e-05,
+        "heading_error_rad": 2.6842004441363088e-05,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 79,
+        "executed_ticks": 47,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 280
+    },
+    {
+      "intent": "Begin controlled pan tilt toward board low edge, preserving handle closure and TCP position",
+      "high_level_action_id": "8b54e1e5-77de-4714-b08f-78831a7007b6",
+      "requested": {
+        "intent": "Begin controlled pan tilt toward board low edge, preserving handle closure and TCP position",
+        "left": {
+          "roll_deg": 16,
+          "pitch_deg": 12
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 100,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 280,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 19,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 99,
+        "executed_ticks": 19,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 281
+    },
+    {
+      "intent": "Continue tilt after visible brisket slides toward low rim over chopping board; keep handle closed",
+      "high_level_action_id": "9de68419-2249-4bde-ad8f-68622786d56b",
+      "requested": {
+        "intent": "Continue tilt after visible brisket slides toward low rim over chopping board; keep handle closed",
+        "left": {
+          "roll_deg": 12.8,
+          "pitch_deg": 9.6
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 100,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 281,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 12,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 99,
+        "executed_ticks": 12,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 282
+    },
+    {
+      "intent": "Human-informed outward elbow extension while increasing pan tilt; static IK feasibility checked, actual board clearance still inspected",
+      "high_level_action_id": "8fe3b4bb-3d0d-4086-b118-1cd2ce7518a2",
+      "requested": {
+        "intent": "Human-informed outward elbow extension while increasing pan tilt; static IK feasibility checked, actual board clearance still inspected",
+        "left": {
+          "fwd": 0.1,
+          "left": 0.15,
+          "up": 0.03,
+          "roll_deg": 24,
+          "pitch_deg": 18
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 150,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 282,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 19,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 149,
+        "executed_ticks": 19,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 283
+    },
+    {
+      "intent": "Increase near-vertical pour slightly while extending elbow, directing brisket off low lip onto board",
+      "high_level_action_id": "16b5d70c-ea98-413f-b9fa-444fa742d6bb",
+      "requested": {
+        "intent": "Increase near-vertical pour slightly while extending elbow, directing brisket off low lip onto board",
+        "left": {
+          "fwd": 0.035,
+          "left": 0.025,
+          "up": 0.015,
+          "roll_deg": 9.6,
+          "pitch_deg": 7.2
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 100,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 283,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 11,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 99,
+        "executed_ticks": 11,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 284
+    },
+    {
+      "intent": "Lift empty pan vertically clear of visibly released brisket before restoring carry orientation",
+      "high_level_action_id": "a7652b13-72c6-4e8a-89df-0d19888f6ee7",
+      "requested": {
+        "intent": "Lift empty pan vertically clear of visibly released brisket before restoring carry orientation",
+        "left": {
+          "up": 0.08
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 100,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 284,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 11,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 99,
+        "executed_ticks": 11,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 285
+    },
+    {
+      "intent": "Carry empty tilted pan away from cooked brisket toward clear counter near sink drainer/stove corner",
+      "high_level_action_id": "9dd10d98-0bf6-410f-9cfe-691ff29fc59a",
+      "requested": {
+        "intent": "Carry empty tilted pan away from cooked brisket toward clear counter near sink drainer/stove corner",
+        "left": null,
+        "right": null,
+        "base": {
+          "left": -0.95
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 220,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 285,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 171,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.008891527129044023,
+        "velocity_tracking_error_m": 0.00021196023654660226,
+        "absolute_velocity_error_integral_m": 0.00021578022213358924,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.0004369039515343805,
+        "angular_tracking_error_rad": 0.00044430135997875674,
+        "heading_error_rad": 0.00044637741581787793,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 219,
+        "executed_ticks": 171,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 286
+    },
+    {
+      "intent": "Face clear countertop corner, not sink basin/drainer, for final pan support",
+      "high_level_action_id": "50a55b9d-3d79-469c-8bf5-1288af392ab8",
+      "requested": {
+        "intent": "Face clear countertop corner, not sink basin/drainer, for final pan support",
+        "left": null,
+        "right": null,
+        "base": {
+          "yaw_deg": -45
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 130,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 286,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 71,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.0005345667616718108,
+        "velocity_tracking_error_m": 0.0002353946861819867,
+        "absolute_velocity_error_integral_m": 0.00024156374240434682,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.06064200873176257,
+        "angular_tracking_error_rad": 0.000608477493127187,
+        "heading_error_rad": 0.032857701239912274,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 129,
+        "executed_ticks": 71,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 287
+    },
+    {
+      "intent": "Restore empty-pan carry orientation away from brisket; sampled TCP path stays above 1.04m, inspect actual retention",
+      "high_level_action_id": "ae72856e-6976-4d01-8f6e-d4e06ed73b83",
+      "requested": {
+        "intent": "Restore empty-pan carry orientation away from brisket; sampled TCP path stays above 1.04m, inspect actual retention",
+        "left": {
+          "q": [
+            -1.4843,
+            0.83846,
+            -1.57783,
+            -1.75649,
+            1.86357,
+            1.02719,
+            0.77662
+          ]
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 140,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 287,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 30,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 139,
+        "executed_ticks": 30,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 288
+    },
+    {
+      "intent": "Advance retained pan over full-depth countertop corner, not its front edge, using measured 0.882m surface",
+      "high_level_action_id": "d48b550a-6d06-49a6-b0a9-c1f98db76191",
+      "requested": {
+        "intent": "Advance retained pan over full-depth countertop corner, not its front edge, using measured 0.882m surface",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": 0.37,
+          "left": 0.06
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 140,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 288,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 85,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.009048056795378215,
+        "velocity_tracking_error_m": 1.71799097961155e-05,
+        "absolute_velocity_error_integral_m": 4.9387863110865256e-05,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.0003626990655902773,
+        "angular_tracking_error_rad": 0.00024368335410448103,
+        "heading_error_rad": 0.00030750099176657386,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 139,
+        "executed_ticks": 85,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 289
+    },
+    {
+      "intent": "Lower pan toward measured countertop, stopping near support height before opening",
+      "high_level_action_id": "597bd809-8bb1-4aec-8e28-449bb971da91",
+      "requested": {
+        "intent": "Lower pan toward measured countertop, stopping near support height before opening",
+        "left": null,
+        "right": null,
+        "base": null,
+        "torso": {
+          "q": [
+            0.556,
+            -0.544,
+            -0.39,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 70,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 289,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 8,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 69,
+        "executed_ticks": 8,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 290
+    },
+    {
+      "intent": "Lower final ~17mm to support pan bottom on counter, avoiding continued downward press",
+      "high_level_action_id": "0fbfa902-af1a-474b-8202-647dddbae5b8",
+      "requested": {
+        "intent": "Lower final ~17mm to support pan bottom on counter, avoiding continued downward press",
+        "left": null,
+        "right": null,
+        "base": null,
+        "torso": {
+          "q": [
+            0.556,
+            -0.544,
+            -0.414,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 50,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 290,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 2,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 49,
+        "executed_ticks": 2,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 291
+    },
+    {
+      "intent": "Release supported pan handle on countertop; replace small residual arm target with measured pose",
+      "high_level_action_id": "719eabfc-6dac-432a-8e17-50b7c1c005c1",
+      "requested": {
+        "intent": "Release supported pan handle on countertop; replace small residual arm target with measured pose",
+        "left": {
+          "q": [
+            -1.485024333000183,
+            0.8379281163215637,
+            -1.5768027305603027,
+            -1.756546139717102,
+            1.8599660396575928,
+            1.0256224870681763,
+            0.7772387266159058
+          ],
+          "grip": 1
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 70,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 291,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 7,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 69,
+        "executed_ticks": 7,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 292
+    },
+    {
+      "intent": "Withdraw open fingers vertically before any base motion; verify pan stays supported on countertop",
+      "high_level_action_id": "32eb1f02-ce7e-45f3-bc8b-0205977662ed",
+      "requested": {
+        "intent": "Withdraw open fingers vertically before any base motion; verify pan stays supported on countertop",
+        "left": null,
+        "right": null,
+        "base": null,
+        "torso": {
+          "q": [
+            0.556,
+            -0.544,
+            -0.23,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 70,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 292,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 9,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 69,
+        "executed_ticks": 9,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 293
+    },
+    {
+      "intent": "Clear released pan and counter before final training outcome check",
+      "high_level_action_id": "9f1dd8f8-1f89-4074-9f0b-b1221b1051de",
+      "requested": {
+        "intent": "Clear released pan and counter before final training outcome check",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": -0.25
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 110,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 293,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 66,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.009099336672561853,
+        "velocity_tracking_error_m": 0.0009288338472385498,
+        "absolute_velocity_error_integral_m": 0.0009466675890258817,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.0019488098798319698,
+        "angular_tracking_error_rad": 0.004165054601617158,
+        "heading_error_rad": 0.0035075191752724777,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 109,
+        "executed_ticks": 66,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 294
+    },
+    {
+      "intent": "Approach pan for correction: feedback confirms board goal but not countertop; initial image and both human returns place pan on left counter run, not stove-side slab",
+      "high_level_action_id": "dc0c3641-5af6-4854-ab4f-af7a75eb05a9",
+      "requested": {
+        "intent": "Approach pan for correction: feedback confirms board goal but not countertop; initial image and both human returns place pan on left counter run, not stove-side slab",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": 0.22
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 100,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 294,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 62,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.008889066082317267,
+        "velocity_tracking_error_m": 3.067564700468738e-05,
+        "absolute_velocity_error_integral_m": 5.5493852724708294e-05,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 1.347106627491712e-05,
+        "angular_tracking_error_rad": 0.00020864118700150887,
+        "heading_error_rad": 4.6572344542639144e-05,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 99,
+        "executed_ticks": 62,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 295
+    },
+    {
+      "intent": "Seat jaws on freshly measured resting handle (~0.938m), correcting released-pan settling and lateral offset",
+      "high_level_action_id": "1d4ceb70-f1f5-49e1-a6af-10c9e790a34e",
+      "requested": {
+        "intent": "Seat jaws on freshly measured resting handle (~0.938m), correcting released-pan settling and lateral offset",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": 0.02,
+          "left": 0.025
+        },
+        "torso": {
+          "q": [
+            0.556,
+            -0.544,
+            -0.44,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 70,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 295,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 28,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.008885399994426614,
+        "velocity_tracking_error_m": 3.57560309718765e-05,
+        "absolute_velocity_error_integral_m": 9.639657801972693e-05,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 7.013016385523466e-05,
+        "angular_tracking_error_rad": 0.00016591377263163546,
+        "heading_error_rad": 9.470936008781905e-06,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 69,
+        "executed_ticks": 28,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 296
+    },
+    {
+      "intent": "Reacquire pan handle for left-counter correction, separate from lift",
+      "high_level_action_id": "c305b6cb-5cc4-426e-adb9-f50a8ae3632e",
+      "requested": {
+        "intent": "Reacquire pan handle for left-counter correction, separate from lift",
+        "left": {
+          "grip": 0
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 70,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 296,
+      "achieved": false,
+      "reason": "stalled",
+      "steps": 26,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 69,
+        "executed_ticks": 26,
+        "stop_reason": "stalled",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 297
+    },
+    {
+      "intent": "Lift reacquired pan and verify free separation before transferring left across countertop seam",
+      "high_level_action_id": "a92dbc0c-4722-4424-8d31-29e65a5aaa3d",
+      "requested": {
+        "intent": "Lift reacquired pan and verify free separation before transferring left across countertop seam",
+        "left": null,
+        "right": null,
+        "base": null,
+        "torso": {
+          "q": [
+            0.556,
+            -0.544,
+            -0.23,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 70,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 297,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 10,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 69,
+        "executed_ticks": 10,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 298
+    },
+    {
+      "intent": "Move retained pan across the L-corner seam onto the original left-counter side using body rotation, not a low lateral sweep",
+      "high_level_action_id": "a3f696dc-e2f6-48c5-8ebb-aa711e696462",
+      "requested": {
+        "intent": "Move retained pan across the L-corner seam onto the original left-counter side using body rotation, not a low lateral sweep",
+        "left": null,
+        "right": null,
+        "base": {
+          "yaw_deg": 25
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 90,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 298,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 44,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.0001905388445876657,
+        "velocity_tracking_error_m": 0.00015389170733232728,
+        "absolute_velocity_error_integral_m": 0.00015985862542428972,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.06308028921484947,
+        "angular_tracking_error_rad": 0.0001564723749955495,
+        "heading_error_rad": 0.033842391749757894,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 89,
+        "executed_ticks": 44,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 299
+    },
+    {
+      "intent": "Center pan behind left-counter corner edge rather than straddling stove-side slab",
+      "high_level_action_id": "11ce0aa5-cb36-46e6-b1b2-d16757e7b337",
+      "requested": {
+        "intent": "Center pan behind left-counter corner edge rather than straddling stove-side slab",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": 0.06,
+          "left": 0.06
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 60,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 299,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 41,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.009312591914865359,
+        "velocity_tracking_error_m": 4.5688859129809395e-05,
+        "absolute_velocity_error_integral_m": 4.9082823573584135e-05,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.0002056369276639695,
+        "angular_tracking_error_rad": 0.00020330135472856152,
+        "heading_error_rad": 0.00020267190799927448,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 59,
+        "executed_ticks": 41,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 300
+    },
+    {
+      "intent": "Lower retained pan onto original-side corner support, distinct from unsuccessful stove-side location",
+      "high_level_action_id": "b87ee351-2c23-423b-a0bb-20775093da59",
+      "requested": {
+        "intent": "Lower retained pan onto original-side corner support, distinct from unsuccessful stove-side location",
+        "left": null,
+        "right": null,
+        "base": null,
+        "torso": {
+          "q": [
+            0.556,
+            -0.544,
+            -0.435,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 70,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 300,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 10,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 69,
+        "executed_ticks": 10,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 301
+    },
+    {
+      "intent": "Release on original-side corner and allow pan to settle without further downward command",
+      "high_level_action_id": "20c6dcfc-2aa8-4a69-8df1-383d682d99b5",
+      "requested": {
+        "intent": "Release on original-side corner and allow pan to settle without further downward command",
+        "left": {
+          "q": [
+            -1.4848483800888062,
+            0.8380590677261353,
+            -1.5771311521530151,
+            -1.7565664052963257,
+            1.8587979078292847,
+            1.0269503593444824,
+            0.7780537605285645
+          ],
+          "grip": 1
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 70,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 301,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 7,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 69,
+        "executed_ticks": 7,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 302
+    },
+    {
+      "intent": "Withdraw vertically from corrected pan placement and inspect stability",
+      "high_level_action_id": "eefa8eba-3c7b-444f-b791-d5214d45fd9a",
+      "requested": {
+        "intent": "Withdraw vertically from corrected pan placement and inspect stability",
+        "left": null,
+        "right": null,
+        "base": null,
+        "torso": {
+          "q": [
+            0.556,
+            -0.544,
+            -0.23,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 70,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 302,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 10,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 69,
+        "executed_ticks": 10,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 303
+    },
+    {
+      "intent": "Leave corrected countertop placement undisturbed and check final predicates",
+      "high_level_action_id": "bec88026-8f04-4dd4-9b50-032e8ec2761e",
+      "requested": {
+        "intent": "Leave corrected countertop placement undisturbed and check final predicates",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": -0.2
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 90,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 303,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 59,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.008721922673494873,
+        "velocity_tracking_error_m": 0.0007662466341029144,
+        "absolute_velocity_error_integral_m": 0.0007744061758706816,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.0023810326509798568,
+        "angular_tracking_error_rad": 0.0030500829064597688,
+        "heading_error_rad": 0.0026720461619937907,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 89,
+        "executed_ticks": 59,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 304
+    }
+  ]
+}

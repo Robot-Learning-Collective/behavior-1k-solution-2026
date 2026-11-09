@@ -1,0 +1,33 @@
+{
+  "practice-restore-p6-before-hang-290dd7c91d9a4402a51574622adda6a0": {
+    "result": "release failed; native success false Q0",
+    "receipts": [
+      "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-before-hang-290dd7c91d9a4402a51574622adda6a0/receipt_01792120697571190000_4805c6ed81e34594bb1d7a39e2c6bfe4.json",
+      "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-before-hang-290dd7c91d9a4402a51574622adda6a0/receipt_01792120719662798000_c56fd6c18593497cafcc3af6a0f1769c.json",
+      "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-before-hang-290dd7c91d9a4402a51574622adda6a0/receipt_01792120734659455000_d272c5874ca247e78a1bf3e86bef8357.json",
+      "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-before-hang-290dd7c91d9a4402a51574622adda6a0/receipt_01792120750476208000_08a35bddffe1472d8abe564004a6dd5e.json",
+      "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-before-hang-290dd7c91d9a4402a51574622adda6a0/receipt_01792120760364409000_8b8c1b32bca04e26b7dbec40f2913eb7.json",
+      "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-before-hang-290dd7c91d9a4402a51574622adda6a0/receipt_01792120773263177000_b9f077feb8bd4466b5c6053942a9bce7.json",
+      "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-before-hang-290dd7c91d9a4402a51574622adda6a0/receipt_01792120785761700000_ced7ee6e424c46a397c1e7397d362dd2.json"
+    ]
+  },
+  "practice-restore-p6-before-hang-8a1117b5fa504d1c974bebe60db31c7f": {
+    "result": "release failed; native success false Q0",
+    "receipts": [
+      "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-before-hang-8a1117b5fa504d1c974bebe60db31c7f/receipt_01792120834231692000_6e14009547784e7680d21ef1f5af8b09.json",
+      "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-before-hang-8a1117b5fa504d1c974bebe60db31c7f/receipt_01792120876710960000_419e8a3c409e46f0b5ce8d92239b70f8.json",
+      "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-before-hang-8a1117b5fa504d1c974bebe60db31c7f/receipt_01792120892367311000_47e38d2789ca43f8820807220d19a790.json",
+      "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-before-hang-8a1117b5fa504d1c974bebe60db31c7f/receipt_01792120906053749000_d171008655ba4f42a58fb84228d9b845.json",
+      "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-before-hang-8a1117b5fa504d1c974bebe60db31c7f/receipt_01792120917858927000_aa69deffb29c48de83ec039cf2a055ac.json",
+      "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-before-hang-8a1117b5fa504d1c974bebe60db31c7f/receipt_01792121060136445000_df69c375b1b84ef392d92a1a30e55576.json",
+      "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-before-hang-8a1117b5fa504d1c974bebe60db31c7f/receipt_01792121069077205000_a045da8d0d29489fae841a6fb12b26a2.json",
+      "/tmp/pictures-run-009-p6-8ecdee/practice-restore-p6-before-hang-8a1117b5fa504d1c974bebe60db31c7f/receipt_01792121082137329000_f3676072ab56408fbcd537f1dc632f0d.json"
+    ]
+  },
+  "drill4": {
+    "attempt": "practice-restore-p6-before-hang-3e264768fb17491cbbb3e58cd402c5c5",
+    "result": "native false Q0 at1295 steps",
+    "key_finding": "obs13 poster/wall normals closely aligned, front stand-off77.85mm vs historical retained59.38mm. Arm preload before needed final18mm; hypothesis pickup insertion too deep causes fingertip-wall interference. Not force proof.",
+    "transport": "one truncated JSON action reply; recovered with observe and explicit both grippers; did not replay navigation"
+  }
+}

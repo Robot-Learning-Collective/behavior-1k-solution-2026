@@ -1,0 +1,193 @@
+{
+  "attempt": "camera-train088-zeroshot-001",
+  "instance": "TRAIN88",
+  "first_exposure": true,
+  "scope": "One unseen-layout practice success; not final frozen evaluation or speed evidence",
+  "finish": {
+    "finished": true,
+    "simulated_seconds": 52.166666666666664,
+    "wall_seconds": 808.2336339850008,
+    "practice_feedback": {
+      "practice_only": true,
+      "privileged_training_feedback": true,
+      "attempt_id": "camera-train088-zeroshot-001",
+      "step": 1565,
+      "success": true,
+      "predicates": [
+        {
+          "index": 0,
+          "predicate": "(attached ?digital_camera.n.01_1 ?camera_tripod.n.01_1)",
+          "satisfied": true
+        }
+      ],
+      "goal_options": [
+        [
+          {
+            "index": 0,
+            "predicate": "(attached digital_camera.n.01_1 camera_tripod.n.01_1)",
+            "satisfied": true
+          }
+        ]
+      ],
+      "q_score": 1.0,
+      "satisfied_fraction": 1.0,
+      "q_definition": "Native compute_q_score: success=1; otherwise newly satisfied since this practice start / predicates per option, maximized over alternatives",
+      "satisfied_fraction_definition": "Current satisfied predicates / predicates per option, maximized over alternatives; not baseline-adjusted Q",
+      "source": "BehaviorTask.compiled_task.check_goal + get_goal_option_satisfaction; native TaskMetric.compute_q_score"
+    }
+  },
+  "demos_used": false,
+  "snapshots_used": false,
+  "restores": 0,
+  "intermediate_feedback": false,
+  "official_step_target": 5867,
+  "final_motor_receipt": "<observation-cache>/camera-run-012-p6-091013/camera-train088-zeroshot-001/receipt_01792176977520198000_9ca2d4f15e814efb93a81e936d7c2132.json",
+  "notes_sha256": "cf675438c948da21b68135308d830162bfb8506386b488eab91b75d642126666",
+  "camera_bottom_public_fit": {
+    "center_eef": [
+      -0.02210281701500667,
+      0.021481373116091346,
+      0.09556085602494704
+    ],
+    "normal_eef": [
+      -0.0054162034775110945,
+      0.019695922956727563,
+      0.999791345911122
+    ],
+    "long_eef": [
+      -0.9664797004799602,
+      -0.2567429783119639,
+      -0.00017789791329730908
+    ],
+    "center_body": [
+      0.4901181491507479,
+      0.04672402977738899,
+      1.373832212621132
+    ],
+    "dimensions": [
+      0.13990777529606663,
+      0.07297193571761951
+    ],
+    "n": 4133
+  },
+  "plate_before_final_transport": {
+    "center": [
+      0.8449249332437734,
+      0.0621969719492558,
+      1.273240566253662
+    ],
+    "dims": [
+      0.07736444402020098,
+      0.10411085036228529
+    ],
+    "short_axis": [
+      0.20107792114596457,
+      0.9795752495993441
+    ],
+    "angle": 1.3683381335635545,
+    "n": 561
+  },
+  "plate_before_seating": {
+    "center": [
+      0.5347155394088464,
+      0.3024639623323466,
+      1.2731950283050537
+    ],
+    "dims": [
+      0.07670317638303698,
+      0.10306734600286505
+    ],
+    "short_axis": [
+      0.23174790349415728,
+      0.9727758782093966
+    ],
+    "angle": 1.3369222070276565,
+    "n": 3291,
+    "tcp_contact": [
+      0.5555110903369291,
+      0.2820354568781917,
+      1.3692787539909332
+    ]
+  },
+  "inspection_public_fk": {
+    "q": [
+      -0.15142298969543305,
+      0.6933274806856338,
+      -0.10972151422937693,
+      -1.7700781482632058,
+      1.061559754415978,
+      -0.8657094180054483,
+      -1.3094995003621268
+    ],
+    "tcp": [
+      0.41378068076589336,
+      0.21158322808810753,
+      1.3043925272715169
+    ],
+    "finger": [
+      -0.1360969635308698,
+      -0.8365547287542213,
+      0.5307106578133024
+    ],
+    "close": [
+      0.5633738899097076,
+      0.37529419190503954,
+      0.7360462823018317
+    ],
+    "vis": 0.8314473753174731,
+    "distance": 0.2795040784310054
+  },
+  "prealignment_q": [
+    0.28824743283119175,
+    2.6687032222464957,
+    0.285993380613171,
+    -1.3870807040174549,
+    -2.089865866155151,
+    -0.22163944206391842,
+    1.5577999563217164
+  ],
+  "withdrawal_q": [
+    0.4926425814628601,
+    2.8166704177856445,
+    0.3978544771671295,
+    -0.9528968572616577,
+    -1.7301276922225952,
+    -0.3429054915904999,
+    1.4273792505264282
+  ],
+  "actual_inspection_tcp": [
+    0.509,
+    0.11,
+    1.298
+  ],
+  "seating_requests": [
+    [
+      0.5555,
+      0.282,
+      1.3863
+    ],
+    [
+      0.5555,
+      0.282,
+      1.3713
+    ],
+    [
+      0.5555,
+      0.282,
+      1.367
+    ]
+  ],
+  "seating_caveat": "Final descent reached label with pose recoil and tracking lag; immediately measured-q/open. No native feedback until finish.",
+  "withdrawal_actual_tcp": [
+    0.619,
+    0.256,
+    1.479
+  ],
+  "withdrawal_min_endpoint_margin_rad": 0.133,
+  "retreat": {
+    "base": {
+      "fwd": -0.3
+    },
+    "timeout_seconds": 4
+  }
+}

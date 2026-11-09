@@ -1,0 +1,2654 @@
+{
+  "scope": "One same-world practice recovery, with failures; not full-task success. Pan placed back on burner at obs218 and remained after withdrawal220. Brisket still on floor. No reset/restore.",
+  "actions": [
+    {
+      "intent": "Inspect adjacent counter and floor for displaced pan/brisket after failed release, with empty hand tucked",
+      "high_level_action_id": "c0e6bbcc-0e57-44c9-9735-4810f807a5d1",
+      "requested": {
+        "intent": "Inspect adjacent counter and floor for displaced pan/brisket after failed release, with empty hand tucked",
+        "left": null,
+        "right": {
+          "q": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "base": {
+          "yaw_deg": 60
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 180,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 162,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 90,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.00023556348151485346,
+        "velocity_tracking_error_m": 3.2769307099181355e-05,
+        "absolute_velocity_error_integral_m": 6.654341698268406e-05,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.06257837613423665,
+        "angular_tracking_error_rad": 0.00010850926240285238,
+        "heading_error_rad": 0.03364362819679201,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 179,
+        "executed_ticks": 90,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 163
+    },
+    {
+      "intent": "Inspect open aisle and floor behind previous placement posture for displaced pan and brisket",
+      "high_level_action_id": "2ad06bff-f1de-45f7-9910-7186d0488d7b",
+      "requested": {
+        "intent": "Inspect open aisle and floor behind previous placement posture for displaced pan and brisket",
+        "left": null,
+        "right": null,
+        "base": {
+          "yaw_deg": 100
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 180,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 163,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 142,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.00020050098716305323,
+        "velocity_tracking_error_m": 4.716701839956718e-05,
+        "absolute_velocity_error_integral_m": 8.098264270085534e-05,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.06411666050553322,
+        "angular_tracking_error_rad": 9.925936659177144e-05,
+        "heading_error_rad": 0.03448677503889108,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 179,
+        "executed_ticks": 142,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 164
+    },
+    {
+      "intent": "Inspect pan-shaped object and brown handle visible at left-wrist edge, rather than assume it vanished",
+      "high_level_action_id": "b138a914-3f99-4421-ae51-ac13042887e0",
+      "requested": {
+        "intent": "Inspect pan-shaped object and brown handle visible at left-wrist edge, rather than assume it vanished",
+        "left": null,
+        "right": null,
+        "base": {
+          "yaw_deg": 90
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 180,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 164,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 129,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.0001937952487473957,
+        "velocity_tracking_error_m": 1.2952476968460336e-05,
+        "absolute_velocity_error_integral_m": 4.7476197419612705e-05,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.06365152721603712,
+        "angular_tracking_error_rad": 9.531453251838684e-05,
+        "heading_error_rad": 0.034212013710098965,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 179,
+        "executed_ticks": 129,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 165
+    },
+    {
+      "intent": "Face recovered pan and brisket on floor beside cabinet; plan retrieval rather than reset failed placement",
+      "high_level_action_id": "1f492eb6-31de-429c-ae0e-12da8e1552bf",
+      "requested": {
+        "intent": "Face recovered pan and brisket on floor beside cabinet; plan retrieval rather than reset failed placement",
+        "left": null,
+        "right": null,
+        "base": {
+          "yaw_deg": 50
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 150,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 165,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 77,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.00011492989655675493,
+        "velocity_tracking_error_m": 9.140321010545774e-05,
+        "absolute_velocity_error_integral_m": 0.00010495793385518785,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.06203658953309059,
+        "angular_tracking_error_rad": 0.0001237546404202779,
+        "heading_error_rad": 0.033364846226212386,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 149,
+        "executed_ticks": 77,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 166
+    },
+    {
+      "intent": "Approach displaced pan and meat with arms tucked, leaving room for low retrieval",
+      "high_level_action_id": "331171f3-486a-4abf-bff1-6802a2cd3502",
+      "requested": {
+        "intent": "Approach displaced pan and meat with arms tucked, leaving room for low retrieval",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": 0.55
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 180,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 166,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 111,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.009211668936655674,
+        "velocity_tracking_error_m": 3.908844753042308e-05,
+        "absolute_velocity_error_integral_m": 6.543778080423856e-05,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 3.1296751310646204e-05,
+        "angular_tracking_error_rad": 0.0002799778216488728,
+        "heading_error_rad": 4.531731947032824e-05,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 179,
+        "executed_ticks": 111,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 167
+    },
+    {
+      "intent": "Lower robot for floor recovery while empty arms remain tucked",
+      "high_level_action_id": "6e201432-e5ec-4aa9-bc8f-9b005badc42a",
+      "requested": {
+        "intent": "Lower robot for floor recovery while empty arms remain tucked",
+        "left": null,
+        "right": null,
+        "base": null,
+        "torso": "low",
+        "seconds": null,
+        "max_steps": 180,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 167,
+      "achieved": false,
+      "reason": "stalled",
+      "steps": 142,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 179,
+        "executed_ticks": 142,
+        "stop_reason": "stalled",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 168
+    },
+    {
+      "intent": "Release low-torso residual and move arms forward out of tucked self-contact before floor retrieval",
+      "high_level_action_id": "9d82a82f-2764-409c-a6be-f4b64a17080f",
+      "requested": {
+        "intent": "Release low-torso residual and move arms forward out of tucked self-contact before floor retrieval",
+        "left": {
+          "preset": "ready"
+        },
+        "right": {
+          "preset": "ready"
+        },
+        "base": null,
+        "torso": {
+          "q": [
+            1.605,
+            -2.159,
+            -1.073,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 150,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 168,
+      "achieved": false,
+      "reason": "stalled",
+      "steps": 17,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 149,
+        "executed_ticks": 17,
+        "stop_reason": "stalled",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 169
+    },
+    {
+      "intent": "Release folded-arm self-contact by restoring previously free torso before reconfiguring arms; do not repeat blocked low pose",
+      "high_level_action_id": "504d4db3-e9d8-4a5f-bfc2-389cb4383b6e",
+      "requested": {
+        "intent": "Release folded-arm self-contact by restoring previously free torso before reconfiguring arms; do not repeat blocked low pose",
+        "left": {
+          "q": [
+            -0.04849,
+            -0.09914,
+            0.04644,
+            0.339,
+            -0.04853,
+            0.12289,
+            0.04093
+          ]
+        },
+        "right": {
+          "q": [
+            -0.34938,
+            0.05001,
+            -0.08165,
+            0.339,
+            -0.00512,
+            0.86088,
+            -0.1
+          ]
+        },
+        "base": null,
+        "torso": {
+          "q": [
+            0.556,
+            -0.544,
+            -0.28,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 150,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 169,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 66,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 149,
+        "executed_ticks": 66,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 170
+    },
+    {
+      "intent": "Bring both empty arms forward while torso is high, avoiding low-folded self-contact",
+      "high_level_action_id": "6b70dc18-30d3-427a-9c05-a97d8b3d8efa",
+      "requested": {
+        "intent": "Bring both empty arms forward while torso is high, avoiding low-folded self-contact",
+        "left": {
+          "preset": "ready"
+        },
+        "right": {
+          "preset": "ready"
+        },
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 150,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 170,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 69,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 149,
+        "executed_ticks": 69,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 171
+    },
+    {
+      "intent": "Lower for floor handle retrieval with arms already forward, correcting the prior unsafe tucked configuration",
+      "high_level_action_id": "933d664a-01c7-41b6-9bf0-9098e1560f70",
+      "requested": {
+        "intent": "Lower for floor handle retrieval with arms already forward, correcting the prior unsafe tucked configuration",
+        "left": null,
+        "right": null,
+        "base": null,
+        "torso": "low",
+        "seconds": null,
+        "max_steps": 150,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 171,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 78,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 149,
+        "executed_ticks": 78,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 172
+    },
+    {
+      "intent": "Approach tilted wooden pan handle from above/front at current floor geometry, keeping jaws open",
+      "high_level_action_id": "d4b1d7b1-c9b6-401d-b7b2-d4f2d57e692c",
+      "requested": {
+        "intent": "Approach tilted wooden pan handle from above/front at current floor geometry, keeping jaws open",
+        "left": {
+          "to": [
+            0.82,
+            0.27,
+            0.37
+          ],
+          "finger_dir": [
+            0.9,
+            0.05,
+            -0.44
+          ],
+          "close_dir": [
+            0,
+            1,
+            0
+          ]
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 120,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 172,
+      "achieved": false,
+      "reason": "stalled",
+      "steps": 71,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 119,
+        "executed_ticks": 71,
+        "stop_reason": "stalled",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 173
+    },
+    {
+      "intent": "Bring floor handle into bent-arm reach instead of extending a straight-elbow IK stall",
+      "high_level_action_id": "60676aa6-6cee-4446-a505-004a61c6f461",
+      "requested": {
+        "intent": "Bring floor handle into bent-arm reach instead of extending a straight-elbow IK stall",
+        "left": {
+          "q": [
+            -0.98948,
+            0.01112,
+            0.04656,
+            -0.0065,
+            -0.04228,
+            -0.33388,
+            0.03721
+          ]
+        },
+        "right": null,
+        "base": {
+          "fwd": 0.17
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 120,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 173,
+      "achieved": false,
+      "reason": "stalled",
+      "steps": 66,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.004097523467628997,
+        "velocity_tracking_error_m": 0.00037391331849250924,
+        "absolute_velocity_error_integral_m": 0.0003876535191317227,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.00011595879711118565,
+        "angular_tracking_error_rad": 0.0004500002048795674,
+        "heading_error_rad": 0.0002512341524631978,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 119,
+        "executed_ticks": 66,
+        "stop_reason": "stalled",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 174
+    },
+    {
+      "intent": "Withdraw left hand from cabinet contact before lowering onto handle; replace all residual Cartesian targets",
+      "high_level_action_id": "e2554a21-8ceb-411f-89b6-17f774d30434",
+      "requested": {
+        "intent": "Withdraw left hand from cabinet contact before lowering onto handle; replace all residual Cartesian targets",
+        "left": {
+          "to": [
+            0.57,
+            0.265,
+            0.376
+          ]
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 120,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 174,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 45,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 119,
+        "executed_ticks": 45,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 175
+    },
+    {
+      "intent": "Align above middle of moved wooden handle using fresh wrist depth; pan remains supported on floor",
+      "high_level_action_id": "adefd7c4-006f-41c9-aeda-26b037547612",
+      "requested": {
+        "intent": "Align above middle of moved wooden handle using fresh wrist depth; pan remains supported on floor",
+        "left": {
+          "to": [
+            0.62,
+            0.312,
+            0.29
+          ],
+          "finger_dir": [
+            0.9,
+            0.05,
+            -0.44
+          ],
+          "close_dir": [
+            0,
+            1,
+            0
+          ]
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 120,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 175,
+      "achieved": false,
+      "reason": "stalled",
+      "steps": 58,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 119,
+        "executed_ticks": 58,
+        "stop_reason": "stalled",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 176
+    },
+    {
+      "intent": "Change to steeper downward fingers for low handle enclosure, rather than continuing flat straight-elbow reach",
+      "high_level_action_id": "d04bbe87-b281-4099-a195-bf578a464b3f",
+      "requested": {
+        "intent": "Change to steeper downward fingers for low handle enclosure, rather than continuing flat straight-elbow reach",
+        "left": {
+          "to": [
+            0.6,
+            0.315,
+            0.275
+          ],
+          "finger_dir": [
+            0.45,
+            0,
+            -0.89
+          ],
+          "close_dir": [
+            0,
+            1,
+            0
+          ]
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 120,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 176,
+      "achieved": false,
+      "reason": "stalled",
+      "steps": 44,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 119,
+        "executed_ticks": 44,
+        "stop_reason": "stalled",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 177
+    },
+    {
+      "intent": "Release arm solver residual and use a small torso lowering to seat open pads around supported wooden handle",
+      "high_level_action_id": "491ed719-bc6b-4f8c-b9bf-24e1f5805ec8",
+      "requested": {
+        "intent": "Release arm solver residual and use a small torso lowering to seat open pads around supported wooden handle",
+        "left": {
+          "q": [
+            -1.01234,
+            0.10483,
+            0.0295,
+            0.339,
+            -0.07028,
+            -0.05662,
+            -0.10666
+          ]
+        },
+        "right": null,
+        "base": null,
+        "torso": {
+          "q": [
+            1.605,
+            -2.45957,
+            -1.12,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 90,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 177,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 3,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 89,
+        "executed_ticks": 3,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 178
+    },
+    {
+      "intent": "Close left pads at supported floor-pan handle without translating",
+      "high_level_action_id": "16f6264f-da69-432e-bcb8-483026473e51",
+      "requested": {
+        "intent": "Close left pads at supported floor-pan handle without translating",
+        "left": {
+          "grip": 0
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 60,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 178,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 7,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 59,
+        "executed_ticks": 7,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 179
+    },
+    {
+      "intent": "Reopen empty close; handle is left of pinch center, requiring fresh lateral alignment",
+      "high_level_action_id": "eb216a0a-58ca-4755-9af4-03c8f91bcc47",
+      "requested": {
+        "intent": "Reopen empty close; handle is left of pinch center, requiring fresh lateral alignment",
+        "left": {
+          "grip": 1
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 60,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 179,
+      "achieved": false,
+      "reason": "stalled",
+      "steps": 22,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 59,
+        "executed_ticks": 22,
+        "stop_reason": "stalled",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 180
+    },
+    {
+      "intent": "Seat pads four centimetres lower at fresh handle depth with small whole-body alignment; previous close was empty above handle",
+      "high_level_action_id": "3ec41d0b-0900-43a9-87a7-5adc4f81848e",
+      "requested": {
+        "intent": "Seat pads four centimetres lower at fresh handle depth with small whole-body alignment; previous close was empty above handle",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": 0.02,
+          "left": 0.02
+        },
+        "torso": {
+          "q": [
+            1.605,
+            -2.45957,
+            -1.2,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 90,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 180,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 26,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.00916840992855018,
+        "velocity_tracking_error_m": 0.00017111702617689464,
+        "absolute_velocity_error_integral_m": 0.00025327256724475526,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 9.547151676088106e-05,
+        "angular_tracking_error_rad": 0.0002906451752399638,
+        "heading_error_rad": 6.04734072116031e-05,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 89,
+        "executed_ticks": 26,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 181
+    },
+    {
+      "intent": "Replace residual arm load and close around newly seated handle position",
+      "high_level_action_id": "37cefba1-efbb-4c38-aae5-3770ef96f043",
+      "requested": {
+        "intent": "Replace residual arm load and close around newly seated handle position",
+        "left": {
+          "q": [
+            -1.01176,
+            0.09944,
+            0.03382,
+            0.339,
+            -0.07498,
+            -0.05523,
+            -0.11112
+          ],
+          "grip": 0
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 60,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 181,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 8,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 59,
+        "executed_ticks": 8,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 182
+    },
+    {
+      "intent": "Withdraw empty second floor-handle close, leaving room to change jaw axis away from cabinet-side interference",
+      "high_level_action_id": "bf4c698b-3c0b-4e2f-8c95-72b4a0874538",
+      "requested": {
+        "intent": "Withdraw empty second floor-handle close, leaving room to change jaw axis away from cabinet-side interference",
+        "left": {
+          "to": [
+            0.5,
+            0.29,
+            0.33
+          ],
+          "grip": 1
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 120,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 182,
+      "achieved": false,
+      "reason": "timeout",
+      "steps": 120,
+      "base_safety": {},
+      "stop_reason_detail": "caller_step_limit",
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 119,
+        "executed_ticks": 120,
+        "stop_reason": "timeout",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 183
+    },
+    {
+      "intent": "Replace divergent Cartesian branch with previously verified forward-ready joint posture before changing grasp axis",
+      "high_level_action_id": "7e1b4421-dab5-4e8f-9d1d-a88dab62d47d",
+      "requested": {
+        "intent": "Replace divergent Cartesian branch with previously verified forward-ready joint posture before changing grasp axis",
+        "left": {
+          "preset": "ready"
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 120,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 183,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 93,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 119,
+        "executed_ticks": 93,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 184
+    },
+    {
+      "intent": "Reorient clear of handle to a downward approach with front-back jaw closure, not cabinet-side lateral closure",
+      "high_level_action_id": "c3c09c90-fc1e-4baf-91a5-f884aa8d0e95",
+      "requested": {
+        "intent": "Reorient clear of handle to a downward approach with front-back jaw closure, not cabinet-side lateral closure",
+        "left": {
+          "to": [
+            0.57,
+            0.26,
+            0.38
+          ],
+          "finger_dir": [
+            0.2,
+            0,
+            -0.98
+          ],
+          "close_dir": [
+            0.98,
+            0,
+            0.2
+          ]
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 90,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 184,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 43,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 89,
+        "executed_ticks": 43,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 185
+    },
+    {
+      "intent": "Descend vertically above handle with changed jaw axis and bent-elbow branch",
+      "high_level_action_id": "a7908fa7-688c-47e1-9fac-9a8e7ede1fb3",
+      "requested": {
+        "intent": "Descend vertically above handle with changed jaw axis and bent-elbow branch",
+        "left": {
+          "to": [
+            0.58,
+            0.31,
+            0.23
+          ],
+          "finger_dir": [
+            0.2,
+            0,
+            -0.98
+          ],
+          "close_dir": [
+            0.98,
+            0,
+            0.2
+          ]
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 90,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 185,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 39,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 89,
+        "executed_ticks": 39,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 186
+    },
+    {
+      "intent": "Seat downward-facing pads to handle depth on bent-elbow branch before closure",
+      "high_level_action_id": "8862b53a-4485-4b23-b0f5-255f85ae335e",
+      "requested": {
+        "intent": "Seat downward-facing pads to handle depth on bent-elbow branch before closure",
+        "left": {
+          "to": [
+            0.58,
+            0.31,
+            0.175
+          ]
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 90,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 186,
+      "achieved": false,
+      "reason": "stalled",
+      "steps": 36,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 89,
+        "executed_ticks": 36,
+        "stop_reason": "stalled",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 187
+    },
+    {
+      "intent": "Use small whole-body seating for remaining handle offset instead of forcing straight elbow",
+      "high_level_action_id": "510cb5ff-13f7-4223-85d9-fe249c3f0a8d",
+      "requested": {
+        "intent": "Use small whole-body seating for remaining handle offset instead of forcing straight elbow",
+        "left": {
+          "q": [
+            -0.87636,
+            0.10308,
+            -0.95122,
+            -0.01789,
+            -0.61883,
+            -0.08773,
+            -0.33748
+          ]
+        },
+        "right": null,
+        "base": {
+          "fwd": 0.025
+        },
+        "torso": {
+          "q": [
+            1.605,
+            -2.45957,
+            -1.24,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 90,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 187,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 24,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.008985382456359763,
+        "velocity_tracking_error_m": 2.1159200838127296e-05,
+        "absolute_velocity_error_integral_m": 3.846353486714058e-05,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.0005681619125728806,
+        "angular_tracking_error_rad": 6.125595342988769e-05,
+        "heading_error_rad": 0.0003151978625579588,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 89,
+        "executed_ticks": 24,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 188
+    },
+    {
+      "intent": "Close front-back jaws around seated handle after changed-axis approach",
+      "high_level_action_id": "e32c5289-8e99-4cc4-bca8-a50615e10cd4",
+      "requested": {
+        "intent": "Close front-back jaws around seated handle after changed-axis approach",
+        "left": {
+          "grip": 0
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 60,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 188,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 7,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 59,
+        "executed_ticks": 7,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 189
+    },
+    {
+      "intent": "Reopen third empty handle close; current depth puts wood below the pinch center, not retained",
+      "high_level_action_id": "dd348577-a349-4292-a834-c78624fe774d",
+      "requested": {
+        "intent": "Reopen third empty handle close; current depth puts wood below the pinch center, not retained",
+        "left": {
+          "grip": 1
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 60,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 189,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 7,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 59,
+        "executed_ticks": 7,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 190
+    },
+    {
+      "intent": "Seat pinch center below visible handle top by measured offset; retain front-back jaws and inspect before closing",
+      "high_level_action_id": "3786c6a2-bfcb-47fc-ba9a-46a33ba19e0a",
+      "requested": {
+        "intent": "Seat pinch center below visible handle top by measured offset; retain front-back jaws and inspect before closing",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": 0.03
+        },
+        "torso": {
+          "q": [
+            1.605,
+            -2.45957,
+            -1.3,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 90,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 190,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 27,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.0089706576243499,
+        "velocity_tracking_error_m": 1.4477308165185038e-05,
+        "absolute_velocity_error_integral_m": 2.890713924915227e-05,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 1.9038989557884632e-05,
+        "angular_tracking_error_rad": 4.127578140469268e-05,
+        "heading_error_rad": 1.3864081421566254e-05,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 89,
+        "executed_ticks": 27,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 191
+    },
+    {
+      "intent": "Close after deeper supported handle seating; retention still requires a short visible lift",
+      "high_level_action_id": "d4aea05e-3130-49be-90cb-355d9792676a",
+      "requested": {
+        "intent": "Close after deeper supported handle seating; retention still requires a short visible lift",
+        "left": {
+          "grip": 0
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 60,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 191,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 7,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 59,
+        "executed_ticks": 7,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 192
+    },
+    {
+      "intent": "Apply human comparison: lift clear and rotate jaws perpendicular to diagonal handle axis before another seating attempt",
+      "high_level_action_id": "a8997042-540f-4fba-87ef-b1d3b547dadb",
+      "requested": {
+        "intent": "Apply human comparison: lift clear and rotate jaws perpendicular to diagonal handle axis before another seating attempt",
+        "left": {
+          "to": [
+            0.5,
+            0.3,
+            0.25
+          ],
+          "finger_dir": [
+            0.1,
+            0,
+            -0.995
+          ],
+          "close_dir": [
+            0.6,
+            0.8,
+            0.06
+          ],
+          "grip": 1
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 75,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 192,
+      "achieved": false,
+      "reason": "timeout",
+      "steps": 75,
+      "base_safety": {},
+      "stop_reason_detail": "caller_step_limit",
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 74,
+        "executed_ticks": 75,
+        "stop_reason": "timeout",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 193
+    },
+    {
+      "intent": "Discard divergent IK branch and release cabinet-side shoulder preload with known forward-ready configuration",
+      "high_level_action_id": "cf11f79e-0d03-4aad-954a-301bae0bb1c5",
+      "requested": {
+        "intent": "Discard divergent IK branch and release cabinet-side shoulder preload with known forward-ready configuration",
+        "left": {
+          "preset": "ready"
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 100,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 193,
+      "achieved": false,
+      "reason": "stalled",
+      "steps": 67,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 99,
+        "executed_ticks": 67,
+        "stop_reason": "stalled",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 194
+    },
+    {
+      "intent": "Release arm preload and back away from cabinet before reconfiguring, not repeat blocked ready motion",
+      "high_level_action_id": "59c693fc-251d-4503-a1cd-517d98651c69",
+      "requested": {
+        "intent": "Release arm preload and back away from cabinet before reconfiguring, not repeat blocked ready motion",
+        "left": {
+          "q": [
+            -0.99213,
+            -0.10021,
+            -0.23282,
+            -0.94233,
+            -0.04451,
+            0.05111,
+            0.0371
+          ]
+        },
+        "right": null,
+        "base": {
+          "fwd": -0.15
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 100,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 194,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 51,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.009231345415768293,
+        "velocity_tracking_error_m": 3.354256080670487e-05,
+        "absolute_velocity_error_integral_m": 3.8457845243495734e-05,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 3.149296081043455e-06,
+        "angular_tracking_error_rad": 2.5766704245218836e-05,
+        "heading_error_rad": 1.667809365279993e-06,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 99,
+        "executed_ticks": 51,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 195
+    },
+    {
+      "intent": "Return empty arm to bent ready only after cabinet clearance is restored",
+      "high_level_action_id": "f83dcefb-d505-4043-b9ea-70da2af1cf75",
+      "requested": {
+        "intent": "Return empty arm to bent ready only after cabinet clearance is restored",
+        "left": {
+          "preset": "ready"
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 90,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 195,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 31,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 89,
+        "executed_ticks": 31,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 196
+    },
+    {
+      "intent": "Use static-FK-checked deeper crouch with arms forward to create bent-arm floor reach; inspect actual clearance",
+      "high_level_action_id": "d0353211-2821-4a81-91e3-ae2384b8ef15",
+      "requested": {
+        "intent": "Use static-FK-checked deeper crouch with arms forward to create bent-arm floor reach; inspect actual clearance",
+        "left": null,
+        "right": null,
+        "base": null,
+        "torso": {
+          "q": [
+            1.8,
+            -2.75,
+            -1.45,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 100,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 196,
+      "achieved": false,
+      "reason": "stalled",
+      "steps": 31,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 99,
+        "executed_ticks": 31,
+        "stop_reason": "stalled",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 197
+    },
+    {
+      "intent": "Release crouch residual and adopt previously verified downward bent-elbow joint branch in clear space",
+      "high_level_action_id": "3f7dfa88-c270-414d-b01a-0907cb700f4f",
+      "requested": {
+        "intent": "Release crouch residual and adopt previously verified downward bent-elbow joint branch in clear space",
+        "left": {
+          "q": [
+            -0.76309,
+            0.57257,
+            -0.97023,
+            -1.44285,
+            -0.64893,
+            0.66694,
+            -1.00996
+          ]
+        },
+        "right": null,
+        "base": null,
+        "torso": {
+          "q": [
+            1.744,
+            -2.75,
+            -1.45,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 90,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 197,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 43,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 89,
+        "executed_ticks": 43,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 198
+    },
+    {
+      "intent": "Move crouched body closer with downward hand held clear above floor so handle lies inside feasible arm reach",
+      "high_level_action_id": "06fd51d0-a359-439d-8649-6374bab400b6",
+      "requested": {
+        "intent": "Move crouched body closer with downward hand held clear above floor so handle lies inside feasible arm reach",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": 0.15
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 90,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 198,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 50,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.009325783864072392,
+        "velocity_tracking_error_m": 0.0004694780931341527,
+        "absolute_velocity_error_integral_m": 0.0005759050643547093,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.0003033619354634235,
+        "angular_tracking_error_rad": 0.0013010596769163385,
+        "heading_error_rad": 0.0007080364849878507,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 89,
+        "executed_ticks": 50,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 199
+    },
+    {
+      "intent": "Align changed-axis grasp from a bent-elbow branch above now-flat handle; short cap to inspect convergence",
+      "high_level_action_id": "aa7d950d-b60f-4c83-af1c-5aa5a81c2415",
+      "requested": {
+        "intent": "Align changed-axis grasp from a bent-elbow branch above now-flat handle; short cap to inspect convergence",
+        "left": {
+          "to": [
+            0.55,
+            0.3,
+            0.15
+          ],
+          "finger_dir": [
+            0.3,
+            0,
+            -0.954
+          ],
+          "close_dir": [
+            0.6,
+            0.8,
+            0
+          ]
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 45,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 199,
+      "achieved": false,
+      "reason": "stalled",
+      "steps": 43,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 44,
+        "executed_ticks": 43,
+        "stop_reason": "stalled",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 200
+    },
+    {
+      "intent": "Descend to freshly measured flat-handle thickness with jaws now perpendicular to its axis",
+      "high_level_action_id": "ca13e5d1-32bd-4d09-812b-cad2c87b19aa",
+      "requested": {
+        "intent": "Descend to freshly measured flat-handle thickness with jaws now perpendicular to its axis",
+        "left": {
+          "to": [
+            0.56,
+            0.306,
+            0.045
+          ],
+          "finger_dir": [
+            0.3,
+            0,
+            -0.954
+          ],
+          "close_dir": [
+            0.6,
+            0.8,
+            0
+          ]
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 45,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 200,
+      "achieved": false,
+      "reason": "timeout",
+      "steps": 45,
+      "base_safety": {},
+      "stop_reason_detail": "caller_step_limit",
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 44,
+        "executed_ticks": 45,
+        "stop_reason": "timeout",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 201
+    },
+    {
+      "intent": "Release straight-elbow residual and seat pinch through small torso/body correction to flat handle, keeping floor clearance under review",
+      "high_level_action_id": "cfe4d1dc-c686-459f-8a48-bc61def61c63",
+      "requested": {
+        "intent": "Release straight-elbow residual and seat pinch through small torso/body correction to flat handle, keeping floor clearance under review",
+        "left": {
+          "q": [
+            -0.88303,
+            0.08598,
+            -0.36709,
+            -0.01675,
+            -0.2606,
+            0.06815,
+            -0.15858
+          ]
+        },
+        "right": null,
+        "base": {
+          "fwd": 0.025,
+          "left": 0.02
+        },
+        "torso": {
+          "q": [
+            1.744,
+            -2.75,
+            -1.51,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 75,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 201,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 26,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.009502042441663075,
+        "velocity_tracking_error_m": 0.0008675105969892234,
+        "absolute_velocity_error_integral_m": 0.0008733596867515365,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.0005330464220605791,
+        "angular_tracking_error_rad": 0.00040487038786523043,
+        "heading_error_rad": 0.0001553556227023023,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 74,
+        "executed_ticks": 26,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 202
+    },
+    {
+      "intent": "Release floor-side arm residual and center the eight-millimetre cross-pad miss from current handle depth",
+      "high_level_action_id": "f99581bc-8391-4028-b6e1-8243febc63f4",
+      "requested": {
+        "intent": "Release floor-side arm residual and center the eight-millimetre cross-pad miss from current handle depth",
+        "left": {
+          "q": [
+            -0.87321,
+            0.07378,
+            -0.34719,
+            -0.0151,
+            -0.25085,
+            0.07125,
+            -0.16401
+          ]
+        },
+        "right": null,
+        "base": {
+          "fwd": 0.018,
+          "left": 0.009
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 60,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 202,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 20,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.009613513359352085,
+        "velocity_tracking_error_m": 0.0009300580926621357,
+        "absolute_velocity_error_integral_m": 0.000933144171061696,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 5.888685027457541e-05,
+        "angular_tracking_error_rad": 0.0001920987707611251,
+        "heading_error_rad": 5.431633398966795e-05,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 59,
+        "executed_ticks": 20,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 203
+    },
+    {
+      "intent": "Close changed-axis floor handle grasp at measured seated pose, replacing residual floor load",
+      "high_level_action_id": "4ef33490-60dc-4dca-803f-c7b4064779ea",
+      "requested": {
+        "intent": "Close changed-axis floor handle grasp at measured seated pose, replacing residual floor load",
+        "left": {
+          "q": [
+            -0.86697,
+            0.06265,
+            -0.32513,
+            -0.01337,
+            -0.24034,
+            0.07481,
+            -0.16922
+          ],
+          "grip": 0
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 60,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 203,
+      "achieved": false,
+      "reason": "stalled",
+      "steps": 26,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 59,
+        "executed_ticks": 26,
+        "stop_reason": "stalled",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 204
+    },
+    {
+      "intent": "Short supported pan lift using torso rise and compensating retreat; verify visible retention before carrying",
+      "high_level_action_id": "497687d5-49f2-4e66-ba6c-30bf1e9f065b",
+      "requested": {
+        "intent": "Short supported pan lift using torso rise and compensating retreat; verify visible retention before carrying",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": -0.05
+        },
+        "torso": {
+          "q": [
+            1.744,
+            -2.75,
+            -1.35,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 90,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 204,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 40,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.007385048227160577,
+        "velocity_tracking_error_m": 0.002114830084662863,
+        "absolute_velocity_error_integral_m": 0.0021154505016162855,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.0012687315233051778,
+        "angular_tracking_error_rad": 0.001989314903039485,
+        "heading_error_rad": 0.0016265895998603952,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 89,
+        "executed_ticks": 40,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 205
+    },
+    {
+      "intent": "Release lift wrist preload and withdraw pan handle away from cabinet before larger torso rise",
+      "high_level_action_id": "341ed1a7-0d82-47b4-aeeb-ea5d8569c54e",
+      "requested": {
+        "intent": "Release lift wrist preload and withdraw pan handle away from cabinet before larger torso rise",
+        "left": {
+          "q": [
+            -0.86621,
+            0.06245,
+            -0.36455,
+            -0.00981,
+            -0.24625,
+            0.23707,
+            -0.20835
+          ]
+        },
+        "right": null,
+        "base": {
+          "fwd": -0.15
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 90,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 205,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 50,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.00932397426850815,
+        "velocity_tracking_error_m": 0.0006704855248583905,
+        "absolute_velocity_error_integral_m": 0.0006713599317827479,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.0006769467998916904,
+        "angular_tracking_error_rad": 0.0007196919449294607,
+        "heading_error_rad": 0.0006854128276883031,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 89,
+        "executed_ticks": 50,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 206
+    },
+    {
+      "intent": "Raise retained floor pan in an intermediate torso posture with similar upper-body pitch, clear of cabinet",
+      "high_level_action_id": "970dd0f0-020b-41ce-bcfe-faf406084d77",
+      "requested": {
+        "intent": "Raise retained floor pan in an intermediate torso posture with similar upper-body pitch, clear of cabinet",
+        "left": null,
+        "right": null,
+        "base": null,
+        "torso": {
+          "q": [
+            1.2,
+            -1.6,
+            -0.75,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 120,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 206,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 47,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 119,
+        "executed_ticks": 47,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 207
+    },
+    {
+      "intent": "Back fully clear of cabinet with visibly retained pan and release current wrist/shoulder residual before raising to counter height",
+      "high_level_action_id": "49d08e4f-6cb4-4826-88a0-129bf68b2fa6",
+      "requested": {
+        "intent": "Back fully clear of cabinet with visibly retained pan and release current wrist/shoulder residual before raising to counter height",
+        "left": {
+          "q": [
+            -0.86589,
+            0.04523,
+            -0.42473,
+            -0.01152,
+            -0.23914,
+            0.22455,
+            -0.20695
+          ]
+        },
+        "right": null,
+        "base": {
+          "fwd": -0.25
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 100,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 207,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 66,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.00922171402558165,
+        "velocity_tracking_error_m": 1.3504470349392231e-05,
+        "absolute_velocity_error_integral_m": 9.129104879048545e-05,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.00010839398989143471,
+        "angular_tracking_error_rad": 0.000112619721039664,
+        "heading_error_rad": 0.00010570609526361352,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 99,
+        "executed_ticks": 66,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 208
+    },
+    {
+      "intent": "Raise retained pan to normal working height while clear of cabinet, preserving similar upper-body pitch",
+      "high_level_action_id": "a93086b4-af25-470f-a3ef-8b680325fbc4",
+      "requested": {
+        "intent": "Raise retained pan to normal working height while clear of cabinet, preserving similar upper-body pitch",
+        "left": null,
+        "right": null,
+        "base": null,
+        "torso": {
+          "q": [
+            0.556,
+            -0.544,
+            -0.28,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 120,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 208,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 44,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 119,
+        "executed_ticks": 44,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 209
+    },
+    {
+      "intent": "Lift retained pan above counter height without rotating its already near-horizontal face; tuck empty right arm",
+      "high_level_action_id": "3f48caba-a84d-4c98-9137-1695fb97cfc3",
+      "requested": {
+        "intent": "Lift retained pan above counter height without rotating its already near-horizontal face; tuck empty right arm",
+        "left": {
+          "to": [
+            0.65,
+            0.28,
+            1.02
+          ]
+        },
+        "right": {
+          "q": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 60,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 209,
+      "achieved": false,
+      "reason": "timeout",
+      "steps": 60,
+      "base_safety": {},
+      "stop_reason_detail": "caller_step_limit",
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 59,
+        "executed_ticks": 60,
+        "stop_reason": "timeout",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 210
+    },
+    {
+      "intent": "Release divergent lift wrist command at measured legal joints; retain pan and reassess branch rather than repeat IK",
+      "high_level_action_id": "b62b938a-b293-4cfb-be5e-bdce7180839a",
+      "requested": {
+        "intent": "Release divergent lift wrist command at measured legal joints; retain pan and reassess branch rather than repeat IK",
+        "left": {
+          "q": [
+            0.22838,
+            0.9554,
+            0.08554,
+            -1.48686,
+            0.64983,
+            1.037,
+            -0.80283
+          ]
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 45,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 210,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 45,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 44,
+        "executed_ticks": 45,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 211
+    },
+    {
+      "intent": "Create counter clearance for a static-FK-checked alternate arm branch while pan remains retained",
+      "high_level_action_id": "8f17cd4f-0a91-4de5-8931-9f5bbf8aa575",
+      "requested": {
+        "intent": "Create counter clearance for a static-FK-checked alternate arm branch while pan remains retained",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": -0.2
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 90,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 211,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 59,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.00872664207830416,
+        "velocity_tracking_error_m": 0.00170172974079499,
+        "absolute_velocity_error_integral_m": 0.0017070342075927703,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.003576672822237015,
+        "angular_tracking_error_rad": 0.006310362850005428,
+        "heading_error_rad": 0.004725296578179439,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 89,
+        "executed_ticks": 59,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 212
+    },
+    {
+      "intent": "Move through checked joint-space midpoint toward alternate high-pan branch, inspect retention and clearance",
+      "high_level_action_id": "250b3f29-2515-4a05-a218-7f616d5a9f81",
+      "requested": {
+        "intent": "Move through checked joint-space midpoint toward alternate high-pan branch, inspect retention and clearance",
+        "left": {
+          "q": [
+            -0.6277,
+            0.8969,
+            -0.7462,
+            -1.6216,
+            1.2521,
+            1.0308,
+            -0.0128
+          ]
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 90,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 212,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 36,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 89,
+        "executed_ticks": 36,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 213
+    },
+    {
+      "intent": "Complete alternate joint branch to high near-level pan pose, avoiding the divergent Cartesian lift branch",
+      "high_level_action_id": "b31e5ef9-996d-4e31-b25b-644e45ef4be0",
+      "requested": {
+        "intent": "Complete alternate joint branch to high near-level pan pose, avoiding the divergent Cartesian lift branch",
+        "left": {
+          "q": [
+            -1.4843,
+            0.83846,
+            -1.57783,
+            -1.75649,
+            1.86357,
+            1.02719,
+            0.77662
+          ]
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 90,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 213,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 36,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 89,
+        "executed_ticks": 36,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 214
+    },
+    {
+      "intent": "Turn toward stove with retained pan already above burner height and empty hand tucked",
+      "high_level_action_id": "6d767762-f489-4654-b000-363798ba1490",
+      "requested": {
+        "intent": "Turn toward stove with retained pan already above burner height and empty hand tucked",
+        "left": null,
+        "right": null,
+        "base": {
+          "yaw_deg": 45
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 120,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 214,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 70,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.0002869309479743745,
+        "velocity_tracking_error_m": 0.00010005122710542677,
+        "absolute_velocity_error_integral_m": 0.00011271847084923548,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.06366874625285467,
+        "angular_tracking_error_rad": 0.00022746846079826354,
+        "heading_error_rad": 0.034117297608286634,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 119,
+        "executed_ticks": 70,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 215
+    },
+    {
+      "intent": "Align recovered pan center over the front-left burner using fresh head geometry while keeping pan elevated",
+      "high_level_action_id": "2781906c-eb62-428e-954a-85cd2eafab22",
+      "requested": {
+        "intent": "Align recovered pan center over the front-left burner using fresh head geometry while keeping pan elevated",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": 0.1,
+          "left": 0.43
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 120,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 215,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 95,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.008951330471867117,
+        "velocity_tracking_error_m": 7.526283503117161e-05,
+        "absolute_velocity_error_integral_m": 8.08117719939278e-05,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.00013510793069144712,
+        "angular_tracking_error_rad": 8.635311290466537e-05,
+        "heading_error_rad": 8.257368535868892e-05,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 119,
+        "executed_ticks": 95,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 216
+    },
+    {
+      "intent": "Lower recovered pan onto front-left burner with torso motion, avoiding another Cartesian branch change",
+      "high_level_action_id": "8b1981d1-c226-412d-a3c2-96041f9382fe",
+      "requested": {
+        "intent": "Lower recovered pan onto front-left burner with torso motion, avoiding another Cartesian branch change",
+        "left": null,
+        "right": null,
+        "base": null,
+        "torso": {
+          "q": [
+            0.556,
+            -0.544,
+            -0.38,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 60,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 216,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 5,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 59,
+        "executed_ticks": 5,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 217
+    },
+    {
+      "intent": "Release recovered pan only after burner support, replacing any lowering residual with measured joints",
+      "high_level_action_id": "12868b4e-d820-48b8-9aad-11d0bfc140e2",
+      "requested": {
+        "intent": "Release recovered pan only after burner support, replacing any lowering residual with measured joints",
+        "left": {
+          "q": [
+            -1.48499,
+            0.83754,
+            -1.55311,
+            -1.75732,
+            1.87937,
+            1.01642,
+            0.77706
+          ],
+          "grip": 1
+        },
+        "right": null,
+        "base": null,
+        "torso": null,
+        "seconds": null,
+        "max_steps": 60,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 217,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 7,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 59,
+        "executed_ticks": 7,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 218
+    },
+    {
+      "intent": "Withdraw open fingers upward from supported pan handle before any lateral movement",
+      "high_level_action_id": "ec5d7299-8450-4a97-84f9-d01d23987004",
+      "requested": {
+        "intent": "Withdraw open fingers upward from supported pan handle before any lateral movement",
+        "left": null,
+        "right": null,
+        "base": null,
+        "torso": {
+          "q": [
+            0.556,
+            -0.544,
+            -0.2,
+            0
+          ]
+        },
+        "seconds": null,
+        "max_steps": 60,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 218,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 9,
+      "base_safety": {},
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 59,
+        "executed_ticks": 9,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 219
+    },
+    {
+      "intent": "Back away after vertical hand clearance; verify recovered pan stays on burner before returning for brisket",
+      "high_level_action_id": "6bc902f0-0bea-4ec9-bee9-40e73ed7e2e9",
+      "requested": {
+        "intent": "Back away after vertical hand clearance; verify recovered pan stays on burner before returning for brisket",
+        "left": null,
+        "right": null,
+        "base": {
+          "fwd": -0.2
+        },
+        "torso": null,
+        "seconds": null,
+        "max_steps": 90,
+        "position_tol": 0.005,
+        "rotation_tol": 0.035,
+        "accept_partial": false,
+        "timeout_seconds": 30.0
+      },
+      "start_observation_id": 219,
+      "achieved": true,
+      "reason": "reached",
+      "steps": 59,
+      "base_safety": {
+        "triggered": false,
+        "window_ticks": 15,
+        "commanded_translation_m": 0.008728696047335048,
+        "velocity_tracking_error_m": 0.000966499813747231,
+        "absolute_velocity_error_integral_m": 0.0009792789463562539,
+        "translation_error_floor_m": 0.005,
+        "commanded_rotation_rad": 0.0020645269580806297,
+        "angular_tracking_error_rad": 0.0033456094795838,
+        "heading_error_rad": 0.0029025753145077715,
+        "heading_guard_threshold_rad": 0.035,
+        "translation_mismatch": false,
+        "rotation_mismatch": false,
+        "semantics": "command versus onboard velocity; obstruction/slip/instability suspected, not contact proof"
+      },
+      "stop_reason_detail": null,
+      "execution": {
+        "requested_ticks": null,
+        "timeout_ticks": 89,
+        "executed_ticks": 59,
+        "stop_reason": "reached",
+        "fault": null,
+        "execution_uncertain": false
+      },
+      "last_observation_id": 220
+    }
+  ]
+}

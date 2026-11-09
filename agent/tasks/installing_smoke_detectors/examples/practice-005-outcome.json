@@ -1,0 +1,33 @@
+{
+  "finished": true,
+  "simulated_seconds": 72.2,
+  "wall_seconds": 575.1731274740014,
+  "practice_feedback": {
+    "practice_only": true,
+    "privileged_training_feedback": true,
+    "attempt_id": "smoke-train020-practice-005",
+    "step": 2166,
+    "success": true,
+    "predicates": [
+      {
+        "index": 0,
+        "predicate": "(attached fire_alarm.n.02_1 wall_nail.n.01_1)",
+        "satisfied": true
+      }
+    ],
+    "goal_options": [
+      [
+        {
+          "index": 0,
+          "predicate": "(attached fire_alarm.n.02_1 wall_nail.n.01_1)",
+          "satisfied": true
+        }
+      ]
+    ],
+    "q_score": 1.0,
+    "satisfied_fraction": 1.0,
+    "q_definition": "Native compute_q_score: success=1; otherwise newly satisfied since this practice start / predicates per option, maximized over alternatives",
+    "satisfied_fraction_definition": "Current satisfied predicates / predicates per option, maximized over alternatives; not baseline-adjusted Q",
+    "source": "BehaviorTask.compiled_task.check_goal + get_goal_option_satisfaction; native TaskMetric.compute_q_score"
+  }
+}

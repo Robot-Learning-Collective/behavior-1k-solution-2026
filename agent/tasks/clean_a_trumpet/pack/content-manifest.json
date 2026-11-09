@@ -1,0 +1,40 @@
+{
+  "task": "clean_a_trumpet",
+  "tier": "lite",
+  "references_episode_train": [
+    [
+      7419,
+      20
+    ],
+    [
+      7420,
+      21
+    ],
+    [
+      7421,
+      22
+    ]
+  ],
+  "verification": "PASS: public pinned instructions/BDDL/source hashes, three non-held-out annotation joins; malformed coarse spans explicitly labelled derived envelopes",
+  "verification_script_sha256": "a1a3d7da62afb1741971cc97e3fbe685035ec723bc34b16ac4cc574324ecef81",
+  "files": {
+    "ANNOTATIONS.md": {
+      "sha256": "cbf446ec32afa913ed949bc42892e0642c9bd348d01c2703ebbda229cddd79a1",
+      "bytes": 5263
+    },
+    "README.md": {
+      "sha256": "28b0211302d59b8d38ef5ff71fd3b0fa3fee217a6da9feda2645f50a2650ac2b",
+      "bytes": 357
+    },
+    "TASK.md": {
+      "sha256": "d8934be030e743be8655df767e804d8c89a320182fe3f0b3127c4a538aa2990b",
+      "bytes": 1608
+    },
+    "provenance.json": {
+      "sha256": "0893105fd5f1e81a0c28334622198655e7fbba575821c3551ddd05229be1a38c",
+      "bytes": 3851
+    }
+  },
+  "total_content_bytes": 11079,
+  "limits": "Public human study only; no held-out rollout data or live scorer/object/contact state; not task-success evidence."
+}

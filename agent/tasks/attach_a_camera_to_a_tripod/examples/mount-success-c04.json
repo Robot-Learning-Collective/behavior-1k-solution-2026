@@ -1,0 +1,15 @@
+{
+  "scope": "One native attachment from retained-camera mounting snapshot; not full-reset completion or repeatability",
+  "start_snapshot": "camera-positive-elbow-level-b03",
+  "attempt_id": "practice-restore-camera-positive-elbow-level-b03-dab0bcc9f54444bdaa6f48bcb4c20944",
+  "sequence": [
+    {"left":{"to":[0.48861205,0.27319384,1.43],"close_dir":[-0.97723633,0.21144045,0.01738099],"finger_dir":[-0.01007052,0.03560251,-0.99931529]},"timeout_seconds":4},
+    {"left":{"to":[0.48861,0.27319,1.37019]},"timeout_seconds":3},
+    {"left":{"q":[0.26306,3.10357,-0.00528,-1.55211,-1.69777,0.24825,1.33099],"grip":1},"timeout_seconds":3},
+    {"left":{"to":[0.49,0.275,1.47]},"timeout_seconds":3}
+  ],
+  "native_feedback": {"obs003":true,"obs004_released":true,"obs005_withdrawn":true,"Q":1,"last_step":3703},
+  "end_snapshot":"camera-attached-released-c04",
+  "caution":"Withdrawal hit wrist joint limit but cleared camera; use measured-q cancellation, not persistent preload. Release q above is measured in this trial; remeasure for others.",
+  "geometry":"Body-bottom outward normal and rectangle from public RGBD. Match camera body LONG axis across plate SHORT axis, not long-to-long. Close yaw approximately168 degrees. Right hand stayed clear; tripod remained upright."
+}

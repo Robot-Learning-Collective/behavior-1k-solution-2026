@@ -14,3 +14,13 @@ checkpoints/
 .DS_Store
 *_old.py
 *_backup.py
+
+# Agent: secrets, the frozen-context bundle and everything a run produces
+.env
+.env.*
+*.env
+**/auth.json
+/agent/frozen/
+/agent/tasks/*/session.jsonl
+/.practice/
+/.runtime/

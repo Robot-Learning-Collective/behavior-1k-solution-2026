@@ -1,0 +1,226 @@
+{
+  "attempt": "camera-train277-zeroshot-001",
+  "instance": 277,
+  "first_exposure": true,
+  "scope": "one unseen-layout practice checkpoint; not frozen evaluation or generalization/speed claim",
+  "finish": {
+    "finished": true,
+    "simulated_seconds": 45.03333333333333,
+    "wall_seconds": 693.2335247429946,
+    "practice_feedback": {
+      "practice_only": true,
+      "privileged_training_feedback": true,
+      "attempt_id": "camera-train277-zeroshot-001",
+      "step": 1351,
+      "success": true,
+      "predicates": [
+        {
+          "index": 0,
+          "predicate": "(attached ?digital_camera.n.01_1 ?camera_tripod.n.01_1)",
+          "satisfied": true
+        }
+      ],
+      "goal_options": [
+        [
+          {
+            "index": 0,
+            "predicate": "(attached digital_camera.n.01_1 camera_tripod.n.01_1)",
+            "satisfied": true
+          }
+        ]
+      ],
+      "q_score": 1.0,
+      "satisfied_fraction": 1.0,
+      "q_definition": "Native compute_q_score: success=1; otherwise newly satisfied since this practice start / predicates per option, maximized over alternatives",
+      "satisfied_fraction_definition": "Current satisfied predicates / predicates per option, maximized over alternatives; not baseline-adjusted Q",
+      "source": "BehaviorTask.compiled_task.check_goal + get_goal_option_satisfaction; native TaskMetric.compute_q_score"
+    }
+  },
+  "demos": false,
+  "snapshots": false,
+  "restores": false,
+  "interim_feedback": false,
+  "step_target": 5867,
+  "reset_setup_seconds": null,
+  "notes_sha256": "1167e455cb10c1def017a6a993d83d38d2a0d04da1a51646c34e3c9d1190a90e",
+  "final_receipt": "<observation-cache>/camera-run-012-p6-645e82/camera-train277-zeroshot-001/receipt_01792181685524681000_03dad9b5c7e64c28a43243cde5e1ae36.json",
+  "seating_requests": [
+    [
+      0.515,
+      0.348,
+      1.3832
+    ],
+    [
+      0.515,
+      0.348,
+      1.371
+    ]
+  ],
+  "withdrawal_actual_tcp": [
+    0.588,
+    0.329,
+    1.475
+  ],
+  "withdrawal_min_margin_rad": 0.17,
+  "base_retreat_m": 0.3,
+  "caveat": "Final translation occluded full plate; final centre used preceding complete visible fit plus integrated base displacement (uncalibrated). Native Q only queried after release, actual withdrawal and retreat. 88 repeat002 unsafe/unreleased Q1 excluded.",
+  "inspection": {
+    "q": [
+      -0.15142298969543305,
+      0.6933274806856338,
+      -0.10972151422937693,
+      -1.7700781482632058,
+      1.061559754415978,
+      -0.8657094180054483,
+      -1.3094995003621268
+    ],
+    "tcp": [
+      0.41378068076589336,
+      0.21158322808810753,
+      1.3043925272715169
+    ],
+    "finger": [
+      -0.1360969635308698,
+      -0.8365547287542213,
+      0.5307106578133024
+    ],
+    "vis": 0.8430182352667039,
+    "distance": 0.27266167146295267
+  },
+  "fit": {
+    "center_eef": [
+      -0.012968065303124852,
+      -0.009610737059030133,
+      0.0956852908364514
+    ],
+    "normal_eef": [
+      -0.006166476238090135,
+      -0.01508412310892343,
+      0.9998672130842372
+    ],
+    "long_eef": [
+      -0.960433379693336,
+      0.2785045041721224,
+      -0.0017217220089809082
+    ],
+    "center_body": [
+      0.48976190824574306,
+      0.021607005635216447,
+      1.3452347748288829
+    ],
+    "dimensions": [
+      0.13996934459002452,
+      0.07310761203588956
+    ],
+    "n": 3482
+  },
+  "target": {
+    "center": [
+      0.9808022005435321,
+      0.2734213801372124,
+      1.2726335525512695
+    ],
+    "dims": [
+      0.11181966436899682,
+      0.07147825678155117
+    ],
+    "short_axis": [
+      -0.9832549075639546,
+      0.18223552549214744
+    ],
+    "n": 390,
+    "R": [
+      [
+        0.8936088914694708,
+        -0.4488446959006405,
+        -0.0012601779895085427
+      ],
+      [
+        -0.4488041038777484,
+        -0.8934824610432462,
+        -0.016247096682018188
+      ],
+      [
+        0.006166476238090135,
+        0.01508412310892343,
+        -0.9998672130842372
+      ]
+    ]
+  },
+  "plate-near": {
+    "center": [
+      0.6649238511345982,
+      0.40605433199020374,
+      1.2732404470443726
+    ],
+    "dims": [
+      0.08462767621228096,
+      0.0908274199849047
+    ],
+    "short_axis": [
+      0.6971651028545646,
+      0.7169106076504828
+    ],
+    "n": 990
+  },
+  "target-new": {
+    "center": [
+      0.7442169517450845,
+      0.18991994592634814,
+      1.2732558250427246
+    ],
+    "dims": [
+      0.10849805590975636,
+      0.07654742926157426
+    ],
+    "short_axis": [
+      -0.8120835268918062,
+      0.5835412113561176
+    ],
+    "n": 646,
+    "R": [
+      [
+        0.6174700059251833,
+        -0.7865531524955945,
+        -0.008057920451088515
+      ],
+      [
+        -0.7865702551924775,
+        -0.6173383250125304,
+        -0.014164254910302114
+      ],
+      [
+        0.006166476238090135,
+        0.01508412310892343,
+        -0.9998672130842372
+      ]
+    ]
+  },
+  "prealign2": [
+    0.31807978656779656,
+    2.831455595265516,
+    0.045709246729644236,
+    -1.3471284827707095,
+    -1.8055334219406451,
+    -0.6363641969895215,
+    1.4678022909058324
+  ],
+  "contact2": [
+    0.3344154403234862,
+    2.8109284017682783,
+    0.042641323407345166,
+    -1.4416027270038534,
+    -1.743293874391152,
+    -0.6468598017315882,
+    1.331460910915896
+  ],
+  "withdraw": [
+    0.35838621854782104,
+    2.8026747703552246,
+    0.06930960714817047,
+    -1.0507614850997924,
+    -1.5217454433441162,
+    -0.662880539894104,
+    1.391180157661438
+  ]
+}

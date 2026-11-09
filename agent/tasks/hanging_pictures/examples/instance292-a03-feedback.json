@@ -1,0 +1,12 @@
+{
+  "attempt_id": "pictures-run-009-instance292-a03",
+  "source": "admin_finish printed terminal PRACTICE_FEEDBACK; subsequent redundant practice_feedback rejected because attempt already finished",
+  "q_score": 0.0,
+  "success": false,
+  "step": 2412,
+  "sim_seconds": 80.4,
+  "endpoint_wall_seconds": 745.6,
+  "finish_wall_seconds": null,
+  "outcome": "Oblique pickup and compact carry succeeded. Initial hanging wrist correction hit joint limits; base yaw -27 degrees and fresh geometry recovered alignment. Bounded normal seating and vertical adjustment did not snap; full open dropped poster. Withdrew and admin_finished.",
+  "final_receipt": "receipt_01792135768894351000_d808d69a1ebd43608a32bd9c3ba848e2.json"
+}

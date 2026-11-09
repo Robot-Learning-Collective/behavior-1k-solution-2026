@@ -1,0 +1,33 @@
+{
+  "finished": true,
+  "simulated_seconds": 39.86666666666667,
+  "wall_seconds": 183.78272797400132,
+  "practice_feedback": {
+    "practice_only": true,
+    "privileged_training_feedback": true,
+    "attempt_id": "camera-train088-transfer-repeat-002",
+    "step": 1196,
+    "success": true,
+    "predicates": [
+      {
+        "index": 0,
+        "predicate": "(attached ?digital_camera.n.01_1 ?camera_tripod.n.01_1)",
+        "satisfied": true
+      }
+    ],
+    "goal_options": [
+      [
+        {
+          "index": 0,
+          "predicate": "(attached digital_camera.n.01_1 camera_tripod.n.01_1)",
+          "satisfied": true
+        }
+      ]
+    ],
+    "q_score": 1.0,
+    "satisfied_fraction": 1.0,
+    "q_definition": "Native compute_q_score: success=1; otherwise newly satisfied since this practice start / predicates per option, maximized over alternatives",
+    "satisfied_fraction_definition": "Current satisfied predicates / predicates per option, maximized over alternatives; not baseline-adjusted Q",
+    "source": "BehaviorTask.compiled_task.check_goal + get_goal_option_satisfaction; native TaskMetric.compute_q_score"
+  }
+}

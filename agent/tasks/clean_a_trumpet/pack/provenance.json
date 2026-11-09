@@ -1,0 +1,91 @@
+{
+  "scope": "public-data lite; no frames/video or simulator runtime accessed",
+  "dataset": "behavior-1k/2026-challenge-demos",
+  "revision": "4f50b44796641a4d526a19d9aeadc8aa51e2f2c2",
+  "instruction_source": "meta/tasks.jsonl",
+  "instruction_source_sha256": "8d8222310c3611316c6e5fe822a8dd3c6e552b32bcfddd10870c0672bfb8427c",
+  "native_commit": "bd049de3119acdcdf2334fe9e1ebe060fa20c108",
+  "official": {
+    "bddl": "(define (problem clean_a_trumpet-0)\n    (:domain behavior-1k)\n\n    (:objects\n        dust.n.01_1 - dust.n.01\n        cornet.n.01_1 - cornet.n.01\n        scrub_brush.n.01_1 - scrub_brush.n.01\n        desk.n.01_1 - desk.n.01\n        floor.n.01_1 - floor.n.01\n        agent.n.01_1 - agent.n.01\n    )\n    \n    (:init \n        (covered cornet.n.01_1 dust.n.01_1) \n        (ontop scrub_brush.n.01_1 desk.n.01_1) \n        (ontop cornet.n.01_1 desk.n.01_1) \n        (inroom desk.n.01_1 bedroom) \n        (inroom floor.n.01_1 bedroom) \n        (ontop agent.n.01_1 floor.n.01_1)\n    )\n    \n    (:goal \n        (and \n            (not \n                (covered ?cornet.n.01_1 ?dust.n.01_1)\n            )\n        )\n    )\n)",
+    "bddl_sha256": "3d6019ad5d1f0e4e110217bdba0b43bd4ca0757ad9daae6e873ae5cfa8ffdedb",
+    "human_mean_steps": 5307.16,
+    "stats_sha256": "7dbb5f7f00a2e06c693dfbb3045e5c28e627b6179e775f1ad93ca4b61f08e6dc"
+  },
+  "catalog_sha256": "225af09344fc6e307c82b206d84858566de3babdcba27a5f63fb2bb158b258e8",
+  "episodes": [
+    {
+      "episode": {
+        "episodeId": "7419",
+        "episodeIndex": 7419,
+        "demoIndex": 19,
+        "rawEpisodeId": 370200,
+        "taskInstanceId": 20,
+        "frameCount": 6057,
+        "skillCount": 6,
+        "primitiveCount": 1,
+        "taskDurationFrames": 5650,
+        "validStartFrame": 0,
+        "validEndFrame": 5650,
+        "annotationPath": "annotations/task-0037/episode_00370200.json",
+        "remoteZed": {
+          "chunkIndex": 37,
+          "fileIndex": 0,
+          "fromTimestamp": 3465.9666666666667,
+          "toTimestamp": 3667.866666666667
+        }
+      },
+      "annotation_sha256": "66aedc8a46e3848afc623c3988f4f7190ceb4da20a47d52090ac0db784cff0e6"
+    },
+    {
+      "episode": {
+        "episodeId": "7420",
+        "episodeIndex": 7420,
+        "demoIndex": 20,
+        "rawEpisodeId": 370210,
+        "taskInstanceId": 21,
+        "frameCount": 6472,
+        "skillCount": 6,
+        "primitiveCount": 1,
+        "taskDurationFrames": 6253,
+        "validStartFrame": 101,
+        "validEndFrame": 6354,
+        "annotationPath": "annotations/task-0037/episode_00370210.json",
+        "remoteZed": {
+          "chunkIndex": 37,
+          "fileIndex": 0,
+          "fromTimestamp": 3667.866666666667,
+          "toTimestamp": 3883.6
+        }
+      },
+      "annotation_sha256": "d3138a709c005ad96cc397a813195be191028a34688ff8257e60ebd0fae1c5a3"
+    },
+    {
+      "episode": {
+        "episodeId": "7421",
+        "episodeIndex": 7421,
+        "demoIndex": 21,
+        "rawEpisodeId": 370220,
+        "taskInstanceId": 22,
+        "frameCount": 4779,
+        "skillCount": 6,
+        "primitiveCount": 1,
+        "taskDurationFrames": 4498,
+        "validStartFrame": 0,
+        "validEndFrame": 4498,
+        "annotationPath": "annotations/task-0037/episode_00370220.json",
+        "remoteZed": {
+          "chunkIndex": 37,
+          "fileIndex": 1,
+          "fromTimestamp": 0.0,
+          "toTimestamp": 159.3
+        }
+      },
+      "annotation_sha256": "a76a2df90cd2bb44a624664f166059b9185058e9e649d36b37daa66e1c5b1786"
+    }
+  ],
+  "files": {
+    "TASK.md": "d8934be030e743be8655df767e804d8c89a320182fe3f0b3127c4a538aa2990b",
+    "ANNOTATIONS.md": "cbf446ec32afa913ed949bc42892e0642c9bd348d01c2703ebbda229cddd79a1",
+    "README.md": "28b0211302d59b8d38ef5ff71fd3b0fa3fee217a6da9feda2645f50a2650ac2b"
+  }
+}

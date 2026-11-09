@@ -1,0 +1,155 @@
+# Dense hard-segment RGB pages
+
+Each row: **head | left wrist | right wrist**, at the identical listed RGB episode frame. Read the matching sample in `../human-proprio.json`. Dense sampling around annotated manipulation (spacing recorded in provenance), plus explicit command-event samples and approach/withdrawal margins. Contact labels are proxies, not contact sensors. Position row=n−1; velocity/command row=n−2.
+
+
+## Episode6846
+
+- [6846-page-001.jpg](6846-page-001.jpg): frames 714, 722, 729, 736; move to_dense → pick up from_dense
+- [6846-page-002.jpg](6846-page-002.jpg): frames 744, 752, 759, 766; pick up from_dense → pick up from_dense
+- [6846-page-003.jpg](6846-page-003.jpg): frames 774, 782, 789, 796; pick up from_dense → pick up from_dense
+- [6846-page-004.jpg](6846-page-004.jpg): frames 804, 812, 819, 826; pick up from_dense → pick up from_dense
+- [6846-page-005.jpg](6846-page-005.jpg): frames 834, 842, 849, 856; pick up from_dense → pick up from_dense
+- [6846-page-006.jpg](6846-page-006.jpg): frames 864, 872, 879, 886; pick up from_dense → pick up from_dense
+- [6846-page-007.jpg](6846-page-007.jpg): frames 894, 902, 909, 916; pick up from_dense → pick up from_dense
+- [6846-page-008.jpg](6846-page-008.jpg): frames 924, 932, 939, 940; pick up from_dense → left_pre_close
+- [6846-page-009.jpg](6846-page-009.jpg): frames 946, 954, 960, 962; pick up from_dense → pick up from_dense
+- [6846-page-010.jpg](6846-page-010.jpg): frames 969, 976, 984, 992; pick up from_dense → pick up from_dense
+- [6846-page-011.jpg](6846-page-011.jpg): frames 999, 1000, 1006, 1014; pick up from_dense → pick up from_dense
+- [6846-page-012.jpg](6846-page-012.jpg): frames 1022, 1029, 1036, 1044; pick up from_dense → pick up from_dense
+- [6846-page-013.jpg](6846-page-013.jpg): frames 1052, 1059, 1066, 1074; pick up from_dense → pick up from_dense
+- [6846-page-014.jpg](6846-page-014.jpg): frames 1077, 1082, 1084, 1089; pick up from_dense → pick up from_dense
+- [6846-page-015.jpg](6846-page-015.jpg): frames 1092, 1096, 1100, 1104; hand over_dense → hand over_dense
+- [6846-page-016.jpg](6846-page-016.jpg): frames 1107, 1112, 1114, 1119; hand over_dense → hand over_dense
+- [6846-page-017.jpg](6846-page-017.jpg): frames 1122, 1126, 1130, 1134; hand over_dense → hand over_dense
+- [6846-page-018.jpg](6846-page-018.jpg): frames 1137, 1144, 1152, 1160; hand over_dense → hand over_dense
+- [6846-page-019.jpg](6846-page-019.jpg): frames 1167, 1174, 1182, 1190; hand over_dense → hand over_dense
+- [6846-page-020.jpg](6846-page-020.jpg): frames 1197, 1204, 1211, 1212; hand over_dense → hand over_dense
+- [6846-page-021.jpg](6846-page-021.jpg): frames 1220, 1227, 1231, 1234; hand over_dense → hand over_dense
+- [6846-page-022.jpg](6846-page-022.jpg): frames 1242, 1250, 1257, 1264; hand over_dense → hand over_dense
+- [6846-page-023.jpg](6846-page-023.jpg): frames 1271, 1272, 1280, 1287; right_post_close_lift_candidate → hand over_dense
+- [6846-page-024.jpg](6846-page-024.jpg): frames 1294, 1302, 1310, 1317; hand over_dense → hand over_dense
+- [6846-page-025.jpg](6846-page-025.jpg): frames 1324, 1332, 1340, 1347; hand over_dense → hand over_dense
+- [6846-page-026.jpg](6846-page-026.jpg): frames 1354, 1362, 1370, 1377; hand over_dense → hand over_dense
+- [6846-page-027.jpg](6846-page-027.jpg): frames 1384, 1392, 1400, 1407; hand over_dense → hand over_dense
+- [6846-page-028.jpg](6846-page-028.jpg): frames 1414, 1422, 1430, 1437; hand over_dense → hand over_dense
+- [6846-page-029.jpg](6846-page-029.jpg): frames 1444, 1452, 1460, 1467; hand over_dense → hand over_dense
+- [6846-page-030.jpg](6846-page-030.jpg): frames 1474, 1482, 1490, 1497; hand over_dense → move to_dense
+- [6846-page-031.jpg](6846-page-031.jpg): frames 1504, 1512, 1520, 1527; move to_dense → move to_dense
+- [6846-page-032.jpg](6846-page-032.jpg): frames 1561, 1568, 1576, 1584; move to_dense → hang_dense
+- [6846-page-033.jpg](6846-page-033.jpg): frames 1591, 1598, 1606, 1614; hang_dense → hang_dense
+- [6846-page-034.jpg](6846-page-034.jpg): frames 1621, 1628, 1636, 1644; hang_dense → hang_dense
+- [6846-page-035.jpg](6846-page-035.jpg): frames 1651, 1658, 1666, 1674; hang_dense → hang_dense
+- [6846-page-036.jpg](6846-page-036.jpg): frames 1681, 1688, 1696, 1704; hang_dense → hang_dense
+- [6846-page-037.jpg](6846-page-037.jpg): frames 1711, 1718, 1726, 1734; hang_dense → hang_dense
+- [6846-page-038.jpg](6846-page-038.jpg): frames 1741, 1748, 1756, 1764; hang_dense → hang_dense
+- [6846-page-039.jpg](6846-page-039.jpg): frames 1771, 1778, 1786, 1794; hang_dense → hang_dense
+- [6846-page-040.jpg](6846-page-040.jpg): frames 1801, 1808, 1816, 1824; hang_dense → hang_dense
+- [6846-page-041.jpg](6846-page-041.jpg): frames 1831, 1838, 1846, 1854; hang_dense → hang_dense
+- [6846-page-042.jpg](6846-page-042.jpg): frames 1861, 1868, 1876, 1884; hang_dense → hang_dense
+- [6846-page-043.jpg](6846-page-043.jpg): frames 1891, 1898, 1906, 1914; hang_dense → hang_dense
+- [6846-page-044.jpg](6846-page-044.jpg): frames 1921, 1928, 1936, 1944; hang_dense → hang_dense
+- [6846-page-045.jpg](6846-page-045.jpg): frames 1951, 1958, 1966, 1974; hang_dense → hang_dense
+- [6846-page-046.jpg](6846-page-046.jpg): frames 1981, 1984, 1988, 1996; hang_dense → hang_dense
+- [6846-page-047.jpg](6846-page-047.jpg): frames 2004, 2010, 2011, 2014; hang_dense → release_command
+- [6846-page-048.jpg](6846-page-048.jpg): frames 2018, 2026, 2029, 2034; hang_dense → hang_dense
+- [6846-page-049.jpg](6846-page-049.jpg): frames 2041, 2048, 2056, 2059; hang_dense → post_release
+- [6846-page-050.jpg](6846-page-050.jpg): frames 2064, 2071, 2078, 2086; hang_dense → hang_dense
+- [6846-page-051.jpg](6846-page-051.jpg): frames 2094, 2101, 2108; hang_dense → unlabelled_dense
+
+## Episode6854
+
+- [6854-page-001.jpg](6854-page-001.jpg): frames 673, 680, 688, 696; move to_dense → pick up from_dense
+- [6854-page-002.jpg](6854-page-002.jpg): frames 703, 710, 718, 726; pick up from_dense → pick up from_dense
+- [6854-page-003.jpg](6854-page-003.jpg): frames 733, 740, 748, 756; pick up from_dense → pick up from_dense
+- [6854-page-004.jpg](6854-page-004.jpg): frames 763, 770, 778, 786; pick up from_dense → pick up from_dense
+- [6854-page-005.jpg](6854-page-005.jpg): frames 793, 800, 808, 816; pick up from_dense → pick up from_dense
+- [6854-page-006.jpg](6854-page-006.jpg): frames 823, 830, 838, 846; pick up from_dense → pick up from_dense
+- [6854-page-007.jpg](6854-page-007.jpg): frames 853, 860, 868, 876; pick up from_dense → pick up from_dense
+- [6854-page-008.jpg](6854-page-008.jpg): frames 883, 890, 898, 906; pick up from_dense → pick up from_dense
+- [6854-page-009.jpg](6854-page-009.jpg): frames 913, 920, 928, 930; pick up from_dense → right_pre_close
+- [6854-page-010.jpg](6854-page-010.jpg): frames 936, 943, 950, 958; pick up from_dense → pick up from_dense
+- [6854-page-011.jpg](6854-page-011.jpg): frames 966, 973, 980, 988; pick up from_dense → pick up from_dense
+- [6854-page-012.jpg](6854-page-012.jpg): frames 990, 996, 1003, 1010; right_post_close_lift_candidate → pick up from_dense
+- [6854-page-013.jpg](6854-page-013.jpg): frames 1018, 1026, 1033, 1040; pick up from_dense → pick up from_dense
+- [6854-page-014.jpg](6854-page-014.jpg): frames 1048, 1056, 1063, 1070; pick up from_dense → pick up from_dense
+- [6854-page-015.jpg](6854-page-015.jpg): frames 1078, 1086, 1093, 1100; pick up from_dense → pick up from_dense
+- [6854-page-016.jpg](6854-page-016.jpg): frames 1108, 1116, 1123, 1130; pick up from_dense → pick up from_dense
+- [6854-page-017.jpg](6854-page-017.jpg): frames 1138, 1146, 1153, 1160; pick up from_dense → pick up from_dense
+- [6854-page-018.jpg](6854-page-018.jpg): frames 1168, 1176, 1183, 1190; pick up from_dense → pick up from_dense
+- [6854-page-019.jpg](6854-page-019.jpg): frames 1198, 1206, 1213, 1220; pick up from_dense → pick up from_dense
+- [6854-page-020.jpg](6854-page-020.jpg): frames 1228, 1236, 1243, 1250; pick up from_dense → pick up from_dense
+- [6854-page-021.jpg](6854-page-021.jpg): frames 1258, 1266, 1273, 1280; pick up from_dense → pick up from_dense
+- [6854-page-022.jpg](6854-page-022.jpg): frames 1288, 1296, 1303, 1310; unlabelled_dense → move to_dense
+- [6854-page-023.jpg](6854-page-023.jpg): frames 1318, 1326, 1333, 1395; move to_dense → move to_dense
+- [6854-page-024.jpg](6854-page-024.jpg): frames 1402, 1410, 1418, 1425; move to_dense → hang_dense
+- [6854-page-025.jpg](6854-page-025.jpg): frames 1432, 1440, 1448, 1455; hang_dense → hang_dense
+- [6854-page-026.jpg](6854-page-026.jpg): frames 1462, 1470, 1478, 1485; hang_dense → hang_dense
+- [6854-page-027.jpg](6854-page-027.jpg): frames 1492, 1500, 1508, 1515; hang_dense → hang_dense
+- [6854-page-028.jpg](6854-page-028.jpg): frames 1522, 1530, 1538, 1545; hang_dense → hang_dense
+- [6854-page-029.jpg](6854-page-029.jpg): frames 1552, 1560, 1568, 1575; hang_dense → hang_dense
+- [6854-page-030.jpg](6854-page-030.jpg): frames 1582, 1590, 1598, 1605; hang_dense → hang_dense
+- [6854-page-031.jpg](6854-page-031.jpg): frames 1612, 1620, 1628, 1635; hang_dense → hang_dense
+- [6854-page-032.jpg](6854-page-032.jpg): frames 1642, 1650, 1658, 1665; hang_dense → hang_dense
+- [6854-page-033.jpg](6854-page-033.jpg): frames 1672, 1680, 1688, 1695; hang_dense → hang_dense
+- [6854-page-034.jpg](6854-page-034.jpg): frames 1702, 1710, 1718, 1725; hang_dense → hang_dense
+- [6854-page-035.jpg](6854-page-035.jpg): frames 1732, 1740, 1748, 1755; hang_dense → hang_dense
+- [6854-page-036.jpg](6854-page-036.jpg): frames 1762, 1770, 1778, 1785; hang_dense → hang_dense
+- [6854-page-037.jpg](6854-page-037.jpg): frames 1792, 1800, 1808, 1815; hang_dense → hang_dense
+- [6854-page-038.jpg](6854-page-038.jpg): frames 1816, 1822, 1830, 1838; attach_approach → hang_dense
+- [6854-page-039.jpg](6854-page-039.jpg): frames 1842, 1845, 1846, 1852; pre_release_contact_candidate → hang_dense
+- [6854-page-040.jpg](6854-page-040.jpg): frames 1860, 1861, 1868, 1875; hang_dense → hang_dense
+- [6854-page-041.jpg](6854-page-041.jpg): frames 1882, 1890, 1891, 1898; hang_dense → hang_dense
+- [6854-page-042.jpg](6854-page-042.jpg): frames 1905, 1912, 1920, 1928; hang_dense → hang_dense
+- [6854-page-043.jpg](6854-page-043.jpg): frames 1935, 1942; hang_dense → hang_dense
+
+## Episode6863
+
+- [6863-page-001.jpg](6863-page-001.jpg): frames 434, 442, 449, 456; move to_dense → pick up from_dense
+- [6863-page-002.jpg](6863-page-002.jpg): frames 464, 472, 479, 486; pick up from_dense → pick up from_dense
+- [6863-page-003.jpg](6863-page-003.jpg): frames 494, 502, 509, 516; pick up from_dense → pick up from_dense
+- [6863-page-004.jpg](6863-page-004.jpg): frames 524, 532, 539, 546; pick up from_dense → pick up from_dense
+- [6863-page-005.jpg](6863-page-005.jpg): frames 554, 562, 569, 576; pick up from_dense → pick up from_dense
+- [6863-page-006.jpg](6863-page-006.jpg): frames 584, 592, 599, 606; pick up from_dense → pick up from_dense
+- [6863-page-007.jpg](6863-page-007.jpg): frames 614, 622, 629, 636; pick up from_dense → pick up from_dense
+- [6863-page-008.jpg](6863-page-008.jpg): frames 644, 652, 659, 666; pick up from_dense → pick up from_dense
+- [6863-page-009.jpg](6863-page-009.jpg): frames 674, 682, 689, 696; pick up from_dense → right_pre_close
+- [6863-page-010.jpg](6863-page-010.jpg): frames 704, 712, 716, 719; pick up from_dense → pick up from_dense
+- [6863-page-011.jpg](6863-page-011.jpg): frames 726, 734, 742, 749; pick up from_dense → pick up from_dense
+- [6863-page-012.jpg](6863-page-012.jpg): frames 756, 764, 772, 779; right_post_close_lift_candidate → pick up from_dense
+- [6863-page-013.jpg](6863-page-013.jpg): frames 786, 794, 802, 809; pick up from_dense → pick up from_dense
+- [6863-page-014.jpg](6863-page-014.jpg): frames 816, 824, 832, 839; pick up from_dense → pick up from_dense
+- [6863-page-015.jpg](6863-page-015.jpg): frames 846, 854, 862, 869; pick up from_dense → move to_dense
+- [6863-page-016.jpg](6863-page-016.jpg): frames 876, 884, 892, 1219; move to_dense → move to_dense
+- [6863-page-017.jpg](6863-page-017.jpg): frames 1226, 1234, 1242, 1249; move to_dense → hang_dense
+- [6863-page-018.jpg](6863-page-018.jpg): frames 1256, 1264, 1272, 1279; hang_dense → hang_dense
+- [6863-page-019.jpg](6863-page-019.jpg): frames 1286, 1294, 1302, 1309; hang_dense → hang_dense
+- [6863-page-020.jpg](6863-page-020.jpg): frames 1316, 1324, 1332, 1339; hang_dense → hang_dense
+- [6863-page-021.jpg](6863-page-021.jpg): frames 1346, 1354, 1362, 1369; hang_dense → hang_dense
+- [6863-page-022.jpg](6863-page-022.jpg): frames 1376, 1384, 1392, 1399; hang_dense → hang_dense
+- [6863-page-023.jpg](6863-page-023.jpg): frames 1406, 1414, 1422, 1429; hang_dense → hang_dense
+- [6863-page-024.jpg](6863-page-024.jpg): frames 1436, 1444, 1452, 1459; hang_dense → hang_dense
+- [6863-page-025.jpg](6863-page-025.jpg): frames 1466, 1474, 1482, 1489; hang_dense → hang_dense
+- [6863-page-026.jpg](6863-page-026.jpg): frames 1496, 1504, 1512, 1519; hang_dense → hang_dense
+- [6863-page-027.jpg](6863-page-027.jpg): frames 1526, 1534, 1542, 1549; hang_dense → hang_dense
+- [6863-page-028.jpg](6863-page-028.jpg): frames 1556, 1564, 1572, 1579; hang_dense → hang_dense
+- [6863-page-029.jpg](6863-page-029.jpg): frames 1586, 1594, 1602, 1609; hang_dense → hang_dense
+- [6863-page-030.jpg](6863-page-030.jpg): frames 1616, 1624, 1632, 1639; hang_dense → hang_dense
+- [6863-page-031.jpg](6863-page-031.jpg): frames 1646, 1654, 1662, 1669; hang_dense → hang_dense
+- [6863-page-032.jpg](6863-page-032.jpg): frames 1676, 1684, 1692, 1699; hang_dense → hang_dense
+- [6863-page-033.jpg](6863-page-033.jpg): frames 1706, 1714, 1722, 1729; hang_dense → hang_dense
+- [6863-page-034.jpg](6863-page-034.jpg): frames 1736, 1744, 1752, 1759; hang_dense → hang_dense
+- [6863-page-035.jpg](6863-page-035.jpg): frames 1766, 1774, 1782, 1789; hang_dense → hang_dense
+- [6863-page-036.jpg](6863-page-036.jpg): frames 1796, 1804, 1812, 1819; hang_dense → hang_dense
+- [6863-page-037.jpg](6863-page-037.jpg): frames 1826, 1834, 1842, 1849; hang_dense → hang_dense
+- [6863-page-038.jpg](6863-page-038.jpg): frames 1856, 1864, 1872, 1879; hang_dense → hang_dense
+- [6863-page-039.jpg](6863-page-039.jpg): frames 1886, 1894, 1902, 1909; hang_dense → hang_dense
+- [6863-page-040.jpg](6863-page-040.jpg): frames 1916, 1923, 1924, 1932; hang_dense → hang_dense
+- [6863-page-041.jpg](6863-page-041.jpg): frames 1939, 1946, 1949, 1953; hang_dense → release_command
+- [6863-page-042.jpg](6863-page-042.jpg): frames 1954, 1962, 1968, 1969; hang_dense → hang_dense
+- [6863-page-043.jpg](6863-page-043.jpg): frames 1976, 1984, 1992, 1998; hang_dense → post_release
+- [6863-page-044.jpg](6863-page-044.jpg): frames 1999, 2006, 2014, 2022; hang_dense → hang_dense
+- [6863-page-045.jpg](6863-page-045.jpg): frames 2029, 2036, 2044, 2052; hang_dense → hang_dense
+- [6863-page-046.jpg](6863-page-046.jpg): frames 2059, 2066, 2074, 2082; hang_dense → hang_dense
+- [6863-page-047.jpg](6863-page-047.jpg): frames 2089, 2096, 2104, 2112; hang_dense → unlabelled_dense
+- [6863-page-048.jpg](6863-page-048.jpg): frames 2119, 2126; unlabelled_dense → unlabelled_dense
