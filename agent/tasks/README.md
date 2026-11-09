@@ -28,10 +28,10 @@ not in this repository. Home-directory paths, host and pod names were replaced b
 | `make_cabinet_doors` | 78 | 5,163 | [NOTES](make_cabinet_doors/NOTES.md) · 17 examples · [pack](make_cabinet_doors/pack/README.md) |
 | `cook_brussels_sprouts` | 95 | 23,492 | [NOTES](cook_brussels_sprouts/NOTES.md) · 15 examples · [pack](cook_brussels_sprouts/pack/README.md) |
 | `unloading_the_car` | 65 | 16,985 | [NOTES](unloading_the_car/NOTES.md) · [EVAL-PROCEDURE](unloading_the_car/EVAL-PROCEDURE.md) · 9 examples · [pack](unloading_the_car/pack/README.md) |
-| `installing_a_scanner` | 92 | 6,387 | [NOTES](installing_a_scanner/NOTES.md) · 52 examples · [pack](installing_a_scanner/pack/README.md) |
-| `cook_a_brisket` | 51 | 11,002 | [NOTES](cook_a_brisket/NOTES.md) · [EVAL-PROCEDURE](cook_a_brisket/EVAL-PROCEDURE.md) · 7 examples · [pack](cook_a_brisket/pack/README.md) |
+| `installing_a_scanner` | 92 | 6,387 | [NOTES](installing_a_scanner/NOTES.md) · 48 examples (+4 in the bundle) · [pack](installing_a_scanner/pack/README.md) |
+| `cook_a_brisket` | 51 | 11,002 | [NOTES](cook_a_brisket/NOTES.md) · [EVAL-PROCEDURE](cook_a_brisket/EVAL-PROCEDURE.md) · 5 examples (+2 in the bundle) · [pack](cook_a_brisket/pack/README.md) |
 | `installing_smoke_detectors` | 63 | 3,853 | [NOTES](installing_smoke_detectors/NOTES.md) · 19 examples · [pack](installing_smoke_detectors/pack/README.md) |
-| `hanging_pictures` | 34 | 3,581 | [NOTES](hanging_pictures/NOTES.md) · 81 examples · [pack](hanging_pictures/pack/README.md) |
+| `hanging_pictures` | 34 | 3,581 | [NOTES](hanging_pictures/NOTES.md) · 75 examples (+6 in the bundle) · [pack](hanging_pictures/pack/README.md) |
 | `vacuuming_floors` | 69 | 3,617 | [NOTES](vacuuming_floors/NOTES.md) · [EVAL-PROCEDURE](vacuuming_floors/EVAL-PROCEDURE.md) · 5 examples · [pack](vacuuming_floors/pack/README.md) |
-| `installing_a_fax_machine` | 89 | 6,115 | [NOTES](installing_a_fax_machine/NOTES.md) · 45 examples · [pack](installing_a_fax_machine/pack/README.md) |
+| `installing_a_fax_machine` | 89 | 6,115 | [NOTES](installing_a_fax_machine/NOTES.md) · 24 examples (+21 in the bundle) · [pack](installing_a_fax_machine/pack/README.md) |
 | `scrubbing_bathroom_floor` | 60 | 4,730 | [NOTES](scrubbing_bathroom_floor/NOTES.md) · 1 example · [pack](scrubbing_bathroom_floor/pack/README.md) |

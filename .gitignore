@@ -24,3 +24,47 @@ checkpoints/
 /agent/tasks/*/session.jsonl
 /.practice/
 /.runtime/
+
+# Large support files restored from the frozen-context bundle by `python -m agent.eval.frozen`
+# ("bundle" in agent/tasks/tasks.json; agent/eval/test_gitignore.py checks this list)
+/agent/tasks/*/pack/keyframes/
+/agent/tasks/attach_a_camera_to_a_tripod/pack/human-proprio.json
+/agent/tasks/attach_a_camera_to_a_tripod/pack/provenance.json
+/agent/tasks/installing_a_scanner/examples/a03-endpoint-evidence.json
+/agent/tasks/installing_a_scanner/examples/back-edge-sweep-evidence.json
+/agent/tasks/installing_a_scanner/examples/edge-preparation-evidence.json
+/agent/tasks/installing_a_scanner/examples/p6-sweep-evidence.json
+/agent/tasks/cook_a_brisket/examples/fridge-and-meat-first-actions.json
+/agent/tasks/cook_a_brisket/examples/pan-first-actions.json
+/agent/tasks/hanging_pictures/examples/carry-poster-verified.json
+/agent/tasks/hanging_pictures/examples/flat-counter-study-measurements.json
+/agent/tasks/hanging_pictures/examples/flat-pickup-study-measurements.json
+/agent/tasks/hanging_pictures/examples/hang-study-measurements.json
+/agent/tasks/hanging_pictures/examples/hang-v1-a07-retained.json
+/agent/tasks/hanging_pictures/examples/hang-v1-a08-retained-repeat.json
+/agent/tasks/hanging_pictures/pack/human-proprio.json
+/agent/tasks/hanging_pictures/pack/provenance.json
+/agent/tasks/installing_a_fax_machine/examples/a13-obs22.jpg
+/agent/tasks/installing_a_fax_machine/examples/a13-obs28.jpg
+/agent/tasks/installing_a_fax_machine/examples/a13-obs30.jpg
+/agent/tasks/installing_a_fax_machine/examples/a14-obs22.jpg
+/agent/tasks/installing_a_fax_machine/examples/a14-obs28.jpg
+/agent/tasks/installing_a_fax_machine/examples/a14-obs30.jpg
+/agent/tasks/installing_a_fax_machine/examples/repeat-a02-exact.md
+/agent/tasks/installing_a_fax_machine/examples/repeat-a09-exact.md
+/agent/tasks/installing_a_fax_machine/examples/repeat-a11-exact.md
+/agent/tasks/installing_a_fax_machine/examples/repeat-i115-a16-exact.md
+/agent/tasks/installing_a_fax_machine/examples/repeat-i115-a18-exact.md
+/agent/tasks/installing_a_fax_machine/examples/repeat-i115-a19-exact.md
+/agent/tasks/installing_a_fax_machine/examples/repeat-i115-a20-exact.md
+/agent/tasks/installing_a_fax_machine/examples/repeat-i115-a21-exact.md
+/agent/tasks/installing_a_fax_machine/examples/repeat-i115-a22-exact.md
+/agent/tasks/installing_a_fax_machine/examples/repeat-i115-a23-exact.md
+/agent/tasks/installing_a_fax_machine/examples/repeat-i115-a24-exact.md
+/agent/tasks/installing_a_fax_machine/examples/repeat-i115-a25-exact.md
+/agent/tasks/installing_a_fax_machine/examples/repeat-i115-a26-exact.md
+/agent/tasks/installing_a_fax_machine/examples/repeat-i115-a27-exact.md
+/agent/tasks/installing_a_fax_machine/examples/repeat-i115-a28-exact.md
+
+# Episode outputs of agent/eval/run_episode.py (agent/README.md uses --output runs/...)
+/runs/

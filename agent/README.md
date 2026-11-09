@@ -11,7 +11,7 @@ with the human demonstrations, and wrote down what worked. Every evaluation epis
 practice session.
 
 ```
-  public leaderboard          learned policy only   39.2 %
+  public leaderboard          learned policy only   38.9 %
   (100 tasks, q-score)        + agent on 14 tasks   44.6 %   →  9th place, best independent team
 ```
 
@@ -75,7 +75,7 @@ per-task agent scores):
 
 | | public q-score |
 |---|---:|
-| learned policy only | 39.2 % |
+| learned policy only | 38.9 % |
 | learned policy + agent on 14 tasks | **44.6 %** |
 
 The 14 routed tasks: what the policy scored on them, and what the agent did. "Base q" is the learned policy (200k
@@ -97,11 +97,12 @@ development runs with the official evaluator. 312/313 are instances held out fro
 | installing smoke detectors | 3,853 | 0.10 | official evaluator (dev 11)¹: **success** in 3,465 steps; first tries on unseen layouts 271 and 127: success (2,392 and 2,875 steps) |
 | hanging pictures | 3,581 | 0.20 | earlier held-out dev evaluations: 5 of 9 successful; adapted practice runs: 3 successes in a row |
 | vacuuming floors | 3,617 | 0.20 | first tries on layouts 188 and 256: q 0; success after practice on 256 (1,452 steps) |
-| installing a fax machine | 6,115 | — | 2 full practice successes; official evaluator (dev 11)¹: q 0 (fell while navigating) |
-| scrubbing bathroom floor | 4,730 | — | practice: full run from reset, success in 2,809 steps |
+| installing a fax machine | 6,115 | 0.35 | first full try on unseen layout 115: success; then 7 fresh successes in a row on it; official evaluator (dev 11)¹: q 0 (fell while navigating) |
+| scrubbing bathroom floor | 4,730 | 0.40 | practice: full run from reset, success in 2,809 steps |
 
-¹ With an earlier version of that task's frozen context; practice continued afterwards. "—": not on the list of weakest
-tasks we prioritised from (base q above 0.33); these two were routed on practice evidence.
+¹ With an earlier version of that task's frozen context; practice continued afterwards. The fax and bathroom-floor
+tasks were not on the list of weakest tasks we prioritised from (base q above 0.33); these two were routed on practice
+evidence.
 
 "First try on an unseen layout" means: a training instance the practicer had never seen, the first attempt, NOTES
 only, with no snapshots, no restores, no practice feedback and no demo study until it finished. Over the final two days
@@ -302,7 +303,7 @@ recordings.
 | **Images attached to every tool result** | images printed to stdout or produced inside codemode never reached the model | delivery tested for nested codemode calls and redirected stdout |
 | **Base guard + 0.20 m/s cap** | long base moves fell over (fax: fall before manipulation) | sustained command/velocity mismatch now stops as `stalled` |
 | **Practice instead of prompting** | 18 measured autoresearch experiments on one fixed two-book benchmark produced 2 successful episodes; most prompt and harness variants scored 0/3 | a different setting, so not a like-for-like comparison: practicers succeeded on 8 of 17 first tries on unseen layouts of their own task |
-| **Practice worker = evaluator physics** | practice on a lighter base and different cameras did not transfer | official `r1pro.yaml`, 250 kg base, 40° head aperture, full-res RGB-D, official room-filtered scenes |
+| **Practice worker = evaluator physics** | practice on a lighter base and different cameras did not transfer | official `r1pro.yaml`, 250 kg base, the evaluator's head-camera aperture (`horizontal_aperture` 40), full-res RGB-D, official room-filtered scenes |
 | **Zero-shot first attempt on new layouts** | repeating a known layout measured memory, not skill | the 17 first tries above are exactly these attempts; `practice_client.py` refuses snapshots/feedback until they finish |
 | **Frozen fork per episode + same-session continuation** | a fresh agent with only notes lost the practised context; a turn end stopped the episode | every evaluation episode starts from the practised context |
 | **Hold on slow answers, fall back per episode** | a slow model answer must not crash the episode or block the evaluator's 600 s query limit | 3 consecutive timeouts or any error → learned policy for the rest of that episode |
@@ -358,9 +359,12 @@ python -m agent.eval.frozen --disable-missing    # no bundle: disable the agent 
 with access to `gpt-6-astra`:
 
 ```bash
-uv run scripts/serve_b1k.py --agent --policy.config <recipe.yaml> --policy.dir <checkpoint>
+uv run hf download IliaLarchenko/BEHAVIOR2026VLA --local-dir models/behavior2026_vla
+uv run scripts/serve_b1k.py --agent --policy.config configs/train_b1k_2026.yaml --policy.dir models/behavior2026_vla
 python -m agent.eval.serve_agent_only --port 8000     # agent tasks only, no JAX/checkpoint
 ```
+
+Without `--agent` the same server plays all 100 tasks with the learned policy and needs neither the bundle nor a key.
 
 Run the evaluator with `--env-wrapper omnigibson.eval.wrappers.RGBDFullResWrapper` and one environment per connection
 for agent tasks. With the default wrapper, the route logs a red warning and the learned policy plays.
