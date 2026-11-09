@@ -130,6 +130,7 @@ B1K_DEMOS_ROOT=data/2026-challenge-demos bash scripts/prepare_semantic_stages.sh
 | `assets/semantic_stages/` | Stage definitions, per-frame labels and inference tables |
 | `patches/` | Local patches applied to openpi by `setup_remote.sh` |
 | `agent/` | LLM agent route: controller, evaluation runtime, practice harness, per-task notes |
+| `docs/` | [JoyLo teleoperation rig build guide](docs/joylo_build_guide.md) |
 | `openpi/`, `BEHAVIOR-1K/` | Submodules |
 
 ## 2025 solution
