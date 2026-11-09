@@ -193,7 +193,7 @@ def startup_check(tasks):
             logging.info(f'Agent API check passed: {model}: {message}')
             continue
         if not os.environ.get('OPENAI_API_KEY', '').strip():
-            advice = ['OPENAI_API_KEY is not set. Pass it at runtime (docker run --env-file ...).']
+            advice = ['OPENAI_API_KEY is not set. Export it before starting the server.']
         elif message.startswith('HTTP 4'):
             advice = ['The OpenAI API was reached but rejected the key or request (see Reason).']
         else:
@@ -202,7 +202,7 @@ def startup_check(tasks):
               f'Reason: {message}',
               f'Model {model} is needed for {len(names)} tasks: {", ".join(names)}.',
               *advice,
-              'To serve the learned policy for every task instead, start without --agent (--offline-only in Docker).')
+              'To serve the learned policy for every task instead, start without --agent.')
         return False
     return True
 

@@ -70,8 +70,8 @@ practice worker's job queue, or the policy server's loopback bridge.
 
 ## Results
 
-Final ranking: **9th**, the best-placed independent team. Public leaderboard (the submitted image,
-`step199999-agent-r5`; the leaderboard gives the overall score, not per-task agent scores):
+Final ranking: **9th**, the best-placed independent team. Public leaderboard (it gives the overall score, not
+per-task agent scores):
 
 | | public q-score |
 |---|---:|
@@ -377,8 +377,6 @@ The runner's own wall guard defaults to the task's budget plus 30 minutes (`--de
 `--replay` records the agent's model turns and tool calls (`agent-events.jsonl`) and its robot RPCs
 (`robot-events.jsonl`) next to the official JSON and video.
 
-**Docker** (what we submitted): [submission/README.md](../submission/README.md).
-
 **Practise a new task**: [practice/README.md](practice/README.md).
 
 ---
@@ -401,7 +399,7 @@ agent/
 │   ├── EVAL-BRIEF.md           what the forked agent is told (verbatim)
 │   ├── frozen.py               bundle layout; reassemble and verify sessions
 │   ├── package.py              freeze a practice session into tasks.json
-│   ├── scrub.py · check_secret.py   credential scans before packaging / publishing
+│   ├── scrub.py                credential scan before packaging
 │   ├── replay_recording.py     opt-in recording of robot RPCs
 │   ├── serve_agent_only.py · run_episode.py   agent episodes without the VLA
 │   └── test_*.py
