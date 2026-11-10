@@ -12,17 +12,17 @@ Local evaluation with the official success criterion and q-score: 100 tasks, 10 
 
 | Tasks | Count | q-score |
 |---|---|---|
-| All | 100 | 0.389 |
-| Shared with the 2025 challenge | 50 | 0.370 |
-| New in 2026 | 50 | 0.407 |
+| All | 100 | 0.392 |
+| Shared with the 2025 challenge | 50 | 0.371 |
+| New in 2026 | 50 | 0.412 |
 
-The success rate over all tasks is 21.8%. On the 50 shared tasks our 2025 submission scored 0.260. That score comes from the official 2025 evaluation in the 2025 simulator, so the comparison is not exact.
+On the 50 shared tasks our 2025 submission scored 0.260. That score comes from the official 2025 evaluation in the 2025 simulator, so the comparison is not exact.
 
 The leaderboard score comes from our challenge submission, which also used an agent-based controller on 14 tasks. The results in this section are for the learned policy alone.
 
 ## Agent on 14 tasks
 
-On 14 tasks where the learned policy is weak, the policy server hands the episode to an LLM agent: GPT-6 Astra controls the robot through `observe`, `act` and `xyz` calls and a per-tick controller. Every episode starts from a fork of the agent's own practice session on that task, in which it practised in the simulator, compared itself with the human demonstrations and wrote down what worked. With the agent the public leaderboard score rises from 38.9% to 44.6%.
+On 14 tasks where the learned policy is weak, the policy server hands the episode to an LLM agent: GPT-6 Astra controls the robot through `observe`, `act` and `xyz` calls and a per-tick controller. Every episode starts from a fork of the agent's own practice session on that task, in which it practised in the simulator, compared itself with the human demonstrations and wrote down what worked. With the agent the public leaderboard score rises from 39.2% to 44.6%.
 
 ```
 evaluator ── scripts/serve_b1k.py --agent ┬─ agent task (agent/tasks/tasks.json) → fork of the frozen practice session → controller
