@@ -4,7 +4,7 @@
 
 Our solution for the [2026 BEHAVIOR Challenge](https://behavior.stanford.edu/challenge/): a single vision-language-action (VLA) model that runs a Galaxea R1Pro robot on all 100 long-horizon household tasks in the OmniGibson simulator. It builds on [Pi0.5](https://www.physicalintelligence.company/blog/pi05), the [openpi](https://github.com/Physical-Intelligence/openpi) code and our [1st-place 2025 solution](#2025-solution).
 
-**[Checkpoint](https://huggingface.co/IliaLarchenko/BEHAVIOR2026VLA)** | **[Technical report](https://arxiv.org/abs/2611.14432)**
+**[Checkpoint](https://huggingface.co/IliaLarchenko/BEHAVIOR2026VLA)** | **[Technical report](https://arxiv.org/abs/2611.14432)** | **[Blog post](https://robot-learning-collective.github.io/behavior-1k-2026/)**
 
 ## Results
 
